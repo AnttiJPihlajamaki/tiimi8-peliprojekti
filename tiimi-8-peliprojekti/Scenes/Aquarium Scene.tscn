@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://elcmk51jkcmq"]
+
+[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
+[ext_resource type="Script" uid="uid://3jr3uywkuo4d" path="res://Scripts/Shop.cs" id="2_gjge5"]
+[ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
+[ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bgdf3"]
+vertices = PackedVector2Array(566, 314, -566, 314, -566, -314, 566, -314)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -324, -576, 324, 576, 324, 576, -324)])
+parsed_collision_mask = 4294967294
+
+[node name="Aquarium" type="Node2D"]
+
+[node name="Fish" parent="." instance=ExtResource("1_bgdf3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_bgdf3")
+
+[node name="Shop" type="Node" parent="."]
+script = ExtResource("2_gjge5")
+_fish = ExtResource("1_bgdf3")
+
+[node name="Feeder" type="Node" parent="."]
+script = ExtResource("3_l6h7g")
+_food = ExtResource("2_valo4")

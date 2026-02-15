@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://loy77orom7e8"]
+
+[ext_resource type="Texture2D" uid="uid://ce2etcsp1ocdj" path="res://icon.svg" id="1_trol0"]
+
+[node name="AquariumUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop Menu" type="MarginContainer" parent="Shop"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Shop/Shop Menu"]
+custom_minimum_size = Vector2(1000, 600)
+layout_mode = 2
+texture = ExtResource("1_trol0")
+
+[node name="ColorRect" type="ColorRect" parent="Shop/Shop Menu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.6845763e-06, 0.4520843, 0.62627035, 1)

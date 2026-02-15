@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbi302icf606"]
+
+[ext_resource type="Script" uid="uid://cf0xl4vjt5w4i" path="res://Scripts/AI/Fish.cs" id="1_5bvtc"]
+[ext_resource type="Texture2D" uid="uid://du3sy3j56rka1" path="res://Assets/Sprites/Fish/Goldfish 64.png" id="2_8tf37"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjge5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8tf37")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_valo4"]
+radius = 11.0
+height = 56.0
+
+[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_sprite")]
+motion_mode = 1
+script = ExtResource("1_5bvtc")
+_minSpeed = 100.0
+_maxSpeed = 150.0
+_navigationAgent = NodePath("NavigationAgent2D")
+_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gjge5")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_valo4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 30.0
+max_speed = 5000.0
+debug_enabled = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd2o8cddplhoc"]
+
+[ext_resource type="Script" uid="uid://dcf1mlljtaw4d" path="res://Scripts/Food.cs" id="1_uau66"]
+[ext_resource type="Texture2D" uid="uid://ce2etcsp1ocdj" path="res://icon.svg" id="2_uau66"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0oddj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uau66")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p44dw"]
+radius = 8.0
+
+[node name="Food" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_uau66")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_0oddj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_p44dw")
+disabled = true

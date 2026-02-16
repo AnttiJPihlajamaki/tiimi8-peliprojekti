@@ -26,6 +26,7 @@ project/assembly_name="tiimi8-peliprojekti"
 [file_customization]
 
 folder_colors={
+"res://Assets/Prefabs/": "purple",
 "res://Assets/Sprites/": "blue",
 "res://Scenes/": "green",
 "res://Scripts/": "red"
@@ -47,6 +48,11 @@ BuyFish={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Fish"
+2d_physics/layer_2="Food"
 
 [rendering]
 

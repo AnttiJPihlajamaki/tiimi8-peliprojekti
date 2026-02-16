@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=8 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
 [ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
 [ext_resource type="Script" uid="uid://3jr3uywkuo4d" path="res://Scripts/Shop.cs" id="2_gjge5"]
+[ext_resource type="Texture2D" uid="uid://bsofi135kprgm" path="res://Assets/Sprites/underwater-sun-rays-ocean-hawaii-5k-8k-7680x4320-8301 (1).jpg" id="2_sjceq"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
 
@@ -15,6 +16,11 @@ parsed_collision_mask = 4294967294
 [node name="Aquarium" type="Node2D" node_paths=PackedStringArray("_navigationRegion")]
 script = ExtResource("1_8tk4j")
 _navigationRegion = NodePath("NavigationRegion2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_sjceq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -128,7 +128,7 @@ public partial class Fish : CharacterBody2D
 			{
 				_aquarium._food.Remove(nearestFood);
 				_hunger += nearestFood._nourishment;
-				nearestFood.Eaten();
+				nearestFood.QueueFree();
 			}
 		}
 	}

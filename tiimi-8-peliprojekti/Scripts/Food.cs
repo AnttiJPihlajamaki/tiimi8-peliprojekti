@@ -14,8 +14,4 @@ public partial class Food : CharacterBody2D
 
         MoveAndSlide();
 	}
-	public void Eaten()
-	{
-		QueueFree();
-	}
 }

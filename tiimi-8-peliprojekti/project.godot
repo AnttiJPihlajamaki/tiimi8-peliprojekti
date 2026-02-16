@@ -28,6 +28,7 @@ project/assembly_name="tiimi8-peliprojekti"
 folder_colors={
 "res://Assets/Prefabs/": "purple",
 "res://Assets/Sprites/": "blue",
+"res://Design/": "yellow",
 "res://Scenes/": "green",
 "res://Scripts/": "red"
 }

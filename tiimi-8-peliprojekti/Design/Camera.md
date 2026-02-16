@@ -10,7 +10,8 @@ eri sceneen.
 **Hyviä puolia**
  - Sopii hyvin Yeti-tabletille, kun akvaario näkymä täyttää koko näytön.
  - Pelin osia on helpompi jakaa toisistaan, jolloin voidaan keskittyä aluksi
-kehittämään vain akvaarionäkymää.   
+kehittämään vain akvaarionäkymää.  
+<!-- -->
 **Huonoja puolia**
 - Jos näkymä on kokoajan paikallaan, se voi olla tylsä.
 - Peliä ei kannata rakentaa moneen eri scenee, koska ne ovat liian
@@ -19,7 +20,8 @@ riippuvaisia toisistaan.
 Pelissä on yksi kamera, jota pelaaja voi zoomata tarkastelemaan akvaarioita ja
 muita pelin elemenntejä.   
 **Hyviä puolia**
- - Sopii paremmin yhteen sceneen   
+ - Sopii paremmin yhteen sceneen  
+<!-- -->
 **Huonoja puolia**
  - Pelaajalla voi olla vaikeutta ymmärtää mihin työkaluja käytetään ja mihin
  pelin osaan pitäisi keskittyä.

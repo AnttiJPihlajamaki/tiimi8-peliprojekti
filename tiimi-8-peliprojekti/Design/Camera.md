@@ -8,22 +8,22 @@ Pelissä voi olla monta kameraa, joiden välillä vaihdellaan, sen perusteella,
 mitä pelaaja haluaa pelissä tehdä Sopii paremminen, jos peli on jaettu moneen
 eri sceneen.
 **Hyviä puolia**
-	- Sopii hyvin Yeti-tabletille, kun akvaario näkymä täyttää koko näytön.
-	- Pelin osia on helpompi jakaa toisistaan, jolloin voidaan keskittyä aluksi
-	kehittämään vain akvaarionäkymää.
+ - Sopii hyvin Yeti-tabletille, kun akvaario näkymä täyttää koko näytön.
+ - Pelin osia on helpompi jakaa toisistaan, jolloin voidaan keskittyä aluksi
+kehittämään vain akvaarionäkymää.
 **Huonoja puolia**
-	- Jos näkymä on kokoajan paikallaan, se voi olla tylsä.
-	- Peliä ei kannata rakentaa moneen eri scenee, koska ne ovat liian
-	riippuvaisia toisistaan.
+- Jos näkymä on kokoajan paikallaan, se voi olla tylsä.
+- Peliä ei kannata rakentaa moneen eri scenee, koska ne ovat liian
+riippuvaisia toisistaan.
 ### 2. Pelissä on yksi kamera, jota voidaan zoomata
 Pelissä on yksi kamera, jota pelaaja voi zoomata tarkastelemaan akvaarioita ja
 muita pelin elemenntejä.
 **Hyviä puolia**
-	- Sopii paremmin yhteen sceneen
+ - Sopii paremmin yhteen sceneen
 **Huonoja puolia**
-	- Pelaajalla voi olla vaikeutta ymmärtää mihin työkaluja käytetään ja mihin
-	pelin osaan pitäisi keskittyä.
-	- Peli tulisi rakentaa lähtökohtaisesti sisälttyttämään akvaariokaupan.
+ - Pelaajalla voi olla vaikeutta ymmärtää mihin työkaluja käytetään ja mihin
+ pelin osaan pitäisi keskittyä.
+ - Peli tulisi rakentaa lähtökohtaisesti sisälttyttämään akvaariokaupan.
 ## Kameran Alustava Päätös
 Pelissä pääasiassa kaksi eri näkymää, akvaario näkymä ja akvaariokaupan näkymä.
 ### Akvaario Näkymä

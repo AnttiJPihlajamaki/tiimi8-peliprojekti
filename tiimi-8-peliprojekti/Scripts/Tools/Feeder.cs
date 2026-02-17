@@ -25,6 +25,8 @@ public partial class Feeder : Node
 		{
 			_shop._money -= _price;
 			Food newFood = _food.Instantiate<Food>();
+			newFood.removalDistance = _aquarium._navigationRegion.GetBounds().Size.Y/2;
+			newFood._aquarium =_aquarium;
 			_aquarium.AddChild(newFood);
 			_aquarium._food.Add(newFood);
 			newFood.Position = GetViewport().GetCamera2D().GetLocalMousePosition();

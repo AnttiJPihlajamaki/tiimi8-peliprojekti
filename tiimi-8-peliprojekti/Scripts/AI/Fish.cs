@@ -16,7 +16,8 @@ public partial class Fish : CharacterBody2D
 	[Export] public float _maxHunger = 100.0f;
 	[Export] public float _hunger = 100.0f;
 	[Export] public float _hungryLimit = 50.0f;
-	[Export] public float eatingRange = 25.0f;
+	[Export] public float _eatingRange = 25.0f;
+	[Export] public float _oxygenUsage = 1.0f;
 
 	public Aquarium _aquarium;
  	public Shop _shop;
@@ -58,8 +59,8 @@ public partial class Fish : CharacterBody2D
 	}
 	public void SetRandomMarkerPosition()
 	{
-		float boundsWidth = _movementTarget.GetParent<NavigationRegion2D>().GetBounds().Size.X;
-		float boundsHeight = _movementTarget.GetParent<NavigationRegion2D>().GetBounds().Size.Y;
+		float boundsWidth = _aquarium._navigationRegion.GetBounds().Size.X;
+		float boundsHeight = _aquarium._navigationRegion.GetBounds().Size.Y;
 
 		_movementTarget.Position = new Vector2((float)GD.RandRange(-boundsWidth/2,boundsWidth/2),(float)GD.RandRange(-boundsHeight/2,boundsHeight/2));
 
@@ -124,11 +125,11 @@ public partial class Fish : CharacterBody2D
 
 			SetMarkerPosition(nearestFood.GlobalPosition);
 
-			if (GlobalPosition.DistanceTo(nearestFood.GlobalPosition) <= eatingRange)
+			if (GlobalPosition.DistanceTo(nearestFood.GlobalPosition) <= _eatingRange)
 			{
 				_aquarium._food.Remove(nearestFood);
 				_hunger += nearestFood._nourishment;
-				nearestFood.QueueFree();
+				nearestFood.Destroy();
 			}
 		}
 	}

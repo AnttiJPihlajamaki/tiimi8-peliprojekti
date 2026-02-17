@@ -22,29 +22,7 @@ public partial class Shop : Node
     {
         if (@event.IsActionPressed("BuyFish") && _money >= _currentPrice)
 		{
-			_money -= _currentPrice;
-			/*int i = 1;
-
-			string fishName =
-			foreach(Node obj in GetNode("/root/Aquarium").GetChildren())
-			{
-				if(obj.GetType<Fish>() )
-				i++;
-			}
-			newFish.Name = "Fish"+i;
-			*/
-			Fish newFish = _fish.Instantiate<Fish>();
-			_aquarium.AddChild(newFish);
-			_aquarium._fish.Add(newFish);
-			newFish._aquarium = _aquarium;
-			newFish._shop = this;
-
-			newFish._movementTarget = new Marker2D();
-			_aquarium._navigationRegion.AddChild(newFish._movementTarget);
-
-			newFish.SetRandomMarkerPosition();
-
-			UpdatePrice();
+			Purchase();
 		}
     }
 
@@ -79,5 +57,30 @@ public partial class Shop : Node
 		}
 
 		_currentPrice = (float)Math.Round(_currentPrice);
+	}
+
+	public void Purchase()
+	{
+		_money -= _currentPrice;
+
+		int i = 1;
+		foreach(Fish fish in _aquarium._fish)
+		{
+			i++;
+		}
+
+		Fish newFish = _fish.Instantiate<Fish>();
+		newFish.Name = "Fish " + i;
+		_aquarium.AddChild(newFish);
+		_aquarium._fish.Add(newFish);
+		newFish._aquarium = _aquarium;
+		newFish._shop = this;
+
+		newFish._movementTarget = new Marker2D();
+		_aquarium._navigationRegion.AddChild(newFish._movementTarget);
+
+		newFish.SetRandomMarkerPosition();
+
+		UpdatePrice();
 	}
 }

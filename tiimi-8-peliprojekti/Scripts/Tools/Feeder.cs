@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Feeder : Node
+public partial class Feeder : Tool
 {
 
 	[Export] public PackedScene _food;
@@ -9,19 +9,9 @@ public partial class Feeder : Node
 	[Export] private Aquarium _aquarium;
 	[Export] private Shop _shop;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override void ToolFunction()
 	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-	public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("UseTool") && _shop._money > _price)
+		if (_shop._money > _price)
 		{
 			_shop._money -= _price;
 			Food newFood = _food.Instantiate<Food>();
@@ -31,5 +21,14 @@ public partial class Feeder : Node
 			_aquarium._food.Add(newFood);
 			newFood.Position = GetViewport().GetCamera2D().GetLocalMousePosition();
 		}
-    }
+	}
+	public override void ToolIncrease()
+	{
+
+	}
+
+	public override void ToolDecrease()
+	{
+
+	}
 }

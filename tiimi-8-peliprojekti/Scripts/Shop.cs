@@ -82,5 +82,6 @@ public partial class Shop : Node
 		newFish.SetRandomMarkerPosition();
 
 		UpdatePrice();
+		_aquarium.UpdateOxygenDelta();
 	}
 }

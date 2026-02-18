@@ -12,12 +12,15 @@ public partial class Fish : CharacterBody2D
 	[Export] public Marker2D _movementTarget;
 	[Export] private NavigationAgent2D _navigationAgent;
 	[Export] private AnimatedSprite2D _sprite;
-
-	[Export] public float _maxHunger = 100.0f;
-	[Export] public float _hunger = 100.0f;
-	[Export] public float _hungryLimit = 50.0f;
-	[Export] public float _eatingRange = 25.0f;
+	[Export] private float _maxHealth = 100.0f;
+	[Export] private float _health = 100.0f;
+	[Export] private float _maxHunger = 100.0f;
+	[Export] private float _hunger = 100.0f;
+	[Export] private float _hungryLimit = 50.0f;
+	[Export] private float _eatingRange = 25.0f;
 	[Export] public float _oxygenUsage = 1.0f;
+	[Export] private float _maxOxygen = 75f;
+	[Export] private float _minOxygen = 25f;
 
 	public Aquarium _aquarium;
  	public Shop _shop;
@@ -35,16 +38,6 @@ public partial class Fish : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		_shop._money += moneyPerSecond * (float)delta;
-		if(_hunger <= 0)
-		{
-			_aquarium._fish.Remove(this);
-			_shop.UpdatePrice();
-			QueueFree();
-		}
-		else
-		{
-			_hunger -= (float)delta;
-		}
 	}
 
 	private void SetMovementTarget()
@@ -68,13 +61,16 @@ public partial class Fish : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		ProcessHealth(delta);
+		ProcessHunger(delta);
+
 		if (_navigationAgent.IsNavigationFinished())
 		{
 			SetRandomMarkerPosition();
 		}
 		if(_hunger < _hungryLimit)
 		{
-			FindFood();
+			SetMarkerPositionFood();
 		}
 
 		SetMovementTarget();
@@ -108,7 +104,7 @@ public partial class Fish : CharacterBody2D
         MoveAndSlide();
     }
 
-	private void FindFood()
+	private void SetMarkerPositionFood()
 	{
 		if(_aquarium._food.Count > 0)
 		{
@@ -132,5 +128,51 @@ public partial class Fish : CharacterBody2D
 				nearestFood.Destroy();
 			}
 		}
+	}
+
+	private void ProcessHunger(double delta)
+	{
+		if(_hunger > 0)
+		{
+			_hunger -= (float)delta;
+		}
+		else
+		{
+			if(_hunger < 0)
+			{
+				_hunger = 0;
+			}
+			_health -= (float)delta;
+		}
+
+	}
+	private void ProcessHealth(double delta)
+	{
+		//Oxygen
+		if(_aquarium._currentOxygen > _maxOxygen || _aquarium._currentOxygen < _minOxygen)
+		{
+			_health -= (float)delta;
+		}
+		else if(_health < _maxHealth)
+		{
+			_health += (float)delta;
+		}
+		//Health
+		if(_health > _maxHealth)
+		{
+			_health = _maxHealth;
+		}
+		else if(_health <= 0f)
+		{
+			Die();
+		}
+	}
+
+	private void Die()
+	{
+		_aquarium._fish.Remove(this);
+		_aquarium.UpdateOxygenDelta();
+		_shop.UpdatePrice();
+		QueueFree();
 	}
 }

@@ -6,10 +6,10 @@ using System.Collections.Generic;
 public partial class Aquarium : Node2D
 {
 
-	[Export] public float _maxOxygen = 100f;
-	[Export] public float _minOxygen = 0;
+	[Export] private float _maxOxygen = 100f;
+	[Export] private float _minOxygen = 0;
 	[Export] public float _currentOxygen = 100f;
-	[Export] public float _oxygenDelta = 0;
+	[Export] private float _oxygenDelta = 0;
 	public List<Fish> _fish = [];
 	public List<Food> _food = [];
 
@@ -43,4 +43,13 @@ public partial class Aquarium : Node2D
 			GD.Print("Oxygen: " + _currentOxygen + " / " + _maxOxygen);
 		}
     }
+
+	public void UpdateOxygenDelta()
+	{
+		_oxygenDelta = 0;
+		foreach(Fish fish in _fish)
+		{
+			_oxygenDelta -= fish._oxygenUsage;
+		}
+	}
 }

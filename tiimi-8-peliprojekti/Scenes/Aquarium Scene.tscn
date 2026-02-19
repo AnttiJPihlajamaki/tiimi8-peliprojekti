@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=9 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
 [ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsofi135kprgm" path="res://Assets/Sprites/underwater-sun-rays-ocean-hawaii-5k-8k-7680x4320-8301 (1).jpg" id="2_sjceq"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
+[ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="7_7fi0v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bgdf3"]
 vertices = PackedVector2Array(566, 314, -566, 314, -566, -314, 566, -314)
@@ -13,8 +14,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -324, -576, 324, 576, 324, 576, -324)])
 parsed_collision_mask = 4294967294
 
-[node name="Aquarium" type="Node2D" node_paths=PackedStringArray("_navigationRegion")]
+[node name="Aquarium" type="Node2D" node_paths=PackedStringArray("_tools", "_navigationRegion")]
 script = ExtResource("1_8tk4j")
+_tools = [NodePath("Feeder"), NodePath("Oxygenator")]
 _navigationRegion = NodePath("NavigationRegion2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,8 +35,17 @@ _fish = ExtResource("1_bgdf3")
 _freeSample = true
 _aquarium = NodePath("..")
 
-[node name="Feeder" type="Node" parent="." node_paths=PackedStringArray("_aquarium", "_shop")]
+[node name="Feeder" type="Node" parent="." node_paths=PackedStringArray("_aquarium", "_shop", "_aquarium", "_shop")]
 script = ExtResource("3_l6h7g")
 _food = ExtResource("2_valo4")
+_aquarium = NodePath("..")
+_shop = NodePath("../Shop")
+_aquarium = NodePath("..")
+_shop = NodePath("../Shop")
+
+[node name="Oxygenator" type="Node" parent="." node_paths=PackedStringArray("_aquarium", "_shop", "_aquarium", "_shop")]
+script = ExtResource("7_7fi0v")
+_aquarium = NodePath("..")
+_shop = NodePath("../Shop")
 _aquarium = NodePath("..")
 _shop = NodePath("../Shop")

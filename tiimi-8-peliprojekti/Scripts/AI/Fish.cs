@@ -5,26 +5,26 @@ using Godot;
 
 public partial class Fish : CharacterBody2D
 {
-	[Export] public float _minSpeed = 100.0f;
-	[Export] public float _maxSpeed = 150.0f;
-	public float _speed;
+	[Export] public float _minSpeed = 100.0f; // Minimum movement speed
+	[Export] public float _maxSpeed = 150.0f; // Maximum movement speed
+	public float _speed; // Current speed the fish is moving at
 
-	[Export] public Marker2D _movementTarget;
-	[Export] private NavigationAgent2D _navigationAgent;
-	[Export] private AnimatedSprite2D _sprite;
-	[Export] private float _maxHealth = 100.0f;
-	[Export] private float _health = 100.0f;
-	[Export] private float _maxHunger = 100.0f;
-	[Export] private float _hunger = 100.0f;
-	[Export] private float _hungryLimit = 50.0f;
-	[Export] private float _eatingRange = 25.0f;
-	[Export] public float _oxygenUsage = 1.0f;
-	[Export] private float _maxOxygen = 75f;
-	[Export] private float _minOxygen = 25f;
+	[Export] public Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
+	[Export] private NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
+	[Export] private AnimatedSprite2D _sprite;	// Sprite of the fish
+	[Export] private float _maxHealth = 100.0f;	// Maximum health
+	[Export] private float _health = 100.0f; // Current health
+	[Export] private float _maxHunger = 100.0f; // Maximum hunger the fish can have
+	[Export] private float _hunger = 100.0f; // Current hunget the fish has
+	[Export] private float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
+	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
+	[Export] public float _oxygenUsage = 1.0f; // The amount of oxygen the fish uses
+	[Export] private float _maxOxygen = 75f; // The maximum oxygen at which the fish doesn't take damage from over oxygenation
+	[Export] private float _minOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 
-	public Aquarium _aquarium;
- 	public Shop _shop;
-	private float moneyPerSecond = 50f;
+	public Aquarium _aquarium; // Reference to the aquarium component in which the fish is located
+ 	public Shop _shop; // Reference to players inventory
+	private float moneyPerSecond = 50f; // The amount of money the fish generates per second
     public override void _EnterTree()
 	{
 	}

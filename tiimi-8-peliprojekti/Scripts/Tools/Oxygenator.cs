@@ -7,14 +7,14 @@ public partial class Oxygenator : Tool
 	[Export] private Shop _shop;
 
 	private bool _isActive = false;
+	private float _maxPower = 10.0f;
 	private float _basePower = 1.0f;
 	private float _power;
 
-    public override void _Ready()
+    public override void _EnterTree()
     {
         _power = _basePower;
     }
-
     public override void _PhysicsProcess(double delta)
     {
 		if (_isActive)
@@ -45,11 +45,17 @@ public partial class Oxygenator : Tool
 	}
 	public override void ToolIncrease()
 	{
-		_power += _basePower;
+		if(_power < _maxPower)
+		{
+			_power += _basePower;
+		}
 	}
 
 	public override void ToolDecrease()
 	{
-		_power -= _basePower;
+		if(_power > -_maxPower)
+		{
+			_power -= _basePower;
+		}
 	}
 }

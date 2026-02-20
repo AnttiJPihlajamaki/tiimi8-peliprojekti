@@ -3,8 +3,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Godot;
 
+// Parent class for all different types of fish
 public partial class Fish : CharacterBody2D
 {
+	[Export] public string _name = "Guppy"; // The name of type of fish
 	[Export] public float _minSpeed = 100.0f; // Minimum movement speed
 	[Export] public float _maxSpeed = 150.0f; // Maximum movement speed
 	public float _speed; // Current speed the fish is moving at
@@ -23,80 +25,68 @@ public partial class Fish : CharacterBody2D
 	[Export] private float _minOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 
 	public Aquarium _aquarium; // Reference to the aquarium component in which the fish is located
- 	public Shop _shop; // Reference to players inventory
+ 	public Inventory _inventory; // Reference to players inventory
 	private float moneyPerSecond = 50f; // The amount of money the fish generates per second
-    public override void _EnterTree()
-	{
-	}
-
 
 	public override void _Ready()
 	{
 		_navigationAgent.VelocityComputed += OnVelocityComputed;
-		_navigationAgent.MaxSpeed = _maxSpeed;
 	}
-	public override void _Process(double delta)
+	private void SetMovementTarget() // Set navigation target for agent and calculate path
 	{
-		_shop._money += moneyPerSecond * (float)delta;
+		_navigationAgent.TargetPosition = _movementTarget.Position;	
 	}
-
-	private void SetMovementTarget()
-	{
-		_navigationAgent.TargetPosition = _movementTarget.Position;
-	}
-	public void SetMarkerPosition(Vector2 position)
+	public void SetMarkerPosition(Vector2 position) // Sets a new position for the marker set speed to maximum
 	{
 		_movementTarget.Position = position;
-
 		_speed = _maxSpeed;
 	}
-	public void SetRandomMarkerPosition()
+	public void SetRandomMarkerPosition() // Calculates a random point on the navigation region for the marker
 	{
-		float boundsWidth = _aquarium._navigationRegion.GetBounds().Size.X;
-		float boundsHeight = _aquarium._navigationRegion.GetBounds().Size.Y;
+		float boundsWidth = _aquarium._navigationRegion.GetBounds().Size.X; // Calculates the navigation regions horizontal bounds
+		float boundsHeight = _aquarium._navigationRegion.GetBounds().Size.Y; // Calculates the navigation regions vertical bounds
 
-		_movementTarget.Position = new Vector2((float)GD.RandRange(-boundsWidth/2,boundsWidth/2),(float)GD.RandRange(-boundsHeight/2,boundsHeight/2));
+		_movementTarget.Position = new Vector2((float)GD.RandRange(-boundsWidth/2,boundsWidth/2),(float)GD.RandRange(-boundsHeight/2,boundsHeight/2)); // Sets the marker position to a random point on the navigation region
 
-		_speed = (float)GD.RandRange(_minSpeed, _maxSpeed);
+		_speed = (float)GD.RandRange(_minSpeed, _maxSpeed);	// Sets random speed within min/max speed
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		ProcessHealth(delta);
-		ProcessHunger(delta);
+		_inventory._money += moneyPerSecond * (float)delta; // Adds money per second
+		ProcessHealth(delta); // for processing health
+		ProcessHunger(delta); // for processing hunger
 
 		if (_navigationAgent.IsNavigationFinished())
 		{
-			SetRandomMarkerPosition();
+			SetRandomMarkerPosition(); // Set a random point to move to if fish is stationary
 		}
 		if(_hunger < _hungryLimit)
 		{
-			SetMarkerPositionFood();
+			SetMarkerPositionFood(); // Set marker on nearest food if hunger is too low
 		}
 
-		SetMovementTarget();
+		SetMovementTarget(); // calculate path
 
-		Vector2 newVelocity = (_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized() * _speed;
-		newVelocity += Vector2.Down * 25f;
+		Vector2 newVelocity = _navigationAgent.Velocity.MoveToward((_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized() * _speed, (float)delta * _speed); // Calculate movement
+		// Uses MoveToward to slow down movement when turning towards new point
 
-		if(newVelocity.X < 0)
+		if(newVelocity.X < 0 && !_sprite.FlipH) // Simple if-statement to flip the sprite towards the direction the fish is moving
         {
             _sprite.FlipH = true;
 		}
-		else
+		else if(_sprite.FlipH)
 		{
             _sprite.FlipH = false;
 		}
 
-		 if (_navigationAgent.AvoidanceEnabled)
+		if (_navigationAgent.AvoidanceEnabled) // Sets velocity when Avoidance is enabled
         {
             _navigationAgent.Velocity = newVelocity;
         }
         else
         {
-            OnVelocityComputed(newVelocity);
+            OnVelocityComputed(newVelocity); // Sets velocity when Avoidance is disabled
         }
-
-		_navigationAgent.Velocity = newVelocity * _speed * (float)delta;
 	}
 	private void OnVelocityComputed(Vector2 safeVelocity)
     {
@@ -104,75 +94,83 @@ public partial class Fish : CharacterBody2D
         MoveAndSlide();
     }
 
-	private void SetMarkerPositionFood()
+	private void SetMarkerPositionFood() // Sets marker on nearest food
 	{
-		if(_aquarium._food.Count > 0)
+		if(_aquarium._food.Count > 0) // If-statement to check whether there is any food in the aquarium
 		{
-			float shortestDistance = GlobalPosition.DistanceTo(_aquarium._food[0].GlobalPosition);
-			Food nearestFood = _aquarium._food[0];
-			foreach(Food food in _aquarium._food)
+			Food nearestFood = _aquarium._food[0]; // Set the nearest food to be the first one in the list and calculates the distance to it
+			float nearestDistance = GlobalPosition.DistanceTo(_aquarium._food[0].GlobalPosition);
+
+			foreach(Food food in _aquarium._food) // Checks through all the food in aquarium to see if another food is closer to the fish
 			{
-				if(shortestDistance > GlobalPosition.DistanceTo(food.GlobalPosition))
+				if(nearestDistance > GlobalPosition.DistanceTo(food.GlobalPosition))
 				{
-					shortestDistance = GlobalPosition.DistanceTo(food.GlobalPosition);
+					nearestDistance = GlobalPosition.DistanceTo(food.GlobalPosition);
 					nearestFood = food;
 				}
 			}
 
-			SetMarkerPosition(nearestFood.GlobalPosition);
+			SetMarkerPosition(nearestFood.GlobalPosition); // Sets marker on nearest food
 
-			if (GlobalPosition.DistanceTo(nearestFood.GlobalPosition) <= _eatingRange)
+			if (GlobalPosition.DistanceTo(nearestFood.GlobalPosition) <= _eatingRange) // Checks if the food is in range for the fish to eat it
 			{
-				_aquarium._food.Remove(nearestFood);
-				_hunger += nearestFood._nourishment;
+				_hunger = Mathf.Clamp(_hunger + nearestFood._nourishment , 0 , _maxHunger); // Eats the food if it's in range
 				nearestFood.Destroy();
 			}
 		}
 	}
 
-	private void ProcessHunger(double delta)
+	private void ProcessHunger(double delta) 
 	{
-		if(_hunger > 0)
+		ChangeHunger(-(float)delta); // Reduces hunger meter over time
+		if(_hunger <= 0) // While hunger is at 0 the fish takes damage over time instead
 		{
-			_hunger -= (float)delta;
-		}
-		else
-		{
-			if(_hunger < 0)
-			{
-				_hunger = 0;
-			}
-			_health -= (float)delta;
+			ChangeHealth(-(float)delta); // Reduces health over time
 		}
 
 	}
 	private void ProcessHealth(double delta)
 	{
 		//Oxygen
-		if(_aquarium._currentOxygen > _maxOxygen || _aquarium._currentOxygen < _minOxygen)
+		if(!_aquarium.MinMaxOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
 		{
-			_health -= (float)delta;
-		}
-		else if(_health < _maxHealth)
-		{
-			_health += (float)delta;
+			ChangeHealth(-(float)delta); // Reduces health over time
 		}
 		//Health
-		if(_health > _maxHealth)
+		else if(_health < _maxHealth && _hunger > 0) // If the aquarium's oxygen is in ideal range fish heals over time
 		{
-			_health = _maxHealth;
+			ChangeHealth((float)delta); // Increases health over time
 		}
-		else if(_health <= 0f)
+	}
+
+	private void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
+	{
+		_hunger = Mathf.Clamp(_hunger + change , 0 , _maxHunger);
+	}
+
+	private void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
+	{
+		_health = Mathf.Clamp(_health + change , 0 , _maxHealth);
+		if(_health <= 0) // If health changes to 0 the fish dies
 		{
 			Die();
 		}
 	}
 
-	private void Die()
+	private void Die() // Method that handles the fish dying
 	{
-		_aquarium._fish.Remove(this);
-		_aquarium.UpdateOxygenDelta();
-		_shop.UpdatePrice();
-		QueueFree();
+		_aquarium.RemoveFish(this); // Removes fish from aquarium
+		QueueFree(); // Removes the node
+
+		// ! Temporary Price Update !
+		ShopItem shopItem;
+		foreach(Tool tool in _aquarium._tools)
+		{
+			if (tool is ShopItem)
+			{
+				shopItem = tool as ShopItem;
+				shopItem.UpdatePrice();
+			}
+		}
 	}
 }

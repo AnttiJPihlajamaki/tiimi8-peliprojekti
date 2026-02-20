@@ -3,10 +3,11 @@ using Godot;
 
 public partial class Food : CharacterBody2D
 {
-	 [Export]
-	private float _speed = 50;
-	 [Export]
-	public float _nourishment = 20;
+	
+	[Export] public string _name = "Food"; // The name of type of food
+	[Export] private float _speed = 50;
+	[Export] public float _nourishment = 20;
+	
 
 	public float removalDistance;
 	public Aquarium _aquarium;

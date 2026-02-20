@@ -4,8 +4,6 @@ using System;
 public partial class Oxygenator : Tool
 {
 	[Export] private Aquarium _aquarium;
-	[Export] private Shop _shop;
-
 	private bool _isActive = false;
 	private float _maxPower = 10.0f;
 	private float _basePower = 1.0f;
@@ -17,7 +15,7 @@ public partial class Oxygenator : Tool
     }
     public override void _PhysicsProcess(double delta)
     {
-		if (_isActive)
+		if (_isActive && _aquarium.MinMaxOxygen())
 		{
         	_aquarium._currentOxygen += _power * (float)delta;
 		}
@@ -57,5 +55,11 @@ public partial class Oxygenator : Tool
 		{
 			_power -= _basePower;
 		}
+	}
+
+	
+	public override string Info()
+	{
+		return GetType() + " = ( Power: " + _power + " )";
 	}
 }

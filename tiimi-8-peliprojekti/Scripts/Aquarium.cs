@@ -10,6 +10,7 @@ public partial class Aquarium : Node2D
 	[Export] private float _minOxygen = 0;
 	[Export] public float _currentOxygen = 100f;
 	[Export] private float _oxygenDelta = 0;
+	[Export] public Inventory _inventory;
 	[Export] public Array<Tool> _tools;
 	private int _currentTool = 0;
 	public List<Fish> _fish = [];
@@ -28,35 +29,32 @@ public partial class Aquarium : Node2D
 			{
 				_tools[i].ProcessMode = ProcessModeEnum.Disabled;
 			}
+			_tools[i]._inventory = _inventory;
 		}
     }
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("ui_up"))
+		if (@event.IsActionPressed(InputConfig.NextTool))
 		{
 			if(_currentTool < _tools.Count-1)
 			{
 				ChangeTool(_currentTool + 1);
-				GD.Print("Tool Change " + _currentTool);
 			}
 			else
 			{
 				ChangeTool(0);
-				GD.Print("Tool Change " + _currentTool);
 			}
 		}
-		else if (@event.IsActionPressed("ui_down"))
+		else if (@event.IsActionPressed(InputConfig.PreviousTool))
 		{
 			if(_currentTool > 0)
 			{
 				ChangeTool(_currentTool - 1);
-				GD.Print("Tool Change " + _currentTool);
 			}
 			else
 			{
 				ChangeTool(_tools.Count - 1);
-				GD.Print("Tool Change " + _currentTool);
 			}
 
 		}
@@ -64,21 +62,9 @@ public partial class Aquarium : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
-		if(_currentOxygen >= _minOxygen && _currentOxygen <= _maxOxygen)
-		{
-			_currentOxygen += _oxygenDelta * (float)delta;
+		_currentOxygen = Mathf.Clamp(_currentOxygen + (_oxygenDelta * (float)delta), _minOxygen, _maxOxygen);
 
-			if(_currentOxygen < _minOxygen)
-			{
-				_currentOxygen = _minOxygen;
-			}
-			else if(_currentOxygen > _maxOxygen)
-			{
-				_currentOxygen = _maxOxygen;
-			}
-		}
-
-		GD.Print("Oxygen: " + _currentOxygen + " / " + _maxOxygen + " Tool: " + _tools[_currentTool].GetType() + " (" + (_currentTool + 1) + "/" + _tools.Count+")");
+		GD.Print("Money: " + (int)Math.Round(_inventory._money) + " Oxygen: " + (int)Math.Round(_currentOxygen) + " / " + _maxOxygen + " Tool: " + _tools[_currentTool].Info());
     }
 
 	public void UpdateOxygenDelta()
@@ -95,5 +81,45 @@ public partial class Aquarium : Node2D
 		_tools[_currentTool].ProcessMode = ProcessModeEnum.Disabled;
 		_currentTool = newTool;
 		_tools[_currentTool].ProcessMode = ProcessModeEnum.Inherit;
+	}
+
+	public void AddFish(Fish newFish)
+	{
+		newFish.Name = newFish._name + "#" + newFish.GetInstanceId();
+
+		AddChild(newFish);
+		_fish.Add(newFish);
+
+		newFish._aquarium = this;
+		newFish._inventory = _inventory;
+
+		newFish._movementTarget = new Marker2D();
+		_navigationRegion.AddChild(newFish._movementTarget);
+		newFish.SetRandomMarkerPosition();
+
+		UpdateOxygenDelta();
+	}
+	public void RemoveFish(Fish newFish)
+	{
+		_fish.Remove(newFish);
+		
+		UpdateOxygenDelta();
+	}
+
+	public void AddFood(Food newFood)
+	{
+		newFood.Name = newFood._name + "#" + newFood.GetInstanceId();
+
+		AddChild(newFood);
+		_food.Add(newFood);
+
+		newFood.removalDistance = _navigationRegion.GetBounds().Size.Y/2;
+
+		newFood._aquarium = this;
+	}
+
+	public bool MinMaxOxygen()
+	{
+		return _currentOxygen >= _minOxygen && _currentOxygen <=_maxOxygen;
 	}
 }

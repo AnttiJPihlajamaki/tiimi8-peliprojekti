@@ -1,6 +1,3 @@
-using System;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
 using Godot;
 
 // Parent class for all different types of fish
@@ -74,7 +71,7 @@ public partial class Fish : CharacterBody2D
         {
             _sprite.FlipH = true;
 		}
-		else if(_sprite.FlipH)
+		else if(newVelocity.X > 0 && _sprite.FlipH)
 		{
             _sprite.FlipH = false;
 		}

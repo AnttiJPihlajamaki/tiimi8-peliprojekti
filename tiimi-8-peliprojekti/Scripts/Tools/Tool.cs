@@ -3,11 +3,11 @@ using System;
 
 public abstract partial class Tool : Node
 {
-	[Export] private Aquarium _aquarium;
-	public Inventory _inventory;
-	public override void _Input(InputEvent @event)
+	[Export] private Aquarium _aquarium; // Reference to aquarium the tool is located
+	public Inventory _inventory; // Reference to player inventory
+	public override void _Input(InputEvent @event) // Input for tools
     {
-        if (@event.IsActionPressed(InputConfig.ToolFunction))
+        if (@event.IsActionPressed(InputConfig.ToolFunction)) 
 		{
 			ToolFunction();
 		}
@@ -20,12 +20,12 @@ public abstract partial class Tool : Node
 			ToolDecrease();
 		}
     }
-	public virtual string Info()
+	public virtual string Info() // ! Temporary method to get info about the tool while UI gets added !
 	{
 		return ""+GetType();
 	}
 
-	public abstract void ToolFunction();
-	public abstract void ToolIncrease();
+	public abstract void ToolFunction(); // Abstract methods for all tool functions
+	public abstract void ToolIncrease(); // (Maybe change to virtual or partial since not all tool use these)
 	public abstract void ToolDecrease();
 }

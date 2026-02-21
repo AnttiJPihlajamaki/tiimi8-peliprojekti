@@ -63,18 +63,18 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 	{
 		if(_inventory._money >= _currentPrice)
 		{
-			_inventory._money -= _currentPrice;
-			AddFish();
+			_inventory._money -= _currentPrice; // Checks if player has enough money and removes it
+			AddFish(); // Adds fish to aquarium
 		}
 	}
 
 	public void AddFish()
 	{
 
-		Fish newFish = _fish.Instantiate<Fish>();
+		Fish newFish = _fish.Instantiate<Fish>(); // Instantiatses new fish
 
-		_aquarium.AddFish(newFish);
+		_aquarium.AddFish(newFish); // Calls method from _aquarium to add a new fish
 
-		UpdatePrice();
+		UpdatePrice(); // Updates price
 	}
 }

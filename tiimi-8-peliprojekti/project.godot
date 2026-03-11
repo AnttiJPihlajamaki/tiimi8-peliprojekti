@@ -19,6 +19,10 @@ run/main_scene="uid://elcmk51jkcmq"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://Scripts/GameManager.cs"
+
 [dotnet]
 
 project/assembly_name="tiimi8-peliprojekti"

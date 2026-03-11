@@ -22,7 +22,6 @@ public partial class Fish : CharacterBody2D
 	[Export] private float _minOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 
 	public Aquarium _aquarium; // Reference to the aquarium component in which the fish is located
- 	public Inventory _inventory; // Reference to players inventory
 	private float moneyPerSecond = 50f; // The amount of money the fish generates per second
 
 	public override void _Ready()
@@ -31,7 +30,7 @@ public partial class Fish : CharacterBody2D
 	}
 	private void SetMovementTarget() // Set navigation target for agent and calculate path
 	{
-		_navigationAgent.TargetPosition = _movementTarget.Position;	
+		_navigationAgent.TargetPosition = _movementTarget.Position;
 	}
 	public void SetMarkerPosition(Vector2 position) // Sets a new position for the marker set speed to maximum
 	{
@@ -49,7 +48,7 @@ public partial class Fish : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		_inventory._money += moneyPerSecond * (float)delta; // Adds money per second
+		GameManager.Instance.Money += moneyPerSecond * (float)delta; // Adds money per second
 		ProcessHealth(delta); // for processing health
 		ProcessHunger(delta); // for processing hunger
 
@@ -117,7 +116,7 @@ public partial class Fish : CharacterBody2D
 		}
 	}
 
-	private void ProcessHunger(double delta) 
+	private void ProcessHunger(double delta)
 	{
 		ChangeHunger(-(float)delta); // Reduces hunger meter over time
 		if(_hunger <= 0) // While hunger is at 0 the fish takes damage over time instead

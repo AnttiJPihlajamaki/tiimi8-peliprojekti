@@ -9,7 +9,6 @@ public partial class Aquarium : Node2D
 	[Export] private float _minOxygen = 0; // The minimum amount of oxygen in the aquarium
 	[Export] public float _currentOxygen = 100f; // The current amount of oxygen in the aquarium
 	[Export] private float _oxygenDelta = 0; // The amount of oxygen removed/added per second
-	[Export] public Inventory _inventory; // Reference to player inventory
 	[Export] public Array<Tool> _tools; // Array of tools the player can use
 	private int _currentTool = 0; // The index of the current tool in use
 	public List<Fish> _fish = []; // List of fish in the aquarium
@@ -28,7 +27,6 @@ public partial class Aquarium : Node2D
 			{
 				_tools[i].ProcessMode = ProcessModeEnum.Disabled;
 			}
-			_tools[i]._inventory = _inventory; // Sets inventory reference for tools
 		}
     }
 
@@ -63,7 +61,7 @@ public partial class Aquarium : Node2D
     {
 		_currentOxygen = Mathf.Clamp(_currentOxygen + (_oxygenDelta * (float)delta), _minOxygen, _maxOxygen); // Change current oxygen according to the delta
 
-		GD.Print("Money: " + (int)Math.Round(_inventory._money) + " Oxygen: " + (int)Math.Round(_currentOxygen) + " / " + _maxOxygen + " Tool: " + _tools[_currentTool].Info());
+		GD.Print("Money: " + (int)Math.Round(GameManager.Instance.Money) + " Oxygen: " + (int)Math.Round(_currentOxygen) + " / " + _maxOxygen + " Tool: " + _tools[_currentTool].Info());
 		// ! Temporary method to get info while UI gets added !
     }
 
@@ -91,7 +89,6 @@ public partial class Aquarium : Node2D
 		_fish.Add(newFish); // Adds fish to list of fish
 
 		newFish._aquarium = this; // Adds reference of aquarium to the fish
-		newFish._inventory = _inventory; // Adds reference of player inventory to the fish
 
 		newFish._movementTarget = new Marker2D(); // Creates a marker for the fish' AI to follow
 		_navigationRegion.AddChild(newFish._movementTarget); // Adds the marker as child of the navigation region

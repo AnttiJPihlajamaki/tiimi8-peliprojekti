@@ -61,9 +61,9 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 
 	public void Purchase() // Handles purchasing new fish
 	{
-		if(_inventory._money >= _currentPrice)
+		if(GameManager.Instance.Money >= _currentPrice)
 		{
-			_inventory._money -= _currentPrice; // Checks if player has enough money and removes it
+			GameManager.Instance.Money -= _currentPrice; // Checks if player has enough money and removes it
 			AddFish(); // Adds fish to aquarium
 		}
 	}

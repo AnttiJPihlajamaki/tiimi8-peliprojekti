@@ -7,11 +7,13 @@ public partial class Aquarium : Node2D
 {
 	[Export] private float _maxOxygen = 100f; // The maximum amount of oxygen in the aquarium
 	[Export] private float _minOxygen = 0; // The minimum amount of oxygen in the aquarium
+	[Export] private float _maxIdealOxygen = 75f; // The maximum oxygen at which the fish doesn't take damage from over oxygenation
+	[Export] private float _minIdealOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 	[Export] public float _currentOxygen = 100f; // The current amount of oxygen in the aquarium
 	[Export] private float _oxygenDelta = 0; // The amount of oxygen removed/added per second
 	[Export] public Array<Tool> _tools; // Array of tools the player can use
 	private int _currentTool = 0; // The index of the current tool in use
-	public List<Fish> _fish = []; // List of fish in the aquarium
+	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium
 	[Export] public NavigationRegion2D _navigationRegion; // The navigation region the fish can move in
 
@@ -68,9 +70,9 @@ public partial class Aquarium : Node2D
 	public void UpdateOxygenDelta() // Updates change in current oxygen
 	{
 		_oxygenDelta = 0;
-		foreach(Fish fish in _fish)
+		foreach(AquariumNPC npc in _npcs)
 		{
-			_oxygenDelta -= fish._oxygenUsage; // Reduce delta for each fish by their oxygen usage
+			_oxygenDelta -= npc._oxygenUsage; // Reduce delta for each fish by their oxygen usage
 		}
 	}
 
@@ -81,24 +83,24 @@ public partial class Aquarium : Node2D
 		_tools[_currentTool].ProcessMode = ProcessModeEnum.Inherit; // Enable next
 	}
 
-	public void AddFish(Fish newFish) // The method to handle adding fish to aquarium
+	public void AddNPC(AquariumNPC newNPC) // The method to handle adding fish to aquarium
 	{
-		newFish.Name = newFish._name + "#" + newFish.GetInstanceId(); // Gives object unique name
+		newNPC.Name = newNPC._name + "#" + newNPC.GetInstanceId(); // Gives object unique name
 
-		AddChild(newFish); // Adds fish as child of aquarium
-		_fish.Add(newFish); // Adds fish to list of fish
+		AddChild(newNPC); // Adds fish as child of aquarium
+		_npcs.Add(newNPC); // Adds fish to list of fish
 
-		newFish._aquarium = this; // Adds reference of aquarium to the fish
+		newNPC._aquarium = this; // Adds reference of aquarium to the fish
 
-		newFish._movementTarget = new Marker2D(); // Creates a marker for the fish' AI to follow
-		_navigationRegion.AddChild(newFish._movementTarget); // Adds the marker as child of the navigation region
-		newFish.SetRandomMarkerPosition(); // Set random position for fish to follow to initialize AI
+		newNPC._movementTarget = new Marker2D(); // Creates a marker for the fish' AI to follow
+		_navigationRegion.AddChild(newNPC._movementTarget); // Adds the marker as child of the navigation region
+		newNPC.SetRandomMarkerPosition(); // Set random position for fish to follow to initialize AI
 
 		UpdateOxygenDelta(); // Update change in current oxygen
 	}
-	public void RemoveFish(Fish newFish) // The method to handle removing fish from aquarium
+	public void RemoveFish(AquariumNPC npc) // The method to handle removing fish from aquarium
 	{
-		_fish.Remove(newFish); // Remove fish from list of fish
+		_npcs.Remove(npc); // Remove fish from list of fish
 
 		UpdateOxygenDelta(); // Update change in current oxygen
 	}
@@ -119,4 +121,9 @@ public partial class Aquarium : Node2D
 	{
 		return _currentOxygen >= _minOxygen && _currentOxygen <=_maxOxygen;
 	}
+	public bool MinMaxIdealOxygen() // Helper method to check if current oxygen is with min/max
+	{
+		return _currentOxygen >= _minIdealOxygen && _currentOxygen <=_maxIdealOxygen;
+	}
+
 }

@@ -44,7 +44,7 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 			_currentPrice = _basePrice;;
 		}
 
-		foreach(Fish fish in _aquarium._fish) // Increases price for each fish in the aquarium
+		foreach(Fish fish in _aquarium._npcs) // Increases price for each fish in the aquarium
 		{
 			if(_currentPrice == 0f && _freeSample) // Logic to handle free sample
 			{
@@ -73,7 +73,7 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 
 		Fish newFish = _fish.Instantiate<Fish>(); // Instantiatses new fish
 
-		_aquarium.AddFish(newFish); // Calls method from _aquarium to add a new fish
+		_aquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
 
 		UpdatePrice(); // Updates price
 	}

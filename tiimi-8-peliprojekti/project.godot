@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="tiimi8-peliprojekti"
-run/main_scene="uid://elcmk51jkcmq"
+run/main_scene="uid://bltll0kga7niv"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -77,3 +77,4 @@ pointing/emulate_touch_from_mouse=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

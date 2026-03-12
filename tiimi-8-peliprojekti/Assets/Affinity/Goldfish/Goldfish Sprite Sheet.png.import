@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuwjyti5yb4ca"
-path="res://.godot/imported/Goldfish Body.png-a4bb248f6bfe2dd3ea3a62851cba7288.ctex"
+uid="uid://bo7yekc4vfm80"
+path="res://.godot/imported/Goldfish Sprite Sheet.png-f9d17d8411ece400c2aa4a6b6712cc83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Affinity/Goldfish/Goldfish Body.png"
-dest_files=["res://.godot/imported/Goldfish Body.png-a4bb248f6bfe2dd3ea3a62851cba7288.ctex"]
+source_file="res://Assets/Affinity/Goldfish/Goldfish Sprite Sheet.png"
+dest_files=["res://.godot/imported/Goldfish Sprite Sheet.png-f9d17d8411ece400c2aa4a6b6712cc83.ctex"]
 
 [params]
 

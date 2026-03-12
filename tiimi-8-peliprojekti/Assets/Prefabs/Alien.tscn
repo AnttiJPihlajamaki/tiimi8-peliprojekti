@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ut6gmfyw078n"]
+[gd_scene load_steps=6 format=3 uid="uid://ut6gmfyw078n"]
 
 [ext_resource type="Script" uid="uid://16yub6rlobs8" path="res://Scripts/AI/Alien.cs" id="1_aqv4r"]
 [ext_resource type="Texture2D" uid="uid://bomd78fymu0bj" path="res://Assets/Sprites/Aliens/Alien 64.png" id="1_fpntf"]
+[ext_resource type="Texture2D" uid="uid://cem5jfl6f8yuy" path="res://Assets/Sprites/Aliens/aliencartoon.png" id="3_5spra"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqv4r"]
 animations = [{
@@ -29,3 +30,92 @@ position = Vector2(-2, 3)
 shape = SubResource("CapsuleShape2D_aqv4r")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-144.90892, 34.137486)
+rotation = 0.38430035
+scale = Vector2(0.30000004, 0.30000004)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(160.37956, 200.98134, 71.84213, 91.43547)
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-154.90892, 33.137497)
+rotation = 0.23555726
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-162.90892, 28.137491)
+rotation = 0.86523366
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-168, 22)
+rotation = 0.8452538
+scale = Vector2(0.30000004, 0.30000004)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(1.9665527, 198.43546, 97.50004, 93.767975)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-111, 13)
+rotation = 0.8909254
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(392.57996, 147.56981, 178.2044, 141.57002)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-131.90892, 1.1374931)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(34, 4, 191, 189)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-108.99999, -23.999998)
+rotation = 0.5073216
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(229.99551, 5.5555763, 120.21036, 158.52742)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-137.90892, 0.13749313)
+rotation = 0.38430038
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(256.25003, 184.67792, 142.65799, 105.19742)
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-105.53892, -23.627872)
+rotation = 0.38430038
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(367.74377, 27.730827, 76.37329, 87.5499)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-104.53893, -23.627876)
+rotation = 0.38430038
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5spra")
+region_enabled = true
+region_rect = Rect2(452.18906, 51.325836, 27.941437, 34.77159)

@@ -15,7 +15,7 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
 	[Export] private float _health = 100.0f; // Current health
 	[Export] private float _maxHunger = 100.0f; // Maximum hunger the fish can have
-	[Export] private float _hunger = 100.0f; // Current hunget the fish has
+	[Export] private float _hunger = 100.0f; // Current hunger the fish has
 	[Export] private float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
 	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 	[Export] public float _oxygenUsage = 1.0f; // The amount of oxygen the fish uses

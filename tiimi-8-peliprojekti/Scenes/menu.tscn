@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bltll0kga7niv"]
 
-[ext_resource type="Script" uid="uid://c7j0vro2rvrfp" path="res://Menu.cs" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://c7j0vro2rvrfp" path="res://Scripts/Menu.cs" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://bsofi135kprgm" path="res://Assets/Sprites/underwater-sun-rays-ocean-hawaii-5k-8k-7680x4320-8301 (1).jpg" id="2_cayip"]
 
 [node name="Node2D" type="Node2D"]

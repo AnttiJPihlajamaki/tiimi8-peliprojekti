@@ -5,13 +5,13 @@ using Godot;
 public partial class AquariumNPC : CharacterBody2D
 {
 	[Export] public string _name = "NPC"; // The name of type of fish
-	[Export] public float _minSpeed = 100.0f; // Minimum movement speed
-	[Export] public float _maxSpeed = 150.0f; // Maximum movement speed
-	public float _speed; // Current speed the fish is moving at
+	[Export] protected float _minSpeed = 100.0f; // Minimum movement speed
+	[Export] protected float _maxSpeed = 150.0f; // Maximum movement speed
+	protected float _speed; // Current speed the fish is moving at
 
 	[Export] public Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
 	[Export] private NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
-	[Export] private AnimatedSprite2D _sprite;	// Sprite of the fish
+	[Export] protected AnimatedSprite2D _sprite;	// Sprite of the fish
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
 	[Export] private float _health = 100.0f; // Current health
 	[Export] private float _maxHunger = 100.0f; // Maximum hunger the fish can have

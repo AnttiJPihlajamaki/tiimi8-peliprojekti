@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel;
-
+/*
 public partial class Alien : AquariumNPC
 {
 	[Export] private float attackDamage = 10f;  // The amount of damage the alien does to fish
@@ -57,3 +57,4 @@ public partial class Alien : AquariumNPC
 	base._PhysicsProcess(delta);
 	}
 }
+*/

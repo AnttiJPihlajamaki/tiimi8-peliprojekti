@@ -101,13 +101,6 @@ script = ExtResource("1_8tk4j")
 _tools = [NodePath("Feeder"), NodePath("Oxygenator"), NodePath("ShopItem")]
 _navigationRegion = NodePath("NavigationRegion2D")
 
-[node name="Background" type="Sprite2D" parent="Aquarium"]
-z_index = -10
-position = Vector2(2.193451e-05, 1.2278557e-05)
-texture = ExtResource("2_7fi0v")
-region_enabled = true
-region_rect = Rect2(33, 51, 61, 41)
-
 [node name="Camera2D" type="Camera2D" parent="Aquarium"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Aquarium"]

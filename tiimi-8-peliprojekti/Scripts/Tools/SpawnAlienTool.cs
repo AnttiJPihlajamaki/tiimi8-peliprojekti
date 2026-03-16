@@ -4,13 +4,21 @@ using System;
 public partial class SpawnAlienTool : Tool
 {
 	[Export] public PackedScene _Alien;
-	[Export]
 	[Export] private Aquarium _Aquarium;
 
     public override void ToolFunction()
     {
-		spawnAlien()
+		//spawnAlien();
     }
+	public override void ToolIncrease()
+	{
+
+	}
+
+	public override void ToolDecrease()
+	{
+
+	}
 
 
 	public override void _Ready()

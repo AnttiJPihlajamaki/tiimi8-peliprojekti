@@ -31,15 +31,15 @@ script = ExtResource("1_8tk4j")
 _tools = [NodePath("Feeder"), NodePath("Oxygenator"), NodePath("ShopItem")]
 _navigationRegion = NodePath("NavigationRegion2D")
 
-[node name="Foreground" type="Sprite2D" parent="Aquarium"]
-modulate = Color(1, 1, 1, 0.5882353)
-z_index = 10
+[node name="Background" type="Sprite2D" parent="Aquarium"]
+z_index = -10
 texture = SubResource("NoiseTexture2D_7fi0v")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
-[node name="Background" type="Sprite2D" parent="Aquarium"]
-z_index = -10
+[node name="Foreground" type="Sprite2D" parent="Aquarium"]
+modulate = Color(1, 1, 1, 0.5882353)
+z_index = 10
 texture = SubResource("NoiseTexture2D_7fi0v")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
@@ -67,3 +67,6 @@ _fish = ExtResource("1_bgdf3")
 _freeSample = true
 _aquarium = NodePath("..")
 _aquarium = NodePath("..")
+
+[node name="Fish" parent="Aquarium" instance=ExtResource("1_bgdf3")]
+position = Vector2(1200, -164)

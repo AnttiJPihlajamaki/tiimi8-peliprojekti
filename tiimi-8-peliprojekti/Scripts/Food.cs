@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using Godot;
 
 public partial class Food : CharacterBody2D
@@ -22,6 +23,12 @@ public partial class Food : CharacterBody2D
 		}
 
         MoveAndSlide();
+	}
+
+	public void Eat(AquariumNPC npc)
+	{
+		npc.ChangeHunger(_nourishment);
+		Destroy();
 	}
 
 	public void Destroy() // Handles removing food

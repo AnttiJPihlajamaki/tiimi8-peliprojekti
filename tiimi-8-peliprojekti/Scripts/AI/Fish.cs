@@ -7,6 +7,7 @@ public partial class Fish : AquariumNPC
 	public override void _PhysicsProcess(double delta)
 	{
 		GameManager.Instance.Money += moneyPerSecond * (float)delta; // Adds money per second
+
 		base._PhysicsProcess(delta);
 	}
 }

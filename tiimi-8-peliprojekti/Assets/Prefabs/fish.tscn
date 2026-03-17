@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbi302icf606"]
+[gd_scene load_steps=14 format=3 uid="uid://bbi302icf606"]
 
-[ext_resource type="Script" uid="uid://cf0xl4vjt5w4i" path="res://Scripts/AI/Fish.cs" id="1_5bvtc"]
+[ext_resource type="Script" uid="uid://8txnatselnmu" path="res://Scripts/AI/Fish/Goldfish.cs" id="1_5bvtc"]
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_5bvtc"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="3_8tf37"]
 
 [sub_resource type="Animation" id="Animation_ihenc"]
 resource_name = "Goldfish Swim"
@@ -84,14 +85,46 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tf37"]
 
+[sub_resource type="Gradient" id="Gradient_8tf37"]
+colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c0udp"]
+gradient = SubResource("Gradient_8tf37")
+
+[sub_resource type="Curve" id="Curve_1gv6c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2a7tn"]
+curve = SubResource("Curve_1gv6c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0udp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.0
+scale_max = 0.049999997
+scale_curve = SubResource("CurveTexture_2a7tn")
+color_initial_ramp = SubResource("GradientTexture1D_c0udp")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_valo4"]
 radius = 23.0
 height = 96.0
 
-[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_fins", "_body", "_navigationAgent", "_paperdoll")]
 motion_mode = 1
 script = ExtResource("1_5bvtc")
+_bodyColor = Color(1, 0.6666667, 0, 1)
+_finColor = Color(1, 0, 0, 1)
+_hungryBodyColor = Color(0.16, 0.8, 0.26666656, 1)
+_hungryFinColor = Color(0.5866669, 0.16, 0.8, 1)
+_fins = [NodePath("Goldfish Paperdoll/Back Fin Sprite"), NodePath("Goldfish Paperdoll/Top Fin Sprite"), NodePath("Goldfish Paperdoll/Front Fin Back Sprite"), NodePath("Goldfish Paperdoll/Front Fin Front Sprite")]
+_body = NodePath("Goldfish Paperdoll/Body Sprite")
 _name = "Guppy"
+_minSpeed = 50.0
+_maxSpeed = 250.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Goldfish Paperdoll")
 _hunger = 0.0
@@ -162,6 +195,14 @@ z_index = 2
 texture = ExtResource("2_5bvtc")
 region_enabled = true
 region_rect = Rect2(53, 14, 20, 20)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Goldfish Paperdoll"]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = 3
+position = Vector2(-44, 0)
+amount = 5
+texture = ExtResource("3_8tf37")
+process_material = SubResource("ParticleProcessMaterial_c0udp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964

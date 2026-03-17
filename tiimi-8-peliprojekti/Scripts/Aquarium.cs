@@ -92,9 +92,7 @@ public partial class Aquarium : Node2D
 
 		newNPC._aquarium = this; // Adds reference of aquarium to the fish
 
-		newNPC._movementTarget = new Marker2D(); // Creates a marker for the fish' AI to follow
-		_navigationRegion.AddChild(newNPC._movementTarget); // Adds the marker as child of the navigation region
-		newNPC.SetRandomMarkerPosition(); // Set random position for fish to follow to initialize AI
+		newNPC.SetMarkerRegion(_navigationRegion);
 
 		UpdateOxygenDelta(); // Update change in current oxygen
 	}

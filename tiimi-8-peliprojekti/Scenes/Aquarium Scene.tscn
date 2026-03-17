@@ -14,15 +14,15 @@ colors = PackedColorArray(0.070000015, 0.4899999, 0.7, 1, 0.32, 0.71999997, 0.8,
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fi0v"]
-width = 1152
-height = 648
+width = 1920
+height = 1080
 noise = SubResource("FastNoiseLite_sjceq")
 color_ramp = SubResource("Gradient_sjceq")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bgdf3"]
-vertices = PackedVector2Array(566, 314, -566, 314, -566, -314, 566, -314)
+vertices = PackedVector2Array(950, 530, -950, 530, -950, -530, 950, -530)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -324, -576, 324, 576, 324, 576, -324)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -540, -960, 540, 960, 540, 960, -540)])
 
 [node name="Aquarium Scene" type="Node2D"]
 
@@ -35,16 +35,10 @@ _navigationRegion = NodePath("NavigationRegion2D")
 z_index = -10
 texture = SubResource("NoiseTexture2D_7fi0v")
 region_enabled = true
-region_rect = Rect2(0, 0, 1152, 648)
-
-[node name="Foreground" type="Sprite2D" parent="Aquarium"]
-modulate = Color(1, 1, 1, 0.5882353)
-z_index = 10
-texture = SubResource("NoiseTexture2D_7fi0v")
-region_enabled = true
-region_rect = Rect2(0, 0, 1152, 648)
+region_rect = Rect2(0, 0, 1920, 1080)
 
 [node name="Camera2D" type="Camera2D" parent="Aquarium"]
+zoom = Vector2(0.6, 0.6)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Aquarium"]
 visible = false
@@ -67,6 +61,3 @@ _fish = ExtResource("1_bgdf3")
 _freeSample = true
 _aquarium = NodePath("..")
 _aquarium = NodePath("..")
-
-[node name="Fish" parent="Aquarium" instance=ExtResource("1_bgdf3")]
-position = Vector2(1200, -164)

@@ -8,19 +8,18 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] protected float _minSpeed = 100.0f; // Minimum movement speed
 	[Export] protected float _maxSpeed = 150.0f; // Maximum movement speed
 	protected float _speed; // Current speed the fish is moving at
-
-	[Export] public Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
+	private Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
 	[Export] private NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
 	[Export] protected Node2D _paperdoll;	// Sprite of the fish
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
 	[Export] private float _health = 100.0f; // Current health
-	[Export] private float _maxHunger = 100.0f; // Maximum hunger the fish can have
-	[Export] private float _hunger = 100.0f; // Current hunger the fish has
-	[Export] private float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
-	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 	[Export] public float _oxygenUsage = 1.0f; // The amount of oxygen the fish uses
-
-	[Export] private float flashRedTimer = 0f;
+	[Export] private float _oxygenDamage = 1.0f; // The amount of damage the NPC takes from unideal oxygen per second
+	[Export] protected float _maxHunger = 100.0f; // Maximum hunger the fish can have
+	[Export] protected float _hunger = 100.0f; // Current hunger the fish has
+	[Export] private float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
+	[Export] private float _hungerDamage = 1.0f; // The amount of damage the NPC takes from hunger per second
+	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 
 	public Aquarium _aquarium; // Reference to the aquarium component in which the fish is located
 
@@ -48,25 +47,16 @@ public partial class AquariumNPC : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if(flashRedTimer > 0)
-		{
-			Modulate = Color.FromHsv(0,1,1,1);
-			flashRedTimer -= (float) delta;
-		}
-		else
-		{
-			Modulate = Color.FromHsv(0,0,1,1);
-		}
-		ProcessHealth(delta); // for processing health
+		ProcessOxygen(delta); // for processing health
 		ProcessHunger(delta); // for processing hunger
 
-		if (_navigationAgent.IsNavigationFinished())
-		{
-			SetRandomMarkerPosition(); // Set a random point to move to if fish is stationary
-		}
 		if(_hunger < _hungryLimit)
 		{
 			SetMarkerPositionFood(); // Set marker on nearest food if hunger is too low
+		}
+		if (_navigationAgent.IsNavigationFinished())
+		{
+			SetRandomMarkerPosition(); // Set a random point to move to if fish is stationary
 		}
 
 		SetMovementTarget(); // calculate path
@@ -98,7 +88,7 @@ public partial class AquariumNPC : CharacterBody2D
         MoveAndSlide();
     }
 
-	private void SetMarkerPositionFood() // Sets marker on nearest food
+	protected void SetMarkerPositionFood() // Sets marker on nearest food
 	{
 		if(_aquarium._food.Count > 0) // If-statement to check whether there is any food in the aquarium
 		{
@@ -118,46 +108,42 @@ public partial class AquariumNPC : CharacterBody2D
 
 			if (GlobalPosition.DistanceTo(nearestFood.GlobalPosition) <= _eatingRange) // Checks if the food is in range for the fish to eat it
 			{
-				_hunger = Mathf.Clamp(_hunger + nearestFood._nourishment , 0 , _maxHunger); // Eats the food if it's in range
-				nearestFood.Destroy();
+				nearestFood.Eat(this);
 			}
 		}
 	}
 
+	private void ProcessOxygen(double delta)
+	{
+		if(!_aquarium.MinMaxIdealOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
+		{
+			ChangeHealth(-(float)delta * _oxygenDamage); // Reduces health over time
+		}
+	}
 	private void ProcessHunger(double delta)
 	{
 		ChangeHunger(-(float)delta); // Reduces hunger meter over time
 		if(_hunger <= 0) // While hunger is at 0 the fish takes damage over time instead
 		{
-			ChangeHealth(-(float)delta); // Reduces health over time
+			ChangeHealth(-(float)delta * _hungerDamage); // Reduces health over time
 		}
-
 	}
-	private void ProcessHealth(double delta)
+	private void ProcessRegen(double delta)
 	{
-		//Oxygen
-		if(!_aquarium.MinMaxIdealOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
-		{
-			ChangeHealth(-(float)delta); // Reduces health over time
-		}
 		//Health
-		else if(_health < _maxHealth && _hunger > 0) // If the aquarium's oxygen is in ideal range fish heals over time
+		if(_health < _maxHealth && _aquarium.MinMaxIdealOxygen() && _hunger > 0) // If the aquarium's oxygen is in ideal range fish heals over time
 		{
 			ChangeHealth((float)delta); // Increases health over time
 		}
 	}
 
-	private void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
+	public virtual void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		_hunger = Mathf.Clamp(_hunger + change , 0 , _maxHunger);
 	}
 
-	private void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
+	protected void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
 	{
-		if(change < 0)
-		{
-			flashRedTimer = Mathf.Clamp(flashRedTimer + 0.1f ,0 , 0.1f);
-		}
 		_health = Mathf.Clamp(_health + change , 0 , _maxHealth);
 		if(_health <= 0) // If health changes to 0 the fish dies
 		{
@@ -180,5 +166,12 @@ public partial class AquariumNPC : CharacterBody2D
 				shopItem.UpdatePrice();
 			}
 		}
+	}
+
+	public void SetMarkerRegion(NavigationRegion2D navigationRegion)
+	{
+		_movementTarget = new Marker2D(); // Creates a marker for the fish' AI to follow
+		navigationRegion.AddChild(_movementTarget); // Adds the marker as child of the navigation region
+		SetRandomMarkerPosition(); // Set random position for fish to follow to initialize AI
 	}
 }

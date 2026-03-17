@@ -11,7 +11,7 @@ public partial class AquariumNPC : CharacterBody2D
 
 	[Export] public Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
 	[Export] private NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
-	[Export] protected AnimatedSprite2D _sprite;	// Sprite of the fish
+	[Export] protected Node2D _paperdoll;	// Sprite of the fish
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
 	[Export] private float _health = 100.0f; // Current health
 	[Export] private float _maxHunger = 100.0f; // Maximum hunger the fish can have
@@ -74,13 +74,13 @@ public partial class AquariumNPC : CharacterBody2D
 		Vector2 newVelocity = _navigationAgent.Velocity.MoveToward((_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized() * _speed, (float)delta * _speed); // Calculate movement
 		// Uses MoveToward to slow down movement when turning towards new point
 
-		if(newVelocity.X < 0 && !_sprite.FlipH) // Simple if-statement to flip the sprite towards the direction the fish is moving
+		if(newVelocity.X < 0 && _paperdoll.Scale.X != 1) // Simple if-statement to flip the sprite towards the direction the fish is moving
         {
-            _sprite.FlipH = true;
+            _paperdoll.ApplyScale(new Vector2(-1 ,1));
 		}
-		else if(newVelocity.X > 0 && _sprite.FlipH)
+		else if(newVelocity.X > 0 && _paperdoll.Scale.X != -1)
 		{
-            _sprite.FlipH = false;
+            _paperdoll.ApplyScale(new Vector2(-1 ,1));
 		}
 
 		if (_navigationAgent.AvoidanceEnabled) // Sets velocity when Avoidance is enabled

@@ -1,98 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=11 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
 [ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
-[ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Affinity/Goldfish/Goldfish Sprite Sheet.png" id="2_7fi0v"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
 [ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="7_7fi0v"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="7_frbro"]
 
+[sub_resource type="Gradient" id="Gradient_sjceq"]
+colors = PackedColorArray(0.070000015, 0.4899999, 0.7, 1, 0.32, 0.71999997, 0.8, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sjceq"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fi0v"]
+width = 1152
+height = 648
+noise = SubResource("FastNoiseLite_sjceq")
+color_ramp = SubResource("Gradient_sjceq")
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bgdf3"]
 vertices = PackedVector2Array(566, 314, -566, 314, -566, -314, 566, -314)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-576, -324, -576, 324, 576, 324, 576, -324)])
-
-[sub_resource type="Animation" id="Animation_ihenc"]
-resource_name = "Goldfish Swim"
-loop_mode = 2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aquarium/Goldfish Paperdoll/Back Fin Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(-0.08726646, -0.25, 0, 0.25, 0, 0.08726646, -0.16666667, -0.029088821, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aquarium/Goldfish Paperdoll/Front Fin Back Sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0, -0.5235988, -0.16666667, 0.17453294, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Aquarium/Goldfish Paperdoll/Front Fin Front Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0, 0.5235988, -0.16666667, -0.17453294, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_jlui4"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aquarium/Goldfish Paperdoll/Back Fin Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aquarium/Goldfish Paperdoll/Front Fin Back Sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Aquarium/Goldfish Paperdoll/Front Fin Front Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt6ly"]
-_data = {
-&"Goldfish Swim": SubResource("Animation_ihenc"),
-&"RESET": SubResource("Animation_jlui4")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_j5q45"]
 
 [node name="Aquarium Scene" type="Node2D"]
 
@@ -100,6 +30,19 @@ _data = {
 script = ExtResource("1_8tk4j")
 _tools = [NodePath("Feeder"), NodePath("Oxygenator"), NodePath("ShopItem")]
 _navigationRegion = NodePath("NavigationRegion2D")
+
+[node name="Foreground" type="Sprite2D" parent="Aquarium"]
+modulate = Color(1, 1, 1, 0.5882353)
+z_index = 10
+texture = SubResource("NoiseTexture2D_7fi0v")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Background" type="Sprite2D" parent="Aquarium"]
+z_index = -10
+texture = SubResource("NoiseTexture2D_7fi0v")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
 
 [node name="Camera2D" type="Camera2D" parent="Aquarium"]
 
@@ -124,65 +67,3 @@ _fish = ExtResource("1_bgdf3")
 _freeSample = true
 _aquarium = NodePath("..")
 _aquarium = NodePath("..")
-
-[node name="Goldfish Paperdoll" type="AnimationPlayer" parent="Aquarium"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_qt6ly")
-}
-autoplay = "Goldfish Swim"
-
-[node name="Eye Rigidbody2D" type="RigidBody2D" parent="Aquarium/Goldfish Paperdoll"]
-position = Vector2(-20, 0)
-freeze = true
-
-[node name="Eye CollisionShape2D" type="CollisionShape2D" parent="Aquarium/Goldfish Paperdoll/Eye Rigidbody2D"]
-shape = SubResource("CircleShape2D_j5q45")
-
-[node name="Eye Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll/Eye Rigidbody2D"]
-z_index = 2
-texture = ExtResource("2_7fi0v")
-region_enabled = true
-region_rect = Rect2(53, 14, 20, 20)
-
-[node name="Body Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll"]
-modulate = Color(1, 0.6666667, 0, 1)
-z_index = 1
-texture = ExtResource("2_7fi0v")
-region_enabled = true
-region_rect = Rect2(238, 44, 95, 47)
-
-[node name="Back Fin Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(44, 0)
-texture = ExtResource("2_7fi0v")
-offset = Vector2(8, 0)
-region_enabled = true
-region_rect = Rect2(161, 38, 66, 67)
-
-[node name="Front Fin Back Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(0, 12)
-rotation = 0.5235988
-texture = ExtResource("2_7fi0v")
-offset = Vector2(0, 12)
-region_enabled = true
-region_rect = Rect2(113, 52, 26, 34)
-
-[node name="Front Fin Front Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
-position = Vector2(0, 12)
-rotation = -0.5235988
-texture = ExtResource("2_7fi0v")
-offset = Vector2(0, 12)
-region_enabled = true
-region_rect = Rect2(113, 52, 26, 34)
-
-[node name="Top Fin Sprite" type="Sprite2D" parent="Aquarium/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(6, -12)
-texture = ExtResource("2_7fi0v")
-offset = Vector2(0, -22)
-region_enabled = true
-region_rect = Rect2(33, 51, 61, 41)

@@ -9,7 +9,7 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] protected float _maxSpeed = 150.0f; // Maximum movement speed
 	protected float _speed; // Current speed the fish is moving at
 	private Marker2D _movementTarget;	// The target on the navigation region the fish is trying to move to
-	[Export] private NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
+	[Export] protected NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
 	[Export] protected Node2D _paperdoll;	// Sprite of the fish
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
 	[Export] private float _health = 100.0f; // Current health

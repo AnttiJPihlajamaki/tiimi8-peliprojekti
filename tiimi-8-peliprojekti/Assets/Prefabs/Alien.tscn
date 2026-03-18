@@ -4,12 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cem5jfl6f8yuy" path="res://Assets/Sprites/Aliens/aliencartoon.png" id="3_5spra"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqv4r"]
-radius = 28.0
-height = 92.0
+radius = 27.666441
+height = 71.98121
 
 [sub_resource type="Animation" id="Animation_aqv4r"]
-resource_name = "Alien swim"
-length = 1.5
+resource_name = "Alien Move"
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,10 +17,10 @@ tracks/0/path = NodePath("Sprite2D5:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.03333333, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.3843004, -0.1564927]
+"values": [-0.54218864, 0.23439598]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -30,10 +29,10 @@ tracks/1/path = NodePath("Sprite2D8:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.23555724, -0.21276303]
+"values": [-0.62008065, 0.06322676]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -42,10 +41,10 @@ tracks/2/path = NodePath("Sprite2D7:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.8452538, 1.455344]
+"values": [-0.7324441, -1.5303667]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -54,10 +53,10 @@ tracks/3/path = NodePath("Sprite2D10:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.685076, 1.273413]
+"values": [-0.886941, -1.4219115]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -66,10 +65,10 @@ tracks/4/path = NodePath("Sprite2D3:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.38430035, -1.3723261]
+"values": [-0.49170244, 1.3088055]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -78,10 +77,10 @@ tracks/5/path = NodePath("Sprite2D2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.6984714, -0.014830977]
+"values": [-1.2958286, 0.0077744722]
 }
 
 [sub_resource type="Animation" id="Animation_5spra"]
@@ -96,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.3843004]
+"values": [-0.54218864]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +107,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.23555724]
+"values": [-0.62008065]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -120,7 +119,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.8452538]
+"values": [-0.7324441]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -132,7 +131,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.685076]
+"values": [-0.886941]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -156,12 +155,12 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.6984714]
+"values": [-1.2958286]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4x7d8"]
 _data = {
-&"Alien swim": SubResource("Animation_aqv4r"),
+&"Alien Move": SubResource("Animation_aqv4r"),
 &"RESET": SubResource("Animation_5spra")
 }
 
@@ -169,70 +168,79 @@ _data = {
 scale = Vector2(1.841, 2.043)
 script = ExtResource("1_aqv4r")
 _name = "Alien"
+_minSpeed = 300.0
+_maxSpeed = 350.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Alien Paperdoll")
 _oxygenUsage = 0.0
 _oxygenDamage = 0.0
+_hungerDamage = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 3)
-rotation = 0.6854123
+position = Vector2(-10.32048, 15.173767)
+rotation = -0.7404601
 shape = SubResource("CapsuleShape2D_aqv4r")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 
 [node name="Alien Paperdoll" type="Node2D" parent="."]
 
-[node name="Alien Paperdoll" type="AnimationPlayer" parent="Alien Paperdoll"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Alien Paperdoll"]
 libraries = {
 &"": SubResource("AnimationLibrary_4x7d8")
 }
-autoplay = "Alien swim"
+autoplay = "Alien Move"
 
 [node name="Sprite2D5" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-20, 27)
-rotation = 0.3843004
+position = Vector2(5.43183, 27.410673)
+rotation = -0.54218864
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
 centered = false
 offset = Vector2(-30, -15)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(160.37956, 200.98134, 71.84213, 91.43547)
 
 [node name="Sprite2D8" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-25.999998, 26)
-rotation = 0.23555724
+position = Vector2(16.295496, 22.026432)
+rotation = -0.62008065
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
 offset = Vector2(-8, 30)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
 
 [node name="Sprite2D10" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-29, 23.000002)
-rotation = 0.685076
+position = Vector2(18.468224, 18.110622)
+rotation = -0.886941
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5spra")
 offset = Vector2(-8, 30)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
 
 [node name="Sprite2D7" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-31.000004, 20)
-rotation = 0.8452538
+position = Vector2(19.011406, 20.068527)
+rotation = -0.7324441
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
-offset = Vector2(-18, 27)
+offset = Vector2(20, 27)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(1.9665527, 198.43546, 97.50004, 93.767975)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-1, -3.0000057)
-rotation = 0.6984714
+position = Vector2(-14.665947, -4.4052906)
+rotation = -1.2958286
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5spra")
 centered = false
-offset = Vector2(-25, -75)
+offset = Vector2(-150, -80)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(392.57996, 147.56981, 178.2044, 141.57002)
 
@@ -240,27 +248,30 @@ region_rect = Rect2(392.57996, 147.56981, 178.2044, 141.57002)
 position = Vector2(-5.8178406, 1.5975342)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5spra")
+flip_h = true
 region_enabled = true
 region_rect = Rect2(34, 4, 191, 189)
 
 [node name="Sprite2D4" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(17.091087, -23.539957)
-rotation = 0.5073216
+position = Vector2(-30.418253, -20.558004)
+rotation = -0.39483988
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5spra")
+flip_h = true
 region_enabled = true
 region_rect = Rect2(229.99551, 5.5555763, 120.21036, 158.52742)
 
 [node name="Sprite2D9" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(20.552162, -23.167831)
-rotation = 0.38430035
+position = Vector2(-33.67735, -22.026428)
+rotation = 1.0195894
 scale = Vector2(0.30000004, 0.30000004)
+skew = -0.13613568
 texture = ExtResource("3_5spra")
 region_enabled = true
 region_rect = Rect2(367.74377, 27.730827, 76.37329, 87.5499)
 
 [node name="Sprite2D6" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(21.552147, -23.167835)
+position = Vector2(-33.677353, -23.005377)
 rotation = 0.38430035
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
@@ -268,11 +279,12 @@ region_enabled = true
 region_rect = Rect2(452.18906, 51.325836, 27.941437, 34.77159)
 
 [node name="Sprite2D3" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(-6, -6.999999)
+position = Vector2(-7.06138, -6.363191)
 rotation = 0.38430035
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
 centered = false
 offset = Vector2(-70, -20)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(256.25003, 184.67792, 142.65799, 105.19742)

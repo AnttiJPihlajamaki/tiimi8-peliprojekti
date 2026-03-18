@@ -19,6 +19,8 @@ public partial class Aquarium : Node2D
 
     public override void _Ready()
     {
+		GameManager.Instance._aquarium = this;
+
         for(int i = 0; i < _tools.Count; i++) // Initializes tools so only current tool is active
 		{
 			if(i == _currentTool)

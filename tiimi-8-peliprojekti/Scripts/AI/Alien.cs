@@ -4,6 +4,8 @@ using System.ComponentModel;
 
 public partial class Alien : AquariumNPC
 {
+	private AquariumNPC nearestFish = null;
+	private float nearestDistance = float.MaxValue;
 
     public override void _Ready()
 	{
@@ -12,7 +14,33 @@ public partial class Alien : AquariumNPC
 
 	public override void _PhysicsProcess(double delta)
 	{
-		base._PhysicsProcess(delta);
-	}
+        nearestFish = null;
+        nearestDistance = float.MaxValue;
 
+		foreach (AquariumNPC npc in _aquarium._npcs)  // LOOP FOR FINDING FISH
+		{
+			if (npc == this) continue;  // skip self and other aliens
+			if (npc is Alien) continue;
+
+			// Get distance to current npc
+			float dist = GlobalPosition.DistanceTo(npc.GlobalPosition);
+
+			// Calculate if current NPC is closer than the last
+			if (dist < nearestDistance)
+			{
+				nearestDistance = dist;   // update nearest distance
+				nearestFish = npc;        // update nearest fish
+			}
+
+			base._PhysicsProcess(delta);
+		}
+
+	if (nearestFish != null)
+		{
+			// Move the alien to nearest fish
+			SetMarkerPosition(nearestFish.GlobalPosition);
+		}
+
+	base._PhysicsProcess(delta);
+	}
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.IO.Pipes;
 
 // Class that handles buying a specific type of fish
 public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets added !
@@ -44,8 +45,10 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 			_currentPrice = _basePrice;;
 		}
 
-		foreach(Fish fish in _aquarium._npcs) // Increases price for each fish in the aquarium
+		foreach(AquariumNPC npc in _aquarium._npcs) // Increases price for each fish in the aquarium
 		{
+			if(npc is Alien) continue;
+
 			if(_currentPrice == 0f && _freeSample) // Logic to handle free sample
 			{
 				_currentPrice = _basePrice;

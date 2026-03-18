@@ -1,16 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://loy77orom7e8"]
+[gd_scene load_steps=4 format=3 uid="uid://loy77orom7e8"]
 
-[ext_resource type="Texture2D" uid="uid://ce2etcsp1ocdj" path="res://icon.svg" id="1_trol0"]
+[ext_resource type="Texture2D" uid="uid://8lx4gjnhvf3" path="res://Assets/Sprites/Affinity/UI/UI Button 64.png" id="1_trol0"]
+[ext_resource type="Script" uid="uid://ern5kics2ac6" path="res://Scripts/UI/MoneyUI.cs" id="2_rdn46"]
+[ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_ksqpd"]
 
 [node name="AquariumUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = -0.333
+anchor_top = -0.333
+anchor_right = 1.3330001
+anchor_bottom = 1.3330001
+offset_left = 383.616
+offset_top = 215.784
+offset_right = -383.6161
+offset_bottom = -215.78406
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_ksqpd")
 
-[node name="Shop" type="MarginContainer" parent="."]
+[node name="Screen MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,21 +26,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shop Menu" type="MarginContainer" parent="Shop"]
+[node name="Money MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("moneyLabel", "moneyPerSecLabel")]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+script = ExtResource("2_rdn46")
+moneyLabel = NodePath("MarginContainer/HBoxContainer/Money Label")
+moneyPerSecLabel = NodePath("MarginContainer/HBoxContainer/Moneypersec Label")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Shop/Shop Menu"]
-custom_minimum_size = Vector2(1000, 600)
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Money MarginContainer"]
+modulate = Color(1, 0.8666667, 0.19999999, 1)
 layout_mode = 2
 texture = ExtResource("1_trol0")
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
 
-[node name="ColorRect" type="ColorRect" parent="Shop/Shop Menu/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1.6845763e-06, 0.4520843, 0.62627035, 1)
+[node name="MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Money MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Money MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Money Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money"
+
+[node name="Dollar Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " $"
+
+[node name="Seperator Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " | "
+
+[node name="Moneypersec Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money/S"
+
+[node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " $/S"
+
+[node name="Toolbar MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Toolbar HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Toolbar MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Tool MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Tool MarginContainer"]
+modulate = Color(0, 0.6666665, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_trol0")
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="Button" type="Button" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Tool MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_ksqpd")
+text = "O2
+"
+flat = true

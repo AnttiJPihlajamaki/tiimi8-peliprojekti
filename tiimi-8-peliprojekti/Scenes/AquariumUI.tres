@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c04qy2q8jvm7"]
+
+[ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="1_ogq3f"]
+
+[resource]
+Button/constants/h_separation = 0
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 28
+Button/fonts/font = ExtResource("1_ogq3f")
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_ogq3f")

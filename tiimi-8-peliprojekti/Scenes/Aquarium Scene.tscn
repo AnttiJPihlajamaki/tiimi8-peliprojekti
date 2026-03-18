@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=12 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
 [ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
 [ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="7_7fi0v"]
+[ext_resource type="PackedScene" uid="uid://loy77orom7e8" path="res://Scenes/AquariumUI.tscn" id="7_76k3o"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="7_frbro"]
 
 [sub_resource type="Gradient" id="Gradient_sjceq"]
@@ -61,3 +62,7 @@ _fish = ExtResource("1_bgdf3")
 _freeSample = true
 _aquarium = NodePath("..")
 _aquarium = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AquariumUI" parent="CanvasLayer" instance=ExtResource("7_76k3o")]

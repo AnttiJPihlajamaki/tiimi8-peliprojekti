@@ -23,6 +23,11 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Scripts/GameManager.cs"
 
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="tiimi8-peliprojekti"

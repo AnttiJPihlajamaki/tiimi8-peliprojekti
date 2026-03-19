@@ -91,19 +91,10 @@ size_flags_vertical = 8
 [node name="Tool MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Tool MarginContainer"]
-modulate = Color(0, 0.6666665, 1, 1)
-layout_mode = 2
-texture = ExtResource("1_trol0")
-patch_margin_left = 27
-patch_margin_top = 27
-patch_margin_right = 27
-patch_margin_bottom = 27
+theme = ExtResource("3_ksqpd")
 
 [node name="Button" type="Button" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Tool MarginContainer"]
 layout_mode = 2
 theme = ExtResource("3_ksqpd")
 text = "O2
 "
-flat = true

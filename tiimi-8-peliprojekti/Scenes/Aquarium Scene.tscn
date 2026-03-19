@@ -29,6 +29,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -540, -960, 540, 
 
 [node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_tools", "_navigationRegion")]
 script = ExtResource("1_8tk4j")
+_currentOxygen = 50.0
 _tools = [NodePath("Feeder"), NodePath("Oxygenator"), NodePath("ShopItem")]
 _navigationRegion = NodePath("NavigationRegion2D")
 

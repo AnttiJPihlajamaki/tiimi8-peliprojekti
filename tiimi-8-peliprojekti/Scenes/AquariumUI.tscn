@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://loy77orom7e8"]
+[gd_scene load_steps=12 format=3 uid="uid://loy77orom7e8"]
 
-[ext_resource type="Texture2D" uid="uid://8lx4gjnhvf3" path="res://Assets/Sprites/Affinity/UI/UI Button 64.png" id="1_trol0"]
+[ext_resource type="Script" uid="uid://c1hqwrb8tcflt" path="res://Scripts/UI/OxygenUI.cs" id="2_ogene"]
 [ext_resource type="Script" uid="uid://ern5kics2ac6" path="res://Scripts/UI/MoneyUI.cs" id="2_rdn46"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_ksqpd"]
+[ext_resource type="Texture2D" uid="uid://cwdoicykvu7an" path="res://Assets/Sprites/Affinity/UI/Oxygen Slider Grabber.png" id="3_ogene"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="3_rdn46"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kfa6w"]
+diffuse_texture = ExtResource("3_ogene")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s37ty"]
+diffuse_texture = ExtResource("3_ogene")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xbrjc"]
+diffuse_texture = ExtResource("3_ogene")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdn46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ksqpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogene"]
 
 [node name="AquariumUI" type="Control"]
 layout_mode = 3
@@ -26,6 +43,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("2_ogene")
+oxygenSlider = NodePath("Oxygen Pointer MarginContainer/VSlider")
+
+[node name="Oxygen Meter MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 20
+
+[node name="Oxygen Meter NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Oxygen MarginContainer/Oxygen Meter MarginContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(128, 1, 11, 62)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Ideal Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer/Oxygen Meter MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Ideal Oxygen NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Oxygen MarginContainer/Oxygen Meter MarginContainer/Ideal Oxygen MarginContainer"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(128, 7, 11, 50)
+patch_margin_left = 6
+patch_margin_right = 6
+
+[node name="Oxygen Pointer MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 22
+
+[node name="VSlider" type="VSlider" parent="Screen MarginContainer/Oxygen MarginContainer/Oxygen Pointer MarginContainer"]
+layout_mode = 2
+theme_override_icons/grabber = SubResource("CanvasTexture_kfa6w")
+theme_override_icons/grabber_highlight = SubResource("CanvasTexture_s37ty")
+theme_override_icons/grabber_disabled = SubResource("CanvasTexture_xbrjc")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_rdn46")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ksqpd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ogene")
+rounded = true
+editable = false
+scrollable = false
+ticks_position = 1
+
 [node name="Money MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("moneyLabel", "moneyPerSecLabel")]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
@@ -40,7 +115,8 @@ moneyPerSecLabel = NodePath("MarginContainer/HBoxContainer/Moneypersec Label")
 [node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Money MarginContainer"]
 modulate = Color(1, 0.8666667, 0.19999999, 1)
 layout_mode = 2
-texture = ExtResource("1_trol0")
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(0, 128, 64, 64)
 patch_margin_left = 27
 patch_margin_top = 27
 patch_margin_right = 27
@@ -88,12 +164,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Tool MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="Oxygenator MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("3_ksqpd")
 
-[node name="Button" type="Button" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Tool MarginContainer"]
+[node name="Button" type="Button" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer"]
 layout_mode = 2
 theme = ExtResource("3_ksqpd")
 text = "O2

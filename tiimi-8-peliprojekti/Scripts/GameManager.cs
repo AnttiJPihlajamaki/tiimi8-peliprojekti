@@ -5,14 +5,14 @@ using System.Diagnostics;
 
 public partial class GameManager : Node // Store player inventory
 {
-	public float _maxTime = 120f; // maximum time
-	public float _nightTime = 119f; // when night will trigger
-	public float _daySpeed = 1f;
-	public float _currentTime = 110f; // The current time
-	public bool _isNight = false; //
-	public List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
-	public Aquarium _aquarium;
-	public PackedScene _alienScene;
+	private float _maxTime = 120f; // maximum time
+	private float _nightTime = 119f; // when night will trigger
+	private float _daySpeed = 1f;
+	private float _currentTime = 110f; // The current time
+	private bool _isNight = false; //
+	private List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
+	private Aquarium _activeAquarium;
+	private PackedScene _alienScene;
 
 	public static GameManager Instance
 	{
@@ -73,7 +73,7 @@ public partial class GameManager : Node // Store player inventory
 		for (int a = 0; a < amount; a++)
 		{
 			Alien newAlien = _alienScene.Instantiate<Alien>();
-			_aquarium.AddNPC(newAlien);
+			ActiveAquarium.AddNPC(newAlien);
 			_nightAliens.Add(newAlien);
 			newAlien.GlobalPosition = GetSpawnPosition();
 		}
@@ -81,7 +81,7 @@ public partial class GameManager : Node // Store player inventory
 
 	private Vector2 GetSpawnPosition()
 	{
-		Rect2 bounds = _aquarium._navigationRegion.GetBounds();
+		Rect2 bounds = ActiveAquarium._navigationRegion.GetBounds();
 
 		int spawnSide = (int)GD.RandRange(0, 4);
 
@@ -104,6 +104,14 @@ public partial class GameManager : Node // Store player inventory
 		set
 		{
 			_money = value;
+		}
+	}
+	public Aquarium ActiveAquarium
+	{
+		get{ return _activeAquarium; }
+		set
+		{
+			_activeAquarium = value;
 		}
 	}
 	#endregion

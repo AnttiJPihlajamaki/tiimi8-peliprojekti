@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd2o8cddplhoc"]
+[gd_scene load_steps=6 format=3 uid="uid://cd2o8cddplhoc"]
 
 [ext_resource type="Script" uid="uid://dcf1mlljtaw4d" path="res://Scripts/Food.cs" id="1_uau66"]
+[ext_resource type="Texture2D" uid="uid://bqiy6xv18117b" path="res://Assets/Sprites/FISHFOOD.png" id="2_0oddj"]
 [ext_resource type="Texture2D" uid="uid://ce2etcsp1ocdj" path="res://icon.svg" id="2_uau66"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0oddj"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0oddj")
+}, {
 "duration": 1.0,
 "texture": ExtResource("2_uau66")
 }],
@@ -23,7 +27,9 @@ script = ExtResource("1_uau66")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
-scale = Vector2(0.1, 0.1)
+position = Vector2(3, -2.3841858e-07)
+rotation = -0.6820534
+scale = Vector2(0.7, 0.717)
 sprite_frames = SubResource("SpriteFrames_0oddj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

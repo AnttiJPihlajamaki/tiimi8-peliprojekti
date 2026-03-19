@@ -4,6 +4,10 @@ using System.ComponentModel;
 
 public partial class Alien : AquariumNPC
 {
+	[Export] private float _attackRange = 80f;
+	[Export] private float _attackDamage = 10f;
+	[Export] private float _attackSpeed = 1f;
+	private float attackCooldown = 0f;
 	private AquariumNPC nearestFish = null;
 	private float nearestDistance = float.MaxValue;
 
@@ -16,6 +20,7 @@ public partial class Alien : AquariumNPC
 	{
         nearestFish = null;
         nearestDistance = float.MaxValue;
+		attackCooldown += (float)delta;
 
 		foreach (AquariumNPC npc in _aquarium._npcs)  // LOOP FOR FINDING FISH
 		{
@@ -31,16 +36,26 @@ public partial class Alien : AquariumNPC
 				nearestDistance = dist;   // update nearest distance
 				nearestFish = npc;        // update nearest fish
 			}
-
-			base._PhysicsProcess(delta);
 		}
 
 	if (nearestFish != null)
 		{
 			// Move the alien to nearest fish
 			SetMarkerPosition(nearestFish.GlobalPosition);
+
+			if (nearestDistance <= _attackRange && attackCooldown >= _attackSpeed)
+			{
+				AttackTarget();
+				attackCooldown = 0f;
+			}
 		}
 
 	base._PhysicsProcess(delta);
+	}
+
+	private void AttackTarget()
+	{
+		GD.Print("Attacking fish! Distance: " + nearestDistance + " Range: " + _attackRange);
+		nearestFish.ChangeHealth(-_attackDamage);
 	}
 }

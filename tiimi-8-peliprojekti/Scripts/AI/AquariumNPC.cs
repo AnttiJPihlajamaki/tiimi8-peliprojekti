@@ -142,7 +142,7 @@ public partial class AquariumNPC : CharacterBody2D
 		_hunger = Mathf.Clamp(_hunger + change , 0 , _maxHunger);
 	}
 
-	protected void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
+	public void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
 	{
 		_health = Mathf.Clamp(_health + change , 0 , _maxHealth);
 		if(_health <= 0) // If health changes to 0 the fish dies

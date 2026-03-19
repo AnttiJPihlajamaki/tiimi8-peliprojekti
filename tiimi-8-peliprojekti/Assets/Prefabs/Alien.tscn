@@ -168,8 +168,8 @@ _data = {
 scale = Vector2(1.841, 2.043)
 script = ExtResource("1_aqv4r")
 _name = "Alien"
-_minSpeed = 300.0
-_maxSpeed = 350.0
+_minSpeed = 500.0
+_maxSpeed = 550.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Alien Paperdoll")
 _oxygenUsage = 0.0
@@ -177,7 +177,7 @@ _oxygenDamage = 0.0
 _hungerDamage = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-10.32048, 15.173767)
+position = Vector2(-5.4318323, 6.8526697)
 rotation = -0.7404601
 shape = SubResource("CapsuleShape2D_aqv4r")
 

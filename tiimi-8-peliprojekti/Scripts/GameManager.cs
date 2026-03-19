@@ -10,7 +10,7 @@ public partial class GameManager : Node // Store player inventory
 	public float _daySpeed = 1f;
 	public float _currentTime = 110f; // The current time
 	public bool _isNight = false; //
-	public List<Alien> _nightAliens = new List<Alien>();
+	public List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
 	public Aquarium _aquarium;
 	public PackedScene _alienScene;
 
@@ -21,11 +21,11 @@ public partial class GameManager : Node // Store player inventory
 	}
 	public GameManager()
 	{
-		if(Instance == null)
+		if (Instance == null)
 		{
 			Instance = this;
 		}
-		else if(Instance != this)
+		else if (Instance != this)
 		{
 			QueueFree();
 			return;
@@ -38,12 +38,12 @@ public partial class GameManager : Node // Store player inventory
 
 	public override void _Process(double delta)
 	{
-		if(_isNight == false)
+		if (_isNight == false)
 		{
 			_currentTime += (float)delta * _daySpeed;
 		}
 
-		if(_currentTime >= _nightTime && !_isNight)
+		if (_currentTime >= _nightTime && !_isNight)
 		{
 			_currentTime = _nightTime;
 			NightStart();
@@ -53,12 +53,19 @@ public partial class GameManager : Node // Store player inventory
 		{
 			GD.Print("time: " + (int)_currentTime + " is night: " + _isNight);
 		}
+
+		if(_nightAliens.Count == 0 && _isNight)
+		{
+			_isNight = false;
+			_currentTime = 0f;
+			_nightAliens.Clear();
+		}
 	}
 
 	private void NightStart()
 	{
 		_isNight = true;
-		SpawnAliens(3);
+		SpawnAliens(1);
 	}
 
 	private void SpawnAliens(int amount)

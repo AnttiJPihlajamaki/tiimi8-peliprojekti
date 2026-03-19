@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 public partial class Alien : AquariumNPC
 {
-	[Export] private float _attackRange = 80f;
+	[Export] private float _attackRange = 100f;
 	[Export] private float _attackDamage = 10f;
 	[Export] private float _attackSpeed = 1f;
 	private float attackCooldown = 0f;
@@ -55,7 +55,6 @@ public partial class Alien : AquariumNPC
 
 	private void AttackTarget()
 	{
-		GD.Print("Attacking fish! Distance: " + nearestDistance + " Range: " + _attackRange);
 		nearestFish.ChangeHealth(-_attackDamage);
 	}
 }

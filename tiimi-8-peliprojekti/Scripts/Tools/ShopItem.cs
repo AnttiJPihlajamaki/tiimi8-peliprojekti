@@ -9,31 +9,20 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 	[Export] public float _basePrice = 50f; // The base price of the fish
 	[Export] public float _currentPrice; // The current price of the fish
 	[Export] public bool _freeSample; // Whether or the first purchase is free or not
-	[Export] public Aquarium _aquarium; // ! The aquarium the tool is located !
 
 	public override void _Ready()
 	{
 		UpdatePrice(); // Updates the price
 	}
-	public override string Info() // ! Temporary method to get info about the tool while UI gets added !
+	protected override string Info() // ! Temporary method to get info about the tool while UI gets added !
 	{
 		return GetType() + " = ( Fish Cost: " + (int)Math.Round(_currentPrice)+" )";
 	}
 
-	public override void ToolFunction()
+	protected override void ToolFunction(InputEventScreenTouch @event)
 	{
 		Purchase();
 	}
-	public override void ToolIncrease()
-	{
-
-	}
-
-	public override void ToolDecrease()
-	{
-
-	}
-
 	public void UpdatePrice() // Updates the current price of the fish
 	{
 		if (_freeSample) // Set price to 0 if free sample is enabled
@@ -44,10 +33,9 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 		{
 			_currentPrice = _basePrice;;
 		}
-
-		foreach(AquariumNPC npc in _aquarium._npcs) // Increases price for each fish in the aquarium
+		foreach(AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs) // Increases price for each fish in the aquarium
 		{
-			if(npc is Alien) continue;
+			if(npc is not Fish) continue;
 
 			if(_currentPrice == 0f && _freeSample) // Logic to handle free sample
 			{
@@ -76,7 +64,7 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 
 		Fish newFish = _fish.Instantiate<Fish>(); // Instantiatses new fish
 
-		_aquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
+		GameManager.Instance.ActiveAquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
 
 		UpdatePrice(); // Updates price
 	}

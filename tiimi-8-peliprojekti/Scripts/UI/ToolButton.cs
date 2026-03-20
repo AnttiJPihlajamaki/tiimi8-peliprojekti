@@ -1,16 +1,29 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class ToolButton : Button
 {
-    [Export] private int toolInteger;
-    public override void _Ready()
-    {
-        Pressed += ChangeTool;
-    }
+	[Export] Tool _tool;
+	[Export] Control _toolInfo;
 
-    public void ChangeTool()
-    {
+ 	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		Toggled += SetTool;
+	}
 
-    }
+	private void SetTool(bool set)
+	{
+		if (set)
+		{
+			_tool.ProcessMode = ProcessModeEnum.Inherit;
+			_toolInfo.Visible = true;
+		}
+		else
+		{
+			_tool.ProcessMode = ProcessModeEnum.Disabled;
+			_toolInfo.Visible = false;
+		}
+	}
 }

@@ -2,15 +2,13 @@ using Godot;
 using System;
 using System.ComponentModel;
 
-public partial class ToolButton : Button
+public partial class ToolButton : HideButton
 {
 	[Export] Tool _tool;
-	[Export] Control _toolInfo;
-
- 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	protected override void Toggle(bool set)
 	{
-		Toggled += SetTool;
+		base.Toggle(set);
+		SetTool(set);
 	}
 
 	private void SetTool(bool set)
@@ -18,12 +16,10 @@ public partial class ToolButton : Button
 		if (set)
 		{
 			_tool.ProcessMode = ProcessModeEnum.Inherit;
-			_toolInfo.Visible = true;
 		}
 		else
 		{
 			_tool.ProcessMode = ProcessModeEnum.Disabled;
-			_toolInfo.Visible = false;
 		}
 	}
 }

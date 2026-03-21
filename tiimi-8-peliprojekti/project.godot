@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="tiimi8-peliprojekti"
+config/name="Holy Carp, Aliens!"
 run/main_scene="uid://bltll0kga7niv"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
@@ -35,8 +35,10 @@ project/assembly_name="tiimi8-peliprojekti"
 [file_customization]
 
 folder_colors={
-"res://Assets/Prefabs/": "purple",
+"res://Assets/": "blue",
+"res://Assets/Packed Scenes/": "purple",
 "res://Assets/Sprites/": "blue",
+"res://Builds/": "pink",
 "res://Design/": "yellow",
 "res://Scenes/": "purple",
 "res://Scripts/": "red",
@@ -46,10 +48,11 @@ folder_colors={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/screen_space_aa=2

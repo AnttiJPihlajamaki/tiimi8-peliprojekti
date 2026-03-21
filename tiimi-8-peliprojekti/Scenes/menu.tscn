@@ -3,19 +3,31 @@
 [ext_resource type="Script" uid="uid://c7j0vro2rvrfp" path="res://Scripts/Menu.cs" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://bsofi135kprgm" path="res://Assets/Sprites/underwater-sun-rays-ocean-hawaii-5k-8k-7680x4320-8301 (1).jpg" id="2_cayip"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("playButton")]
 script = ExtResource("1_xhh6f")
+playButton = NodePath("CanvasLayer/Control/PlayButton")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(602, 315)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_cayip")
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 435.0
 offset_top = 253.0
 offset_right = 759.0
 offset_bottom = 352.0
+mouse_filter = 1
 text = "Play"
 
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PlayButton" to="CanvasLayer/Control/PlayButton" method="_on_pressed"]

@@ -3,25 +3,20 @@ using System;
 using System.IO.Pipes;
 
 // Class that handles buying a specific type of fish
-public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets added !
+public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets added !
 {
-	[Export] public PackedScene _fish; // The PackedScene of the fish
-	[Export] public float _basePrice = 50f; // The base price of the fish
-	[Export] public float _currentPrice; // The current price of the fish
-	[Export] public bool _freeSample; // Whether or the first purchase is free or not
+	[Export] private PackedScene _fishPackedScene; // The PackedScene of the fish
+	[Export] private float _basePrice = 50f; // The base price of the fish
+	[Export] private float _currentPrice; // The current price of the fish
+	[Export] private bool _freeSample; // Whether or the first purchase is free or not
+
+	[Export] private Button _buyButton;
+	[Export] private Label _costLabel;
 
 	public override void _Ready()
 	{
 		UpdatePrice(); // Updates the price
-	}
-	protected override string Info() // ! Temporary method to get info about the tool while UI gets added !
-	{
-		return GetType() + " = ( Fish Cost: " + (int)Math.Round(_currentPrice)+" )";
-	}
-
-	protected override void ToolFunction(InputEventScreenTouch @event)
-	{
-		Purchase();
+		_buyButton.Pressed += Purchase;
 	}
 	public void UpdatePrice() // Updates the current price of the fish
 	{
@@ -48,6 +43,7 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 		}
 
 		_currentPrice = (float)Math.Round(_currentPrice); // Rounds price to whole number
+		_costLabel.Text = ""+_currentPrice;
 	}
 
 	public void Purchase() // Handles purchasing new fish
@@ -62,7 +58,7 @@ public partial class ShopItem : Tool // ! Is a Tool temporarily while UI gets ad
 	public void AddFish()
 	{
 
-		Fish newFish = _fish.Instantiate<Fish>(); // Instantiatses new fish
+		Fish newFish = _fishPackedScene.Instantiate<Fish>(); // Instantiatses new fish
 
 		GameManager.Instance.ActiveAquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
 

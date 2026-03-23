@@ -38,6 +38,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Pause Button MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="Screen MarginContainer/Pause Button MarginContainer"]
+self_modulate = Color(0, 0.5, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Pause Button MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(192, 0, 64, 64)
+
 [node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider")]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -99,10 +123,12 @@ ticks_position = 1
 [node name="Money MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("moneyLabel", "moneyPerSecLabel")]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("2_rdn46")
 moneyLabel = NodePath("MarginContainer/HBoxContainer/Money Label")
 moneyPerSecLabel = NodePath("MarginContainer/HBoxContainer/Moneypersec Label")
@@ -146,3 +172,122 @@ text = "Money/S"
 [node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = " $/S"
+
+[node name="PauseMenu MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Screen MarginContainer/PauseMenu MarginContainer"]
+self_modulate = Color(0, 0.4745098, 0.9490196, 1)
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PauseMenu Content MarginContainer" type="MarginContainer" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer"]
+layout_mode = 2
+
+[node name="PauseLabel MarginContainer" type="MarginContainer" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/PauseLabel MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 70
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Return Button" type="Button" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+self_modulate = Color(0.16666675, 1, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Return Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Back to game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart Button" type="Button" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 0.5, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+
+[node name="Label" type="Label" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Restart Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings Button" type="Button" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+
+[node name="Label" type="Label" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Settings Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu Button" type="Button" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+
+[node name="Label" type="Label" parent="Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/MainMenu Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1

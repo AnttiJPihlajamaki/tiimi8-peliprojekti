@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=30 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
-[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Packed Scenes/fish.tscn" id="1_bgdf3"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Packed Scenes/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
 [ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="7_7fi0v"]
@@ -187,11 +186,9 @@ script = ExtResource("3_l6h7g")
 _food = ExtResource("2_valo4")
 _aquarium = NodePath("..")
 
-[node name="Oxygenator" type="Node" parent="Aquarium" node_paths=PackedStringArray("powerSlider", "_aquarium")]
+[node name="Oxygenator" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium")]
 process_mode = 4
 script = ExtResource("7_7fi0v")
-_maxPower = 25.0
-powerSlider = NodePath("../../AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
 _aquarium = NodePath("..")
 
 [node name="AquariumUI" type="CanvasLayer" parent="."]
@@ -219,6 +216,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Shop MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Shop Panel MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer"]
@@ -290,7 +288,7 @@ alignment = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ShopItem MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
+[node name="ShopItem MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 0
@@ -298,10 +296,7 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 35
 script = ExtResource("7_frbro")
-_fishPackedScene = ExtResource("1_bgdf3")
 _freeSample = true
-_buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
-_costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
 
 [node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
 self_modulate = Color(0.9, 0.54, 0.17999998, 1)
@@ -661,12 +656,12 @@ size_flags_vertical = 8
 theme_override_constants/separation = 8
 
 [node name="Food MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("8_76k3o")
 
 [node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer" node_paths=PackedStringArray("_tool", "_hideElement")]
 self_modulate = Color(0.8980392, 0.5411765, 0.18039216, 1)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("8_76k3o")
 toggle_mode = true
@@ -690,12 +685,12 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Oxygenator MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("8_76k3o")
 
 [node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer" node_paths=PackedStringArray("_tool", "_hideElement")]
 self_modulate = Color(1, 0.100000024, 0.17500019, 1)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_frbro")
@@ -718,12 +713,12 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Finch MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("8_76k3o")
 
 [node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Finch MarginContainer" node_paths=PackedStringArray("_hideElement")]
 self_modulate = Color(0.6666667, 1, 0, 1)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("8_76k3o")
 toggle_mode = true

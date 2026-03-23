@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c04qy2q8jvm7"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c04qy2q8jvm7"]
 
 [ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="1_ogq3f"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="3_5oxd4"]
@@ -31,18 +31,6 @@ texture_margin_bottom = 27.0
 region_rect = Rect2(0, 0, 64, 64)
 modulate_color = Color(0.8, 0.8, 0.8, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oxd4"]
-content_margin_left = 10.0
-content_margin_top = 5.0
-content_margin_right = 10.0
-content_margin_bottom = 5.0
-texture = ExtResource("3_5oxd4")
-texture_margin_left = 27.0
-texture_margin_top = 27.0
-texture_margin_right = 27.0
-texture_margin_bottom = 27.0
-region_rect = Rect2(0, 0, 64, 64)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rg1co"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -55,6 +43,46 @@ texture_margin_right = 27.0
 texture_margin_bottom = 27.0
 region_rect = Rect2(64, 0, 64, 64)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oxd4"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("3_5oxd4")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftmls"]
+texture = ExtResource("3_5oxd4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+region_rect = Rect2(130, 146, 62, 16)
+modulate_color = Color(0.8980392, 0.5411765, 0.18039216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rlgmm"]
+texture = ExtResource("3_5oxd4")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(130, 129, 62, 17)
+modulate_color = Color(0.6, 0.52000004, 0.12, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rn4b"]
+texture = ExtResource("3_5oxd4")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(0, 129, 64, 63)
+
 [resource]
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
@@ -65,8 +93,15 @@ Button/fonts/font = ExtResource("1_ogq3f")
 Button/styles/disabled = SubResource("StyleBoxTexture_gna1j")
 Button/styles/focus = SubResource("StyleBoxEmpty_gna1j")
 Button/styles/hover = SubResource("StyleBoxTexture_f6je8")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_rg1co")
 Button/styles/normal = SubResource("StyleBoxTexture_5oxd4")
 Button/styles/pressed = SubResource("StyleBoxTexture_rg1co")
+HScrollBar/styles/grabber = SubResource("StyleBoxTexture_ftmls")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_ftmls")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_ftmls")
+HScrollBar/styles/scroll = SubResource("StyleBoxTexture_rlgmm")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_rlgmm")
 Label/constants/outline_size = 8
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_ogq3f")
+Panel/styles/panel = SubResource("StyleBoxTexture_3rn4b")

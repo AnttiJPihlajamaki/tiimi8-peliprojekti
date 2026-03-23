@@ -3,10 +3,11 @@ using System;
 
 public partial class Menu : Node2D
 {
+	[Export] Button playButton;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GetNode<Button>("PlayButton").Pressed += PlayButtonPressed;
+		playButton.Pressed += PlayButtonPressed;
 	}
 
 	private void PlayButtonPressed()

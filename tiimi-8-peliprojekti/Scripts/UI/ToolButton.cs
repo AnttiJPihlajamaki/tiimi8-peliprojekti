@@ -1,16 +1,25 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
-public partial class ToolButton : Button
+public partial class ToolButton : HideButton
 {
-    [Export] private int toolInteger;
-    public override void _Ready()
-    {
-        Pressed += ChangeTool;
-    }
+	[Export] Tool _tool;
+	protected override void Toggle(bool set)
+	{
+		base.Toggle(set);
+		SetTool(set);
+	}
 
-    public void ChangeTool()
-    {
-
-    }
+	private void SetTool(bool set)
+	{
+		if (set)
+		{
+			_tool.ProcessMode = ProcessModeEnum.Inherit;
+		}
+		else
+		{
+			_tool.ProcessMode = ProcessModeEnum.Disabled;
+		}
+	}
 }

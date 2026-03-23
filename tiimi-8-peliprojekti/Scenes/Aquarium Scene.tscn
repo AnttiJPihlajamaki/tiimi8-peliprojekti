@@ -1,12 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=31 format=3 uid="uid://elcmk51jkcmq"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_8tk4j"]
-[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Prefabs/fish.tscn" id="1_bgdf3"]
-[ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Prefabs/food.tscn" id="2_valo4"]
+[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Packed Scenes/fish.tscn" id="1_bgdf3"]
+[ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Packed Scenes/food.tscn" id="2_valo4"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="3_l6h7g"]
 [ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="7_7fi0v"]
 [ext_resource type="PackedScene" uid="uid://loy77orom7e8" path="res://Scenes/AquariumUI.tscn" id="7_76k3o"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="7_frbro"]
+[ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="8_76k3o"]
+[ext_resource type="Script" uid="uid://ufp6in6oqxfk" path="res://Scripts/UI/ToolButton.cs" id="9_frbro"]
+[ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="10_owhyu"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="10_yyfks"]
+[ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="11_j04mv"]
+[ext_resource type="Script" uid="uid://d0nujq4yueyca" path="res://Scripts/UI/HideButton.cs" id="13_vh6ro"]
 
 [sub_resource type="Gradient" id="Gradient_sjceq"]
 colors = PackedColorArray(0.070000015, 0.4899999, 0.7, 1, 0.32, 0.71999997, 0.8, 1)
@@ -25,12 +31,141 @@ vertices = PackedVector2Array(950, 530, -950, 530, -950, -530, 950, -530)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -540, -960, 540, 960, 540, 960, -540)])
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyfks"]
+texture = ExtResource("10_yyfks")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(64, 128, 64, 64)
+
+[sub_resource type="Animation" id="Animation_ihenc"]
+resource_name = "Goldfish Swim"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(-0.08726646, -0.25, 0, 0.25, 0, 0.08726646, -0.16666667, -0.029088821, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0, -0.5235988, -0.16666667, 0.17453294, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0, 0.5235988, -0.16666667, -0.17453294, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_jlui4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt6ly"]
+_data = {
+&"Goldfish Swim": SubResource("Animation_ihenc"),
+&"RESET": SubResource("Animation_jlui4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owhyu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vh6ro"]
+font = ExtResource("11_j04mv")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j04mv"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("10_yyfks")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owhyu"]
+atlas = ExtResource("10_yyfks")
+region = Rect2(130, 169, 62, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vh6ro"]
+texture = ExtResource("10_yyfks")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(165, 0, 27, 125)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyfks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_owhyu"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_frbro"]
+allow_unpress = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_j04mv"]
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Aquarium Scene" type="Node2D"]
 
-[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_tools", "_navigationRegion")]
+[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion")]
 script = ExtResource("1_8tk4j")
 _currentOxygen = 50.0
-_tools = [NodePath("Feeder"), NodePath("Oxygenator"), NodePath("ShopItem")]
 _navigationRegion = NodePath("NavigationRegion2D")
 
 [node name="Background" type="Sprite2D" parent="Aquarium"]
@@ -46,24 +181,564 @@ zoom = Vector2(0.6, 0.6)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_bgdf3")
 
-[node name="Feeder" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium", "_aquarium")]
+[node name="Feeder" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium")]
+process_mode = 4
 script = ExtResource("3_l6h7g")
 _food = ExtResource("2_valo4")
 _aquarium = NodePath("..")
-_aquarium = NodePath("..")
 
-[node name="Oxygenator" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium", "_aquarium")]
+[node name="Oxygenator" type="Node" parent="Aquarium" node_paths=PackedStringArray("powerSlider", "_aquarium")]
+process_mode = 4
 script = ExtResource("7_7fi0v")
-_aquarium = NodePath("..")
+_maxPower = 25.0
+powerSlider = NodePath("../../AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
 _aquarium = NodePath("..")
 
-[node name="ShopItem" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium", "_aquarium")]
+[node name="AquariumUI" type="CanvasLayer" parent="."]
+
+[node name="AquariumUI" parent="AquariumUI" instance=ExtResource("7_76k3o")]
+mouse_filter = 1
+
+[node name="ToolUI" type="Control" parent="AquariumUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("8_76k3o")
+
+[node name="Screen MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shop MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer"]
+layout_mode = 2
+
+[node name="Shop Panel MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 85
+
+[node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+self_modulate = Color(1, 0.8666667, 0.19999999, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Shop Label MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 7
+
+[node name="Shop Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop Label MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Shop"
+
+[node name="Shop MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+custom_minimum_size = Vector2(0, 460)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ShopPanel MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopPanel MarginContainer"]
+self_modulate = Color(1, 0.75, 0.25, 1)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_yyfks")
+
+[node name="ShopScroll MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="Shop ScrollContainer" type="ScrollContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Shop HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Start Seperator" type="Control" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ShopItem MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 35
 script = ExtResource("7_frbro")
-_fish = ExtResource("1_bgdf3")
+_fishPackedScene = ExtResource("1_bgdf3")
 _freeSample = true
-_aquarium = NodePath("..")
-_aquarium = NodePath("..")
+_buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
+_costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
+self_modulate = Color(0.9, 0.54, 0.17999998, 1)
+layout_mode = 2
+mouse_filter = 1
 
-[node name="AquariumUI" parent="CanvasLayer" instance=ExtResource("7_76k3o")]
+[node name="Preview MarginContainerer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 25
+
+[node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer"]
+self_modulate = Color(0, 0.6, 0.9019608, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Goldfish Paperdoll" type="Node2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel"]
+position = Vector2(40, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="Goldfish Paperdoll" type="AnimationPlayer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_qt6ly")
+}
+autoplay = "Goldfish Swim"
+
+[node name="Back Fin Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+modulate = Color(1, 0, 0, 1)
+z_index = 2
+position = Vector2(44, 0)
+texture = ExtResource("10_owhyu")
+offset = Vector2(8, 0)
+region_enabled = true
+region_rect = Rect2(161, 38, 66, 67)
+
+[node name="Top Fin Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+modulate = Color(1, 0, 0, 1)
+z_index = 2
+position = Vector2(6, -12)
+texture = ExtResource("10_owhyu")
+offset = Vector2(0, -22)
+region_enabled = true
+region_rect = Rect2(33, 51, 61, 41)
+
+[node name="Body Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+modulate = Color(1, 0.6666667, 0, 1)
+z_index = 2
+texture = ExtResource("10_owhyu")
+region_enabled = true
+region_rect = Rect2(238, 44, 95, 47)
+
+[node name="Front Fin Back Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+position = Vector2(0, 12)
+rotation = 0.5235988
+texture = ExtResource("10_owhyu")
+offset = Vector2(0, 12)
+region_enabled = true
+region_rect = Rect2(113, 52, 26, 34)
+
+[node name="Front Fin Front Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+modulate = Color(1, 0, 0, 1)
+z_index = 2
+position = Vector2(0, 12)
+rotation = -0.5235988
+texture = ExtResource("10_owhyu")
+offset = Vector2(0, 12)
+region_enabled = true
+region_rect = Rect2(113, 52, 26, 34)
+
+[node name="Eye Rigidbody2D" type="RigidBody2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+position = Vector2(-20, 0)
+freeze = true
+
+[node name="Eye CollisionShape2D" type="CollisionShape2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
+shape = SubResource("CircleShape2D_owhyu")
+
+[node name="Eye Sprite" type="Sprite2D" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
+z_index = 2
+texture = ExtResource("10_owhyu")
+region_enabled = true
+region_rect = Rect2(53, 14, 20, 20)
+
+[node name="Info MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer"]
+layout_mode = 2
+
+[node name="Fish Name Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Goldfish"
+horizontal_alignment = 1
+
+[node name="Info MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer"]
+self_modulate = Color(0.75, 0.45000002, 0.14999999, 1)
+layout_mode = 2
+
+[node name="Info MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyPerS MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyPerSName Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Money/S :"
+label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MoneyPerSStat Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "50"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "$"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="MoneyPerTap MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyPerTapName Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Money/Tap :"
+label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MoneyPerTapStat Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "50"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "$"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Cost MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer"]
+layout_mode = 2
+
+[node name="CostName Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Cost :"
+label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CostStat Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "???"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "$"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="BuyButton MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 5
+
+[node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/BuyButton MarginContainer"]
+self_modulate = Color(0.6666667, 1, 0, 1)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_j04mv")
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="End Seperator" type="Control" parent="AquariumUI/ToolUI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Toolbar MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FoodInfo MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 75
+
+[node name="Name MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
+modulate = Color(0.9, 0.45, 0, 1)
+layout_mode = 2
+texture = ExtResource("10_yyfks")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Food"
+
+[node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 75
+
+[node name="Name MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
+modulate = Color(0.9, 0, 0.15000029, 1)
+layout_mode = 2
+texture = ExtResource("10_yyfks")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Oxygenator"
+
+[node name="Power Slider MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 70
+
+[node name="VSlider" type="VSlider" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer"]
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_owhyu")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_owhyu")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_owhyu")
+theme_override_styles/slider = SubResource("StyleBoxTexture_vh6ro")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_yyfks")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_owhyu")
+value = 1.0
+scrollable = false
+
+[node name="Toolbar HBoxContainer" type="HBoxContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
+[node name="Food MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("8_76k3o")
+
+[node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer" node_paths=PackedStringArray("_tool", "_hideElement")]
+self_modulate = Color(0.8980392, 0.5411765, 0.18039216, 1)
+layout_mode = 2
+theme = ExtResource("8_76k3o")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_frbro")
+text = "
+"
+script = ExtResource("9_frbro")
+_tool = NodePath("../../../../../../../Aquarium/Feeder")
+_hideElement = NodePath("../../../FoodInfo MarginContainer")
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+label_settings = SubResource("LabelSettings_j04mv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Oxygenator MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("8_76k3o")
+
+[node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer" node_paths=PackedStringArray("_tool", "_hideElement")]
+self_modulate = Color(1, 0.100000024, 0.17500019, 1)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_frbro")
+text = "O
+"
+script = ExtResource("9_frbro")
+_tool = NodePath("../../../../../../../Aquarium/Oxygenator")
+_hideElement = NodePath("../../../OxygenatorInfo MarginContainer")
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = SubResource("LabelSettings_j04mv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Finch MarginContainer" type="MarginContainer" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("8_76k3o")
+
+[node name="Button" type="Button" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Finch MarginContainer" node_paths=PackedStringArray("_hideElement")]
+self_modulate = Color(0.6666667, 1, 0, 1)
+layout_mode = 2
+theme = ExtResource("8_76k3o")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_frbro")
+script = ExtResource("13_vh6ro")
+_hideElement = NodePath("../../../../Shop MarginContainer")
+
+[node name="Label" type="Label" parent="AquariumUI/ToolUI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Finch MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "S"
+label_settings = SubResource("LabelSettings_j04mv")
+horizontal_alignment = 1
+vertical_alignment = 2

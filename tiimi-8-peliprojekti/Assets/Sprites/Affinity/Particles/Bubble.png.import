@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8lx4gjnhvf3"
-path="res://.godot/imported/UI Button 64.png-fcf5173960530956bdc6bdb614c53ae2.ctex"
+uid="uid://b2bwna4oxeovl"
+path="res://.godot/imported/Bubble.png-cf8ef4af64fd7e71046eeb78d028b74d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Affinity/UI/UI Button 64.png"
-dest_files=["res://.godot/imported/UI Button 64.png-fcf5173960530956bdc6bdb614c53ae2.ctex"]
+source_file="res://Assets/Sprites/Affinity/Particles/Bubble.png"
+dest_files=["res://.godot/imported/Bubble.png-cf8ef4af64fd7e71046eeb78d028b74d.ctex"]
 
 [params]
 

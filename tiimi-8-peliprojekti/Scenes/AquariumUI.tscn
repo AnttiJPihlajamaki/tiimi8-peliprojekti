@@ -23,14 +23,9 @@ diffuse_texture = ExtResource("3_ogene")
 
 [node name="AquariumUI" type="Control"]
 layout_mode = 3
-anchor_left = -0.333
-anchor_top = -0.333
-anchor_right = 1.3330001
-anchor_bottom = 1.3330001
-offset_left = 383.616
-offset_top = 215.784
-offset_right = -383.6161
-offset_bottom = -215.78406
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_ksqpd")
@@ -51,7 +46,7 @@ script = ExtResource("2_ogene")
 oxygenSlider = NodePath("Oxygen Pointer MarginContainer/VSlider")
 
 [node name="Oxygen Meter MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 415)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -68,7 +63,7 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="Ideal Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer/Oxygen Meter MarginContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 201)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -82,7 +77,7 @@ patch_margin_left = 6
 patch_margin_right = 6
 
 [node name="Oxygen Pointer MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 435)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -96,7 +91,7 @@ theme_override_icons/grabber_disabled = SubResource("CanvasTexture_xbrjc")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_rdn46")
 theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ksqpd")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ogene")
-rounded = true
+value = 25.0
 editable = false
 scrollable = false
 ticks_position = 1
@@ -151,26 +146,3 @@ text = "Money/S"
 [node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = " $/S"
-
-[node name="Toolbar MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Toolbar HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Toolbar MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Oxygenator MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme = ExtResource("3_ksqpd")
-
-[node name="Button" type="Button" parent="Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer"]
-layout_mode = 2
-theme = ExtResource("3_ksqpd")
-text = "O2
-"

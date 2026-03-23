@@ -49,11 +49,6 @@ public partial class GameManager : Node // Store player inventory
 			NightStart();
 		}
 
-		if (_currentTime % 1f < (float)delta) // shows time and if night is true every second
-		{
-			GD.Print("time: " + (int)_currentTime + " is night: " + _isNight);
-		}
-
 		if(_nightAliens.Count == 0 && _isNight)
 		{
 			_isNight = false;

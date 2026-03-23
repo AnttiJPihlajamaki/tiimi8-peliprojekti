@@ -13,6 +13,7 @@ public partial class GameManager : Node // Store player inventory
 	private List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
 	private Aquarium _activeAquarium;
 	private PackedScene _alienScene;
+	private PackedScene _portalScene;
 
 	public static GameManager Instance
 	{
@@ -34,6 +35,7 @@ public partial class GameManager : Node // Store player inventory
     public override void _Ready()
     {
 		_alienScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Alien.tscn");
+		_portalScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/portal.tscn");
     }
 
 	public override void _Process(double delta)
@@ -69,6 +71,10 @@ public partial class GameManager : Node // Store player inventory
 			ActiveAquarium.AddNPC(newAlien);
 			_nightAliens.Add(newAlien);
 			newAlien.GlobalPosition = GetSpawnPosition();
+
+			Node2D portal = _portalScene.Instantiate<Node2D>();
+			ActiveAquarium.AddChild(portal);
+			portal.GlobalPosition = newAlien.GlobalPosition;
 		}
 	}
 

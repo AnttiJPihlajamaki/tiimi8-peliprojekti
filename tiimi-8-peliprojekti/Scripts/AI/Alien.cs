@@ -60,5 +60,6 @@ public partial class Alien : AquariumNPC
 	private void AttackTarget()
 	{
 		nearestFish.ChangeHealth(-_attackDamage);
+		nearestFish.FlashRed();
 	}
 }

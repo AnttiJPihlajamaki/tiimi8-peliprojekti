@@ -40,16 +40,20 @@ public partial class Alien : AquariumNPC
 
 	if (nearestFish != null)
 		{
-			// Move the alien to nearest fish
-			SetMarkerPosition(nearestFish.GlobalPosition);
-
-			if (nearestDistance <= _attackRange && attackCooldown >= _attackSpeed)
-			{
-				AttackTarget();
-				attackCooldown = 0f;
-			}
+			if (nearestDistance > _attackRange)  // if nearest fish not within attack range, set marker fish
+				{
+					SetMarkerPosition(nearestFish.GlobalPosition);
+				}
+				else
+				{
+					SetMarkerPosition(GlobalPosition);  // alien stops moving when within attack range
+					if (attackCooldown >= _attackSpeed)
+					{
+						AttackTarget();
+						attackCooldown = 0f;
+					}
+				}
 		}
-
 	base._PhysicsProcess(delta);
 	}
 

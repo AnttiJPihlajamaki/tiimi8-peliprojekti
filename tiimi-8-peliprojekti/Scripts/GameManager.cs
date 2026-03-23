@@ -33,7 +33,7 @@ public partial class GameManager : Node // Store player inventory
 	}
     public override void _Ready()
     {
-		_alienScene = GD.Load<PackedScene>("res://Assets/Prefabs/Alien.tscn");
+		_alienScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Alien.tscn");
     }
 
 	public override void _Process(double delta)
@@ -48,19 +48,17 @@ public partial class GameManager : Node // Store player inventory
 			_currentTime = _nightTime;
 			NightStart();
 		}
-
 		if(_nightAliens.Count == 0 && _isNight)
 		{
 			_isNight = false;
 			_currentTime = 0f;
-			_nightAliens.Clear();
 		}
 	}
 
 	private void NightStart()
 	{
 		_isNight = true;
-		SpawnAliens(1);
+		SpawnAliens(3);
 	}
 
 	private void SpawnAliens(int amount)

@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://16yub6rlobs8" path="res://Scripts/AI/Alien.cs" id="1_aqv4r"]
 [ext_resource type="Texture2D" uid="uid://cem5jfl6f8yuy" path="res://Assets/Sprites/Aliens/aliencartoon.png" id="3_5spra"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqv4r"]
-radius = 27.666441
-height = 71.98121
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xel27"]
+size = Vector2(51.05928, 50.86565)
 
 [sub_resource type="Animation" id="Animation_aqv4r"]
 resource_name = "Alien Move"
@@ -166,6 +165,9 @@ _data = {
 
 [node name="Alien" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
 scale = Vector2(1.841, 2.043)
+collision_layer = 2
+collision_mask = 2
+safe_margin = 0.2
 script = ExtResource("1_aqv4r")
 _name = "Alien"
 _minSpeed = 2000.0
@@ -177,9 +179,9 @@ _oxygenDamage = 0.0
 _hungerDamage = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.4318323, 6.8526697)
-rotation = -0.7404601
-shape = SubResource("CapsuleShape2D_aqv4r")
+light_mask = 2
+position = Vector2(-0.5431831, 0.9789524)
+shape = SubResource("RectangleShape2D_xel27")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true

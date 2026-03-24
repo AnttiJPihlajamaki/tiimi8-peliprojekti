@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.ComponentModel;
 
-public partial class ToolButton : HideButton
+public partial class ToolButton : HideToggle
 {
 	[Export] Tool _tool;
 	protected override void Toggle(bool set)

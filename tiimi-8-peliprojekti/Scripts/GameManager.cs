@@ -8,7 +8,7 @@ public partial class GameManager : Node // Store player inventory
 	private float _maxTime = 120f; // maximum time
 	private float _nightTime = 119f; // when night will trigger
 	private float _daySpeed = 1f;
-	private float _currentTime = 110f; // The current time
+	private float _currentTime = 0; // The current time
 	private bool _isNight = false; //
 	private List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
 	private Aquarium _activeAquarium;
@@ -34,6 +34,7 @@ public partial class GameManager : Node // Store player inventory
 	}
     public override void _Ready()
     {
+		Reset();
 		_alienScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Alien.tscn");
 		_portalScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/portal.tscn");
     }
@@ -55,6 +56,13 @@ public partial class GameManager : Node // Store player inventory
 			_isNight = false;
 			_currentTime = 0f;
 		}
+	}
+
+	public void Reset()
+	{
+		_currentTime = 0;
+		_money = 0;
+		_nightAliens.Clear();
 	}
 
 	private void NightStart()

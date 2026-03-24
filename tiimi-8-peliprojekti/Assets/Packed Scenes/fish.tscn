@@ -127,7 +127,6 @@ _minSpeed = 50.0
 _maxSpeed = 250.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Goldfish Paperdoll")
-_hunger = 0.0
 
 [node name="Goldfish Paperdoll" type="Node2D" parent="."]
 

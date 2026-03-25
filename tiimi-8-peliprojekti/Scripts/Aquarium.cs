@@ -11,9 +11,6 @@ public partial class Aquarium : Node2D
 	[Export] private float _minIdealOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 	[Export] public float _currentOxygen = 100f; // The current amount of oxygen in the aquarium
 	[Export] private float _oxygenDelta = 0; // The amount of oxygen removed/added per second
-
-	/*[Export] public Array<Tool> _tools; // Array of tools the player can use
-	private int _currentTool = 0; // The index of the current tool in use*/
 	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium
 	[Export] public NavigationRegion2D _navigationRegion; // The navigation region the fish can move in
@@ -21,53 +18,11 @@ public partial class Aquarium : Node2D
     public override void _Ready()
     {
 		GameManager.Instance.ActiveAquarium = this;
-
-        /*for(int i = 0; i < _tools.Count; i++) // Initializes tools so only current tool is active
-		{
-			if(i == _currentTool)
-			{
-				_tools[i].ProcessMode = ProcessModeEnum.Inherit;
-			}
-			else
-			{
-				_tools[i].ProcessMode = ProcessModeEnum.Disabled;
-			}
-		}*/
     }
-
-	/*public override void _Input(InputEvent @event) // Handle input for changing tools
-	{
-		if (@event.IsActionPressed(InputConfig.NextTool))
-		{
-			if(_currentTool < _tools.Count-1)
-			{
-				ChangeTool(_currentTool + 1); // Change to next tool
-			}
-			else
-			{
-				ChangeTool(0); // Change to first tool if current tool is last tool i the array
-			}
-		}
-		else if (@event.IsActionPressed(InputConfig.PreviousTool))
-		{
-			if(_currentTool > 0)
-			{
-				ChangeTool(_currentTool - 1); // Change to previous tool
-			}
-			else
-			{
-				ChangeTool(_tools.Count - 1); // Change to last tool if current tool is first tool i the array
-			}
-
-		}
-	}*/
 
     public override void _PhysicsProcess(double delta)
     {
 		_currentOxygen = Mathf.Clamp(_currentOxygen + (_oxygenDelta * (float)delta), _minOxygen, _maxOxygen); // Change current oxygen according to the delta
-
-		GD.Print("Money: " + (int)Math.Round(GameManager.Instance.Money) + " Oxygen: " + (int)Math.Round(_currentOxygen) + " / " + _maxOxygen);
-		// ! Temporary method to get info while UI gets added !
     }
 
 	public void UpdateOxygenDelta() // Updates change in current oxygen
@@ -78,13 +33,6 @@ public partial class Aquarium : Node2D
 			_oxygenDelta -= npc._oxygenUsage; // Reduce delta for each fish by their oxygen usage
 		}
 	}
-
-	/*public void ChangeTool(int newTool) // The method to change tools
-	{
-		_tools[_currentTool].ProcessMode = ProcessModeEnum.Disabled; // Disable previous
-		_currentTool = newTool; // Set current to next
-		_tools[_currentTool].ProcessMode = ProcessModeEnum.Inherit; // Enable next
-	}*/
 
 	public void AddNPC(AquariumNPC newNPC) // The method to handle adding fish to aquarium
 	{

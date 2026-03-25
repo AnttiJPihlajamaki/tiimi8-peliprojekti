@@ -152,7 +152,7 @@ public partial class AquariumNPC : CharacterBody2D
 	}
 
 	public void FlashRed()
-	{	
+	{
 		Tween tween = CreateTween();
 		tween.TweenProperty(_paperdoll, "modulate", new Color(1, 0, 0), 0.05f); // flash red
 		tween.TweenProperty(_paperdoll, "modulate", new Color(1, 1, 1), 0.05f); // color back to normal

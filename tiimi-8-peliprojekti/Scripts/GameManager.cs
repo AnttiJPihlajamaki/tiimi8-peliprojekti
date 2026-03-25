@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class GameManager : Node // Store player inventory
 {
@@ -14,6 +15,7 @@ public partial class GameManager : Node // Store player inventory
 	private Aquarium _activeAquarium;
 	private PackedScene _alienScene;
 	private PackedScene _portalScene;
+	private int _difficultyLevel = 3;
 
 	public static GameManager Instance
 	{
@@ -62,8 +64,20 @@ public partial class GameManager : Node // Store player inventory
 			{
 				_isNight = false;
 				_currentTime = 0f;
+				_difficultyLevel++;
 			}
 		}
+
+		if(_isNight == true && ActiveAquarium._npcs.Count(npc => npc is not Alien) == 0)
+		{
+			GameOver();
+		}
+	}
+
+	private void GameOver()
+	{
+		Reset();
+    	GetTree().ChangeSceneToFile("res://Scenes/MainMenuScene.tscn");
 	}
 
 	public void Reset()
@@ -76,19 +90,19 @@ public partial class GameManager : Node // Store player inventory
 	private void NightStart()
 	{
 		_isNight = true;
-		SpawnAliens(3);
+		SpawnAliens(_difficultyLevel);
 	}
 
 	private void SpawnAliens(int amount)
 	{
 		for (int a = 0; a < amount; a++)
 		{
-			Alien newAlien = _alienScene.Instantiate<Alien>();
+			Alien newAlien = _alienScene.Instantiate<Alien>();  // new alien added to list _nightAlien
 			ActiveAquarium.AddNPC(newAlien);
 			_nightAliens.Add(newAlien);
 			newAlien.GlobalPosition = GetSpawnPosition();
 
-			Node2D portal = _portalScene.Instantiate<Node2D>();
+			Node2D portal = _portalScene.Instantiate<Node2D>();  // portal animation
 			ActiveAquarium.AddChild(portal);
 			portal.GlobalPosition = newAlien.GlobalPosition;
 		}

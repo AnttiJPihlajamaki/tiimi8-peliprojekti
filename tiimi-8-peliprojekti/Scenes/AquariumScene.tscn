@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://elcmk51jkcmq"]
+[gd_scene load_steps=34 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="2_nhrgb"]
@@ -223,6 +223,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Shop Panel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer"]

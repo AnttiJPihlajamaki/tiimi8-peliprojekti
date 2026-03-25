@@ -32,6 +32,11 @@ public partial class GameManager : Node // Store player inventory
 			return;
 		}
 	}
+
+    public override void _EnterTree()
+    {
+        Reset();
+    }
     public override void _Ready()
     {
 		Reset();
@@ -41,20 +46,23 @@ public partial class GameManager : Node // Store player inventory
 
 	public override void _Process(double delta)
 	{
-		if (_isNight == false)
+		if(ActiveAquarium != null)
 		{
-			_currentTime += (float)delta * _daySpeed;
-		}
+			if (_isNight == false)
+			{
+				_currentTime += (float)delta * _daySpeed;
+			}
 
-		if (_currentTime >= _nightTime && !_isNight)
-		{
-			_currentTime = _nightTime;
-			NightStart();
-		}
-		if(_nightAliens.Count == 0 && _isNight)
-		{
-			_isNight = false;
-			_currentTime = 0f;
+			if (_currentTime >= _nightTime && !_isNight)
+			{
+				_currentTime = _nightTime;
+				NightStart();
+			}
+			if(_nightAliens.Count == 0 && _isNight)
+			{
+				_isNight = false;
+				_currentTime = 0f;
+			}
 		}
 	}
 

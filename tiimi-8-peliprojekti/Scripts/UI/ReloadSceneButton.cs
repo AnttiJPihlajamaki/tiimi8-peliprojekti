@@ -9,6 +9,7 @@ public partial class ReloadSceneButton : Button
 	}
 	private void  ReloadScene()
 	{
+		GameManager.Instance.Reset();
     	GetTree().ReloadCurrentScene();
 	}
 }

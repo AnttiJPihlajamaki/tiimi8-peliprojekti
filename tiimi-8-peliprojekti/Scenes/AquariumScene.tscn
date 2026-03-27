@@ -1,11 +1,15 @@
-[gd_scene load_steps=37 format=3 uid="uid://csvxi0xhgltru"]
+[gd_scene load_steps=39 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
+[ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
 [ext_resource type="Script" uid="uid://dukld03k2gtj0" path="res://Scripts/Tools/Feeder.cs" id="2_nhrgb"]
 [ext_resource type="PackedScene" uid="uid://cd2o8cddplhoc" path="res://Assets/Packed Scenes/food.tscn" id="3_conu5"]
 [ext_resource type="Script" uid="uid://dnyxg0rpu65bj" path="res://Scripts/Tools/Oxygenator.cs" id="4_5rrdd"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="5_7sxcg"]
 [ext_resource type="PackedScene" uid="uid://loy77orom7e8" path="res://Scenes/AquariumUI.tscn" id="6_5dkmn"]
+[ext_resource type="Script" uid="uid://d3o5cg7yposph" path="res://Scripts/Grid/Grid.cs" id="6_5rrdd"]
+[ext_resource type="Script" uid="uid://cfmbhh2k6qxo0" path="res://Scripts/Grid/GridPlacer.cs" id="6_7sxcg"]
+[ext_resource type="PackedScene" uid="uid://rbjnuvpnrpq0" path="res://Assets/Packed Scenes/seaweed.tscn" id="7_5dkmn"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="7_m03r2"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="8_ij331"]
 [ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Packed Scenes/fish.tscn" id="9_rw3ht"]
@@ -17,22 +21,14 @@
 [ext_resource type="Script" uid="uid://uotrurim1u1o" path="res://Scripts/UI/ReloadSceneButton.cs" id="15_p6q20"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="16_etofs"]
 
-[sub_resource type="Gradient" id="Gradient_sjceq"]
-colors = PackedColorArray(0.070000015, 0.4899999, 0.7, 1, 0.32, 0.71999997, 0.8, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_sjceq"]
-noise_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fi0v"]
-width = 1920
-height = 1080
-noise = SubResource("FastNoiseLite_sjceq")
-color_ramp = SubResource("Gradient_sjceq")
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bgdf3"]
 vertices = PackedVector2Array(950, 530, -950, 530, -950, -530, 950, -530)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -540, -960, 540, 960, 540, 960, -540)])
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_conu5"]
+size = Vector2(1920, 200)
+orientation = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aw301"]
 
@@ -181,7 +177,7 @@ _navigationRegion = NodePath("NavigationRegion2D")
 
 [node name="Background" type="Sprite2D" parent="Aquarium"]
 z_index = -10
-texture = SubResource("NoiseTexture2D_7fi0v")
+texture = ExtResource("2_conu5")
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1080)
 
@@ -204,6 +200,22 @@ script = ExtResource("4_5rrdd")
 _maxPower = 25.0
 powerSlider = NodePath("../../UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
 _aquarium = NodePath("..")
+
+[node name="Grid Test" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
+position = Vector2(0, 440)
+script = ExtResource("6_7sxcg")
+_grid = NodePath("Grid")
+_seaweed = ExtResource("7_5dkmn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Aquarium/Grid Test"]
+mesh = SubResource("PlaneMesh_conu5")
+
+[node name="Grid" type="Node2D" parent="Aquarium/Grid Test"]
+position = Vector2(-940, -80)
+script = ExtResource("6_5rrdd")
+GridWidth = 48
+CellSize = Vector2(40, 40)
+_defaultColor = Color(1, 0, 0, 1)
 
 [node name="AquariumBoundaries" type="StaticBody2D" parent="Aquarium"]
 

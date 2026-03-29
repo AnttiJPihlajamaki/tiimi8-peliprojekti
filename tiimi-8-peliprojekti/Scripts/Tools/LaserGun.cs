@@ -22,6 +22,7 @@ private float _cooldownTimer = 0f;
 		Node2D laser = _laserScene.Instantiate<Node2D>();  // laser shooting animation
 		GameManager.Instance.ActiveAquarium.AddChild(laser);
 		laser.GlobalPosition = position;
+		laser.ZIndex = 10;
 
 		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{
@@ -30,7 +31,7 @@ private float _cooldownTimer = 0f;
 			float attackDistance = position.DistanceTo(npc.GlobalPosition);
 			if (attackDistance <= _attackRange)
 			{
-				npc.ChangeHealth(_attackDamage);
+				npc.ChangeHealth(-_attackDamage);
 				npc.FlashRed();
 			}
 		}

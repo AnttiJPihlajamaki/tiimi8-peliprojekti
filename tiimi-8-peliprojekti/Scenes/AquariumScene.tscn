@@ -171,10 +171,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Aquarium Scene" type="Node2D"]
 
-[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion")]
+[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion", "ObjectPlacer")]
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
 _navigationRegion = NodePath("NavigationRegion2D")
+ObjectPlacer = NodePath("Grid Test")
 
 [node name="Background" type="Sprite2D" parent="Aquarium"]
 z_index = -10
@@ -208,21 +209,25 @@ script = ExtResource("6_m03r2")
 _aquarium = NodePath("..")
 
 [node name="Grid Test" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
-position = Vector2(0, 440)
+position = Vector2(0, 420)
 script = ExtResource("6_7sxcg")
 _grid = NodePath("Grid")
 _seaweed = ExtResource("7_5dkmn")
+_invalidColor = Color(1, 0, 0, 0.5882353)
+_validColor = Color(0, 1, 0, 0.5882353)
+_fullColor = Color(0, 0, 1, 0.5882353)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Aquarium/Grid Test"]
 visible = false
 mesh = SubResource("PlaneMesh_conu5")
 
 [node name="Grid" type="Node2D" parent="Aquarium/Grid Test"]
-position = Vector2(-940, -80)
+position = Vector2(-940, -100)
 script = ExtResource("6_5rrdd")
 GridWidth = 48
+GridHeight = 6
 CellSize = Vector2(40, 40)
-_defaultColor = Color(1, 0, 0, 1)
+_defaultColor = Color(1, 0, 0, 0)
 
 [node name="AquariumBoundaries" type="StaticBody2D" parent="Aquarium"]
 

@@ -1,10 +1,13 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class GridObject : StaticBody2D
 {
 	[Export] private Vector2 size = new Vector2(1,1);
 	[Export] private Vector2 offset = new Vector2(0,0);
+
+	[Export] private CanvasItem sprite;
 
     public override void _Ready()
 	{
@@ -23,5 +26,10 @@ public partial class GridObject : StaticBody2D
 		{
 			child.Position -= offset;
 		}
+	}
+
+	public void SetCanvasOrder(int order)
+	{
+		sprite.ZIndex = order;
 	}
 }

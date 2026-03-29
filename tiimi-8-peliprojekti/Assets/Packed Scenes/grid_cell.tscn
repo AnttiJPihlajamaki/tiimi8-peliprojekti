@@ -10,6 +10,7 @@ orientation = 2
 size = Vector2(40, 40)
 
 [node name="GridCell" type="Area2D" node_paths=PackedStringArray("_meshInstance2d", "_collisionShape2d")]
+z_index = 5
 script = ExtResource("1_we050")
 _meshInstance2d = NodePath("MeshInstance2D")
 _collisionShape2d = NodePath("CollisionShape2D")

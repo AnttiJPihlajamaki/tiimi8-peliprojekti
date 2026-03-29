@@ -10,6 +10,7 @@ public partial class GridPlacer : Node2D
 
 	[Export] private Color _invalidColor;
 	[Export] private Color _validColor;
+	[Export] private Color _fullColor;
 	
 
 	private GridObject _gridObject;
@@ -59,6 +60,7 @@ public partial class GridPlacer : Node2D
 			ResetHighlight();
 			_objectCells = GetObjectCells();
 			_isValid = CheckAndHighlightCells(_objectCells);
+			_gridObject.SetCanvasOrder(Mathf.RoundToInt((targetPosition.Y- GlobalPosition.Y) / _grid.CellSize.Y));
 		}
 	}
 	private void PlacePlacement(Array<GridCell> objectCells)
@@ -101,11 +103,17 @@ public partial class GridPlacer : Node2D
 
 		float objectCellCount = _gridObject.GetRect().Size.X * _gridObject.GetRect().Size.Y;
 
-		GD.Print(objectCellCount + " : " + objectCells.Count);
-
 		if(objectCellCount != objectCells.Count)
 		{
 			isValid = false;
+		}
+
+		foreach (GridCell cell in _grid.GetChildren())
+		{
+			if (cell.Full)
+			{
+				cell.ChangeColor(_fullColor);
+			}
 		}
 
 		foreach (GridCell cell in objectCells)

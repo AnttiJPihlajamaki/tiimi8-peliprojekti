@@ -40,9 +40,10 @@ _data = {
 &"Sway": SubResource("Animation_qsqnp")
 }
 
-[node name="Seaweed" type="StaticBody2D"]
+[node name="Seaweed" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_odg4e")
 offset = Vector2(1, 1)
+sprite = NodePath("Seaweed Sprite/Seaweed")
 
 [node name="Seaweed Sprite" type="Node2D" parent="."]
 

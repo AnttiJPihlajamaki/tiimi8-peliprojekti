@@ -56,5 +56,4 @@ using System;
 			GameManager.Instance.ActiveAquarium.ObjectPlacer.TargetPosition = GlobalPosition;
 		}
 	}
-
 }

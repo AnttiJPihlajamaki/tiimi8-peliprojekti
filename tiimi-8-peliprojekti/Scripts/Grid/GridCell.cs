@@ -8,20 +8,32 @@ using System;
 
 	private Vector2 cellSize = new (1,1);
 
+	private bool full = false;
+	public bool Full
+	{
+		get{ return full; }
+		set{ full = value; }
+	}
+
     public override void _Ready()
     {
+		if (IsPickable())
+		{
+			InputEvent += GetGridPosition;
+		}
+
         SetCellSize(cellSize);
 
 		Grid grid = GetParent<Grid>();
 		ChangeColor(grid.DefaultColor);
     }
 
-	private void ChangeColor(Color newColor)
+	public void ChangeColor(Color newColor)
 	{
 		_meshInstance2d.SelfModulate = newColor;
 	}
 
-	private Rect2 GetRect()
+	public Rect2 GetRect()
 	{
 		return new Rect2(new Vector2(GlobalPosition.X, GlobalPosition.Y), cellSize);
 	}
@@ -35,6 +47,14 @@ using System;
 
 		planeMeshInstance2D.Size = cellSize;
 		rectangleShape2D.Size = cellSize;
+	}
+
+	private void GetGridPosition(Node viewport, InputEvent @event, long shape_idx)
+	{
+		if (@event is InputEventScreenDrag)
+		{
+			GameManager.Instance.ActiveAquarium.ObjectPlacer.TargetPosition = GlobalPosition;
+		}
 	}
 
 }

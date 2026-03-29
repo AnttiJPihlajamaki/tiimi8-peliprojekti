@@ -23,7 +23,7 @@ using System;
 		}
 	}
 	private Vector2 cellSize = new Vector2(1,1);
-	[Export] private Vector2 CellSize
+	[Export] public Vector2 CellSize
 	{
 		get{ return cellSize; }
 		set

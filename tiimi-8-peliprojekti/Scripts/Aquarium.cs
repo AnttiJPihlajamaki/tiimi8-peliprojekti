@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class Aquarium : Node2D
 {
@@ -14,6 +15,13 @@ public partial class Aquarium : Node2D
 	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium
 	[Export] public NavigationRegion2D _navigationRegion; // The navigation region the fish can move in
+
+	private GridPlacer objectPlacer;
+	[Export] public GridPlacer ObjectPlacer
+	{
+		get{ return objectPlacer; }
+		set{ objectPlacer = value; }
+	}
 
     public override void _Ready()
     {

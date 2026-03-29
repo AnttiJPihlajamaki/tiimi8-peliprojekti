@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=3 uid="uid://crgwcy8j732qw"]
+
+[ext_resource type="Script" uid="uid://bym4oibllpcad" path="res://Scripts/AI/Fish/Piranha.cs" id="1_prqmn"]
+[ext_resource type="Texture2D" uid="uid://dyqf8j3pmo2v3" path="res://Assets/Sprites/Affinity/NPCs/Piranha/piranha.png" id="1_r3o17"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvt62"]
+radius = 48.009506
+height = 178.25905
+
+[sub_resource type="Animation" id="Animation_dvt62"]
+resource_name = "swim"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.04363323, 0.04363323]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5668943]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7537986]
+}
+
+[sub_resource type="Animation" id="Animation_kibxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.04363323]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n5sg"]
+_data = {
+&"RESET": SubResource("Animation_kibxn"),
+&"swim": SubResource("Animation_dvt62")
+}
+
+[node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_prqmn")
+_navigationAgent = NodePath("NavigationAgent2D")
+_paperdoll = NodePath("PiranhaPaperdoll")
+_hungryLimit = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(8, -1)
+rotation = -1.5438019
+shape = SubResource("CapsuleShape2D_dvt62")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0n5sg")
+}
+autoplay = "swim"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PiranhaPaperdoll" type="Node2D" parent="."]
+
+[node name="Piranha4" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(-32, 30.666668)
+scale = Vector2(0.09246861, 0.099537045)
+texture = ExtResource("1_r3o17")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(2881, 576, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Piranha2" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(84.00002, -11.000008)
+scale = Vector2(0.092468604, 0.099537045)
+skew = -0.04363323
+texture = ExtResource("1_r3o17")
+region_enabled = true
+region_rect = Rect2(1985, 128, 768, 1088)
+region_filter_clip_enabled = true
+
+[node name="Piranha" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.09246861, 0.09953706)
+texture = ExtResource("1_r3o17")
+region_enabled = true
+region_rect = Rect2(129, 128, 1856, 1216)
+region_filter_clip_enabled = true
+
+[node name="Piranha3" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(-10.666666, 29.333334)
+scale = Vector2(0.09246861, 0.09953705)
+texture = ExtResource("1_r3o17")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(2881, 576, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Piranha5" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(-41, -18)
+scale = Vector2(0.09246861, 0.09953706)
+texture = ExtResource("1_r3o17")
+region_enabled = true
+region_rect = Rect2(3521, 576, 192, 128)
+region_filter_clip_enabled = true

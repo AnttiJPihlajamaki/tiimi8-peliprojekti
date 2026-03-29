@@ -214,6 +214,7 @@ _grid = NodePath("Grid")
 _seaweed = ExtResource("7_5dkmn")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Aquarium/Grid Test"]
+visible = false
 mesh = SubResource("PlaneMesh_conu5")
 
 [node name="Grid" type="Node2D" parent="Aquarium/Grid Test"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://csvxi0xhgltru"]
+[gd_scene load_steps=40 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://loy77orom7e8" path="res://Scenes/AquariumUI.tscn" id="6_5dkmn"]
 [ext_resource type="Script" uid="uid://d3o5cg7yposph" path="res://Scripts/Grid/Grid.cs" id="6_5rrdd"]
 [ext_resource type="Script" uid="uid://cfmbhh2k6qxo0" path="res://Scripts/Grid/GridPlacer.cs" id="6_7sxcg"]
+[ext_resource type="Script" uid="uid://w85uf56yqqu7" path="res://Scripts/Tools/LaserGun.cs" id="6_m03r2"]
 [ext_resource type="PackedScene" uid="uid://rbjnuvpnrpq0" path="res://Assets/Packed Scenes/seaweed.tscn" id="7_5dkmn"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="7_m03r2"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="8_ij331"]
@@ -199,6 +200,11 @@ process_mode = 4
 script = ExtResource("4_5rrdd")
 _maxPower = 25.0
 powerSlider = NodePath("../../UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
+_aquarium = NodePath("..")
+
+[node name="LaserGun" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium")]
+process_mode = 4
+script = ExtResource("6_m03r2")
 _aquarium = NodePath("..")
 
 [node name="Grid Test" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
@@ -779,6 +785,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "S"
+label_settings = SubResource("LabelSettings_j04mv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LaserGun MarginContainer2" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_7sxcg")
+
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer2" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+self_modulate = Color(0.5834204, 0, 0.08015778, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_frbro")
+text = "
+"
+script = ExtResource("12_e2tru")
+_tool = NodePath("../../../../../../../Aquarium/LaserGun")
+_itemsToToggle = []
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer2/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "L"
 label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2

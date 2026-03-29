@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class laser : Tool
+public partial class LaserGun : Tool
 {
 private PackedScene _laserScene;
 [Export] private float _attackDamage = 50f;
@@ -19,7 +19,11 @@ private float _cooldownTimer = 0f;
 
 	private void ShootLaser(Vector2 position)
 	{
-		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)
+		Node2D laser = _laserScene.Instantiate<Node2D>();  // laser shooting animation
+		GameManager.Instance.ActiveAquarium.AddChild(laser);
+		laser.GlobalPosition = position;
+
+		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{
 			if (npc is not Alien) continue;
 
@@ -28,21 +32,17 @@ private float _cooldownTimer = 0f;
 			{
 				npc.ChangeHealth(_attackDamage);
 				npc.FlashRed();
-
-				Node2D laser = _laserScene.Instantiate<Node2D>();  // laser shooting animation
-				GameManager.Instance.ActiveAquarium.AddChild(laser);
-				laser.GlobalPosition = position;
 			}
 		}
 	}
 
-	public void _Ready()
+	public override void _Ready()
 	{
 		_laserScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/laser.tscn");
 	}
 
 
-	public void _Process(double delta)
+	public override void _Process(double delta)
 	{
         if (_cooldownTimer > 0f)
         {

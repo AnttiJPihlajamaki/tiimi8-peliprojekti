@@ -15,6 +15,8 @@ public partial class Aquarium : Node2D
 	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
 	public List<AquariumObject> _objects = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium
+
+	[Export] private Control _shop;
 	[Export] public NavigationRegion2D _navigationRegion; // The navigation region the fish can move in
 
 	private GridPlacer objectPlacer;
@@ -49,8 +51,6 @@ public partial class Aquarium : Node2D
 
 	public void AddNPC(AquariumNPC newNPC) // The method to handle adding fish to aquarium
 	{
-		newNPC.Name = newNPC._name + "#" + newNPC.GetInstanceId(); // Gives object unique name
-
 		AddChild(newNPC); // Adds fish as child of aquarium
 		_npcs.Add(newNPC); // Adds fish to list of fish
 
@@ -95,6 +95,18 @@ public partial class Aquarium : Node2D
 		newFood.removalDistance = _navigationRegion.GetBounds().Size.Y/2; // Set food's removal distance to half of the vertical length of the navigation region
 
 		newFood._aquarium = this; // Adds reference of aquarium to the food
+	}
+
+	public void UpdateShopPrices()
+	{
+		foreach(Node node in _shop.GetChildren())
+		{
+			if(node is ShopItem)
+			{
+				ShopItem shopItem = node as ShopItem;
+				shopItem.UpdatePrice();
+			}
+		}
 	}
 
 	public bool MinMaxOxygen() // Helper method to check if current oxygen is with min/max

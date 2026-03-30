@@ -47,6 +47,9 @@ public partial class GridPlacer : Node2D
 	private void CreatePlacement()
 	{
 		GridObject newPlacement = _seaweed.Instantiate<GridObject>();
+
+		newPlacement.Name = newPlacement.Name + "#" + newPlacement.GetInstanceId(); // Gives object unique name
+		
 		newPlacement.AdjustOffset(_grid.CellSize/2);
 		_objectParent.AddChild(newPlacement);
 		_gridObject = newPlacement;

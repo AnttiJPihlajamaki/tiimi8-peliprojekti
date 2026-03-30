@@ -4,7 +4,13 @@ using Godot;
 // Parent class for all different types of fish
 public partial class AquariumNPC : CharacterBody2D
 {
-	[Export] public string _name = "NPC"; // The name of type of fish
+	[Export] private string _name = "NPC"; // The name of type of fish
+
+	public string NpcName
+	{
+		get { return _name;}
+		set { _name = value;}
+	}
 	[Export] protected float _minSpeed = 100.0f; // Minimum movement speed
 	[Export] protected float _maxSpeed = 150.0f; // Maximum movement speed
 	protected float _speed; // Current speed the fish is moving at
@@ -158,7 +164,7 @@ public partial class AquariumNPC : CharacterBody2D
 		tween.TweenProperty(_paperdoll, "modulate", new Color(1, 1, 1), 0.05f); // color back to normal
 	}
 
-	private void Die() // Method that handles the fish dying
+	protected virtual void Die() // Method that handles the fish dying
 	{
 		_aquarium.RemoveFish(this); // Removes fish from aquarium
 		QueueFree(); // Removes the node

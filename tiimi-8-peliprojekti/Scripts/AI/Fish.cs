@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 // Parent class for all different types of fish
 public partial class Fish : AquariumNPC
@@ -10,4 +11,12 @@ public partial class Fish : AquariumNPC
 
 		base._PhysicsProcess(delta);
 	}
+
+    protected override void Die()
+    {
+        base.Die();
+		GameManager.Instance.ActiveAquarium.UpdateShopPrices();
+    }
+
+
 }

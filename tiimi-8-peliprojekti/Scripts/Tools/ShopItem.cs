@@ -12,6 +12,7 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 
 	[Export] private Button _buyButton;
 	[Export] private Label _costLabel;
+	[Export] private string _name = "NPC";
 
 	public override void _Ready()
 	{
@@ -31,14 +32,16 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 		foreach(AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs) // Increases price for each fish in the aquarium
 		{
 			if(npc is not Fish) continue;
-
-			if(_currentPrice == 0f && _freeSample) // Logic to handle free sample
+			else if(npc.NpcName == _name)
 			{
-				_currentPrice = _basePrice;
-			}
-			else
-			{
-				_currentPrice += _currentPrice * 1.2f; // Increase price exponentially for each subsequent fish
+				if(_currentPrice == 0f && _freeSample) // Logic to handle free sample
+				{
+					_currentPrice = _basePrice;
+				}
+				else
+				{
+					_currentPrice += _currentPrice * 1.2f; // Increase price exponentially for each subsequent fish
+				}
 			}
 		}
 
@@ -59,6 +62,9 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 	{
 
 		Fish newFish = _fishPackedScene.Instantiate<Fish>(); // Instantiatses new fish
+
+		newFish.Name = _name + "#" + newFish.GetInstanceId(); // Gives object unique name
+		newFish.NpcName = _name;
 
 		GameManager.Instance.ActiveAquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
 

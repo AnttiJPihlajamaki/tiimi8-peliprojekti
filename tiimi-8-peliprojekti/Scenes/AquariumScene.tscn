@@ -167,9 +167,10 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Aquarium Scene" type="Node2D"]
 
-[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion", "ObjectPlacer")]
+[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_shop", "_navigationRegion", "ObjectPlacer")]
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
+_shop = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer")
 _navigationRegion = NodePath("NavigationRegion2D")
 ObjectPlacer = NodePath("ObjectPlacer")
 
@@ -185,6 +186,7 @@ region_rect = Rect2(0, 0, 1920, 1080)
 zoom = Vector2(0.6, 0.6)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Aquarium"]
+visible = false
 scale = Vector2(0.9, 0.9)
 navigation_polygon = SubResource("NavigationPolygon_bgdf3")
 
@@ -352,6 +354,7 @@ _fishPackedScene = ExtResource("9_rw3ht")
 _freeSample = true
 _buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
 _costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
+_name = "Goldfish"
 
 [node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
 self_modulate = Color(0.9, 0.54, 0.17999998, 1)
@@ -601,7 +604,6 @@ mouse_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-mouse_filter = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
@@ -729,7 +731,6 @@ layout_mode = 2
 text = "Planter"
 
 [node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8

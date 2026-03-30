@@ -12,6 +12,7 @@ public partial class GridPlacer : Node2D
 	[Export] private Color _validColor;
 	[Export] private Color _fullColor;
 
+	[Export] private Node2D _objectParent;
 
 	private GridObject _gridObject;
 	[Export] private bool _isValid = false;
@@ -47,7 +48,7 @@ public partial class GridPlacer : Node2D
 	{
 		GridObject newPlacement = _seaweed.Instantiate<GridObject>();
 		newPlacement.AdjustOffset(_grid.CellSize/2);
-		AddChild(newPlacement);
+		_objectParent.AddChild(newPlacement);
 		_gridObject = newPlacement;
 
 		foreach(Node child in _gridObject.GetChildren())

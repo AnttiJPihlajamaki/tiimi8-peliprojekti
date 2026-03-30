@@ -179,6 +179,8 @@ texture = ExtResource("2_conu5")
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1080)
 
+[node name="AquariumObjects" type="Node2D" parent="Aquarium"]
+
 [node name="Camera2D" type="Camera2D" parent="Aquarium"]
 zoom = Vector2(0.6, 0.6)
 
@@ -204,7 +206,7 @@ process_mode = 4
 script = ExtResource("6_m03r2")
 _aquarium = NodePath("..")
 
-[node name="ObjectPlacer" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
+[node name="ObjectPlacer" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid", "_objectParent")]
 process_mode = 4
 position = Vector2(0, 420)
 script = ExtResource("6_7sxcg")
@@ -213,6 +215,7 @@ _seaweed = ExtResource("7_5dkmn")
 _invalidColor = Color(1, 0, 0, 0.5882353)
 _validColor = Color(0, 1, 0, 0.5882353)
 _fullColor = Color(0, 0, 1, 0.5882353)
+_objectParent = NodePath("../AquariumObjects")
 
 [node name="Grid Parent" type="Node2D" parent="Aquarium"]
 position = Vector2(0, 420)

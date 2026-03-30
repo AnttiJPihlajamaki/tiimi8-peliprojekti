@@ -92,6 +92,7 @@ public partial class GameManager : Node // Store player inventory
 		_currentTime = 0;
 		_money = 0;
 		_nightAliens.Clear();
+		_difficultyLevel = 3;
 	}
 
 	private void NightStart()

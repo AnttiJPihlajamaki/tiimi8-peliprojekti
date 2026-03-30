@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://csvxi0xhgltru"]
+[gd_scene load_steps=39 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -26,10 +26,6 @@
 vertices = PackedVector2Array(950, 530, -950, 530, -950, -530, 950, -530)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -540, -960, 540, 960, 540, 960, -540)])
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_conu5"]
-size = Vector2(1920, 200)
-orientation = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aw301"]
 
@@ -216,10 +212,6 @@ _seaweed = ExtResource("7_5dkmn")
 _invalidColor = Color(1, 0, 0, 0.5882353)
 _validColor = Color(0, 1, 0, 0.5882353)
 _fullColor = Color(0, 0, 1, 0.5882353)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Aquarium/Grid Test"]
-visible = false
-mesh = SubResource("PlaneMesh_conu5")
 
 [node name="Grid" type="Node2D" parent="Aquarium/Grid Test"]
 position = Vector2(-940, -100)

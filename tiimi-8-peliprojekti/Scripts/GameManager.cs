@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks.Dataflow;
 
 public partial class GameManager : Node // Store player inventory
 {
@@ -11,7 +12,7 @@ public partial class GameManager : Node // Store player inventory
 	private float _daySpeed = 1f;
 	private float _currentTime = 110f; // The current time
 	private bool _isNight = false; //
-	private List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
+	public List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
 	private Aquarium _activeAquarium;
 	private PackedScene _alienScene;
 	private PackedScene _portalScene;
@@ -48,6 +49,7 @@ public partial class GameManager : Node // Store player inventory
 
 	public override void _Process(double delta)
 	{
+		GD.Print(_currentTime);
 		if(ActiveAquarium != null)
 		{
 			if (_isNight == false)
@@ -72,6 +74,11 @@ public partial class GameManager : Node // Store player inventory
 		{
 			GameOver();
 		}
+	}
+
+	public void RemoveNightAlien(Alien alien)
+	{
+		_nightAliens.Remove(alien);
 	}
 
 	private void GameOver()

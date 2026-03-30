@@ -12,5 +12,6 @@ public partial class ChangeSceneButton : Button
 	{
 		var nextScene = (PackedScene)ResourceLoader.Load(scene.ToPathString());
     	GetTree().ChangeSceneToPacked(nextScene);
+		GameManager.Instance.Reset();
 	}
 }

@@ -54,6 +54,11 @@ public partial class Alien : AquariumNPC
 					}
 				}
 		}
+	if (_health <= 0)
+		{
+			GameManager.Instance.RemoveNightAlien(this);
+			QueueFree();
+		}
 	base._PhysicsProcess(delta);
 	}
 

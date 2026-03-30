@@ -12,7 +12,7 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] protected NavigationAgent2D _navigationAgent;	// The navigation agent component to handle AI on the navigation region
 	[Export] protected Node2D _paperdoll;	// Sprite of the fish
 	[Export] private float _maxHealth = 100.0f;	// Maximum health
-	[Export] private float _health = 100.0f; // Current health
+	[Export] public float _health = 100.0f; // Current health
 	[Export] public float _oxygenUsage = 1.0f; // The amount of oxygen the fish uses
 	[Export] private float _oxygenDamage = 1.0f; // The amount of damage the NPC takes from unideal oxygen per second
 	[Export] protected float _maxHunger = 100.0f; // Maximum hunger the fish can have

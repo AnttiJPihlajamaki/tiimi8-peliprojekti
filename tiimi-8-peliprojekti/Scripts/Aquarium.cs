@@ -13,6 +13,7 @@ public partial class Aquarium : Node2D
 	[Export] public float _currentOxygen = 100f; // The current amount of oxygen in the aquarium
 	[Export] private float _oxygenDelta = 0; // The amount of oxygen removed/added per second
 	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
+	public List<AquariumObject> _objects = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium
 	[Export] public NavigationRegion2D _navigationRegion; // The navigation region the fish can move in
 
@@ -40,6 +41,10 @@ public partial class Aquarium : Node2D
 		{
 			_oxygenDelta -= npc._oxygenUsage; // Reduce delta for each fish by their oxygen usage
 		}
+		foreach(AquariumObject obj in _objects)
+		{
+			_oxygenDelta -= obj._oxygenUsage; // Reduce delta for each fish by their oxygen usage
+		}
 	}
 
 	public void AddNPC(AquariumNPC newNPC) // The method to handle adding fish to aquarium
@@ -54,6 +59,24 @@ public partial class Aquarium : Node2D
 		newNPC.SetMarkerRegion(_navigationRegion);
 
 		UpdateOxygenDelta(); // Update change in current oxygen
+	}
+
+	public void AddObject(AquariumObject newObject)
+	{
+		newObject.Name = newObject._name + "#" + newObject.GetInstanceId(); // Gives object unique name
+
+		_objects.Add(newObject); // Adds fish to list of fish
+
+		newObject._aquarium = this; // Adds reference of aquarium to the fish
+
+		UpdateOxygenDelta(); // Update change in current oxygen
+	}
+
+	public void RemoveObject(AquariumObject obj)
+	{
+		_objects.Remove(obj);
+
+		UpdateOxygenDelta();
 	}
 	public void RemoveFish(AquariumNPC npc) // The method to handle removing fish from aquarium
 	{

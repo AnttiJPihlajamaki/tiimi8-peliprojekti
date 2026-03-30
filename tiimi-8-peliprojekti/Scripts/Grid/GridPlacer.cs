@@ -11,7 +11,7 @@ public partial class GridPlacer : Node2D
 	[Export] private Color _invalidColor;
 	[Export] private Color _validColor;
 	[Export] private Color _fullColor;
-	
+
 
 	private GridObject _gridObject;
 	[Export] private bool _isValid = false;
@@ -49,6 +49,15 @@ public partial class GridPlacer : Node2D
 		newPlacement.AdjustOffset(_grid.CellSize/2);
 		AddChild(newPlacement);
 		_gridObject = newPlacement;
+
+		foreach(Node child in _gridObject.GetChildren())
+		{
+			if(child is AquariumObject)
+			{
+				AquariumObject obj = child as AquariumObject;
+				GameManager.Instance.ActiveAquarium.AddObject(obj);
+			}
+		}
 	}
 
 	private void MovePlacement()

@@ -171,7 +171,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
 _navigationRegion = NodePath("NavigationRegion2D")
-ObjectPlacer = NodePath("Grid Test")
+ObjectPlacer = NodePath("ObjectPlacer")
 
 [node name="Background" type="Sprite2D" parent="Aquarium"]
 z_index = -10
@@ -183,7 +183,7 @@ region_rect = Rect2(0, 0, 1920, 1080)
 zoom = Vector2(0.6, 0.6)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Aquarium"]
-visible = false
+scale = Vector2(0.9, 0.9)
 navigation_polygon = SubResource("NavigationPolygon_bgdf3")
 
 [node name="Feeder" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium")]
@@ -204,16 +204,20 @@ process_mode = 4
 script = ExtResource("6_m03r2")
 _aquarium = NodePath("..")
 
-[node name="Grid Test" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
+[node name="ObjectPlacer" type="Node2D" parent="Aquarium" node_paths=PackedStringArray("_grid")]
+process_mode = 4
 position = Vector2(0, 420)
 script = ExtResource("6_7sxcg")
-_grid = NodePath("Grid")
+_grid = NodePath("../Grid Parent/Grid")
 _seaweed = ExtResource("7_5dkmn")
 _invalidColor = Color(1, 0, 0, 0.5882353)
 _validColor = Color(0, 1, 0, 0.5882353)
 _fullColor = Color(0, 0, 1, 0.5882353)
 
-[node name="Grid" type="Node2D" parent="Aquarium/Grid Test"]
+[node name="Grid Parent" type="Node2D" parent="Aquarium"]
+position = Vector2(0, 420)
+
+[node name="Grid" type="Node2D" parent="Aquarium/Grid Parent"]
 position = Vector2(-940, -100)
 script = ExtResource("6_5rrdd")
 GridWidth = 48
@@ -639,6 +643,88 @@ layout_mode = 2
 layout_mode = 2
 text = "Food"
 
+[node name="LaserInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 75
+
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
+modulate = Color(0.58431375, 0, 0.078431375, 1)
+layout_mode = 2
+texture = ExtResource("7_m03r2")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Laser Blaster"
+
+[node name="PlanterInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 75
+
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
+modulate = Color(0.2, 0.73333335, 1, 1)
+layout_mode = 2
+texture = ExtResource("7_m03r2")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Planter"
+
 [node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
 visible = false
 layout_mode = 2
@@ -787,11 +873,11 @@ label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="LaserGun MarginContainer2" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="LaserGun MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer2" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
 self_modulate = Color(0.5834204, 0, 0.08015778, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -801,9 +887,9 @@ text = "
 "
 script = ExtResource("12_e2tru")
 _tool = NodePath("../../../../../../../Aquarium/LaserGun")
-_itemsToToggle = []
+_itemsToToggle = [NodePath("../../../LaserInfo MarginContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer2/Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/LaserGun MarginContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -811,6 +897,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "L"
+label_settings = SubResource("LabelSettings_j04mv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Planter MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_7sxcg")
+
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Planter MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+self_modulate = Color(0.19999999, 0.73333323, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_frbro")
+text = "
+"
+script = ExtResource("12_e2tru")
+_tool = NodePath("../../../../../../../Aquarium/ObjectPlacer")
+_itemsToToggle = [NodePath("../../../PlanterInfo MarginContainer")]
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Planter MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "P"
 label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2

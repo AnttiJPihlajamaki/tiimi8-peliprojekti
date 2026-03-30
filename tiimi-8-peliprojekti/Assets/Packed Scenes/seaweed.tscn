@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://rbjnuvpnrpq0"]
+[gd_scene load_steps=7 format=3 uid="uid://rbjnuvpnrpq0"]
 
 [ext_resource type="Script" uid="uid://bng32jtuh0gci" path="res://Scripts/Grid/GridObject.cs" id="1_odg4e"]
 [ext_resource type="Texture2D" uid="uid://dim6x4tmq4oxi" path="res://Assets/Sprites/SEAWEED.png" id="1_oe7vd"]
+[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="2_0guk0"]
 
 [sub_resource type="Animation" id="Animation_m08pc"]
 tracks/0/type = "value"
@@ -46,6 +47,7 @@ offset = Vector2(1, 1)
 sprite = NodePath("Seaweed Sprite/Seaweed")
 
 [node name="Seaweed Sprite" type="Node2D" parent="."]
+script = ExtResource("2_0guk0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed Sprite"]
 root_node = NodePath("../..")

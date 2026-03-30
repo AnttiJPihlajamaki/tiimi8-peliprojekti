@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 public partial class ToolButton : HideToggle
 {
-	[Export] Tool _tool;
+	[Export] Node _tool;
 	protected override void Toggle(bool set)
 	{
 		base.Toggle(set);

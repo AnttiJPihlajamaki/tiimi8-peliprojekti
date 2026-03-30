@@ -162,18 +162,6 @@ public partial class AquariumNPC : CharacterBody2D
 	{
 		_aquarium.RemoveFish(this); // Removes fish from aquarium
 		QueueFree(); // Removes the node
-
-		/* ! Temporary Price Update !
-		ShopItem shopItem;
-		foreach(Tool tool in _aquarium._tools)
-		{
-			if (tool is ShopItem)
-			{
-				shopItem = tool as ShopItem;
-				shopItem.UpdatePrice();
-			}
-		}
-		*/
 	}
 
 	public void SetMarkerRegion(NavigationRegion2D navigationRegion)

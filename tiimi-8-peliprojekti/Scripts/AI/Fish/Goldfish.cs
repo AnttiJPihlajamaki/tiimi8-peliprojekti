@@ -10,7 +10,7 @@ public partial class Goldfish : Fish
 	[Export] Color _hungryFinColor;
 	[Export] private Array<Node2D> _fins;
 	[Export] private Node2D _body;
-	public override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
+	protected override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		_hunger = Mathf.Clamp(_hunger + change , 0 , _maxHunger);
 		if(_hunger <= 0 && _body.Modulate == _bodyColor)

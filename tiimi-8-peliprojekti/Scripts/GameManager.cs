@@ -3,17 +3,29 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks.Dataflow;
 
 public partial class GameManager : Node // Store player inventory
 {
-	private float _maxTime = 60f; // maximum time
-	private float _nightTime = 59f; // when night will trigger
-	private float _daySpeed = 1f;
+	private Aquarium _activeAquarium;
+	public Aquarium ActiveAquarium
+	{
+		get{ return _activeAquarium; }
+		set
+		{
+			_activeAquarium = value;
+		}
+	}
+	public const float MAX_TIME = 60f;
+	private float _daySpeed = 6f;
 	private float _currentTime = 0f; // The current time
+	public float CurrentTime
+	{
+		get { return _currentTime; }
+	}
 	private bool _isNight = false; //
 	public List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
-	private Aquarium _activeAquarium;
 	private PackedScene _alienScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
@@ -38,41 +50,32 @@ public partial class GameManager : Node // Store player inventory
 
     public override void _EnterTree()
     {
-        Reset();
-    }
-    public override void _Ready()
-    {
-		Reset();
 		_alienScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Alien.tscn");
 		_portalScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/portal.tscn");
     }
 
 	public override void _Process(double delta)
 	{
-		GD.Print(_currentTime);
 		if(ActiveAquarium != null)
 		{
-			if (_isNight == false)
+			if (!_isNight)
 			{
 				_currentTime += (float)delta * _daySpeed;
 			}
-
-			if (_currentTime >= _nightTime && !_isNight)
+			if (!_isNight && _currentTime >= MAX_TIME)
 			{
-				_currentTime = _nightTime;
 				NightStart();
 			}
-			if(_nightAliens.Count == 0 && _isNight)
+			else if(_isNight && ActiveAquarium._npcs.Count(npc => npc is not Alien) == 0)
+			{
+				GameOver();
+			}
+			if(_isNight && _nightAliens.Count == 0 )
 			{
 				_isNight = false;
 				_currentTime = 0f;
 				_difficultyLevel++;
 			}
-		}
-
-		if(_isNight == true && ActiveAquarium._npcs.Count(npc => npc is not Alien) == 0)
-		{
-			GameOver();
 		}
 	}
 
@@ -83,8 +86,9 @@ public partial class GameManager : Node // Store player inventory
 
 	private void GameOver()
 	{
+		var nextScene = (PackedScene)ResourceLoader.Load(GameScene.MainMenuScene.ToPathString());
+    	GetTree().ChangeSceneToPacked(nextScene);
 		Reset();
-    	GetTree().ChangeSceneToFile("res://Scenes/MainMenuScene.tscn");
 	}
 
 	public void Reset()
@@ -120,7 +124,7 @@ public partial class GameManager : Node // Store player inventory
 	{
 		Rect2 bounds = ActiveAquarium._navigationRegion.GetBounds();
 
-		int spawnSide = (int)GD.RandRange(0, 4);
+		int spawnSide = GD.RandRange(0, 4);
 
 		switch (spawnSide)
 		{
@@ -141,14 +145,6 @@ public partial class GameManager : Node // Store player inventory
 		set
 		{
 			_money = value;
-		}
-	}
-	public Aquarium ActiveAquarium
-	{
-		get{ return _activeAquarium; }
-		set
-		{
-			_activeAquarium = value;
 		}
 	}
 	#endregion

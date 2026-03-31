@@ -32,12 +32,12 @@ public partial class Oxygenator : Tool
     {
         if (@event is InputEventScreenTouch)
 		{
-			InputEventScreenTouch eventTouch = @event as InputEventScreenTouch;
-			if (eventTouch.IsPressed())
+			InputEventScreenTouch screenTouch = @event as InputEventScreenTouch;
+			if (screenTouch.IsPressed())
 			{
 				_isActive = true;
 			}
-			else if(eventTouch.IsReleased())
+			else if(screenTouch.IsReleased())
 			{
 				_isActive = false;
 			}

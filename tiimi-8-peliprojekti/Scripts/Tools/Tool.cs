@@ -11,10 +11,10 @@ public abstract partial class Tool : Node
     {
         if (@event is InputEventScreenTouch)
 		{
-			InputEventScreenTouch touchEvent = @event as InputEventScreenTouch;
-			if (@event.IsReleased())
+			InputEventScreenTouch screenTouch = @event as InputEventScreenTouch;
+			if (screenTouch.IsReleased())
 			{
-				ToolFunction(touchEvent);
+				ToolFunction(screenTouch);
 			}
 		}
     }

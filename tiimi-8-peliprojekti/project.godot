@@ -49,6 +49,11 @@ folder_colors={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+avoidance/layer_1="Fish"
+avoidance/layer_2="Aliens"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

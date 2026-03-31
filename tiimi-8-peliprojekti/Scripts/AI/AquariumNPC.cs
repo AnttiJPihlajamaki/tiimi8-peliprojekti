@@ -55,7 +55,18 @@ public partial class AquariumNPC : CharacterBody2D
 	{
 		ProcessOxygen(delta); // for processing health
 		ProcessHunger(delta); // for processing hunger
+		ProcessRegen(delta); // for regenning health
 
+		Navigation(delta);
+	}
+	private void OnVelocityComputed(Vector2 safeVelocity)
+    {
+        Velocity = safeVelocity;
+        MoveAndSlide();
+    }
+
+	protected virtual void Navigation(double delta)
+	{
 		if(_hunger < _hungryLimit)
 		{
 			SetMarkerPositionFood(); // Set marker on nearest food if hunger is too low
@@ -88,11 +99,6 @@ public partial class AquariumNPC : CharacterBody2D
             OnVelocityComputed(newVelocity); // Sets velocity when Avoidance is disabled
         }
 	}
-	private void OnVelocityComputed(Vector2 safeVelocity)
-    {
-        Velocity = safeVelocity;
-        MoveAndSlide();
-    }
 
 	protected void SetMarkerPositionFood() // Sets marker on nearest food
 	{
@@ -119,14 +125,14 @@ public partial class AquariumNPC : CharacterBody2D
 		}
 	}
 
-	private void ProcessOxygen(double delta)
+	protected void ProcessOxygen(double delta)
 	{
 		if(!_aquarium.MinMaxIdealOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
 		{
 			ChangeHealth(-(float)delta * _oxygenDamage); // Reduces health over time
 		}
 	}
-	private void ProcessHunger(double delta)
+	protected void ProcessHunger(double delta)
 	{
 		ChangeHunger(-(float)delta); // Reduces hunger meter over time
 		if(_hunger <= 0) // While hunger is at 0 the fish takes damage over time instead
@@ -134,7 +140,7 @@ public partial class AquariumNPC : CharacterBody2D
 			ChangeHealth(-(float)delta * _hungerDamage); // Reduces health over time
 		}
 	}
-	private void ProcessRegen(double delta)
+	protected void ProcessRegen(double delta)
 	{
 		//Health
 		if(_health < _maxHealth && _aquarium.MinMaxIdealOxygen() && _hunger > 0) // If the aquarium's oxygen is in ideal range fish heals over time
@@ -143,12 +149,16 @@ public partial class AquariumNPC : CharacterBody2D
 		}
 	}
 
-	public virtual void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
+	protected virtual void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		_hunger = Mathf.Clamp(_hunger + change , 0 , _maxHunger);
 	}
+	public void Nourish(float amount)
+	{
+		ChangeHunger(amount);
+	}
 
-	public void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
+	protected void ChangeHealth(float change) // Helper method to change health while keeping it within min/max
 	{
 		_health = Mathf.Clamp(_health + change , 0 , _maxHealth);
 		if(_health <= 0) // If health changes to 0 the fish dies
@@ -156,8 +166,13 @@ public partial class AquariumNPC : CharacterBody2D
 			Die();
 		}
 	}
+	public void TakeDamage(float amount)
+	{
+		FlashRed();
+		ChangeHealth(-amount);
+	}
 
-	public void FlashRed()
+	private void FlashRed()
 	{
 		Tween tween = CreateTween();
 		tween.TweenProperty(_paperdoll, "modulate", new Color(1, 0, 0), 0.05f); // flash red

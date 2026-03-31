@@ -66,9 +66,10 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Aquarium Scene" type="Node2D"]
 
-[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion", "ObjectPlacer")]
+[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_shop", "_navigationRegion", "ObjectPlacer")]
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
+_shop = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer")
 _navigationRegion = NodePath("NavigationRegion2D")
 ObjectPlacer = NodePath("ObjectPlacer")
 

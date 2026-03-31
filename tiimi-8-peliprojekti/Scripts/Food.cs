@@ -27,7 +27,7 @@ public partial class Food : CharacterBody2D
 
 	public void Eat(AquariumNPC npc)
 	{
-		npc.ChangeHunger(_nourishment);
+		npc.Nourish(_nourishment);
 		Destroy();
 	}
 

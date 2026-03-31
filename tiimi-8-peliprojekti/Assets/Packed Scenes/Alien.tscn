@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cem5jfl6f8yuy" path="res://Assets/Sprites/Aliens/aliencartoon.png" id="3_5spra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xel27"]
-size = Vector2(60.836544, 59.69616)
+size = Vector2(40, 40)
 
 [sub_resource type="Animation" id="Animation_aqv4r"]
 resource_name = "Alien Move"
@@ -180,11 +180,14 @@ _hungerDamage = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
-position = Vector2(0.54318285, 0)
+position = Vector2(-3, 5)
 shape = SubResource("RectangleShape2D_xel27")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 50.0
+avoidance_layers = 2
+avoidance_mask = 2
 
 [node name="Alien Paperdoll" type="Node2D" parent="."]
 

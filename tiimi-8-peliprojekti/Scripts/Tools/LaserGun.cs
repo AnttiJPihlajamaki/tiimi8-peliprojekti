@@ -17,6 +17,18 @@ private float _cooldownTimer = 0f;
 		_cooldownTimer = _attackCooldown;
 	}
 
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventScreenTouch)
+		{
+			InputEventScreenTouch screenTouch = @event as InputEventScreenTouch;
+			if (screenTouch.IsPressed())
+			{
+				ToolFunction(screenTouch);
+			}
+		}
+    }
+
 	private void ShootLaser(Vector2 position)
 	{
 		Node2D laser = _laserScene.Instantiate<Node2D>();  // laser shooting animation
@@ -31,8 +43,7 @@ private float _cooldownTimer = 0f;
 			float attackDistance = position.DistanceTo(npc.GlobalPosition);
 			if (attackDistance <= _attackRange)
 			{
-				npc.ChangeHealth(-_attackDamage);
-				npc.FlashRed();
+				npc.TakeDamage(_attackDamage);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://csvxi0xhgltru"]
+[gd_scene load_steps=30 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -12,11 +12,8 @@
 [ext_resource type="Script" uid="uid://w85uf56yqqu7" path="res://Scripts/Tools/LaserGun.cs" id="6_m03r2"]
 [ext_resource type="PackedScene" uid="uid://rbjnuvpnrpq0" path="res://Assets/Packed Scenes/seaweed.tscn" id="7_5dkmn"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="7_m03r2"]
-[ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="8_ij331"]
-[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Packed Scenes/fish.tscn" id="9_rw3ht"]
-[ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="10_w6p0f"]
-[ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="11_7kyd7"]
 [ext_resource type="Script" uid="uid://ufp6in6oqxfk" path="res://Scripts/UI/ToolButton.cs" id="12_e2tru"]
+[ext_resource type="PackedScene" uid="uid://bp3q4216vj2yo" path="res://Assets/Packed Scenes/goldfish_shop_item_margin_container.tscn" id="13_conu5"]
 [ext_resource type="Script" uid="uid://bqk1v8ed0s1w2" path="res://Scripts/UI/SwitchToggle.cs" id="13_j8iyi"]
 [ext_resource type="Script" uid="uid://btaefoxbrncrd" path="res://Scripts/UI/HidePress.cs" id="14_rl3go"]
 [ext_resource type="Script" uid="uid://uotrurim1u1o" path="res://Scripts/UI/ReloadSceneButton.cs" id="15_p6q20"]
@@ -42,104 +39,6 @@ texture_margin_top = 27.0
 texture_margin_right = 27.0
 texture_margin_bottom = 27.0
 region_rect = Rect2(64, 128, 64, 64)
-
-[sub_resource type="Animation" id="Animation_ihenc"]
-resource_name = "Goldfish Swim"
-loop_mode = 2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(-0.08726646, -0.25, 0, 0.25, 0, 0.08726646, -0.16666667, -0.029088821, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0, -0.5235988, -0.16666667, 0.17453294, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0, 0.5235988, -0.16666667, -0.17453294, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_jlui4"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.5235988, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt6ly"]
-_data = {
-&"Goldfish Swim": SubResource("Animation_ihenc"),
-&"RESET": SubResource("Animation_jlui4")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_owhyu"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_vh6ro"]
-font = ExtResource("11_7kyd7")
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j04mv"]
-content_margin_left = 10.0
-content_margin_top = 5.0
-content_margin_right = 10.0
-content_margin_bottom = 5.0
-texture = ExtResource("7_m03r2")
-texture_margin_left = 27.0
-texture_margin_top = 27.0
-texture_margin_right = 27.0
-texture_margin_bottom = 27.0
-region_rect = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owhyu"]
 atlas = ExtResource("7_m03r2")
@@ -167,10 +66,9 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Aquarium Scene" type="Node2D"]
 
-[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_shop", "_navigationRegion", "ObjectPlacer")]
+[node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_navigationRegion", "ObjectPlacer")]
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
-_shop = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer")
 _navigationRegion = NodePath("NavigationRegion2D")
 ObjectPlacer = NodePath("ObjectPlacer")
 
@@ -214,20 +112,19 @@ position = Vector2(0, 420)
 script = ExtResource("6_7sxcg")
 _grid = NodePath("../Grid Parent/Grid")
 _seaweed = ExtResource("7_5dkmn")
-_invalidColor = Color(1, 0, 0, 0.5882353)
-_validColor = Color(0, 1, 0, 0.5882353)
-_fullColor = Color(0, 0, 1, 0.5882353)
+_invalidColor = Color(0.8, 0, 0, 0.5882353)
+_validColor = Color(0.26666662, 0.8, 0, 0.5882353)
+_fullColor = Color(0, 0.46666655, 0.7, 0.5882353)
 _objectParent = NodePath("../AquariumObjects")
 
 [node name="Grid Parent" type="Node2D" parent="Aquarium"]
 position = Vector2(0, 420)
 
 [node name="Grid" type="Node2D" parent="Aquarium/Grid Parent"]
-position = Vector2(-940, -100)
+position = Vector2(-936, -96)
 script = ExtResource("6_5rrdd")
-GridWidth = 48
-GridHeight = 6
-CellSize = Vector2(40, 40)
+GridWidth = 40
+CellSize = Vector2(48, 48)
 _defaultColor = Color(1, 1, 1, 0)
 
 [node name="AquariumBoundaries" type="StaticBody2D" parent="Aquarium"]
@@ -342,259 +239,8 @@ alignment = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ShopItem MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
-custom_minimum_size = Vector2(180, 0)
+[node name="Goldfish ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("13_conu5")]
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 35
-script = ExtResource("8_ij331")
-_fishPackedScene = ExtResource("9_rw3ht")
-_freeSample = true
-_buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
-_costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
-_name = "Goldfish"
-
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
-self_modulate = Color(0.9, 0.54, 0.17999998, 1)
-layout_mode = 2
-mouse_filter = 1
-
-[node name="Preview MarginContainerer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_top = 25
-
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer"]
-self_modulate = Color(0, 0.6, 0.9019608, 1)
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-mouse_filter = 1
-
-[node name="Goldfish Paperdoll" type="Node2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel"]
-position = Vector2(40, 50)
-scale = Vector2(0.5, 0.5)
-
-[node name="Goldfish Paperdoll" type="AnimationPlayer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_qt6ly")
-}
-autoplay = "Goldfish Swim"
-
-[node name="Back Fin Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
-position = Vector2(44, 0)
-texture = ExtResource("10_w6p0f")
-offset = Vector2(8, 0)
-region_enabled = true
-region_rect = Rect2(161, 38, 66, 67)
-
-[node name="Top Fin Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
-position = Vector2(6, -12)
-texture = ExtResource("10_w6p0f")
-offset = Vector2(0, -22)
-region_enabled = true
-region_rect = Rect2(33, 51, 61, 41)
-
-[node name="Body Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0.6666667, 0, 1)
-z_index = 2
-texture = ExtResource("10_w6p0f")
-region_enabled = true
-region_rect = Rect2(238, 44, 95, 47)
-
-[node name="Front Fin Back Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 1
-position = Vector2(0, 12)
-rotation = 0.5235988
-texture = ExtResource("10_w6p0f")
-offset = Vector2(0, 12)
-region_enabled = true
-region_rect = Rect2(113, 52, 26, 34)
-
-[node name="Front Fin Front Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
-position = Vector2(0, 12)
-rotation = -0.5235988
-texture = ExtResource("10_w6p0f")
-offset = Vector2(0, 12)
-region_enabled = true
-region_rect = Rect2(113, 52, 26, 34)
-
-[node name="Eye Rigidbody2D" type="RigidBody2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-position = Vector2(-20, 0)
-freeze = true
-
-[node name="Eye CollisionShape2D" type="CollisionShape2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
-shape = SubResource("CircleShape2D_owhyu")
-
-[node name="Eye Sprite" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
-z_index = 2
-texture = ExtResource("10_w6p0f")
-region_enabled = true
-region_rect = Rect2(53, 14, 20, 20)
-
-[node name="Info MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer"]
-layout_mode = 2
-
-[node name="Fish Name Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Goldfish"
-horizontal_alignment = 1
-
-[node name="Info MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer"]
-self_modulate = Color(0.75, 0.45000002, 0.14999999, 1)
-layout_mode = 2
-
-[node name="Info MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer"]
-layout_mode = 2
-
-[node name="MoneyPerS MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer"]
-layout_mode = 2
-
-[node name="MoneyPerSName Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 1
-text = "Money/S :"
-label_settings = SubResource("LabelSettings_vh6ro")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="MoneyPerSStat Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "50"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="Symbol Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerS MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "$"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="MoneyPerTap MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer"]
-layout_mode = 2
-
-[node name="MoneyPerTapName Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 1
-text = "Money/Tap :"
-label_settings = SubResource("LabelSettings_vh6ro")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="MoneyPerTapStat Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "50"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="Symbol Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/MoneyPerTap MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "$"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="Cost MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer"]
-layout_mode = 2
-
-[node name="CostName Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 1
-text = "Cost :"
-label_settings = SubResource("LabelSettings_vh6ro")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="CostStat Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "???"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="Symbol Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "$"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="BuyButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(110, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_top = 5
-
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/BuyButton MarginContainer"]
-self_modulate = Color(0.6666667, 1, 0, 1)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_j04mv")
-
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer/ShopItem MarginContainer/Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Buy"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2

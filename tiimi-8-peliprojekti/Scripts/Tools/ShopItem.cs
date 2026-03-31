@@ -60,7 +60,6 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 
 	public void AddFish()
 	{
-
 		Fish newFish = _fishPackedScene.Instantiate<Fish>(); // Instantiatses new fish
 
 		newFish.Name = _name + "#" + newFish.GetInstanceId(); // Gives object unique name

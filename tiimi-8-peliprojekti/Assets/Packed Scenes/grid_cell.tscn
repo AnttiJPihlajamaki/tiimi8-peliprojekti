@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7e6wlx8hhank"]
+[gd_scene load_steps=5 format=3 uid="uid://b7e6wlx8hhank"]
 
 [ext_resource type="Script" uid="uid://cn5kunpkjkngv" path="res://Scripts/Grid/GridCell.cs" id="1_we050"]
+[ext_resource type="Texture2D" uid="uid://ce04ww3vk5snh" path="res://Assets/Sprites/Affinity/UI/Blueprint Grid.png" id="2_fynrx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_conu5"]
-size = Vector2(40, 40)
+size = Vector2(1, 1)
 orientation = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhrgb"]
-size = Vector2(40, 40)
+size = Vector2(1, 1)
 
 [node name="GridCell" type="Area2D" node_paths=PackedStringArray("_meshInstance2d", "_collisionShape2d")]
 z_index = 5
@@ -17,6 +18,7 @@ _collisionShape2d = NodePath("CollisionShape2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("PlaneMesh_conu5")
+texture = ExtResource("2_fynrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nhrgb")

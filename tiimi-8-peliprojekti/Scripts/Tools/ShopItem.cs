@@ -53,7 +53,7 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 	{
 		if(GameManager.Instance.Money >= _currentPrice)
 		{
-			GameManager.Instance.Money -= _currentPrice; // Checks if player has enough money and removes it
+			GameManager.Instance.RemoveMoney(_currentPrice); // Checks if player has enough money and removes it
 			AddFish(); // Adds fish to aquarium
 		}
 	}
@@ -64,6 +64,7 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 
 		newFish.Name = _name + "#" + newFish.GetInstanceId(); // Gives object unique name
 		newFish.NpcName = _name;
+		newFish.GlobalPosition = new Vector2((float)GD.RandRange(-600, 600), -600);
 
 		GameManager.Instance.ActiveAquarium.AddNPC(newFish); // Calls method from _aquarium to add a new fish
 

@@ -17,7 +17,7 @@ public partial class Feeder : Tool
 	{
 		if (GameManager.Instance.Money > _price) // Check if the player has enough money
 		{
-			GameManager.Instance.Money -= _price; // Remove price from player
+			GameManager.Instance.RemoveMoney(_price); // Remove price from player
 			Food newFood = _food.Instantiate<Food>(); // Instantiates food object
 			GameManager.Instance.ActiveAquarium.AddFood(newFood); // Calls method from aqurium to add the food
 			newFood.Position = position; // Moves the food to mouse pointer (Need to change or add mobile input)

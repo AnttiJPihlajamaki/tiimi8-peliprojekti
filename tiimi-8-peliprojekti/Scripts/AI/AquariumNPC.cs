@@ -27,6 +27,18 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] private float _hungerDamage = 1.0f; // The amount of damage the NPC takes from hunger per second
 	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 
+	private bool _inWater = false;
+
+	public bool InWater
+	{
+		get{ return _inWater;}
+		set
+		{
+			_inWater = value;
+		}
+	}
+
+
 	public Aquarium _aquarium; // Reference to the aquarium component in which the fish is located
 
 	public override void _Ready()
@@ -67,6 +79,7 @@ public partial class AquariumNPC : CharacterBody2D
 
 	protected virtual void Navigation(double delta)
 	{
+
 		if(_hunger < _hungryLimit)
 		{
 			SetMarkerPositionFood(); // Set marker on nearest food if hunger is too low
@@ -78,8 +91,12 @@ public partial class AquariumNPC : CharacterBody2D
 
 		SetMovementTarget(); // calculate path
 
-		Vector2 newVelocity = _navigationAgent.Velocity.MoveToward((_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized() * _speed, (float)delta * _speed); // Calculate movement
+		Vector2 newVelocity = _navigationAgent.Velocity.MoveToward((_navigationAgent.GetNextPathPosition() - GlobalPosition).Normalized() * _speed, _speed * (float)delta); // Calculate movement
 		// Uses MoveToward to slow down movement when turning towards new point
+		if (!InWater)
+		{
+			newVelocity = new Vector2(0,1) * _maxSpeed;
+		}
 
 		if(newVelocity.X < 0 && _paperdoll.Scale.X != 1) // Simple if-statement to flip the sprite towards the direction the fish is moving
         {

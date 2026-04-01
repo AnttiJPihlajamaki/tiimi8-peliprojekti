@@ -18,7 +18,7 @@ public partial class GameManager : Node // Store player inventory
 		}
 	}
 	public const float MAX_TIME = 60f;
-	private float _daySpeed = 6f;
+	private float _daySpeed = 1f;
 	private float _currentTime = 0f; // The current time
 	public float CurrentTime
 	{
@@ -137,15 +137,21 @@ public partial class GameManager : Node // Store player inventory
 
 	#region GameData
 	private float _money = 0f; // The amount of money the player has
+	private float _totalMoney = 0f;
 
 
 	public float Money
 	{
 		get { return _money; }
-		set
-		{
-			_money = value;
-		}
+	}
+	public void AddMoney(float value)
+	{
+		_money += value;
+		_totalMoney += value;
+	}
+	public void RemoveMoney(float value)
+	{
+		_money -= value;
 	}
 	#endregion
 }

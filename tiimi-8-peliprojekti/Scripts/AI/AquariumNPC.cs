@@ -27,7 +27,7 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] private float _hungerDamage = 1.0f; // The amount of damage the NPC takes from hunger per second
 	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 
-	private bool _inWater = false;
+	[Export] private bool _inWater = false;
 
 	public bool InWater
 	{

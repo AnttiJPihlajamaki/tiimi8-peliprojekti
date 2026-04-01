@@ -177,6 +177,7 @@ _paperdoll = NodePath("Alien Paperdoll")
 _oxygenUsage = 0.0
 _oxygenDamage = 0.0
 _hungerDamage = 0.0
+_inWater = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2

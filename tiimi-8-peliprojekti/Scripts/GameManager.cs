@@ -18,7 +18,7 @@ public partial class GameManager : Node // Store player inventory
 		}
 	}
 	public const float MAX_TIME = 60f;
-	private float _daySpeed = 1f;
+	private float _daySpeed = 6f;
 	private float _currentTime = 0f; // The current time
 	public float CurrentTime
 	{

@@ -28,7 +28,7 @@ script = ExtResource("1_uau66")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(3, -2.3841858e-07)
-rotation = -0.78931725
+rotation = -0.6820534
 scale = Vector2(0.7, 0.717)
 sprite_frames = SubResource("SpriteFrames_0oddj")
 

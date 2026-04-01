@@ -23,7 +23,7 @@ public partial class AquariumNPC : CharacterBody2D
 	[Export] private float _oxygenDamage = 1.0f; // The amount of damage the NPC takes from unideal oxygen per second
 	[Export] protected float _maxHunger = 100.0f; // Maximum hunger the fish can have
 	[Export] protected float _hunger = 100.0f; // Current hunger the fish has
-	[Export] private float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
+	[Export] protected float _hungryLimit = 50.0f; // The point of hunger at which the fish starts searching for food
 	[Export] private float _hungerDamage = 1.0f; // The amount of damage the NPC takes from hunger per second
 	[Export] private float _eatingRange = 25.0f; // The range at which a fish can eat food
 
@@ -33,7 +33,7 @@ public partial class AquariumNPC : CharacterBody2D
 	{
 		_navigationAgent.VelocityComputed += OnVelocityComputed;
 	}
-	private void SetMovementTarget() // Set navigation target for agent and calculate path
+	public void SetMovementTarget() // Set navigation target for agent and calculate path
 	{
 		_navigationAgent.TargetPosition = _movementTarget.Position;
 	}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0xhnk0a8coi7"]
+[gd_scene load_steps=12 format=3 uid="uid://b57a7bdk1vpsf"]
 
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_32lfy"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="2_nlt36"]
@@ -109,7 +109,7 @@ texture_margin_right = 27.0
 texture_margin_bottom = 27.0
 region_rect = Rect2(0, 0, 64, 64)
 
-[node name="Goldfish ShopItem MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
+[node name="Piranha ShopItem MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
 custom_minimum_size = Vector2(180, 420)
 theme = ExtResource("1_32lfy")
 theme_override_constants/margin_left = 0

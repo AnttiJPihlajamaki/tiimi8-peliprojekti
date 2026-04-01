@@ -93,7 +93,6 @@ public partial class Piranha : Fish
 
 	public override void _Process(double delta)
 	{
-		GD.Print(_hunger);
 		if(attackCooldown < _attackSpeed)
 		{
 			attackCooldown += (float)delta;

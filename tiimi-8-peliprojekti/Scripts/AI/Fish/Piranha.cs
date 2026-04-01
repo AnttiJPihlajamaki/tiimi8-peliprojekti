@@ -5,7 +5,7 @@ using System.Linq;
 public partial class Piranha : Fish
 {
 	[Export] private float _attackRange = 150f;
-	[Export] private float _attackDamage = 15f;
+	[Export] private float _attackDamage = 10f;
 	[Export] private float _attackSpeed = 1f;
 	private float attackCooldown = 0f;
 	private Marker2D _movementTarget;
@@ -22,7 +22,39 @@ public partial class Piranha : Fish
 
 	protected override void Navigation(double delta)
 	{
-		if(_hunger < _hungryLimit)
+		if (GameManager.Instance.ActiveAquarium._npcs.Count(npc => npc is Alien) > 0)  // PRIORITISE HUNTING ALIENS
+		{
+			AquariumNPC nearestEnemy = null;
+			float nearestEnemyDistance = float.MaxValue;
+
+			foreach (AquariumNPC npc in _aquarium._npcs)  // LOOP FOR FINDING FISH
+			{
+				if (npc is Alien)
+				{
+					if (GlobalPosition.DistanceTo(npc.GlobalPosition) < nearestEnemyDistance)
+					{
+						nearestEnemy = npc;	// update nearest enemy
+						nearestEnemyDistance = GlobalPosition.DistanceTo(npc.GlobalPosition);   // update nearest distance
+					}
+				}
+			}
+
+			if (nearestEnemy != null)
+			{
+				SetMarkerPosition(nearestEnemy.GlobalPosition);
+				if (attackCooldown >= _attackSpeed && GlobalPosition.DistanceTo(nearestEnemy.GlobalPosition) < _attackRange)
+				{
+					AttackTarget(nearestEnemy);
+					attackCooldown = 0f;
+					if (nearestEnemy._health <= 0)
+					{
+						Nourish(100f);
+					}
+				}
+			}
+		}
+
+		else if(_hunger < _hungryLimit)  // IF NO ALIENS AND BELOW HUNGERLIMIT HUNT FISH INSTEAD
 		{
 			if(GameManager.Instance.ActiveAquarium._npcs.Count(npc => npc is Fish) > 0)
 			{
@@ -31,7 +63,7 @@ public partial class Piranha : Fish
 
 				foreach (AquariumNPC npc in _aquarium._npcs)  // LOOP FOR FINDING FISH
 				{
-					if (npc is Fish && npc is not Piranha)
+					if (npc is Fish && npc is not Piranha)  // make sure piranha doesn't target itself or other pirhanas
 					{
 						if (GlobalPosition.DistanceTo(npc.GlobalPosition) < nearestFishDistance)
 						{
@@ -56,6 +88,7 @@ public partial class Piranha : Fish
 				}
 			}
 		}
+
 		if (_navigationAgent.IsNavigationFinished())
 		{
 			SetRandomMarkerPosition(); // Set a random point to move to if fish is stationary

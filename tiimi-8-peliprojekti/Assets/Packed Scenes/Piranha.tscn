@@ -120,6 +120,7 @@ color_initial_ramp = SubResource("GradientTexture1D_c0udp")
 [node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_prqmn")
+_attackDamage = 10.0
 moneyPerSecond = 150.0
 _minSpeed = 120.0
 _maxSpeed = 130.0
@@ -128,7 +129,6 @@ _paperdoll = NodePath("PiranhaPaperdoll")
 _oxygenUsage = 2.0
 _maxHunger = 120.0
 _hunger = 120.0
-_hungryLimit = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -1)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpvnuv324flqt"
-path="res://.godot/imported/fishfoodicon.png-ae1f6f55b64a5c4b6248a0150317ed1d.ctex"
+uid="uid://cdms2kgsaxb04"
+path="res://.godot/imported/lasertoolicon.png-84cea9d9d809a4887af09bdc760fdfb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/fishfoodicon.png"
-dest_files=["res://.godot/imported/fishfoodicon.png-ae1f6f55b64a5c4b6248a0150317ed1d.ctex"]
+source_file="res://Assets/Sprites/lasertoolicon.png"
+dest_files=["res://.godot/imported/lasertoolicon.png-84cea9d9d809a4887af09bdc760fdfb0.ctex"]
 
 [params]
 

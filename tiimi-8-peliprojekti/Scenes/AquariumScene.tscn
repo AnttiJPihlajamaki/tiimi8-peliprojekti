@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://csvxi0xhgltru"]
+[gd_scene load_steps=35 format=3 uid="uid://csvxi0xhgltru"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -19,6 +19,9 @@
 [ext_resource type="Script" uid="uid://btaefoxbrncrd" path="res://Scripts/UI/HidePress.cs" id="14_rl3go"]
 [ext_resource type="Script" uid="uid://uotrurim1u1o" path="res://Scripts/UI/ReloadSceneButton.cs" id="15_p6q20"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="16_etofs"]
+[ext_resource type="Texture2D" uid="uid://cpvnuv324flqt" path="res://Assets/Sprites/fishfoodicon.png" id="18_7sxcg"]
+[ext_resource type="Texture2D" uid="uid://dxsh43dg6y4n" path="res://Assets/Sprites/bubbleicon.png" id="19_5dkmn"]
+[ext_resource type="Texture2D" uid="uid://cdms2kgsaxb04" path="res://Assets/Sprites/lasertoolicon.png" id="20_m03r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_conu5"]
 size = Vector2(1920, 980)
@@ -504,17 +507,10 @@ script = ExtResource("12_e2tru")
 _tool = NodePath("../../../../../../../Aquarium/Feeder")
 _itemsToToggle = [NodePath("../../../FoodInfo MarginContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer/Food Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "F"
-label_settings = SubResource("LabelSettings_j04mv")
-horizontal_alignment = 1
-vertical_alignment = 2
+[node name="Sprite2D" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer"]
+position = Vector2(32, 32)
+scale = Vector2(0.905, 0.905)
+texture = ExtResource("18_7sxcg")
 
 [node name="Oxygenator MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
@@ -526,23 +522,14 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_frbro")
-text = "O
-"
 script = ExtResource("12_e2tru")
 _tool = NodePath("../../../../../../../Aquarium/Oxygenator")
 _itemsToToggle = [NodePath("../../../OxygenatorInfo MarginContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer/Oxygenator Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "O"
-label_settings = SubResource("LabelSettings_j04mv")
-horizontal_alignment = 1
-vertical_alignment = 2
+[node name="Sprite2D" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer"]
+position = Vector2(32, 31)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("19_5dkmn")
 
 [node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
@@ -558,13 +545,14 @@ _itemsToHide = [NodePath("../../.."), NodePath("../../../../PauseButton MarginCo
 _itemsToShow = [NodePath("../../../../Shop MarginContainer")]
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer/Shop Button"]
+self_modulate = Color(0.83202684, 0.83140975, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "S"
+text = "$"
 label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -585,17 +573,10 @@ script = ExtResource("12_e2tru")
 _tool = NodePath("../../../../../../../Aquarium/LaserGun")
 _itemsToToggle = [NodePath("../../../LaserInfo MarginContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer/Laser Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "L"
-label_settings = SubResource("LabelSettings_j04mv")
-horizontal_alignment = 1
-vertical_alignment = 2
+[node name="Sprite2D" type="Sprite2D" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer"]
+position = Vector2(31.885, 33)
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("20_m03r2")
 
 [node name="Planter MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2

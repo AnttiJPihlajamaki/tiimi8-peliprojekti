@@ -167,6 +167,7 @@ layout_mode = 2
 text = " $/S"
 
 [node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("_timeSlider", "_timeLabel")]
+custom_minimum_size = Vector2(340, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -177,10 +178,8 @@ _timeSlider = NodePath("Time MarginContainer/HBoxContainer/Slider MarginContaine
 _timeLabel = NodePath("Time MarginContainer/HBoxContainer/Label MarginContainer/Time Label")
 
 [node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Time MarginContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(325, 50)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10

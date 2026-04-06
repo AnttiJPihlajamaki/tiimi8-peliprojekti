@@ -118,10 +118,9 @@ scale_curve = SubResource("CurveTexture_2a7tn")
 color_initial_ramp = SubResource("GradientTexture1D_c0udp")
 
 [node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+rotation = 0.001901308
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_prqmn")
-_attackDamage = 10.0
-moneyPerSecond = 150.0
 _minSpeed = 120.0
 _maxSpeed = 130.0
 _navigationAgent = NodePath("NavigationAgent2D")

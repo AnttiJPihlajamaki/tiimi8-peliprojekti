@@ -72,6 +72,7 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Aquarium Scene" type="Node2D"]
+rotation = 0.0006769999
 
 [node name="Aquarium" type="Node2D" parent="." node_paths=PackedStringArray("_shop", "_navigationRegion", "ObjectPlacer")]
 script = ExtResource("1_aw301")
@@ -266,6 +267,7 @@ mouse_filter = 1
 
 [node name="Piranha ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("14_5rrdd")]
 layout_mode = 2
+_basePrice = 500.0
 
 [node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer"]
 layout_mode = 2

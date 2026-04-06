@@ -6,15 +6,16 @@ public partial class LaserGun : Tool
 private PackedScene _laserScene;
 [Export] private float _attackDamage = 50f;
 [Export] private float _attackRange = 150f;
-[Export] private float _attackCooldown = 1.5f;
+[Export] private float _attackCooldown = 0.8f;
 private float _cooldownTimer = 0f;
 	protected override void ToolFunction(InputEventScreenTouch @event)
 	{
 		if (_cooldownTimer > 0f) return;
 
+		_cooldownTimer = _attackCooldown;
+
 		Vector2 targetPosition = (GetViewport().GetCamera2D().GlobalPosition - GetViewport().GetVisibleRect().Size/2 + @event.Position)/GetViewport().GetCamera2D().Zoom;
 		ShootLaser(targetPosition);
-		_cooldownTimer = _attackCooldown;
 	}
 
     public override void _UnhandledInput(InputEvent @event)

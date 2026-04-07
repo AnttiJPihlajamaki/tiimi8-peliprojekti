@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b57a7bdk1vpsf"]
+[gd_scene load_steps=12 format=3 uid="uid://br4i3aec6qyox"]
 
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_32lfy"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="2_nlt36"]
@@ -128,30 +128,42 @@ self_modulate = Color(0.9, 0.54, 0.17999998, 1)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Preview MarginContainerer" type="MarginContainer" parent="."]
+[node name="Info MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info MarginContainer"]
+layout_mode = 2
+
+[node name="Preview MarginContainerer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_top = 0
 
-[node name="Panel" type="Panel" parent="Preview MarginContainerer"]
+[node name="Panel" type="Panel" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer"]
 self_modulate = Color(0, 0.6, 0.9019608, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="PiranhaPaperdoll" type="Node2D" parent="Preview MarginContainerer/Panel"]
-position = Vector2(43, 46.999992)
-scale = Vector2(0.425, 0.425)
+[node name="PiranhaPaperdoll" type="Node2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel"]
+position = Vector2(45, 52)
+scale = Vector2(0.4, 0.4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_0n5sg")
 }
 autoplay = "swim"
 
-[node name="Piranha4" type="Sprite2D" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Piranha4" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 position = Vector2(-32, 30.666668)
 scale = Vector2(0.09246861, 0.099537045)
 texture = ExtResource("4_nlt36")
@@ -161,7 +173,7 @@ region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha2" type="Sprite2D" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Piranha2" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 position = Vector2(84.00002, -11.000008)
 scale = Vector2(0.092468604, 0.099537045)
 skew = -0.04363323
@@ -170,7 +182,7 @@ region_enabled = true
 region_rect = Rect2(1985, 128, 768, 1088)
 region_filter_clip_enabled = true
 
-[node name="Piranha" type="Sprite2D" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Piranha" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 position = Vector2(0, -5.9604645e-08)
 scale = Vector2(0.09246861, 0.09953706)
 texture = ExtResource("4_nlt36")
@@ -178,7 +190,7 @@ region_enabled = true
 region_rect = Rect2(129, 128, 1856, 1216)
 region_filter_clip_enabled = true
 
-[node name="Piranha3" type="Sprite2D" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Piranha3" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 position = Vector2(-10.666666, 29.333334)
 scale = Vector2(0.09246861, 0.09953705)
 texture = ExtResource("4_nlt36")
@@ -188,24 +200,13 @@ region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha5" type="Sprite2D" parent="Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Piranha5" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
 position = Vector2(-41, -18)
 scale = Vector2(0.09246861, 0.09953706)
 texture = ExtResource("4_nlt36")
 region_enabled = true
 region_rect = Rect2(3521, 576, 192, 128)
 region_filter_clip_enabled = true
-
-[node name="Info MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Info MarginContainer"]
-layout_mode = 2
 
 [node name="Fish Name Label" type="Label" parent="Info MarginContainer/VBoxContainer"]
 layout_mode = 2

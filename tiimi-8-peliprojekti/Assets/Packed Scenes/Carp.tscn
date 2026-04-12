@@ -1,7 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0b4ap5ubeh77"]
+[gd_scene load_steps=7 format=3 uid="uid://b0b4ap5ubeh77"]
 
 [ext_resource type="Script" uid="uid://dyv67wx6j73os" path="res://Assets/Packed Scenes/Carp.cs" id="1_llyx2"]
 [ext_resource type="Texture2D" uid="uid://bnpr8t5k470gk" path="res://Assets/Sprites/Affinity/NPCs/Carp/carp.png" id="2_gigbg"]
+
+[sub_resource type="Animation" id="Animation_gigbg"]
+resource_name = "siwm"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarpPaperdoll/Sprite2D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.024810493, -0.22863813201125757]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CarpPaperdoll/Sprite2D3:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.08552113334772225, 0.085521133347722]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarpPaperdoll/Sprite2D4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.40895855, -0.010471975]
+}
+
+[sub_resource type="Animation" id="Animation_dtb3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarpPaperdoll/Sprite2D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17646667]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CarpPaperdoll/Sprite2D3:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarpPaperdoll/Sprite2D4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.40895855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15d7i"]
+_data = {
+&"RESET": SubResource("Animation_dtb3w"),
+&"siwm": SubResource("Animation_gigbg")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gigbg"]
 radius = 314.44232
@@ -10,6 +95,7 @@ height = 2449.9988
 [node name="Carp" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_llyx2")
+moneyPerSecond = 150.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("CarpPaperdoll")
 _maxHealth = 200.0
@@ -20,6 +106,15 @@ _hunger = 150.0
 _hungryLimit = 70.0
 
 [node name="CarpPaperdoll" type="Node2D" parent="."]
+
+[node name="Sprite2D4" type="Sprite2D" parent="CarpPaperdoll"]
+position = Vector2(-566.6667, 213.33331)
+rotation = 0.40895855
+texture = ExtResource("2_gigbg")
+centered = false
+offset = Vector2(-168.085, -91.225)
+region_enabled = true
+region_rect = Rect2(3073, 896, 640, 512)
 
 [node name="Sprite2D6" type="Sprite2D" parent="CarpPaperdoll"]
 position = Vector2(864, 250)
@@ -39,13 +134,6 @@ texture = ExtResource("2_gigbg")
 region_enabled = true
 region_rect = Rect2(3521, 128, 1216, 704)
 
-[node name="Sprite2D4" type="Sprite2D" parent="CarpPaperdoll"]
-position = Vector2(-460, 401)
-rotation = 0.5778734
-texture = ExtResource("2_gigbg")
-region_enabled = true
-region_rect = Rect2(3073, 896, 640, 512)
-
 [node name="Sprite2D" type="Sprite2D" parent="CarpPaperdoll"]
 texture = ExtResource("2_gigbg")
 region_enabled = true
@@ -58,9 +146,11 @@ region_enabled = true
 region_rect = Rect2(5185, 192, 768, 1088)
 
 [node name="Sprite2D2" type="Sprite2D" parent="CarpPaperdoll"]
-position = Vector2(-338, 410)
+position = Vector2(-486.66656, 293.3333)
 rotation = 0.17646667
 texture = ExtResource("2_gigbg")
+centered = false
+offset = Vector2(-168.085, -91.225)
 region_enabled = true
 region_rect = Rect2(3073, 896, 640, 512)
 
@@ -72,6 +162,10 @@ region_enabled = true
 region_rect = Rect2(2945, 192, 192, 128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_15d7i")
+}
+autoplay = "siwm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(100.000015, 50)

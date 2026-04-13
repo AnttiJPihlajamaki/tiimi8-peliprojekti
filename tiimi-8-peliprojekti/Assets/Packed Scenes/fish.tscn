@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_5bvtc"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_8tf37"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_valo4"]
+radius = 23.0
+height = 96.0
+
 [sub_resource type="Animation" id="Animation_ihenc"]
 resource_name = "Goldfish Swim"
 loop_mode = 2
@@ -109,11 +113,8 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_2a7tn")
 color_initial_ramp = SubResource("GradientTexture1D_c0udp")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_valo4"]
-radius = 23.0
-height = 96.0
-
 [node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_fins", "_body", "_navigationAgent", "_paperdoll")]
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_5bvtc")
 _bodyColor = Color(1, 0.6666667, 0, 1)
@@ -127,6 +128,10 @@ _minSpeed = 50.0
 _maxSpeed = 250.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Goldfish Paperdoll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_valo4")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("..")
@@ -209,11 +214,8 @@ amount = 5
 texture = ExtResource("3_8tf37")
 process_material = SubResource("ParticleProcessMaterial_c0udp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_valo4")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 50.0
+radius = 23.0
 max_speed = 5000.0
+avoidance_mask = 5

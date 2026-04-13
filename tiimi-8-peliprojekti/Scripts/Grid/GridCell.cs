@@ -51,7 +51,9 @@ using System;
 
 	private void GetGridPosition(Node viewport, InputEvent @event, long shape_idx)
 	{
-		if (@event is InputEventScreenDrag)
+		if(GameManager.Instance.ActiveAquarium.ObjectPlacer.ProcessMode == ProcessModeEnum.Disabled) return;
+
+		if (@event is InputEventScreenDrag || @event is InputEventScreenTouch)
 		{
 			GameManager.Instance.ActiveAquarium.ObjectPlacer.TargetPosition = GlobalPosition;
 		}

@@ -3,14 +3,15 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-public partial class GridPlacer : Node2D
+public partial class GridPlacer : Control
 {
 	[Export] private Grid _grid;
-	[Export] private PackedScene _seaweed;
+	[Export] private PackedScene _object;
 
 	[Export] private Color _invalidColor;
 	[Export] private Color _validColor;
 	[Export] private Color _fullColor;
+	[Export] private Color _emptyColor;
 
 	[Export] private Node2D _objectParent;
 
@@ -25,31 +26,57 @@ public partial class GridPlacer : Node2D
 		{
 			targetPosition = value;
 			MovePlacement();
-		}
-	}
-
-    public override void _UnhandledInput(InputEvent @event)
-	{
-		if(@event is InputEventScreenTouch)
-		{
-			InputEventScreenTouch screenTouch = @event as InputEventScreenTouch;
-			if (screenTouch.IsPressed() && _gridObject == null)
+			if(_gridObject == null)
 			{
 				CreatePlacement();
 			}
-			else if(screenTouch.IsReleased() && _isValid)
+		}
+	}
+
+	[Export] private Button buyButton;
+	[Export] private Button exitButton;
+
+	[Export] private Array<CanvasItem> _itemsToHide;
+
+	private float _cost = 0f;
+
+    public override void _Ready()
+	{
+		buyButton.Pressed += BuyPlacement;
+		exitButton.Pressed += Exit;
+	}
+
+	public void SetObject(PackedScene newObject, float newCost)
+	{
+		_object = newObject;
+		_cost = newCost;
+
+		ProcessMode = ProcessModeEnum.Inherit;
+		Visible = true;
+
+		if(_itemsToHide.Count > 0)
+		{
+			foreach(CanvasItem item in _itemsToHide)
 			{
-				PlacePlacement(_objectCells);
+				item.Visible = false;
 			}
 		}
 	}
 
+	private void Exit()
+	{
+		_object = null;
+		_cost = 0;
+
+		ProcessMode = ProcessModeEnum.Disabled;
+		Visible = false;
+	}
 	private void CreatePlacement()
 	{
-		GridObject newPlacement = _seaweed.Instantiate<GridObject>();
+		GridObject newPlacement = _object.Instantiate<GridObject>();
 
 		newPlacement.Name = newPlacement.Name + "#" + newPlacement.GetInstanceId(); // Gives object unique name
-		
+
 		newPlacement.AdjustOffset(_grid.CellSize/2);
 		_objectParent.AddChild(newPlacement);
 		_gridObject = newPlacement;
@@ -64,6 +91,11 @@ public partial class GridPlacer : Node2D
 		}
 	}
 
+	private void BuyPlacement()
+	{
+		PlacePlacement(_objectCells);
+	}
+
 	private void MovePlacement()
 	{
 		if(_gridObject != null)
@@ -73,20 +105,43 @@ public partial class GridPlacer : Node2D
 			ResetHighlight();
 			_objectCells = GetObjectCells();
 			_isValid = CheckAndHighlightCells(_objectCells);
-			_gridObject.SetCanvasOrder(Mathf.RoundToInt((targetPosition.Y- GlobalPosition.Y) / _grid.CellSize.Y));
+			_gridObject.SetCanvasOrder(Mathf.RoundToInt((targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y));
 		}
 	}
 	private void PlacePlacement(Array<GridCell> objectCells)
 	{
-		_gridObject = null;
-		_isValid = false;
-
-		foreach(GridCell cell in objectCells)
+		if(GameManager.Instance.Money >= _cost)
 		{
-			cell.Full = true;
-		}
+			GameManager.Instance.RemoveMoney(_cost);
 
-		ResetHighlight();
+			_gridObject = null;
+			_isValid = false;
+
+			foreach(GridCell cell in objectCells)
+			{
+				cell.Full = true;
+			}
+
+			ResetHighlight();
+		}
+		else
+		{
+			foreach(Node child in _gridObject.GetChildren())
+			{
+				if(child is AquariumObject)
+				{
+					AquariumObject obj = child as AquariumObject;
+					GameManager.Instance.ActiveAquarium.RemoveObject(obj);
+				}
+			}
+
+			_gridObject.QueueFree();
+
+			_gridObject = null;
+			_isValid = false;
+
+			ResetHighlight();
+		}
 	}
 	private void ResetHighlight()
 	{
@@ -126,6 +181,10 @@ public partial class GridPlacer : Node2D
 			if (cell.Full)
 			{
 				cell.ChangeColor(_fullColor);
+			}
+			else
+			{
+				cell.ChangeColor(_emptyColor);
 			}
 		}
 

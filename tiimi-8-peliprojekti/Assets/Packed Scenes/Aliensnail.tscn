@@ -1,0 +1,278 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcgfmk676w408"]
+
+[ext_resource type="Script" uid="uid://5tnb1ixtsjv" path="res://Scripts/AI/Aliensnail.cs" id="1_ysmf3"]
+[ext_resource type="Texture2D" uid="uid://buhy7pj0vlle5" path="res://Assets/Sprites/Aliens/aliensnail.png" id="2_vypbu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vypbu"]
+radius = 59.24066
+height = 187.00517
+
+[sub_resource type="Animation" id="Animation_vypbu"]
+resource_name = "swim"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D6:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.52896917, 1.0684278]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D8:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.306194, 0.88334984]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D5:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0719744, 0.5433329]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D9:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0900929, 0.7274507]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D7:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.01436647, -0.4764446]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D10:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.52896917, -0.01692921]
+}
+
+[sub_resource type="Animation" id="Animation_c7ejg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D6:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.52896917]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D8:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.306194]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D5:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0719744]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D9:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0900929]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D7:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.01436647]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D10:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.52896917]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcua5"]
+_data = {
+&"RESET": SubResource("Animation_c7ejg"),
+&"swim": SubResource("Animation_vypbu")
+}
+
+[node name="Aliensnail" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+script = ExtResource("1_ysmf3")
+_navigationAgent = NodePath("NavigationAgent2D")
+_paperdoll = NodePath("AliensnailPaperdoll")
+_health = 150.0
+_oxygenUsage = 0.0
+_hungerDamage = 0.0
+_inWater = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-35, 11)
+rotation = 2.2836304
+shape = SubResource("CapsuleShape2D_vypbu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 50.0
+max_speed = 5000.0
+
+[node name="AliensnailPaperdoll" type="Node2D" parent="."]
+
+[node name="Sprite2D10" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(5, 54)
+rotation = 0.52896917
+texture = ExtResource("2_vypbu")
+offset = Vector2(11.06, 10.965)
+region_enabled = true
+region_rect = Rect2(496, 24, 64, 56)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-61, 20.999994)
+rotation = 0.306194
+texture = ExtResource("2_vypbu")
+offset = Vector2(-10.59, 25.03)
+region_enabled = true
+region_rect = Rect2(424, 24, 56, 64)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-28.999998, 43)
+rotation = -0.0900929
+texture = ExtResource("2_vypbu")
+offset = Vector2(-10.59, 25.03)
+region_enabled = true
+region_rect = Rect2(424, 24, 56, 64)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AliensnailPaperdoll"]
+texture = ExtResource("2_vypbu")
+region_enabled = true
+region_rect = Rect2(8, 56, 240, 144)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(45, -49)
+rotation = 0.5802894
+scale = Vector2(1.16, 1.16)
+texture = ExtResource("2_vypbu")
+region_enabled = true
+region_rect = Rect2(256, 0, 160, 192)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-94.00001, -57)
+rotation = 0.86379707
+texture = ExtResource("2_vypbu")
+offset = Vector2(-22.695, -1.965)
+region_enabled = true
+region_rect = Rect2(16, 8, 72, 32)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-77.00001, -56.000008)
+rotation = 1.5056589
+texture = ExtResource("2_vypbu")
+offset = Vector2(-20.74, -2.06)
+region_enabled = true
+region_rect = Rect2(16, 8, 72, 32)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-44, 27.999998)
+rotation = -0.0719744
+texture = ExtResource("2_vypbu")
+offset = Vector2(-10.59, 25.03)
+region_enabled = true
+region_rect = Rect2(424, 24, 56, 64)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-3.9999995, 42)
+rotation = -0.01436647
+texture = ExtResource("2_vypbu")
+offset = Vector2(-0.715, 19.175)
+region_enabled = true
+region_rect = Rect2(440, 120, 40, 56)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="AliensnailPaperdoll"]
+position = Vector2(-69, 11.000002)
+rotation = 0.52896917
+texture = ExtResource("2_vypbu")
+offset = Vector2(-10.59, 25.03)
+region_enabled = true
+region_rect = Rect2(424, 24, 56, 64)
+region_filter_clip_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AliensnailPaperdoll"]
+libraries = {
+&"": SubResource("AnimationLibrary_jcua5")
+}

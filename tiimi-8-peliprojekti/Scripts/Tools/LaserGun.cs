@@ -41,7 +41,7 @@ private float _cooldownTimer = 0f;
 
 		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{
-			if (npc is not Alien) continue;
+			if (npc is not Alien && npc is not Aliensnail) continue;
 
 			float attackDistance = position.DistanceTo(npc.GlobalPosition);
 			if (attackDistance <= _attackRange)

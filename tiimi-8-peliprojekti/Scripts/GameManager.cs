@@ -25,7 +25,7 @@ public partial class GameManager : Node // Store player inventory
 		get { return _currentTime; }
 	}
 	private bool _isNight = false; //
-	public List<Alien> _nightAliens = new List<Alien>(); // measure how many aliens are currently in aquarium
+	public List<AquariumNPC> _nightAliens = new List<AquariumNPC>(); // measure how many aliens are currently in aquarium
 	private PackedScene _alienScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
@@ -66,7 +66,7 @@ public partial class GameManager : Node // Store player inventory
 			{
 				NightStart();
 			}
-			else if(_isNight && ActiveAquarium._npcs.Count(npc => npc is not Alien) == 0)
+			else if(_isNight && ActiveAquarium._npcs.Count(npc => npc is Fish) == 0)  // GAME OVER CONDITION CHECKIGN FISH
 			{
 				GameOver();
 			}
@@ -79,7 +79,7 @@ public partial class GameManager : Node // Store player inventory
 		}
 	}
 
-	public void RemoveNightAlien(Alien alien)
+	public void RemoveNightAlien(AquariumNPC alien)
 	{
 		_nightAliens.Remove(alien);
 	}

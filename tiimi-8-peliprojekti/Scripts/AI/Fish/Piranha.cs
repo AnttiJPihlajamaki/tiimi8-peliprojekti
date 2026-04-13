@@ -22,14 +22,14 @@ public partial class Piranha : Fish
 
 	protected override void Navigation(double delta)
 	{
-		if (GameManager.Instance.ActiveAquarium._npcs.Count(npc => npc is Alien) > 0)  // PRIORITISE HUNTING ALIENS
+		if (GameManager.Instance.ActiveAquarium._npcs.Count(npc => npc is Alien || npc is Aliensnail) > 0)  // PRIORITISE HUNTING ALIENS
 		{
 			AquariumNPC nearestEnemy = null;
 			float nearestEnemyDistance = float.MaxValue;
 
 			foreach (AquariumNPC npc in _aquarium._npcs)  // LOOP FOR FINDING FISH
 			{
-				if (npc is Alien)
+				if (npc is Alien || npc is Aliensnail)
 				{
 					if (GlobalPosition.DistanceTo(npc.GlobalPosition) < nearestEnemyDistance)
 					{

@@ -48,4 +48,10 @@ if (_aquarium._objects.Count > 0)
 
 		base._PhysicsProcess(delta);
 	}
+
+	protected override void Die()
+    {
+		GameManager.Instance.RemoveNightAlien(this);
+        base.Die();
+	}
 }

@@ -165,8 +165,8 @@ _data = {
 
 [node name="Alien" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
 scale = Vector2(1.841, 2.043)
-collision_layer = 2
-collision_mask = 2
+collision_mask = 0
+motion_mode = 1
 safe_margin = 0.2
 script = ExtResource("1_aqv4r")
 _name = "Alien"

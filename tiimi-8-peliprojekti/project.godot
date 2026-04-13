@@ -53,6 +53,7 @@ pointing/emulate_touch_from_mouse=true
 
 avoidance/layer_1="Fish"
 avoidance/layer_2="Aliens"
+avoidance/layer_3="Carp"
 
 [rendering]
 

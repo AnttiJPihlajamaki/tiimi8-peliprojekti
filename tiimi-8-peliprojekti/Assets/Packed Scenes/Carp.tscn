@@ -90,8 +90,9 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gigbg"]
-radius = 269.9929
-height = 2333.0603
+resource_local_to_scene = true
+radius = 400.0
+height = 2500.0
 
 [sub_resource type="Gradient" id="Gradient_15d7i"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
@@ -119,6 +120,7 @@ color_initial_ramp = SubResource("GradientTexture1D_c0udp")
 
 [node name="Carp" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
 scale = Vector2(0.15, 0.15)
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_llyx2")
 moneyPerSecond = 300.0
@@ -144,8 +146,9 @@ shape = SubResource("CapsuleShape2D_gigbg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 50.0
+radius = 40.0
 max_speed = 5000.0
+avoidance_mask = 0
 
 [node name="CarpPaperdoll" type="Node2D" parent="."]
 

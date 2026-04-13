@@ -1,0 +1,235 @@
+[gd_scene load_steps=13 format=3 uid="uid://dr88tgicem180"]
+
+[ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_aqeo1"]
+[ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="2_sejvv"]
+[ext_resource type="PackedScene" uid="uid://crgwcy8j732qw" path="res://Assets/Packed Scenes/Piranha.tscn" id="3_682ak"]
+[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="4_sejvv"]
+[ext_resource type="Texture2D" uid="uid://dim6x4tmq4oxi" path="res://Assets/Sprites/SEAWEED.png" id="5_682ak"]
+[ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="5_ovgg4"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="6_xnfgy"]
+
+[sub_resource type="Animation" id="Animation_m08pc"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seaweed Sprite/Seaweed:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.22340214, -0.22340214]
+}
+
+[sub_resource type="Animation" id="Animation_qsqnp"]
+resource_name = "Sway"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seaweed Sprite/Seaweed:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.03141592653589813, 0.03839724354387505]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a2cp"]
+_data = {
+&"RESET": SubResource("Animation_m08pc"),
+&"Sway": SubResource("Animation_qsqnp")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vh6ro"]
+font = ExtResource("5_ovgg4")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j04mv"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("6_xnfgy")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Seaweed ShopItem MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_buyButton", "_costLabel")]
+custom_minimum_size = Vector2(180, 420)
+theme = ExtResource("1_aqeo1")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 35
+script = ExtResource("2_sejvv")
+_fishPackedScene = ExtResource("3_682ak")
+_basePrice = 350.0
+_buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
+_costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
+_name = "Piranha"
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.17999998, 0.9, 0.42000008, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Info MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info MarginContainer"]
+layout_mode = 2
+
+[node name="Preview MarginContainerer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 0
+
+[node name="Panel" type="Panel" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer"]
+self_modulate = Color(0, 0.6, 0.9019608, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Seaweed Sprite" type="Node2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel"]
+position = Vector2(53.999996, 92.99999)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("4_sejvv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Seaweed Sprite"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_8a2cp")
+}
+autoplay = "Sway"
+
+[node name="Seaweed" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Seaweed Sprite"]
+scale = Vector2(1, 0.99999994)
+skew = -0.22340214
+texture = ExtResource("5_682ak")
+offset = Vector2(0, -130)
+
+[node name="Fish Name Label" type="Label" parent="Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Seaweed"
+horizontal_alignment = 1
+
+[node name="Info MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="Info MarginContainer/VBoxContainer/Info MarginContainer"]
+self_modulate = Color(0.14999999, 0.75, 0.35000008, 1)
+layout_mode = 2
+
+[node name="Info MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer"]
+layout_mode = 2
+
+[node name="OxygenPerS MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyPerSName Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Oxygen/S :"
+label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MoneyPerSStat Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "200"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "$"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Cost MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer"]
+layout_mode = 2
+
+[node name="CostName Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Cost :"
+label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CostStat Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "???"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
+text = "$"
+label_settings = SubResource("LabelSettings_vh6ro")
+vertical_alignment = 1
+
+[node name="BuyButton MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 5
+
+[node name="Button" type="Button" parent="Info MarginContainer/VBoxContainer/BuyButton MarginContainer"]
+self_modulate = Color(0.6666667, 1, 0, 1)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_j04mv")
+
+[node name="Label" type="Label" parent="Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1

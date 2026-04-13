@@ -120,7 +120,7 @@ _costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/I
 _name = "Goldfish"
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(0.9, 0.54, 0.17999998, 1)
+self_modulate = Color(0.9, 0.23999998, 0.17999998, 1)
 layout_mode = 2
 mouse_filter = 1
 
@@ -228,7 +228,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Panel" type="Panel" parent="Info MarginContainer/VBoxContainer/Info MarginContainer"]
-self_modulate = Color(0.75, 0.45000002, 0.14999999, 1)
+self_modulate = Color(0.75, 0.19999999, 0.14999999, 1)
 layout_mode = 2
 
 [node name="Info MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer"]

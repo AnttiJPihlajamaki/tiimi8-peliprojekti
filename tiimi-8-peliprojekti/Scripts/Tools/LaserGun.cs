@@ -40,7 +40,7 @@ private float _cooldownTimer = 0f;
 		laser.ZIndex = 10;
 		_laserSound.Play();
 
-		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs.ToList())  // alien detection and damage
+		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{
 			if (npc is not Alien && npc is not Aliensnail) continue;
 

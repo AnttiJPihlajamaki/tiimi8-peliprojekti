@@ -20,7 +20,7 @@ public partial class AquariumObject : Node2D
 
 	private void ProcessOxygen(double delta)
 	{
-		if(!_aquarium.MinMaxIdealOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
+		if(!_aquarium.MaxIdealOxygen()) // If the aquarium's oxygen is outside of ideal range fish takes damage over time
 		{
 			ChangeHealth(-(float)delta * _oxygenDamage); // Reduces health over time
 		}

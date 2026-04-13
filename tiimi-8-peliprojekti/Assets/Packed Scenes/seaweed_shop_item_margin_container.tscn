@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr88tgicem180"]
+[gd_scene load_steps=12 format=3 uid="uid://dr88tgicem180"]
 
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_aqeo1"]
-[ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="2_sejvv"]
-[ext_resource type="PackedScene" uid="uid://crgwcy8j732qw" path="res://Assets/Packed Scenes/Piranha.tscn" id="3_682ak"]
-[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="4_sejvv"]
+[ext_resource type="Script" uid="uid://h2vgsu4q4whx" path="res://Scripts/Tools/PlantShopItem.cs" id="2_aqeo1"]
+[ext_resource type="PackedScene" uid="uid://rbjnuvpnrpq0" path="res://Assets/Packed Scenes/seaweed.tscn" id="3_sejvv"]
 [ext_resource type="Texture2D" uid="uid://dim6x4tmq4oxi" path="res://Assets/Sprites/SEAWEED.png" id="5_682ak"]
 [ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="5_ovgg4"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="6_xnfgy"]
@@ -69,12 +68,11 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 35
-script = ExtResource("2_sejvv")
-_fishPackedScene = ExtResource("3_682ak")
-_basePrice = 350.0
+script = ExtResource("2_aqeo1")
+_plantPackedScene = ExtResource("3_sejvv")
 _buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
 _costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
-_name = "Piranha"
+_name = "Seaweed"
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(0.17999998, 0.9, 0.42000008, 1)
@@ -108,7 +106,6 @@ mouse_filter = 1
 [node name="Seaweed Sprite" type="Node2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel"]
 position = Vector2(53.999996, 92.99999)
 scale = Vector2(0.4, 0.4)
-script = ExtResource("4_sejvv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Seaweed Sprite"]
 root_node = NodePath("../..")
@@ -154,28 +151,20 @@ size_flags_horizontal = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer"]
 layout_mode = 2
 
-[node name="MoneyPerSName Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+[node name="OxygenPerSName Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
-text = "Oxygen/S :"
+text = "Oxygen/S : "
 label_settings = SubResource("LabelSettings_vh6ro")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MoneyPerSStat Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+[node name="OxygenPerSStat Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 1
-text = "200"
-label_settings = SubResource("LabelSettings_vh6ro")
-vertical_alignment = 1
-
-[node name="Symbol Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 1
-text = "$"
+text = "1"
 label_settings = SubResource("LabelSettings_vh6ro")
 vertical_alignment = 1
 

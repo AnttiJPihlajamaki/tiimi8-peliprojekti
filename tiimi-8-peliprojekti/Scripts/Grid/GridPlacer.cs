@@ -18,13 +18,13 @@ public partial class GridPlacer : Control
 	private GridObject _gridObject;
 	[Export] private bool _isValid = false;
 	private Array<GridCell> _objectCells;
-	private Vector2 targetPosition;
+	private Vector2 _targetPosition;
 	public Vector2 TargetPosition
 	{
-		get{ return targetPosition; }
+		get{ return _targetPosition; }
 		set
 		{
-			targetPosition = value;
+			_targetPosition = value;
 			MovePlacement();
 			if(_gridObject == null)
 			{
@@ -33,8 +33,9 @@ public partial class GridPlacer : Control
 		}
 	}
 
-	[Export] private Button buyButton;
-	[Export] private Button exitButton;
+	[Export] private Button _buyButton;
+	[Export] private Button _exitButton;
+	[Export] private Label _costLabel;
 
 	[Export] private Array<CanvasItem> _itemsToHide;
 
@@ -42,14 +43,15 @@ public partial class GridPlacer : Control
 
     public override void _Ready()
 	{
-		buyButton.Pressed += BuyPlacement;
-		exitButton.Pressed += Exit;
+		_buyButton.Pressed += BuyPlacement;
+		_exitButton.Pressed += Exit;
 	}
 
 	public void SetObject(PackedScene newObject, float newCost)
 	{
 		_object = newObject;
 		_cost = newCost;
+		_costLabel.Text = ""+_cost;
 
 		ProcessMode = ProcessModeEnum.Inherit;
 		Visible = true;
@@ -65,6 +67,7 @@ public partial class GridPlacer : Control
 
 	private void Exit()
 	{
+		ResetPlacement();
 		_object = null;
 		_cost = 0;
 
@@ -80,15 +83,7 @@ public partial class GridPlacer : Control
 		newPlacement.AdjustOffset(_grid.CellSize/2);
 		_objectParent.AddChild(newPlacement);
 		_gridObject = newPlacement;
-
-		foreach(Node child in _gridObject.GetChildren())
-		{
-			if(child is AquariumObject)
-			{
-				AquariumObject obj = child as AquariumObject;
-				GameManager.Instance.ActiveAquarium.AddObject(obj);
-			}
-		}
+		_gridObject.ProcessMode = ProcessModeEnum.Disabled;
 	}
 
 	private void BuyPlacement()
@@ -100,12 +95,12 @@ public partial class GridPlacer : Control
 	{
 		if(_gridObject != null)
 		{
-			_gridObject.GlobalPosition = targetPosition + _grid.CellSize/2;
+			_gridObject.GlobalPosition = _targetPosition + _grid.CellSize/2;
 
 			ResetHighlight();
 			_objectCells = GetObjectCells();
 			_isValid = CheckAndHighlightCells(_objectCells);
-			_gridObject.SetCanvasOrder(Mathf.RoundToInt((targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y));
+			_gridObject.SetCanvasOrder(Mathf.RoundToInt((_targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y));
 		}
 	}
 	private void PlacePlacement(Array<GridCell> objectCells)
@@ -113,6 +108,17 @@ public partial class GridPlacer : Control
 		if(GameManager.Instance.Money >= _cost)
 		{
 			GameManager.Instance.RemoveMoney(_cost);
+
+			foreach(Node child in _gridObject.GetChildren())
+			{
+				if(child is AquariumObject)
+				{
+					AquariumObject obj = child as AquariumObject;
+					GameManager.Instance.ActiveAquarium.AddObject(obj);
+				}
+			}
+
+			_gridObject.ProcessMode = ProcessModeEnum.Inherit;
 
 			_gridObject = null;
 			_isValid = false;
@@ -126,22 +132,20 @@ public partial class GridPlacer : Control
 		}
 		else
 		{
-			foreach(Node child in _gridObject.GetChildren())
-			{
-				if(child is AquariumObject)
-				{
-					AquariumObject obj = child as AquariumObject;
-					GameManager.Instance.ActiveAquarium.RemoveObject(obj);
-				}
-			}
-
-			_gridObject.QueueFree();
-
-			_gridObject = null;
-			_isValid = false;
-
-			ResetHighlight();
+			ResetPlacement();
 		}
+	}
+
+	private void ResetPlacement()
+	{
+		if(_gridObject != null)
+		{
+			_gridObject.QueueFree();
+			_gridObject = null;
+		}
+		_isValid = false;
+
+		ResetHighlight();
 	}
 	private void ResetHighlight()
 	{

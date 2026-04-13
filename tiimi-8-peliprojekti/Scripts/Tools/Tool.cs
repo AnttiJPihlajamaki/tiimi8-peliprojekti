@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public abstract partial class Tool : Node
 {
-	[Export] private Aquarium _aquarium; // Reference to aquarium the tool is located
-
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventScreenTouch)

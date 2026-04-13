@@ -117,5 +117,9 @@ public partial class Aquarium : Node2D
 	{
 		return _currentOxygen >= _minIdealOxygen && _currentOxygen <=_maxIdealOxygen;
 	}
+	public bool MaxIdealOxygen() // Helper method to check if current oxygen is with min/max
+	{
+		return _currentOxygen <=_maxIdealOxygen;
+	}
 
 }

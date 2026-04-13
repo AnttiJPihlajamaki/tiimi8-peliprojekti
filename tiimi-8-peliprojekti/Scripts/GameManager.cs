@@ -27,6 +27,7 @@ public partial class GameManager : Node // Store player inventory
 	private bool _isNight = false; //
 	public List<AquariumNPC> _nightAliens = new List<AquariumNPC>(); // measure how many aliens are currently in aquarium
 	private PackedScene _alienScene;
+	private PackedScene _snailScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
 
@@ -52,6 +53,7 @@ public partial class GameManager : Node // Store player inventory
     {
 		_alienScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Alien.tscn");
 		_portalScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/portal.tscn");
+		_snailScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Aliensnail.tscn");
     }
 
 	public override void _Process(double delta)
@@ -117,6 +119,20 @@ public partial class GameManager : Node // Store player inventory
 			Node2D portal = _portalScene.Instantiate<Node2D>();  // portal animation
 			ActiveAquarium.AddChild(portal);
 			portal.GlobalPosition = newAlien.GlobalPosition;
+		}
+
+		int snailAmount = amount / 3;  // for every 3 aliens, spawn 1 alien snail
+
+		for (int s = 0; s < snailAmount; s++)
+		{
+			Aliensnail newSnail = _snailScene.Instantiate<Aliensnail>();  // new snail added to list _nightAlien
+			ActiveAquarium.AddNPC(newSnail);
+			_nightAliens.Add(newSnail);
+			newSnail.GlobalPosition = GetSpawnPosition();
+
+			Node2D portal = _portalScene.Instantiate<Node2D>();  // portal animation
+			ActiveAquarium.AddChild(portal);
+			portal.GlobalPosition = newSnail.GlobalPosition;
 		}
 	}
 

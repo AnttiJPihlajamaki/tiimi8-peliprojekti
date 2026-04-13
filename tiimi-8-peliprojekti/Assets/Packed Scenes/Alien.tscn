@@ -169,6 +169,7 @@ collision_mask = 0
 motion_mode = 1
 safe_margin = 0.2
 script = ExtResource("1_aqv4r")
+_attackDamage = 30.0
 _name = "Alien"
 _minSpeed = 2000.0
 _maxSpeed = 2100.0

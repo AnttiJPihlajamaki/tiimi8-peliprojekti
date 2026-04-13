@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://buhy7pj0vlle5" path="res://Assets/Sprites/Aliens/aliensnail.png" id="2_vypbu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vypbu"]
-radius = 59.24066
-height = 187.00517
+radius = 43.173798
+height = 141.4593
 
 [sub_resource type="Animation" id="Animation_c7ejg"]
 length = 0.001
@@ -213,13 +213,14 @@ _data = {
 }
 
 [node name="Aliensnail" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+scale = Vector2(0.425, 0.425)
 script = ExtResource("1_ysmf3")
+_navigationAgent = NodePath("NavigationAgent2D")
+_paperdoll = NodePath("AliensnailPaperdoll")
 _health = 150.0
 _oxygenUsage = 0.0
 _hungerDamage = 0.0
 _inWater = true
-_navigationAgent = NodePath("NavigationAgent2D")
-_paperdoll = NodePath("AliensnailPaperdoll")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-35, 11)

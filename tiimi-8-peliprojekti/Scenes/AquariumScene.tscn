@@ -170,9 +170,10 @@ texture = ExtResource("7_ij331")
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_3cm75")
 
-[node name="LaserGun" type="Node" parent="Aquarium" node_paths=PackedStringArray("_aquarium")]
+[node name="LaserGun" type="Node" parent="Aquarium" node_paths=PackedStringArray("_laserSound", "_aquarium")]
 process_mode = 4
 script = ExtResource("6_m03r2")
+_laserSound = NodePath("AudioStreamPlayer2D")
 _aquarium = NodePath("..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Aquarium/LaserGun"]
@@ -297,15 +298,12 @@ text = "Buy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_top = 5
-script = ExtResource("14_rl3go")
-_itemsToHide = [NodePath("../../../..")]
-_itemsToShow = [NodePath("../../../../../PauseButton MarginContainer"), NodePath("../../../../../Toolbar MarginContainer")]
 
 [node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/HBoxContainer/ExitButton MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0, 0, 1)

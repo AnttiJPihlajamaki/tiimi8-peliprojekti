@@ -4,6 +4,7 @@ using System;
 public partial class LaserGun : Tool
 {
 private PackedScene _laserScene;
+[Export] private AudioStreamPlayer2D _laserSound;
 [Export] private float _attackDamage = 50f;
 [Export] private float _attackRange = 150f;
 [Export] private float _attackCooldown = 0.8f;
@@ -36,6 +37,7 @@ private float _cooldownTimer = 0f;
 		GameManager.Instance.ActiveAquarium.AddChild(laser);
 		laser.GlobalPosition = position;
 		laser.ZIndex = 10;
+		_laserSound.Play();
 
 		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{

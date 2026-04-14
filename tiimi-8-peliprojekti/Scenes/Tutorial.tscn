@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://xktnsueo5nih"]
+
+[ext_resource type="Script" uid="uid://bvclx2xlme3gq" path="res://Scripts/Tutorial.cs" id="1_uo1fs"]
+[ext_resource type="Texture2D" uid="uid://bca1x2lydh140" path="res://Assets/Tutorial/storefrontshaded.png" id="2_7bloo"]
+[ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_rlm2d"]
+
+[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_blackFadeRect", "_TutorialBox", "_tutorialText")]
+position = Vector2(-3, 0)
+script = ExtResource("1_uo1fs")
+_blackFadeRect = NodePath("CanvasLayer/ColorRect")
+_TutorialBox = NodePath("Control/TutorialBox")
+_tutorialText = NodePath("Control/TutorialBox/Panel/MarginContainer/Label")
+
+[node name="Storefrontshaded" type="Sprite2D" parent="."]
+position = Vector2(576, 339)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_7bloo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+theme = ExtResource("3_rlm2d")
+
+[node name="TutorialBox" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 683.0
+offset_right = 1111.0
+offset_bottom = 852.0
+
+[node name="Panel" type="Panel" parent="Control/TutorialBox"]
+self_modulate = Color(0.9445205, 0.8852721, 0.67633224, 1)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TutorialBox/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 16.0
+offset_right = 1033.0
+offset_bottom = 152.0
+
+[node name="Label" type="Label" parent="Control/TutorialBox/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+justification_flags = 171
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

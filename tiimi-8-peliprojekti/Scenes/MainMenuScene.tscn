@@ -72,13 +72,14 @@ text = "Holy Carp, Aliens!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+[node name="Play Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
 self_modulate = Color(0.16666675, 1, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 script = ExtResource("2_mxhvt")
+_blackFadeRect = NodePath("../../../../../../../CanvasLayer/ColorRect")
 scene = 1
 
 [node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Play Button"]
@@ -138,3 +139,14 @@ theme_override_font_sizes/font_size = 48
 text = "	Quit Game"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

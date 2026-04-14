@@ -15,6 +15,7 @@ public partial class PlantShopItem : Control // ! Is a Tool temporarily while UI
 	public override void _Ready()
 	{
 		_buyButton.Pressed += OpenObjectPlacer;
+		_costLabel.Text = ""+_price;
 	}
 
 	public void OpenObjectPlacer() // Handles purchasing new fish

@@ -36,7 +36,7 @@ _fishPackedScene = ExtResource("3_uni4d")
 _basePrice = 350.0
 _buyButton = NodePath("Info MarginContainer/VBoxContainer/BuyButton MarginContainer/Button")
 _costLabel = NodePath("Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer/CostStat Label")
-_name = "Piranha"
+_name = "Carp"
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(0.9, 0.23999998, 0.17999998, 1)

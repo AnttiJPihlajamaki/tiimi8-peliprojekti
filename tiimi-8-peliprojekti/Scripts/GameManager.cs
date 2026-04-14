@@ -128,12 +128,19 @@ public partial class GameManager : Node // Store player inventory
 			Aliensnail newSnail = _snailScene.Instantiate<Aliensnail>();  // new snail added to list _nightAlien
 			ActiveAquarium.AddNPC(newSnail);
 			_nightAliens.Add(newSnail);
-			newSnail.GlobalPosition = GetSpawnPosition();
+			newSnail.GlobalPosition = GetSpawnPositionSnail();
 
 			Node2D portal = _portalScene.Instantiate<Node2D>();  // portal animation
 			ActiveAquarium.AddChild(portal);
 			portal.GlobalPosition = newSnail.GlobalPosition;
 		}
+	}
+
+	private Vector2 GetSpawnPositionSnail()
+	{
+		Rect2 bounds = ActiveAquarium._navigationRegion.GetBounds();
+		int spawnSide = GD.RandRange(0, 4);
+		return new Vector2((float)GD.RandRange(bounds.Position.X, bounds.End.X), bounds.End.Y);
 	}
 
 	private Vector2 GetSpawnPosition()

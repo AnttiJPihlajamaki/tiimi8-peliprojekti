@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://byli4wbr74wr0"]
+[gd_scene load_steps=51 format=3 uid="uid://byli4wbr74wr0"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dr88tgicem180" path="res://Assets/Packed Scenes/seaweed_shop_item_margin_container.tscn" id="23_rl3go"]
 [ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="31_etofs"]
 [ext_resource type="Script" uid="uid://bl6r35ewdeppa" path="res://Scripts/UI/PauseButton.cs" id="31_mcuhi"]
+[ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="32_qs632"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_conu5"]
 size = Vector2(1920, 980)
@@ -122,9 +123,9 @@ region_rect = Rect2(64, 128, 64, 64)
 process_mode = 1
 script = ExtResource("1_aw301")
 _currentOxygen = 50.0
-_shop = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer")
+_shop = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer")
 _navigationRegion = NodePath("NavigationRegion2D")
-ObjectPlacer = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer")
+ObjectPlacer = NodePath("../UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer")
 
 [node name="Background" type="Sprite2D" parent="Aquarium"]
 z_index = -10
@@ -188,7 +189,7 @@ process_mode = 4
 script = ExtResource("4_5rrdd")
 _maxPower = 25.0
 _particles = NodePath("../Oxygenator Particles")
-powerSlider = NodePath("../../../../UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
+powerSlider = NodePath("../../../../UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer/VSlider")
 
 [node name="Oxygenator Particles" type="GPUParticles2D" parent="Aquarium/Tools/Oxygenator"]
 modulate = Color(1, 1, 1, 0.39215687)
@@ -230,99 +231,105 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Placement MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer" node_paths=PackedStringArray("_grid", "_objectParent", "_buyButton", "_exitButton", "_costLabel", "_itemsToHide")]
+[node name="Game UI" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Placement MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI" node_paths=PackedStringArray("_grid", "_objectParent", "_buyButton", "_exitButton", "_costLabel", "_itemsToHide")]
 process_mode = 4
 visible = false
-layout_mode = 2
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 467.0
 theme_override_constants/margin_bottom = 145
 script = ExtResource("6_7sxcg")
-_grid = NodePath("../../../../Aquarium/Grid Parent/Grid")
+_grid = NodePath("../../../../../Aquarium/Grid Parent/Grid")
 _invalidColor = Color(0.8, 0, 0, 0.5882353)
 _validColor = Color(0.26666668, 0.8, 0, 0.5882353)
 _fullColor = Color(0.8, 0, 0, 0.5882353)
 _emptyColor = Color(0, 0.4, 0.8, 0.5882353)
-_objectParent = NodePath("../../../../Aquarium/AquariumObjects")
+_objectParent = NodePath("../../../../../Aquarium/AquariumObjects")
 _buyButton = NodePath("Prompt MarginContainer/VBoxContainer/Button HBoxContainer/BuyButton MarginContainer/Button")
 _exitButton = NodePath("Prompt MarginContainer/VBoxContainer/Button HBoxContainer/ExitButton MarginContainer/Button")
 _costLabel = NodePath("Prompt MarginContainer/VBoxContainer/Cost HBoxContainer/Cost Number Label")
 _itemsToHide = [NodePath("../Shop MarginContainer")]
 
-[node name="ColorRect" type="ColorRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer"]
 layout_mode = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.47058824)
 
-[node name="Prompt MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer"]
+[node name="Prompt MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 75
 theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 75
 theme_override_constants/margin_bottom = 75
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Prompt Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
+[node name="Prompt Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "PLACER_PROMPT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
+[node name="Cost HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Cost Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
+[node name="Cost Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "COST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = ":"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost Number Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
+[node name="Cost Number Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Symbol Number Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
+[node name="Symbol Number Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
+[node name="Button HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="BuyButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer"]
+[node name="BuyButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer"]
 custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 5
 
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/BuyButton MarginContainer"]
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/BuyButton MarginContainer"]
 self_modulate = Color(0.6666667, 1, 0, 1)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_j8iyi")
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/BuyButton MarginContainer/Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/BuyButton MarginContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,14 +340,14 @@ text = "BUY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer"]
+[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer"]
 custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_top = 5
 
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/ExitButton MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/ExitButton MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_j8iyi")
@@ -348,7 +355,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../../../..")]
 _itemsToShow = [NodePath("../../../../../../Shop MarginContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/ExitButton MarginContainer/Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Button HBoxContainer/ExitButton MarginContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,24 +366,34 @@ text = "CANCEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AquariumUI" parent="UI CanvasLayer/UI/Screen MarginContainer" instance=ExtResource("6_5dkmn")]
-layout_mode = 2
+[node name="AquariumUI" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI" instance=ExtResource("6_5dkmn")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="Toolbar MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer"]
-layout_mode = 2
+[node name="Toolbar MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI"]
+layout_mode = 0
+offset_top = 263.0
+offset_right = 290.0
+offset_bottom = 648.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="FoodInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+[node name="FoodInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 75
 
-[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer"]
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -384,7 +401,7 @@ size_flags_vertical = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
 modulate = Color(0.9, 0.45, 0, 1)
 layout_mode = 2
 texture = ExtResource("7_m03r2")
@@ -394,7 +411,7 @@ patch_margin_top = 27
 patch_margin_right = 27
 patch_margin_bottom = 27
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -403,21 +420,21 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Food"
 
-[node name="LaserInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+[node name="LaserInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 75
 
-[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer"]
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -425,7 +442,7 @@ size_flags_vertical = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
 modulate = Color(0.58431375, 0, 0.078431375, 1)
 layout_mode = 2
 texture = ExtResource("7_m03r2")
@@ -435,7 +452,7 @@ patch_margin_top = 27
 patch_margin_right = 27
 patch_margin_bottom = 27
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -444,21 +461,21 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Laser Blaster"
 
-[node name="PlanterInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+[node name="PlanterInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 75
 
-[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer"]
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -466,7 +483,7 @@ size_flags_vertical = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
 modulate = Color(0.2, 0.73333335, 1, 1)
 layout_mode = 2
 texture = ExtResource("7_m03r2")
@@ -476,7 +493,7 @@ patch_margin_top = 27
 patch_margin_right = 27
 patch_margin_bottom = 27
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -485,20 +502,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Planter"
 
-[node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+[node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 75
 
-[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
+[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -506,7 +523,7 @@ size_flags_vertical = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
 modulate = Color(0.9, 0, 0.15000029, 1)
 layout_mode = 2
 texture = ExtResource("7_m03r2")
@@ -516,7 +533,7 @@ patch_margin_top = 27
 patch_margin_right = 27
 patch_margin_bottom = 27
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -525,20 +542,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Oxygenator"
 
-[node name="Power Slider MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
+[node name="Power Slider MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_bottom = 70
 
-[node name="VSlider" type="VSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer"]
+[node name="VSlider" type="VSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Power Slider MarginContainer"]
 layout_mode = 2
 theme_override_icons/grabber = SubResource("AtlasTexture_owhyu")
 theme_override_icons/grabber_highlight = SubResource("AtlasTexture_owhyu")
@@ -549,17 +566,17 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_owhyu"
 value = 1.0
 scrollable = false
 
-[node name="Toolbar HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer"]
+[node name="Toolbar HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 8
 
-[node name="Food MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="Food MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Food Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+[node name="Food Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
 self_modulate = Color(0.8980392, 0.5411765, 0.18039216, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -569,10 +586,10 @@ button_group = SubResource("ButtonGroup_frbro")
 text = "
 "
 script = ExtResource("12_e2tru")
-_tool = NodePath("../../../../../../../Aquarium/Tools/Feeder")
+_tool = NodePath("../../../../../../../../Aquarium/Tools/Feeder")
 _itemsToToggle = [NodePath("../../../FoodInfo MarginContainer")]
 
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer/Food Button"]
+[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Food MarginContainer/Food Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -586,21 +603,21 @@ grow_vertical = 2
 texture = ExtResource("18_7sxcg")
 expand_mode = 1
 
-[node name="Oxygenator MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="Oxygenator MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Oxygenator Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+[node name="Oxygenator Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
 self_modulate = Color(1, 0.100000024, 0.17500019, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_frbro")
 script = ExtResource("12_e2tru")
-_tool = NodePath("../../../../../../../Aquarium/Tools/Oxygenator/Oxygenator Tool")
+_tool = NodePath("../../../../../../../../Aquarium/Tools/Oxygenator/Oxygenator Tool")
 _itemsToToggle = [NodePath("../../../OxygenatorInfo MarginContainer")]
 
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer/Oxygenator Button"]
+[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Oxygenator MarginContainer/Oxygenator Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -614,11 +631,11 @@ grow_vertical = 2
 texture = ExtResource("19_5dkmn")
 expand_mode = 1
 
-[node name="Laser MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="Laser MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Laser Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
+[node name="Laser Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer" node_paths=PackedStringArray("_tool", "_itemsToToggle")]
 self_modulate = Color(0.5834204, 0, 0.08015778, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -627,10 +644,10 @@ button_group = SubResource("ButtonGroup_frbro")
 text = "
 "
 script = ExtResource("12_e2tru")
-_tool = NodePath("../../../../../../../Aquarium/Tools/LaserGun")
+_tool = NodePath("../../../../../../../../Aquarium/Tools/LaserGun")
 _itemsToToggle = [NodePath("../../../LaserInfo MarginContainer")]
 
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer/Laser Button"]
+[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Laser MarginContainer/Laser Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,17 +657,17 @@ grow_vertical = 2
 texture = ExtResource("20_m03r2")
 expand_mode = 1
 
-[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
+[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Shop Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer"]
+[node name="Shop Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer"]
 self_modulate = Color(0.6666667, 1, 0, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme = ExtResource("5_7sxcg")
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer/Shop Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer/Shop Button"]
 modulate = Color(1, 0.8333334, 0, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -663,17 +680,22 @@ label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow", "_tools", "_openButton", "_closeButton")]
+[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow", "_tools", "_openButton", "_closeButton")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("13_rl3go")
 _itemsToHide = [NodePath("Shop Panel MarginContainer/Plants VBoxContainer"), NodePath("Shop Panel MarginContainer/Fish VBoxContainer"), NodePath("../PauseButton MarginContainer"), NodePath("../Toolbar MarginContainer")]
 _itemsToShow = [NodePath("Shop Panel MarginContainer/Category VBoxContainer"), NodePath(".")]
-_tools = NodePath("../../../../Aquarium/Tools")
+_tools = NodePath("../../../../../Aquarium/Tools")
 _openButton = NodePath("../Toolbar MarginContainer/Toolbar HBoxContainer/Shop MarginContainer/Shop Button")
 _closeButton = NodePath("Shop Panel MarginContainer/ExitButton MarginContainer/Button")
 
-[node name="Shop Panel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer"]
+[node name="Shop Panel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/margin_left = 15
@@ -681,15 +703,15 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer"]
 self_modulate = Color(1, 0.8666667, 0.19999999, 1)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Category VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+[node name="Category VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer"]
 layout_mode = 2
 
-[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer"]
+[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_vertical = 0
@@ -697,13 +719,13 @@ theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 75
 
-[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Shop Label MarginContainer"]
+[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = "SHOP"
 
-[node name="Category MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer"]
+[node name="Category MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer"]
 custom_minimum_size = Vector2(0, 470)
 layout_mode = 2
 size_flags_vertical = 8
@@ -712,38 +734,38 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="CategoryPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer"]
+[node name="CategoryPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/CategoryPanel MarginContainer"]
+[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/CategoryPanel MarginContainer"]
 self_modulate = Color(1, 0.75, 0.25, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_yyfks")
 
-[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer"]
+[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 15
 
-[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer"]
+[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer"]
+[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Fish Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Fish Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(0.9, 0.23999998, 0.17999998, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -755,7 +777,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../../..")]
 _itemsToShow = [NodePath("../../../../../Fish VBoxContainer")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -766,7 +788,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button/VBoxContainer"]
 modulate = Color(0, 0, 0, 0.50980395)
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -775,7 +797,7 @@ size_flags_vertical = 4
 texture = ExtResource("17_j8iyi")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button/VBoxContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "FISH_PLURAL"
@@ -783,7 +805,7 @@ label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Plants Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Plants Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(0.17999998, 0.9, 0.29999986, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -795,7 +817,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../../..")]
 _itemsToShow = [NodePath("../../../../../Plants VBoxContainer")]
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -806,7 +828,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button/VBoxContainer2"]
 modulate = Color(0, 0, 0, 0.50980395)
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -815,7 +837,7 @@ size_flags_vertical = 4
 texture = ExtResource("18_rl3go")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button/VBoxContainer2"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "PLANTS"
@@ -823,53 +845,53 @@ label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer"]
+[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Fish VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+[node name="Fish VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer"]
+[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 75
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
 
-[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = "SHOP"
 
-[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = " | "
 
-[node name="Fish Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Fish Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = "FISH_PLURAL"
 
-[node name="Buttons MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
+[node name="Buttons MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 5
 
-[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer/HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer/HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0.5, 0, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -878,7 +900,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../../..")]
 _itemsToShow = [NodePath("../../../../../Category VBoxContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer/HBoxContainer/Back Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/Buttons MarginContainer/HBoxContainer/Back Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -890,7 +912,7 @@ text = "<"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer"]
+[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer"]
 custom_minimum_size = Vector2(0, 470)
 layout_mode = 2
 size_flags_vertical = 8
@@ -899,99 +921,99 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ShopPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer"]
+[node name="ShopPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 25
 
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopPanel MarginContainer"]
+[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopPanel MarginContainer"]
 self_modulate = Color(0.7, 0.25083333, 0.21000001, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_yyfks")
 
-[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer"]
+[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 6
 
-[node name="Shop ScrollContainer" type="ScrollContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer"]
+[node name="Shop ScrollContainer" type="ScrollContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer"]
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 
-[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer"]
+[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Goldfish ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("13_conu5")]
+[node name="Goldfish ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("13_conu5")]
 layout_mode = 2
 
-[node name="Piranha ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("14_5rrdd")]
+[node name="Piranha ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("14_5rrdd")]
 layout_mode = 2
 
-[node name="Carp ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("19_7kyd7")]
+[node name="Carp ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("19_7kyd7")]
 layout_mode = 2
 _fishPackedScene = ExtResource("20_e2tru")
 _basePrice = 1500.0
 
-[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Plants VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+[node name="Plants VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer"]
+[node name="Shop Label MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 75
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
 
-[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = "SHOP"
 
-[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = " | "
 
-[node name="Plants Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+[node name="Plants Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
 text = "PLANTS"
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 5
 
-[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0.5, 0, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -1000,7 +1022,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../../..")]
 _itemsToShow = [NodePath("../../../../../Category VBoxContainer")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer/HBoxContainer/Back Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/MarginContainer/HBoxContainer/Back Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1012,7 +1034,7 @@ text = "<"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer"]
+[node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer"]
 custom_minimum_size = Vector2(0, 470)
 layout_mode = 2
 size_flags_vertical = 8
@@ -1021,49 +1043,49 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ShopPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer"]
+[node name="ShopPanel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 25
 
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopPanel MarginContainer"]
+[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopPanel MarginContainer"]
 self_modulate = Color(0.21000001, 0.7, 0.3733334, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_yyfks")
 
-[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer"]
+[node name="ShopScroll MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 6
 
-[node name="Shop ScrollContainer" type="ScrollContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer"]
+[node name="Shop ScrollContainer" type="ScrollContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer"]
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 
-[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer"]
+[node name="Shop HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+[node name="Start Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Seaweed ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("23_rl3go")]
+[node name="Seaweed ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("23_rl3go")]
 layout_mode = 2
 
-[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
+[node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer"]
+[node name="ExitButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -1072,13 +1094,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 0
 
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/ExitButton MarginContainer"]
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/ExitButton MarginContainer"]
 self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/ExitButton MarginContainer/Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/ExitButton MarginContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1090,8 +1112,11 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer"]
-layout_mode = 2
+[node name="PauseButton MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI"]
+layout_mode = 0
+offset_left = 1068.0
+offset_right = 1152.0
+offset_bottom = 84.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_left = 10
@@ -1099,17 +1124,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseButton MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/PauseButton MarginContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(0, 0.5, 1, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("31_mcuhi")
 _pause = true
-_itemsToHide = []
-_itemsToShow = []
+_itemsToHide = [NodePath("../..")]
+_itemsToShow = [NodePath("../../../PauseMenu MarginContainer")]
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseButton MarginContainer/Button"]
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/PauseButton MarginContainer/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1132,14 +1157,14 @@ mouse_filter = 0
 layout_mode = 2
 color = Color(0, 0.13333331, 0.2, 0.54901963)
 
-[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer"]
+[node name="Pause Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer"]
 self_modulate = Color(0, 0.4745098, 0.9490196, 1)
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseMenu Content MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel"]
+[node name="PauseMenu Content MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1151,16 +1176,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PauseLabel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+[node name="PauseLabel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/PauseLabel MarginContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer/PauseLabel MarginContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 21
 theme_override_font_sizes/font_size = 50
@@ -1169,15 +1194,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Return Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Return Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(0.16666675, 1, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("31_mcuhi")
-_itemsToHide = []
-_itemsToShow = []
+_itemsToHide = [NodePath("../../../..")]
+_itemsToShow = [NodePath("../../../../../Game UI")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Return Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer/Return Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1190,15 +1215,16 @@ text = "RESUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+[node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
 self_modulate = Color(1, 0.5, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 text = "
 "
 script = ExtResource("15_p6q20")
+_blackFadeRect = NodePath("../../../../../../../../CanvasLayer/ColorRect")
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Restart Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer/Restart Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1211,14 +1237,17 @@ text = "RESTART"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
+[node name="Settings Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 text = "
 "
+script = ExtResource("14_rl3go")
+_itemsToHide = [NodePath("../../..")]
+_itemsToShow = [NodePath("../../../../Settings Panel")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Settings Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer/Settings Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1231,7 +1260,7 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainMenu Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
+[node name="MainMenu Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
@@ -1240,7 +1269,7 @@ text = "
 script = ExtResource("16_etofs")
 _blackFadeRect = NodePath("../../../../../../../../CanvasLayer/ColorRect")
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/MainMenu Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer/MainMenu Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1253,8 +1282,188 @@ text = "MAIN_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" instance=ExtResource("31_etofs")]
+[node name="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" instance=ExtResource("31_etofs")]
 layout_mode = 2
+
+[node name="Settings Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer"]
+visible = false
+self_modulate = Color(0, 0.4745098, 0.9490196, 1)
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PauseMenu Content MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Settings VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectsSlider")]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("32_qs632")
+masterSlider = NodePath("Master Panel/MarginContainer/VBoxContainer/Master HSlider")
+musicSlider = NodePath("Music Panel/MarginContainer/VBoxContainer/Music HSlider")
+effectsSlider = NodePath("SFX Panel/MarginContainer/VBoxContainer/SFX HSlider")
+
+[node name="Settings MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Settings MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Volume Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Master Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Music Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Music Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFX Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SFX Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "
+"
+script = ExtResource("14_rl3go")
+_itemsToHide = [NodePath("../../..")]
+_itemsToShow = [NodePath("../../../../Pause Panel")]
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Back Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

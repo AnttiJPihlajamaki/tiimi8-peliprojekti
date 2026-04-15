@@ -577,9 +577,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_7sxcg")
+expand_mode = 1
 
 [node name="Oxygenator MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
@@ -600,9 +605,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_5dkmn")
+expand_mode = 1
 
 [node name="Laser MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
@@ -628,6 +638,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("20_m03r2")
+expand_mode = 1
 
 [node name="Shop MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Toolbar MarginContainer/Toolbar HBoxContainer"]
 layout_mode = 2
@@ -1095,8 +1106,8 @@ layout_mode = 2
 mouse_filter = 1
 script = ExtResource("31_mcuhi")
 _pause = true
-_itemsToHide = [NodePath("..")]
-_itemsToShow = [NodePath("../../PauseMenu MarginContainer")]
+_itemsToHide = []
+_itemsToShow = []
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseButton MarginContainer/Button"]
 layout_mode = 1
@@ -1163,8 +1174,8 @@ self_modulate = Color(0.16666675, 1, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("31_mcuhi")
-_itemsToHide = [NodePath("../../../..")]
-_itemsToShow = [NodePath("../../../../../PauseButton MarginContainer")]
+_itemsToHide = []
+_itemsToShow = []
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Return Button"]
 layout_mode = 1
@@ -1179,14 +1190,13 @@ text = "RESUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
+[node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer"]
 self_modulate = Color(1, 0.5, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 text = "
 "
 script = ExtResource("15_p6q20")
-_blackFadeRect = NodePath("../../../../../../../../CanvasLayer/ColorRect")
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/Restart Button"]
 layout_mode = 1

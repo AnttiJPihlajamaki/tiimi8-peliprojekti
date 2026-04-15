@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://xktnsueo5nih"]
+[gd_scene load_steps=5 format=3 uid="uid://xktnsueo5nih"]
 
 [ext_resource type="Script" uid="uid://bvclx2xlme3gq" path="res://Scripts/Tutorial.cs" id="1_uo1fs"]
 [ext_resource type="Texture2D" uid="uid://bca1x2lydh140" path="res://Assets/Tutorial/storefrontshaded.png" id="2_7bloo"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_rlm2d"]
+[ext_resource type="Texture2D" uid="uid://bpb2hg3phyxe5" path="res://Assets/Sprites/phone.png" id="4_7bloo"]
 
-[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_blackFadeRect", "_TutorialBox", "_tutorialText")]
+[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_introFadeRect", "_TutorialBox", "_tutorialText", "_introImage", "_introPhone")]
 position = Vector2(-3, 0)
 script = ExtResource("1_uo1fs")
-_blackFadeRect = NodePath("CanvasLayer/ColorRect")
+_introFadeRect = NodePath("CanvasLayer/ColorRect")
 _TutorialBox = NodePath("Control/TutorialBox")
 _tutorialText = NodePath("Control/TutorialBox/Panel/MarginContainer/Label")
+_introImage = NodePath("Storefrontshaded")
+_introPhone = NodePath("Phone")
 
 [node name="Storefrontshaded" type="Sprite2D" parent="."]
-position = Vector2(576, 339)
+position = Vector2(579, 340)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_7bloo")
 
@@ -50,7 +53,15 @@ justification_flags = 171
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+
+[node name="Phone" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(578, 237.99998)
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("4_7bloo")

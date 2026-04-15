@@ -5,10 +5,15 @@ public partial class ChangeSceneButton : Button
 {
 	[Export] private ColorRect _blackFadeRect;
 	[Export] private GameScene _scene;
-	public override async void _Ready()
+	public override void _Ready()
 	{
 		Pressed +=  ChangeToScene;
+		_blackFadeRect.Modulate = new Color(0, 0, 0, 1); // Start with ColorRect black
+		GameStarted();
+	}
 
+	private async void GameStarted()
+	{
 		_blackFadeRect.Visible = true;
 		_blackFadeRect.MouseFilter = MouseFilterEnum.Stop;
 
@@ -21,6 +26,7 @@ public partial class ChangeSceneButton : Button
 
 		GameManager.Instance.PauseGame(false);
 	}
+
 	private async void ChangeToScene()
 	{
 		GameManager.Instance.PauseGame(true);

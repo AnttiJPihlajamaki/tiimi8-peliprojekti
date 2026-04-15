@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://7kmokpgtfdhh"]
+
+[ext_resource type="Script" uid="uid://7pf45qk8ndar" path="res://Scripts/UI/LanguageButtons.cs" id="1_8eqon"]
+[ext_resource type="ButtonGroup" uid="uid://b0gv4go585knw" path="res://UI/LanguageButtonGroup.tres" id="2_ojfk3"]
+[ext_resource type="Texture2D" uid="uid://chkr8ogxsn7y5" path="res://Assets/Sprites/Flags/en.png" id="3_dbkw7"]
+[ext_resource type="Texture2D" uid="uid://dkg3w0n1hjanp" path="res://Assets/Sprites/Flags/fi.png" id="4_ddryu"]
+[ext_resource type="Texture2D" uid="uid://bioun04yds8xv" path="res://Assets/Sprites/Flags/se.png" id="5_iq566"]
+
+[node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("_enButton", "_fiButton", "_seButton")]
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("1_8eqon")
+_enButton = NodePath("en Button")
+_fiButton = NodePath("fi Button")
+_seButton = NodePath("sv Button")
+
+[node name="en Button" type="Button" parent="."]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+custom_minimum_size = Vector2(0, 87)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_ojfk3")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="en Button"]
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dbkw7")
+expand_mode = 5
+
+[node name="fi Button" type="Button" parent="."]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+custom_minimum_size = Vector2(0, 87)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_ojfk3")
+text = "
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="fi Button"]
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ddryu")
+expand_mode = 5
+
+[node name="sv Button" type="Button" parent="."]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+custom_minimum_size = Vector2(0, 87)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_ojfk3")
+text = "
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="sv Button"]
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iq566")
+expand_mode = 5

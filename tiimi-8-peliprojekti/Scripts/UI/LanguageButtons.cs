@@ -25,6 +25,6 @@ public partial class LanguageButtons : Node
 	}
 	private void OnSePressed()
 	{
-		TranslationServer.SetLocale("se");
+		TranslationServer.SetLocale("sv");
 	}
 }

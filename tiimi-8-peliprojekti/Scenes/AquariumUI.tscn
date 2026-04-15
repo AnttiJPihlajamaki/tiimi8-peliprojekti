@@ -54,12 +54,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider")]
+[node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider", "oxygenDeltaLabel")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 script = ExtResource("2_ogene")
 oxygenSlider = NodePath("Oxygen Pointer MarginContainer/VSlider")
+oxygenDeltaLabel = NodePath("../Oxygen Change MarginContainer/MarginContainer/HBoxContainer/Amount Label")
 
 [node name="Oxygen Meter MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
 custom_minimum_size = Vector2(0, 415)
@@ -167,6 +168,51 @@ text = "Money/S"
 [node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = " $/S"
+
+[node name="Oxygen Change MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Oxygen Change MarginContainer"]
+modulate = Color(1, 0.19999999, 0.26666677, 1)
+layout_mode = 2
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen Change MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Oxygen Change MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="OxygenPerS Label" type="Label" parent="Screen MarginContainer/Oxygen Change MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "OXYGEN_PER_S"
+
+[node name="Seperator Label" type="Label" parent="Screen MarginContainer/Oxygen Change MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="Amount Label" type="Label" parent="Screen MarginContainer/Oxygen Change MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "???"
 
 [node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("_timeSlider", "_timeLabel")]
 custom_minimum_size = Vector2(340, 50)

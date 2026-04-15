@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://byli4wbr74wr0"]
+[gd_scene load_steps=50 format=3 uid="uid://byli4wbr74wr0"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -29,12 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://b0b4ap5ubeh77" path="res://Assets/Packed Scenes/Carp.tscn" id="20_e2tru"]
 [ext_resource type="Texture2D" uid="uid://cdms2kgsaxb04" path="res://Assets/Sprites/lasertoolicon.png" id="20_m03r2"]
 [ext_resource type="PackedScene" uid="uid://dr88tgicem180" path="res://Assets/Packed Scenes/seaweed_shop_item_margin_container.tscn" id="23_rl3go"]
-[ext_resource type="ButtonGroup" uid="uid://b0gv4go585knw" path="res://UI/LanguageButtonGroup.tres" id="31_0elsu"]
-[ext_resource type="Texture2D" uid="uid://chkr8ogxsn7y5" path="res://Assets/Sprites/Flags/en.png" id="31_fb6nf"]
-[ext_resource type="Script" uid="uid://7pf45qk8ndar" path="res://Scripts/UI/LanguageButtons.cs" id="31_iall6"]
+[ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="31_etofs"]
 [ext_resource type="Script" uid="uid://bl6r35ewdeppa" path="res://Scripts/UI/PauseButton.cs" id="31_mcuhi"]
-[ext_resource type="Texture2D" uid="uid://dkg3w0n1hjanp" path="res://Assets/Sprites/Flags/fi.png" id="32_0elsu"]
-[ext_resource type="Texture2D" uid="uid://bioun04yds8xv" path="res://Assets/Sprites/Flags/se.png" id="33_iall6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_conu5"]
 size = Vector2(1920, 980)
@@ -154,6 +150,7 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_bgdf3")
 
 [node name="Grid Parent" type="Node2D" parent="Aquarium"]
+process_mode = 3
 position = Vector2(0, 420)
 
 [node name="Grid" type="Node2D" parent="Aquarium/Grid Parent"]
@@ -272,8 +269,7 @@ alignment = 2
 [node name="Prompt Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Press and/or drag on the sand to place and move your plant.
-Press buy to confirm the  purchase or exit to cancel."
+text = "PLACER_PROMPT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -285,7 +281,14 @@ theme_override_constants/separation = 10
 [node name="Cost Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Cost:"
+text = "COST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Placement MarginContainer/Prompt MarginContainer/VBoxContainer/Cost HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ":"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -326,7 +329,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Buy"
+text = "BUY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -352,7 +355,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Exit"
+text = "CANCEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -687,7 +690,7 @@ theme_override_constants/margin_right = 75
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
-text = "Shop"
+text = "SHOP"
 
 [node name="Category MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer"]
 custom_minimum_size = Vector2(0, 470)
@@ -764,7 +767,7 @@ expand_mode = 5
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Fish Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Fish"
+text = "FISH_PLURAL"
 label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -804,7 +807,7 @@ expand_mode = 5
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Category VBoxContainer/Category MarginContainer/ShopScroll MarginContainer/Shop HBoxContainer/Plants Button/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Plants"
+text = "PLANTS"
 label_settings = SubResource("LabelSettings_j04mv")
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -824,11 +827,26 @@ theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 75
 
-[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
+layout_mode = 2
+
+[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
-text = "Shop | Fish"
+text = "SHOP"
+
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = " | "
+
+[node name="Fish Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "FISH_PLURAL"
 
 [node name="Buttons MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
@@ -931,11 +949,26 @@ theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 75
 
-[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
+layout_mode = 2
+
+[node name="Shop Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 36
-text = "Shop | Plants"
+text = "SHOP"
+
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = " | "
+
+[node name="Plants Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "PLANTS"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop Label MarginContainer"]
 layout_mode = 2
@@ -1210,97 +1243,8 @@ text = "MAIN_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_enButton", "_fiButton", "_seButton")]
+[node name="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer" instance=ExtResource("31_etofs")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 8
-alignment = 1
-script = ExtResource("31_iall6")
-_enButton = NodePath("en Button")
-_fiButton = NodePath("fi Button")
-_seButton = NodePath("sv Button")
-
-[node name="en Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer"]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-button_group = ExtResource("31_0elsu")
-icon_alignment = 1
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer/en Button"]
-custom_minimum_size = Vector2(87, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("31_fb6nf")
-expand_mode = 5
-
-[node name="fi Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer"]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-button_group = ExtResource("31_0elsu")
-text = "
-"
-icon_alignment = 1
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer/fi Button"]
-custom_minimum_size = Vector2(87, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("32_0elsu")
-expand_mode = 5
-
-[node name="sv Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer"]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-button_group = ExtResource("31_0elsu")
-text = "
-"
-icon_alignment = 1
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Panel/PauseMenu Content MarginContainer/VBoxContainer/HBoxContainer/sv Button"]
-custom_minimum_size = Vector2(87, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("33_iall6")
-expand_mode = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

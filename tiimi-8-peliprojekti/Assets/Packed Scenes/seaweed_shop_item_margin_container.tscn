@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr88tgicem180"]
+[gd_scene load_steps=13 format=3 uid="uid://dr88tgicem180"]
 
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_aqeo1"]
 [ext_resource type="Script" uid="uid://h2vgsu4q4whx" path="res://Scripts/Tools/PlantShopItem.cs" id="2_aqeo1"]
@@ -45,6 +45,11 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_vh6ro"]
+font = ExtResource("5_ovgg4")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqeo1"]
 font = ExtResource("5_ovgg4")
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -123,7 +128,7 @@ offset = Vector2(0, -130)
 [node name="Fish Name Label" type="Label" parent="Info MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Seaweed"
+text = "SEAWEED"
 horizontal_alignment = 1
 
 [node name="Info MarginContainer" type="MarginContainer" parent="Info MarginContainer/VBoxContainer"]
@@ -155,8 +160,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
-text = "Oxygen/S : "
+text = "OXYGEN_PER_S"
 label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seperator Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/OxygenPerS MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = ":"
+label_settings = SubResource("LabelSettings_aqeo1")
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -179,8 +193,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
-text = "Cost :"
+text = "COST"
 label_settings = SubResource("LabelSettings_vh6ro")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seperator Label" type="Label" parent="Info MarginContainer/VBoxContainer/Info MarginContainer/Info MarginContainer/VBoxContainer/Cost MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = ":"
+label_settings = SubResource("LabelSettings_aqeo1")
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -219,6 +242,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Buy"
+text = "BUY"
 horizontal_alignment = 1
 vertical_alignment = 1

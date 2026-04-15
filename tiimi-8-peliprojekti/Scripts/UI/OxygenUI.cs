@@ -4,12 +4,14 @@ using System;
 public partial class OxygenUI : Control
 {
 	[Export] private VSlider oxygenSlider;
+	[Export] private Label oxygenDeltaLabel;
 
 	private float flashTimer = 0;
 	private float flashDuration = 0.1f;
 
 	public override void _Process(double delta)
 	{
+		oxygenDeltaLabel.Text = ""+GameManager.Instance.ActiveAquarium.OxygenDelta;
 		oxygenSlider.Value = GameManager.Instance.ActiveAquarium._currentOxygen;
 		if (!GameManager.Instance.ActiveAquarium.MinMaxIdealOxygen())
 		{
@@ -19,14 +21,18 @@ public partial class OxygenUI : Control
 
 			flashTimer = 0;
 
-			if(SelfModulate != new Color(1, 1, 1))
+			if(oxygenSlider.SelfModulate != new Color(1, 1, 1))
 			{
-				SelfModulate = new Color(1, 1, 1);
+				oxygenSlider.SelfModulate = new Color(1, 1, 1);
 			}
 			else
 			{
-				SelfModulate = new Color(1, 0, 0);
+				oxygenSlider.SelfModulate = new Color(1, 0, 0);
 			}
+		}
+		else if(oxygenSlider.SelfModulate != new Color(1, 1, 1))
+		{
+			oxygenSlider.SelfModulate = new Color(1, 1, 1);
 		}
 	}
 }

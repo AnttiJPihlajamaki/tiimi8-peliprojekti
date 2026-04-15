@@ -12,6 +12,11 @@ public partial class Aquarium : Node2D
 	[Export] private float _minIdealOxygen = 25f; // The minimum oxygen at which the fish doesn't take damage from under oxygenation
 	[Export] public float _currentOxygen = 100f; // The current amount of oxygen in the aquarium
 	[Export] private float _oxygenDelta = 0; // The amount of oxygen removed/added per second
+
+	public float OxygenDelta
+	{
+		get{ return _oxygenDelta; }
+	}
 	public List<AquariumNPC> _npcs = []; // List of fish in the aquarium
 	public List<AquariumObject> _objects = []; // List of fish in the aquarium
 	public List<Food> _food = []; // List of food in the aquarium

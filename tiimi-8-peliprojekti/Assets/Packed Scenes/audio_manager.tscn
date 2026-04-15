@@ -19,3 +19,4 @@ musicNames = PackedStringArray("Menu", "Aquarium", "Night")
 audioPlayer = ExtResource("4_tgu3b")
 
 [node name="Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

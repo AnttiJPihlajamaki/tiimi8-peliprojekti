@@ -53,6 +53,7 @@ public partial class GridPlacer : Control
 		_cost = newCost;
 		_costLabel.Text = ""+_cost;
 
+		GameManager.Instance.PauseGame(true);
 		ProcessMode = ProcessModeEnum.Inherit;
 		Visible = true;
 
@@ -71,6 +72,7 @@ public partial class GridPlacer : Control
 		_object = null;
 		_cost = 0;
 
+		GameManager.Instance.PauseGame(false);
 		ProcessMode = ProcessModeEnum.Disabled;
 		Visible = false;
 	}
@@ -105,7 +107,7 @@ public partial class GridPlacer : Control
 	}
 	private void PlacePlacement(Array<GridCell> objectCells)
 	{
-		if(GameManager.Instance.Money >= _cost)
+		if(GameManager.Instance.Money >= _cost && _gridObject != null)
 		{
 			GameManager.Instance.RemoveMoney(_cost);
 

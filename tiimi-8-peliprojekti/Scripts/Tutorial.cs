@@ -3,30 +3,39 @@ using System;
 
 public partial class Tutorial : Node2D
 {
-[Export] private ColorRect _blackFadeRect;
+[Export] private ColorRect _introFadeRect;
 [Export] private Control _TutorialBox;
 [Export] private Label _tutorialText;
+[Export] private Sprite2D _introImage;
+[Export] private Sprite2D _introPhone;
 private int _currentSlide = 0;
+private bool _inputEnabled = false;
 
 	public override void _Ready()
 	{
-		_blackFadeRect.Modulate = new Color(0, 0, 0, 1); // Start with ColorRect black
+		GameManager.Instance.PauseGame(false);
+		_introFadeRect.Color = new Color(0, 0, 0, 1);
+		AudioManager.Instance.PlaySound("");  // LOKKI KAUPUNKI JNE
 		StartIntro();
 	}
 
 	private async void StartIntro()
 	{
-		Tween fadeTween = CreateTween(); // Tween to fade blackFadeRect
-		fadeTween.TweenProperty(_blackFadeRect, "modulate:a", 0f, 1f);
-		await ToSignal(fadeTween, "finished");
+		Tween introFadeTween = CreateTween(); // Tween to fade blackFadeRect
+		introFadeTween.TweenProperty(_introFadeRect, "modulate:a", 0f, 1.5f);
+		await ToSignal(introFadeTween, "finished");
 
 		_tutorialText.Text = "This is your new aquarium shop!\nPlease step inside, it's going to be a busy first day.";
 		Tween slideTween = CreateTween(); // Tween to slide tutorial text
 		slideTween.TweenProperty(_TutorialBox, "position:y", 440f, 0.5f).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quart);
+		await ToSignal(slideTween, "finished");
+		_inputEnabled = true;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (!_inputEnabled) return;
+
 		if (@event is InputEventScreenTouch screenTouch)
 		{
 			if (screenTouch.IsReleased())
@@ -42,26 +51,46 @@ private int _currentSlide = 0;
 		switch (_currentSlide)
 		{
 			case 1:
-				Tween slideDown = CreateTween();
-				slideDown.TweenProperty(_TutorialBox, "position:y", 800f, 0.5f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
-				await ToSignal(slideDown, "finished");
+				_inputEnabled = false;
+				Tween slideTween = CreateTween();
+				slideTween.TweenProperty(_TutorialBox, "position:y", 800f, 0.5f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
+				await ToSignal(slideTween, "finished");
 
 				Tween fadeBlack = CreateTween();
-				fadeBlack.TweenProperty(_blackFadeRect, "modulate:a", 1f, 1f);
+				fadeBlack.TweenProperty(_introFadeRect, "modulate:a", 1f, 1f);
 				await ToSignal(fadeBlack, "finished");
+				_introPhone.Visible = true;
+
+				_introImage.Visible = false;
+				fadeBlack = CreateTween();
+				fadeBlack.TweenProperty(_introFadeRect, "modulate:a", 0f, 3f);
+				await ToSignal(fadeBlack, "finished");
+				GD.Print("YOU GOT HERE");
+				AudioManager.Instance.PlaySound(""); // PHONE RINGING SOUND HERE
+				_inputEnabled = true;
 
 				break;
 			case 2:
-				
+				_inputEnabled = false;
+				AudioManager.Instance.PlaySound(""); // PHONE PICKED UP SOUND HERE
+				slideTween = CreateTween();
+				_tutorialText.Text = "Päläpälä vuokranantaja päläpälä\nkaaakaaakaaakaaakaaa";
+				slideTween.TweenProperty(_TutorialBox, "position:y", 440f, 0.7f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
+				await ToSignal(slideTween, "finished");
+				AudioManager.Instance.PlaySound(""); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
+				_inputEnabled = true;
 				break;
 			case 3:
-				
+				_inputEnabled = false;
+				_tutorialText.Text = "Pälä pälä selittää jotain jotain";
+				AudioManager.Instance.PlaySound(""); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
+				_inputEnabled = true;
 				break;
 			case 4:
-				
+
 				break;
 			case 5:
-				
+
 				break;
 			default:
 				GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/AquariumScene.tscn"));
@@ -72,6 +101,6 @@ private int _currentSlide = 0;
 
 	public override void _Process(double delta)
 	{
-	
+
 	}
 }

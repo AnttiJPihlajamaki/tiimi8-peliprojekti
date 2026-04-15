@@ -108,7 +108,6 @@ region_rect = Rect2(0, 129, 64, 63)
 [resource]
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.5019608)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 1)
-Button/constants/h_separation = 0
 Button/constants/outline_size = 8
 Button/font_sizes/font_size = 28
 Button/fonts/font = ExtResource("1_ogq3f")

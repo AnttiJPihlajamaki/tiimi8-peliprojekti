@@ -19,9 +19,14 @@ run/main_scene="uid://bltll0kga7niv"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="uid://cifukpngdqxa"
 
+[audio]
+
+buses/default_bus_layout="uid://crf053nr0hjy0"
+
 [autoload]
 
 GameManager="*res://Scripts/GameManager.cs"
+AudioManager="*res://Assets/Packed Scenes/audio_manager.tscn"
 
 [display]
 
@@ -37,6 +42,7 @@ project/assembly_name="tiimi8-peliprojekti"
 folder_colors={
 "res://Assets/": "blue",
 "res://Assets/Packed Scenes/": "purple",
+"res://Assets/Sound/": "orange",
 "res://Assets/Sprites/": "blue",
 "res://Builds/": "pink",
 "res://Design/": "yellow",
@@ -48,6 +54,10 @@ folder_colors={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Assets/Translations/texts.en.translation", "res://Assets/Translations/texts.fi.translation", "res://Assets/Translations/texts.sv.translation")
 
 [layer_names]
 
@@ -61,4 +71,5 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_2d=3
+environment/defaults/default_clear_color=Color(0.0625, 0.159375, 0.25, 1)
 anti_aliasing/quality/screen_space_aa=2

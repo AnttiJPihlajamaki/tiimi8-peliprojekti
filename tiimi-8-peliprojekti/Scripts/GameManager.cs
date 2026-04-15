@@ -74,6 +74,8 @@ public partial class GameManager : Node // Store player inventory
 			}
 			if(_isNight && _nightAliens.Count == 0 )
 			{
+				AudioManager.Instance.PlayMusic("Aquarium");
+
 				_isNight = false;
 				_currentTime = 0f;
 				_difficultyLevel++;
@@ -84,6 +86,11 @@ public partial class GameManager : Node // Store player inventory
 	public void RemoveNightAlien(AquariumNPC alien)
 	{
 		_nightAliens.Remove(alien);
+	}
+
+	public void PauseGame(bool pause)
+	{
+		GetTree().Paused = pause;
 	}
 
 	private void GameOver()
@@ -105,6 +112,8 @@ public partial class GameManager : Node // Store player inventory
 	{
 		_isNight = true;
 		SpawnAliens(_difficultyLevel);
+
+		AudioManager.Instance.PlayMusic("Night");
 	}
 
 	private void SpawnAliens(int amount)

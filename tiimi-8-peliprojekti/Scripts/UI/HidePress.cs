@@ -11,7 +11,7 @@ public partial class HidePress : Button
 		Pressed += Press;
 	}
 
-	private void Press()
+	protected virtual void Press()
 	{
 		if(_itemsToHide.Count > 0)
 		{

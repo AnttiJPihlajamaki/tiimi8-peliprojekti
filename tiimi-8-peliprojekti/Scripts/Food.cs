@@ -27,6 +27,7 @@ public partial class Food : CharacterBody2D
 
 	public void Eat(AquariumNPC npc)
 	{
+		AudioManager.Instance.PlaySound("Eat");
 		npc.Nourish(_nourishment);
 		Destroy();
 	}

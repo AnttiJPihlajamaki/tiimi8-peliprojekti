@@ -38,7 +38,8 @@ private float _cooldownTimer = 0f;
 		GameManager.Instance.ActiveAquarium.AddChild(laser);
 		laser.GlobalPosition = position;
 		laser.ZIndex = 10;
-		_laserSound.Play();
+		//_laserSound.Play();
+		AudioManager.Instance.PlaySound("Laser");
 
 		foreach (AquariumNPC npc in GameManager.Instance.ActiveAquarium._npcs)  // alien detection and damage
 		{

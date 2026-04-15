@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://b1yqhigf6kqkr"]
+
+[node name="SoundEffect" type="AudioStreamPlayer"]
+bus = &"Sound Effects"

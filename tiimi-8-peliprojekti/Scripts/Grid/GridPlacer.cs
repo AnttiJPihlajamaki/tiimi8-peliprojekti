@@ -115,6 +115,7 @@ public partial class GridPlacer : Control
 				{
 					AquariumObject obj = child as AquariumObject;
 					GameManager.Instance.ActiveAquarium.AddObject(obj);
+					obj.SetObjectCells(objectCells);
 				}
 			}
 

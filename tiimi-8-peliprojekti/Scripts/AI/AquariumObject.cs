@@ -1,5 +1,5 @@
-using System.Collections;
 using Godot;
+using Godot.Collections;
 
 // Parent class for all different types of fish
 public partial class AquariumObject : Node2D
@@ -10,6 +10,11 @@ public partial class AquariumObject : Node2D
 	[Export] private float _health = 100.0f; // Current health
 	[Export] public float _oxygenUsage = -1.0f; // The amount of oxygen the fish uses
 	[Export] private float _oxygenDamage = 1.0f; // The amount of damage the NPC takes from unideal oxygen per second
+	private Array<GridCell> objectCells;
+	public void SetObjectCells(Array<GridCell> newCells)
+	{
+		objectCells = newCells;
+	}
 
 	public Aquarium _aquarium;
 	public override void _PhysicsProcess(double delta)
@@ -46,6 +51,13 @@ public partial class AquariumObject : Node2D
 	private void Die() // Method that handles the fish dying
 	{
 		_aquarium.RemoveObject(this); // Removes fish from aquarium
+		if(objectCells != null)
+		{
+			foreach(GridCell cell in objectCells)
+			{
+				cell.Full = false;
+			}
+		}
 		QueueFree(); // Removes the node
 	}
 }

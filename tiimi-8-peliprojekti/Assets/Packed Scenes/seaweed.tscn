@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://rbjnuvpnrpq0"]
+[gd_scene load_steps=8 format=3 uid="uid://rbjnuvpnrpq0"]
 
 [ext_resource type="Script" uid="uid://bng32jtuh0gci" path="res://Scripts/Grid/GridObject.cs" id="1_odg4e"]
 [ext_resource type="Texture2D" uid="uid://dim6x4tmq4oxi" path="res://Assets/Sprites/SEAWEED.png" id="1_oe7vd"]
 [ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="2_0guk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0guk0"]
+size = Vector2(50, 150)
 
 [sub_resource type="Animation" id="Animation_m08pc"]
 tracks/0/type = "value"
@@ -42,9 +45,15 @@ _data = {
 }
 
 [node name="Seaweed" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_odg4e")
 offset = Vector2(1, 1)
 sprite = NodePath("Seaweed Sprite/Seaweed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -79)
+shape = SubResource("RectangleShape2D_0guk0")
 
 [node name="Seaweed Sprite" type="Node2D" parent="."]
 script = ExtResource("2_0guk0")

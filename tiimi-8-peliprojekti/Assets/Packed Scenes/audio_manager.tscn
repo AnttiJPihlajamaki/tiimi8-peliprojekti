@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://d25otwurf2w14"]
+
+[ext_resource type="Script" uid="uid://dr3i8v1muckwt" path="res://Scripts/AudioManager.cs" id="1_un04m"]
+[ext_resource type="AudioStream" uid="uid://w318g63ukjl4" path="res://Assets/Sound/Effects/mixkit-chewing-something-crunchy-2244.wav" id="2_0j104"]
+[ext_resource type="AudioStream" uid="uid://gyaq0qiytml1" path="res://Assets/Sound/Effects/chakong-laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="3_3r8oh"]
+[ext_resource type="AudioStream" uid="uid://dryoa3e5yiqn5" path="res://Assets/Sound/Music/juliush-ocean-diving-underwater-chill-music-5457.mp3" id="4_qphlk"]
+[ext_resource type="PackedScene" uid="uid://b1yqhigf6kqkr" path="res://Assets/Packed Scenes/SoundEffect.tscn" id="4_tgu3b"]
+[ext_resource type="AudioStream" uid="uid://c3hq3ms15k47m" path="res://Assets/Sound/Music/juliush-the-magic-pearl-chill-out-music-11917.mp3" id="5_tgu3b"]
+[ext_resource type="AudioStream" uid="uid://co5cg51hnybk8" path="res://Assets/Sound/Music/stemmusic-disaster-awakeningsequal-324109.mp3" id="6_gpv20"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("musicPlayer")]
+process_mode = 3
+script = ExtResource("1_un04m")
+musicPlayer = NodePath("Music AudioStreamPlayer")
+sounds = Array[AudioStream]([ExtResource("2_0j104"), ExtResource("3_3r8oh")])
+soundNames = PackedStringArray("Eat", "Laser")
+musicTracks = Array[AudioStream]([ExtResource("4_qphlk"), ExtResource("5_tgu3b"), ExtResource("6_gpv20")])
+musicNames = PackedStringArray("Menu", "Aquarium", "Night")
+audioPlayer = ExtResource("4_tgu3b")
+
+[node name="Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

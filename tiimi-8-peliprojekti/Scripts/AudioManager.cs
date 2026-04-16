@@ -95,4 +95,8 @@ public partial class AudioManager : Node
             musicPlayer.StreamPaused = false;
         }
     }
+    public void StopMusic()
+    {
+        musicPlayer.Stop();
+    }
 }

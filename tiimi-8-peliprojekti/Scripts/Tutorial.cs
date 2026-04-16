@@ -146,9 +146,11 @@ private String _localisedmessage;
 				Tween introFadeTween = CreateTween(); // Tween to fade blackFadeRect
 				introFadeTween.TweenProperty(_introFadeRect, "modulate:a", 1f, 3f);
 				await ToSignal(introFadeTween, "finished");
+				_currentSlide++;
 				break;
 			}
 			default:
+				AudioManager.Instance.StopMusic();
 				GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("res://Scenes/AquariumScene.tscn"));
 				GameManager.Instance.Reset();
 				break;

@@ -238,9 +238,12 @@ mouse_filter = 1
 [node name="Placement MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI" node_paths=PackedStringArray("_grid", "_objectParent", "_buyButton", "_exitButton", "_costLabel", "_itemsToHide")]
 process_mode = 4
 visible = false
-layout_mode = 0
-offset_right = 382.0
-offset_bottom = 467.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_bottom = 145
 script = ExtResource("6_7sxcg")
 _grid = NodePath("../../../../../Aquarium/Grid Parent/Grid")
@@ -1293,7 +1296,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseMenu Content MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel"]
+[node name="Settings MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1305,7 +1308,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="Settings VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectsSlider")]
+[node name="Settings VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectsSlider")]
 layout_mode = 2
 theme_override_constants/separation = 10
 script = ExtResource("32_qs632")
@@ -1313,12 +1316,12 @@ masterSlider = NodePath("Master Panel/MarginContainer/VBoxContainer/Master HSlid
 musicSlider = NodePath("Music Panel/MarginContainer/VBoxContainer/Music HSlider")
 effectsSlider = NodePath("SFX Panel/MarginContainer/VBoxContainer/SFX HSlider")
 
-[node name="Settings MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+[node name="Settings MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Settings MarginContainer"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Settings MarginContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 21
 theme_override_font_sizes/font_size = 50
@@ -1327,7 +1330,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Volume Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+[node name="Volume Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 30
@@ -1335,12 +1338,12 @@ text = "VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Master Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+[node name="Master Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer"]
 self_modulate = Color(0, 0.4, 0.8, 1)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1352,11 +1355,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Master Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+[node name="Master Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 16
@@ -1365,17 +1368,17 @@ text = "MASTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Master HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+[node name="Master HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="Music Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+[node name="Music Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer"]
 self_modulate = Color(0, 0.4, 0.8, 1)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1387,11 +1390,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Music Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+[node name="Music Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 16
@@ -1400,17 +1403,17 @@ text = "MUSIC"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Music HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+[node name="Music HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="SFX Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer"]
+[node name="SFX Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer"]
 self_modulate = Color(0, 0.4, 0.8, 1)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1422,11 +1425,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SFX Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+[node name="SFX Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 16
@@ -1435,12 +1438,12 @@ text = "SFX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SFX HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+[node name="SFX HSlider" type="HSlider" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Back Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
@@ -1452,7 +1455,7 @@ script = ExtResource("14_rl3go")
 _itemsToHide = [NodePath("../../..")]
 _itemsToShow = [NodePath("../../../../Pause Panel")]
 
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/PauseMenu Content MarginContainer/Settings VBoxContainer/Back Button"]
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Back Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bltll0kga7niv"]
+[gd_scene load_steps=9 format=3 uid="uid://bltll0kga7niv"]
 
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="1_gmxq7"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="2_mxhvt"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="2_x260n"]
+[ext_resource type="Texture2D" uid="uid://dmkps70qjq6db" path="res://Assets/Sprites/Affinity/Logo.png" id="3_c7qge"]
 [ext_resource type="Script" uid="uid://bcp7eshe251xi" path="res://Scripts/UI/QuitGameButton.cs" id="4_gmxq7"]
+[ext_resource type="Script" uid="uid://btaefoxbrncrd" path="res://Scripts/UI/HidePress.cs" id="5_06svm"]
 [ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="5_x260n"]
+[ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="8_12npo"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,28 +30,35 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_x260n")
 
-[node name="PauseMenu MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -300.0
-offset_bottom = 300.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 15
+theme_override_constants/separation = 40
+alignment = 1
 
-[node name="Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer"]
-self_modulate = Color(0, 0.4745098, 0.9490196, 1)
-custom_minimum_size = Vector2(700, 600)
+[node name="TextureRect" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+texture = ExtResource("3_c7qge")
+expand_mode = 2
+stretch_mode = 5
 
-[node name="MainMenu Content MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel"]
+[node name="MainMenu MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer"]
+custom_minimum_size = Vector2(400, 450)
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer"]
+self_modulate = Color(0, 0.4745098, 0.9490196, 1)
+layout_mode = 2
+
+[node name="MainMenu Content MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,41 +66,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 25
 
-[node name="Title MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Title MarginContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 21
-theme_override_font_sizes/font_size = 70
-text = "Holy Carp, Aliens!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Play Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
+[node name="Play Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
 self_modulate = Color(0.16666675, 1, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 script = ExtResource("2_mxhvt")
-_blackFadeRect = NodePath("../../../../../../../CanvasLayer/ColorRect")
+_blackFadeRect = NodePath("../../../../../../../../CanvasLayer/ColorRect")
 _scene = 1
 
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Play Button"]
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Play Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +97,7 @@ text = "PLAY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer"]
+[node name="Settings Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -111,8 +105,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "
 "
+script = ExtResource("5_06svm")
+_itemsToHide = [NodePath("../..")]
+_itemsToShow = [NodePath("../../../Settings MarginContainer")]
 
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Settings Button"]
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Settings Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,7 +122,7 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer"]
+[node name="Exit Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer"]
 self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -135,7 +132,7 @@ text = "
 "
 script = ExtResource("4_gmxq7")
 
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/PauseMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Exit Button"]
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Exit Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,21 +145,7 @@ text = "QUIT_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI"]
-custom_minimum_size = Vector2(400, 100)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/MarginContainer"]
-self_modulate = Color(0, 0.4745098, 0.9490196, 1)
-layout_mode = 2
-
-[node name="Language Buttons MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/MarginContainer"]
+[node name="Language Buttons MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 15
@@ -170,9 +153,182 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/MarginContainer/Language Buttons MarginContainer" instance=ExtResource("5_x260n")]
+[node name="HBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Language Buttons MarginContainer" instance=ExtResource("5_x260n")]
 layout_mode = 2
 size_flags_vertical = 1
+
+[node name="Settings MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Settings VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectsSlider")]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("8_12npo")
+masterSlider = NodePath("Master Panel/MarginContainer/VBoxContainer/Master HSlider")
+musicSlider = NodePath("Music Panel/MarginContainer/VBoxContainer/Music HSlider")
+effectsSlider = NodePath("SFX Panel/MarginContainer/VBoxContainer/SFX HSlider")
+
+[node name="Settings MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Settings MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Volume Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Master Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master HSlider" type="HSlider" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Master Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Music Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Music Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music HSlider" type="HSlider" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Music Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFX Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer"]
+self_modulate = Color(0, 0.4, 0.8, 1)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SFX Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX HSlider" type="HSlider" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/SFX Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Back Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(160, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "
+"
+script = ExtResource("5_06svm")
+_itemsToHide = [NodePath("../..")]
+_itemsToShow = [NodePath("../../../MainMenu Content MarginContainer")]
+
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Settings MarginContainer/Settings VBoxContainer/Back Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

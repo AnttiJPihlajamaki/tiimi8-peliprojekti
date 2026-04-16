@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbi302icf606"]
+[gd_scene load_steps=13 format=3 uid="uid://bbi302icf606"]
 
 [ext_resource type="Script" uid="uid://8txnatselnmu" path="res://Scripts/AI/Fish/Goldfish.cs" id="1_5bvtc"]
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_5bvtc"]
@@ -86,8 +86,6 @@ _data = {
 &"RESET": SubResource("Animation_jlui4")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8tf37"]
-
 [sub_resource type="Gradient" id="Gradient_8tf37"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
 
@@ -131,10 +129,6 @@ _paperdoll = NodePath("Goldfish Paperdoll")
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_apf2t")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("..")
-node_b = NodePath("../Goldfish Paperdoll/Eye Rigidbody2D")
-
 [node name="Goldfish Paperdoll" type="Node2D" parent="."]
 
 [node name="Goldfish Paperdoll" type="AnimationPlayer" parent="Goldfish Paperdoll"]
@@ -146,7 +140,6 @@ autoplay = "Goldfish Swim"
 
 [node name="Back Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 modulate = Color(1, 0, 0, 1)
-z_index = 2
 position = Vector2(44, 0)
 texture = ExtResource("2_5bvtc")
 offset = Vector2(8, 0)
@@ -155,23 +148,14 @@ region_rect = Rect2(161, 38, 66, 67)
 
 [node name="Top Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 modulate = Color(1, 0, 0, 1)
-z_index = 2
 position = Vector2(6, -12)
 texture = ExtResource("2_5bvtc")
 offset = Vector2(0, -22)
 region_enabled = true
 region_rect = Rect2(33, 51, 61, 41)
 
-[node name="Body Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0.6666667, 0, 1)
-z_index = 2
-texture = ExtResource("2_5bvtc")
-region_enabled = true
-region_rect = Rect2(238, 44, 95, 47)
-
 [node name="Front Fin Back Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 modulate = Color(1, 0, 0, 1)
-z_index = 1
 position = Vector2(0, 12)
 rotation = 0.5235988
 texture = ExtResource("2_5bvtc")
@@ -179,9 +163,14 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
+[node name="Body Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
+modulate = Color(1, 0.6666667, 0, 1)
+texture = ExtResource("2_5bvtc")
+region_enabled = true
+region_rect = Rect2(238, 44, 95, 47)
+
 [node name="Front Fin Front Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 modulate = Color(1, 0, 0, 1)
-z_index = 2
 position = Vector2(0, 12)
 rotation = -0.5235988
 texture = ExtResource("2_5bvtc")
@@ -189,17 +178,8 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
-[node name="Eye Rigidbody2D" type="RigidBody2D" parent="Goldfish Paperdoll"]
+[node name="Eye Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 position = Vector2(-20, 0)
-collision_layer = 2
-collision_mask = 2
-freeze = true
-
-[node name="Eye CollisionShape2D" type="CollisionShape2D" parent="Goldfish Paperdoll/Eye Rigidbody2D"]
-shape = SubResource("CircleShape2D_8tf37")
-
-[node name="Eye Sprite" type="Sprite2D" parent="Goldfish Paperdoll/Eye Rigidbody2D"]
-z_index = 2
 texture = ExtResource("2_5bvtc")
 region_enabled = true
 region_rect = Rect2(53, 14, 20, 20)

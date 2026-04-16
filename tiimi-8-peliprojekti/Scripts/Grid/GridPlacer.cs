@@ -102,7 +102,8 @@ public partial class GridPlacer : Control
 			ResetHighlight();
 			_objectCells = GetObjectCells();
 			_isValid = CheckAndHighlightCells(_objectCells);
-			_gridObject.SetCanvasOrder(Mathf.RoundToInt((_targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y));
+			_gridObject.SetCanvasOrder(Mathf.RoundToInt((_targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y)-5);
+			GD.Print((_targetPosition.Y- _grid.GlobalPosition.Y) / _grid.CellSize.Y);
 		}
 	}
 	private void PlacePlacement(Array<GridCell> objectCells)

@@ -213,6 +213,7 @@ _data = {
 }
 
 [node name="Aliensnail" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+z_index = 5
 scale = Vector2(0.425, 0.425)
 script = ExtResource("1_ysmf3")
 _navigationAgent = NodePath("NavigationAgent2D")

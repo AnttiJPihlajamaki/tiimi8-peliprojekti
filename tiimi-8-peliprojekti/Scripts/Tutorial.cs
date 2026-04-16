@@ -10,14 +10,16 @@ public partial class Tutorial : Node2D
 [Export] private Label _tutorialText;
 [Export] private Sprite2D _introImage;
 [Export] private Sprite2D _introPhone;
+[Export] private AudioStreamPlayer2D _introSound;
 private int _currentSlide = 0;
 private bool _inputEnabled = false;
+private String _localisedmessage;
 
 	public override void _Ready()
 	{
 		GameManager.Instance.PauseGame(false);
 		_introFadeRect.Color = new Color(0, 0, 0, 1);
-		AudioManager.Instance.PlaySound("");  // LOKKI KAUPUNKI JNE
+		_introSound.Play();
 		StartIntro();
 	}
 
@@ -27,7 +29,8 @@ private bool _inputEnabled = false;
 		introFadeTween.TweenProperty(_introFadeRect, "modulate:a", 0f, 1.5f);
 		await ToSignal(introFadeTween, "finished");
 
-		_tutorialText.Text = "This is your new aquarium shop!\nPlease step inside, it's going to be a busy first day.";
+		_localisedmessage = Tr("TINTRODUCTION");
+		_tutorialText.Text = string.Format(_localisedmessage);  // welcome to your aquarium päl
 		Tween slideTween = CreateTween(); // Tween to slide tutorial text
 		slideTween.TweenProperty(_TutorialBox, "position:y", 440f, 0.5f).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quart);
 		await ToSignal(slideTween, "finished");
@@ -54,6 +57,7 @@ private bool _inputEnabled = false;
 		{
 			case 1:
 			{
+				_introSound.Stop();
 				_inputEnabled = false;
 				Tween slideTween = CreateTween();
 				slideTween.TweenProperty(_TutorialBox, "position:y", 800f, 0.5f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
@@ -65,10 +69,10 @@ private bool _inputEnabled = false;
 				_introPhone.Visible = true;
 
 				_introImage.Visible = false;
+				AudioManager.Instance.PlaySound("PHONERING"); // PHONE RINGING SOUND HERE
 				fadeBlack = CreateTween();
 				fadeBlack.TweenProperty(_introFadeRect, "modulate:a", 0f, 3f);
 				await ToSignal(fadeBlack, "finished");
-				AudioManager.Instance.PlaySound(""); // PHONE RINGING SOUND HERE
 				_inputEnabled = true;
 
 				break;
@@ -76,20 +80,21 @@ private bool _inputEnabled = false;
 			case 2:
 			{
 				_inputEnabled = false;
-				AudioManager.Instance.PlaySound(""); // PHONE PICKED UP SOUND HERE
+				AudioManager.Instance.PlaySound("PHONEPICKUP"); // PHONE PICKED UP SOUND HERE
+				AudioManager.Instance.PlayMusic("Introcall");
 				Tween slideTween = CreateTween();
-				_tutorialText.Text = "Päläpälä vuokranantaja päläpälä\nkaaakaaakaaakaaakaaa";
+				_tutorialText.Text = "TCALL1";
 				slideTween.TweenProperty(_TutorialBox, "position:y", 440f, 0.7f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
 				await ToSignal(slideTween, "finished");
-				AudioManager.Instance.PlaySound(""); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
+				AudioManager.Instance.PlaySound("PHONEBABBLE"); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
 				_inputEnabled = true;
 				break;
 			}
 			case 3:
 			{
 				_inputEnabled = false;
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain"; // explain tools vaguely
-				AudioManager.Instance.PlaySound(""); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
+				_tutorialText.Text = "TCALL2"; // explain tools vaguely
+				AudioManager.Instance.PlaySound("PHONEBABBLE"); // PÄLÄ PÄLÄ ÄÄNI PUHELIN
 				Tween slideTween = CreateTween();
 				slideTween.TweenProperty(_TutorialBox2, "position:y", 30f, 1.7f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
 				await ToSignal(slideTween, "finished");
@@ -99,36 +104,41 @@ private bool _inputEnabled = false;
 			}
 			case 4:
 			{
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain";  // explain the feeding tool
+				_tutorialText.Text = "TCALL3";  // explain the feeding tool
+				AudioManager.Instance.PlaySound("PHONEBABBLE");
 				break;
 			}
 			case 5:
 			{
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain";  // explain shop
+				_tutorialText.Text = "TCALL4";  // explain shop
+				AudioManager.Instance.PlaySound("PHONEBABBLE");
 				break;
 			}
 			case 6:
 			{
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain";  // explain oxygenator
+				_tutorialText.Text = "TCALL5";  // explain oxygenator
+				AudioManager.Instance.PlaySound("PHONEBABBLE");
 				break;
 			}
 			case 7:
 			{
 				Tween slideTween = CreateTween();
 				slideTween.TweenProperty(_TutorialBox2, "position:y", -447f, 1.7f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain";  // lasergun
+				_tutorialText.Text = "TCALL6";  // lasergun
 				break;
 			}
 			case 8:
 			{
+				AudioManager.Instance.PlaySound("PHONEBABBLE");
 				Tween slideTween = CreateTween();
 				slideTween.TweenProperty(_TutorialBox3, "position:y", 68f, 1.7f).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quart);
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain";  // explain lasergun
+				_tutorialText.Text = "TCALL7";  // explain lasergun
 				break;
 			}
 			case 9:
 			{
-				_tutorialText.Text = "Pälä pälä selittää jotain jotain"; // before moving to game scene
+				_tutorialText.Text = "TCALL8"; // before moving to game scene
+				AudioManager.Instance.PlaySound("PHONEBABBLE");
 				break;
 			}
 			case 10:

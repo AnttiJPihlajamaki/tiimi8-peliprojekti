@@ -126,7 +126,7 @@ _hungryColor1 = Color(0.16000001, 0.2, 0.16666667, 1)
 _hungryColor2 = Color(0.14999999, 0.75, 0.45000002, 1)
 _color1Parts = [NodePath("CarpPaperdoll/Front Fin Back"), NodePath("CarpPaperdoll/Back Fin 2"), NodePath("CarpPaperdoll/Back Fin 1"), NodePath("CarpPaperdoll/Top Fin"), NodePath("CarpPaperdoll/Body"), NodePath("CarpPaperdoll/Tail Fin"), NodePath("CarpPaperdoll/Front Fin Front")]
 _color2Parts = []
-_inBetweenParts = [NodePath("CarpPaperdoll/Whisker Front"), NodePath(""), NodePath("CarpPaperdoll/Mouth")]
+_inBetweenParts = [NodePath("CarpPaperdoll/Whisker Front"), null, NodePath("CarpPaperdoll/Mouth")]
 _base = NodePath("CarpPaperdoll/Body")
 moneyPerSecond = 300.0
 _navigationAgent = NodePath("NavigationAgent2D")
@@ -267,7 +267,6 @@ region_enabled = true
 region_rect = Rect2(9122, 852, 640, 512)
 
 [node name="Eye" type="Sprite2D" parent="CarpPaperdoll"]
-self_modulate = Color(0.96666664, 1, 0.8, 1)
 position = Vector2(-713.3333, 46.666664)
 texture = ExtResource("2_dtb3w")
 region_enabled = true

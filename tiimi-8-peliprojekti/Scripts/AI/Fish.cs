@@ -8,8 +8,12 @@ public partial class Fish : AquariumNPC
 
     public override void _Ready()
     {
-		GameManager.Instance.AddMoneyPerSecond(moneyPerSecond); // Adds money per second
-        base._Ready();
+
+		if(GameManager.Instance != null)
+        {
+            GameManager.Instance.AddMoneyPerSecond(moneyPerSecond); // Adds money per second
+            base._Ready();
+        }
     }
 
 

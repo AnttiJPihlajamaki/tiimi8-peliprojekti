@@ -6,7 +6,6 @@ using System.Linq;
 
 public partial class GameManager : Node // Store player inventory
 {
-	[Signal] public delegate void GameOverEventHandler();
 	private Aquarium _activeAquarium;
 	public Aquarium ActiveAquarium
 	{
@@ -29,6 +28,7 @@ public partial class GameManager : Node // Store player inventory
 	private PackedScene _snailScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
+	[Signal] public delegate void GameOverEventHandler();
 
 	public int DaysPassed
 	{

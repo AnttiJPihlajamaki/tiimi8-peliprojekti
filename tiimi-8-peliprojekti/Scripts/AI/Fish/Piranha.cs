@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Linq;
 
-public partial class Piranha : Fish
+[Tool] public partial class Piranha : Fish
 {
 	private Color _color1;
 	[Export] private Color Color1
@@ -70,12 +70,15 @@ public partial class Piranha : Fish
 	[Export] private float _attackSpeed = 1f;
 	private float attackCooldown = 0f;
 	private Marker2D _movementTarget;
-
     public override void _Ready()
-	{
-		ChangeColor(_color1,_color2);
-		base._Ready();
-	}
+    {
+
+		if(GameManager.Instance != null)
+        {
+			ChangeColor(_color1,_color2);
+			base._Ready();
+        }
+    }
 
 	private void AttackTarget(AquariumNPC npc)
 	{
@@ -188,10 +191,13 @@ public partial class Piranha : Fish
 
 	public override void _Process(double delta)
 	{
-		if(attackCooldown < _attackSpeed)
+		if(GameManager.Instance != null)
 		{
-			attackCooldown += (float)delta;
+			if(attackCooldown < _attackSpeed)
+			{
+				attackCooldown += (float)delta;
+			}
+			base._Process(delta);
 		}
-		base._Process(delta);
 	}
 }

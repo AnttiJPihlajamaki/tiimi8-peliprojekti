@@ -2,7 +2,7 @@ using System.ComponentModel;
 using Godot;
 using Godot.Collections;
 
-public partial class Goldfish : Fish
+[Tool] public partial class Goldfish : Fish
 {
 
 	private Color _color1;
@@ -32,8 +32,12 @@ public partial class Goldfish : Fish
 	[Export] private Node2D _base;
     public override void _Ready()
     {
-		ChangeColor(_color1,_color2);
-        base._Ready();
+
+		if(GameManager.Instance != null)
+        {
+			ChangeColor(_color1,_color2);
+			base._Ready();
+        }
     }
 	protected override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{

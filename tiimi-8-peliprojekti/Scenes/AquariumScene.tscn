@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://byli4wbr74wr0"]
+[gd_scene load_steps=65 format=3 uid="uid://byli4wbr74wr0"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -31,10 +31,21 @@
 [ext_resource type="PackedScene" uid="uid://b0b4ap5ubeh77" path="res://Assets/Packed Scenes/Carp.tscn" id="20_e2tru"]
 [ext_resource type="Texture2D" uid="uid://cdms2kgsaxb04" path="res://Assets/Sprites/lasertoolicon.png" id="20_m03r2"]
 [ext_resource type="PackedScene" uid="uid://dr88tgicem180" path="res://Assets/Packed Scenes/seaweed_shop_item_margin_container.tscn" id="23_rl3go"]
+[ext_resource type="PackedScene" uid="uid://bs5q0weostbhf" path="res://Assets/Packed Scenes/silverfish_shop_item_margin_container.tscn" id="29_8d1dy"]
+[ext_resource type="PackedScene" uid="uid://clccaw37enefm" path="res://Assets/Packed Scenes/bronzefish_shop_item_margin_container.tscn" id="30_de4ad"]
+[ext_resource type="PackedScene" uid="uid://r2yfx1veq64n" path="res://Assets/Packed Scenes/pyranha_shop_item_margin_container.tscn" id="30_jwcon"]
 [ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="31_etofs"]
 [ext_resource type="Script" uid="uid://bl6r35ewdeppa" path="res://Scripts/UI/PauseButton.cs" id="31_mcuhi"]
+[ext_resource type="PackedScene" uid="uid://bkxinpkrs8vjl" path="res://Assets/Packed Scenes/redcarp_shop_item_margin_container.tscn" id="31_o4e22"]
+[ext_resource type="PackedScene" uid="uid://lsn343u4mi14" path="res://Assets/Packed Scenes/cobranha_shop_item_margin_container.tscn" id="32_jwcon"]
 [ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="32_qs632"]
-[ext_resource type="Script" path="res://Scripts/UI/GameOverMenu.cs" id="33_mcuhi"]
+[ext_resource type="Script" uid="uid://brmukuc4mn0xn" path="res://Scripts/UI/GameOverMenu.cs" id="33_mcuhi"]
+[ext_resource type="PackedScene" uid="uid://dgafybomaus0l" path="res://Assets/Packed Scenes/koicarp_shop_item_margin_container.tscn" id="34_7mdl2"]
+[ext_resource type="PackedScene" uid="uid://tqk5ybd4mbmx" path="res://Assets/Packed Scenes/red_kelp_shop_item_margin_container.tscn" id="36_7mdl2"]
+[ext_resource type="PackedScene" uid="uid://bdaur2ajhv6tu" path="res://Assets/Packed Scenes/pillar_coral_shop_item_margin_container.tscn" id="36_53dg7"]
+[ext_resource type="PackedScene" uid="uid://b8gmfn70x4cmx" path="res://Assets/Packed Scenes/sea_whip_shop_item_margin_container.tscn" id="37_y3hr2"]
+[ext_resource type="PackedScene" uid="uid://d16jvl72fcny6" path="res://Assets/Packed Scenes/staghorn_coral_shop_item_margin_container.tscn" id="38_m5b44"]
+[ext_resource type="PackedScene" uid="uid://5qws0pim04wx" path="res://Assets/Packed Scenes/black_coral_shop_item_margin_container.tscn" id="40_a2abw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_conu5"]
 size = Vector2(1920, 980)
@@ -198,6 +209,7 @@ powerSlider = NodePath("../../../../UI CanvasLayer/UI/Screen MarginContainer/Gam
 [node name="Oxygenator Particles" type="GPUParticles2D" parent="Aquarium/Tools/Oxygenator"]
 modulate = Color(1, 1, 1, 0.39215687)
 z_index = 3
+scale = Vector2(2, 2)
 emitting = false
 amount = 100
 texture = ExtResource("7_ij331")
@@ -219,8 +231,10 @@ bus = &"Sound Effects"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Aquarium"]
 stream = ExtResource("11_mcuhi")
-volume_db = -5.962
+volume_db = -10.0
+pitch_scale = 1.5
 autoplay = true
+bus = &"Sound Effects"
 
 [node name="UI CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -942,6 +956,24 @@ layout_mode = 2
 _fishPackedScene = ExtResource("20_e2tru")
 _basePrice = 1500.0
 
+[node name="Bronzefish ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("30_de4ad")]
+layout_mode = 2
+
+[node name="Pyranha ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("30_jwcon")]
+layout_mode = 2
+
+[node name="Red Carp ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("31_o4e22")]
+layout_mode = 2
+
+[node name="Silverfish ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("29_8d1dy")]
+layout_mode = 2
+
+[node name="Cobranha ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("32_jwcon")]
+layout_mode = 2
+
+[node name="Koi Carp ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("34_7mdl2")]
+layout_mode = 2
+
 [node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Fish VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
@@ -1054,6 +1086,21 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="Seaweed ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("23_rl3go")]
+layout_mode = 2
+
+[node name="Pillar Coral ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("36_53dg7")]
+layout_mode = 2
+
+[node name="Red Kelp ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("36_7mdl2")]
+layout_mode = 2
+
+[node name="Staghorn Coral ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("38_m5b44")]
+layout_mode = 2
+
+[node name="Sea Whip ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("37_y3hr2")]
+layout_mode = 2
+
+[node name="Black Coral ShopItem MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer" instance=ExtResource("40_a2abw")]
 layout_mode = 2
 
 [node name="End Seperator" type="Control" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Shop MarginContainer/Shop Panel MarginContainer/Plants VBoxContainer/Shop MarginContainer/ShopScroll MarginContainer/Shop ScrollContainer/Shop HBoxContainer"]
@@ -1296,7 +1343,7 @@ theme_override_constants/margin_bottom = 10
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Settings Panel/Settings MarginContainer/Settings VBoxContainer/Settings MarginContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 21
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1444,11 +1491,13 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="GameOver Menu MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer" node_paths=PackedStringArray("_totalMoneyAmount", "_dayPassedAmount")]
+[node name="GameOver Menu MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer" node_paths=PackedStringArray("_totalMoneyAmount", "_dayPassedAmount", "_itemsToHide", "_itemsToShow")]
 layout_mode = 2
 script = ExtResource("33_mcuhi")
 _totalMoneyAmount = NodePath("GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney Amount MarginContainer/HBoxContainer/Amount Label")
 _dayPassedAmount = NodePath("GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed Amount MarginContainer/Amount Label")
+_itemsToHide = [NodePath("../../Game UI")]
+_itemsToShow = [NodePath("..")]
 
 [node name="Background MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer"]
 layout_mode = 2
@@ -1494,6 +1543,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="GameOverPrompt MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/GameOverPrompt MarginContainer"]
+layout_mode = 2
+text = "GAME_OVER_PROMPT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Stats Panel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -1514,15 +1572,6 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Stats" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer"]
 layout_mode = 2
-
-[node name="GameOverPrompt MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/GameOverPrompt MarginContainer"]
-layout_mode = 2
-text = "GAME_OVER_PROMPT"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Total Money VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats"]
 layout_mode = 2

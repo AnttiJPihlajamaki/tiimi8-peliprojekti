@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://duf2kajmv7wpx"]
+
+[ext_resource type="Script" uid="uid://bng32jtuh0gci" path="res://Scripts/Grid/GridObject.cs" id="1_sg312"]
+[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="2_f6g7u"]
+[ext_resource type="Texture2D" uid="uid://ddgxp3w7dbv2u" path="res://Assets/Sprites/Affinity/Plants/Seaweed/Seaweed Monochrome.png" id="3_4kk8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0guk0"]
+size = Vector2(50, 150)
+
+[sub_resource type="Animation" id="Animation_682ak"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sea Whip Sprite/Seaweed:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.22340214]
+}
+
+[sub_resource type="Animation" id="Animation_677y7"]
+resource_name = "Sway"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sea Whip Sprite/Seaweed:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.13962634, 0.10471976]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ovgg4"]
+_data = {
+&"RESET": SubResource("Animation_682ak"),
+&"Sway": SubResource("Animation_677y7")
+}
+
+[node name="Sea Whip" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_sg312")
+offset = Vector2(1, 1)
+sprite = NodePath("Sea Whip Sprite/Seaweed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -79)
+shape = SubResource("RectangleShape2D_0guk0")
+
+[node name="Sea Whip Sprite" type="Node2D" parent="."]
+script = ExtResource("2_f6g7u")
+_name = "Sea Whip"
+_maxHealth = 150.0
+_health = 150.0
+_oxygenUsage = -5.0
+_oxygenDamage = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sea Whip Sprite"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ovgg4")
+}
+autoplay = "Sway"
+
+[node name="Seaweed" type="Sprite2D" parent="Sea Whip Sprite"]
+self_modulate = Color(0.9019608, 0.18039216, 0.5411765, 1)
+skew = -0.22340214
+texture = ExtResource("3_4kk8b")
+offset = Vector2(0, -130)

@@ -1,0 +1,299 @@
+[gd_scene load_steps=13 format=3 uid="uid://dy8owgvbcvqln"]
+
+[ext_resource type="Script" uid="uid://dyv67wx6j73os" path="res://Scripts/AI/Fish/Carp.cs" id="1_t03gc"]
+[ext_resource type="Texture2D" uid="uid://byym1s6mg58dx" path="res://Assets/Sprites/Affinity/NPCs/Carp/Koi Carp Monochrome.png" id="2_t03gc"]
+[ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_sdwo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtb3w"]
+radius = 250.0
+
+[sub_resource type="Animation" id="Animation_dtb3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KoiCarp Paperdoll/Front Fin Front:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17646667]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KoiCarp Paperdoll/Tail Fin:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KoiCarp Paperdoll/Front Fin Back:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.40895855]
+}
+
+[sub_resource type="Animation" id="Animation_gigbg"]
+resource_name = "siwm"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KoiCarp Paperdoll/Front Fin Front:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.024810493, -0.22863813201125757]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KoiCarp Paperdoll/Tail Fin:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.08552113334772225, 0.085521133347722]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KoiCarp Paperdoll/Front Fin Back:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.40895855, -0.010471975]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15d7i"]
+_data = {
+&"RESET": SubResource("Animation_dtb3w"),
+&"siwm": SubResource("Animation_gigbg")
+}
+
+[sub_resource type="Gradient" id="Gradient_15d7i"]
+colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t03gc"]
+gradient = SubResource("Gradient_15d7i")
+
+[sub_resource type="Curve" id="Curve_mogq5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p2phj"]
+curve = SubResource("Curve_mogq5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dtb3w"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_p2phj")
+color_initial_ramp = SubResource("GradientTexture1D_t03gc")
+
+[node name="KoiCarp" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_inBetweenParts", "_base", "_navigationAgent", "_paperdoll")]
+scale = Vector2(0.15, 0.15)
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_t03gc")
+Color1 = Color(1, 0.25000006, 0.100000024, 1)
+Color2 = Color(0.9, 0.95, 1, 1)
+_hungryColor1 = Color(0.8, 0.24000001, 0.8, 1)
+_hungryColor2 = Color(0.6, 1, 0.8, 1)
+_color1Parts = [NodePath("KoiCarp Paperdoll/Front Fin Back"), NodePath("KoiCarp Paperdoll/Back Fin 2"), NodePath("KoiCarp Paperdoll/Back Fin 1"), NodePath("KoiCarp Paperdoll/Top Fin"), NodePath("KoiCarp Paperdoll/Body"), NodePath("KoiCarp Paperdoll/Tail Fin"), NodePath("KoiCarp Paperdoll/Front Fin Front")]
+_color2Parts = []
+_inBetweenParts = [NodePath("KoiCarp Paperdoll/Whisker Front"), NodePath("KoiCarp Paperdoll/Whisker Back"), NodePath("KoiCarp Paperdoll/Mouth")]
+_base = NodePath("KoiCarp Paperdoll/Body")
+_moneyPerSecond = 5000.0
+_name = "Koi Carp"
+_minSpeed = 125.0
+_maxSpeed = 175.0
+_navigationAgent = NodePath("NavigationAgent2D")
+_paperdoll = NodePath("KoiCarp Paperdoll")
+_maxHealth = 300.0
+_health = 300.0
+_oxygenUsage = 4.0
+_maxHunger = 150.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(100.000015, 50.000004)
+rotation = 1.5718412
+shape = SubResource("CircleShape2D_dtb3w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 50.0
+max_speed = 5000.0
+
+[node name="KoiCarp Paperdoll" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KoiCarp Paperdoll"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_15d7i")
+}
+autoplay = "siwm"
+
+[node name="Front Fin Back" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(-566.6667, 213.33331)
+rotation = 0.40895855
+texture = ExtResource("2_t03gc")
+centered = false
+offset = Vector2(-168.085, -91.225)
+region_enabled = true
+region_rect = Rect2(3073, 896, 640, 512)
+
+[node name="Front Fin Back Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Front Fin Back"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+centered = false
+offset = Vector2(-168.085, -91.225)
+region_enabled = true
+region_rect = Rect2(9122, 852, 640, 512)
+
+[node name="Back Fin 2" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(864, 250)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(3905, 1024, 512, 384)
+
+[node name="Back Fin 2 Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Back Fin 2"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(9954, 980, 512, 384)
+
+[node name="Back Fin 1" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(551, 427)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(4545, 960, 640, 448)
+
+[node name="Back Fin 1 Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Back Fin 1"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(10594, 916, 640, 448)
+
+[node name="Top Fin" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(523, -284)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(3521, 128, 1216, 704)
+
+[node name="Top Fin Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Top Fin"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(9570, 84, 1216, 704)
+
+[node name="Whisker Back" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(0.95, 0.6, 0.55, 1)
+position = Vector2(-1049.3333, 289.33334)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(3194, 50, 168, 312)
+
+[node name="Body" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(65, 256, 2816, 960)
+
+[node name="Body Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Body"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(6114, 212, 2816, 960)
+
+[node name="Tail Fin" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(1402.4, 61.6)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(5185, 192, 768, 1088)
+
+[node name="Tail Fin Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Tail Fin"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(11234, 148, 768, 1088)
+
+[node name="Front Fin Front" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.25000006, 0.100000024, 1)
+position = Vector2(-486.66656, 293.3333)
+rotation = 0.17646667
+texture = ExtResource("2_t03gc")
+centered = false
+offset = Vector2(-168.085, -91.225)
+region_enabled = true
+region_rect = Rect2(3073, 896, 640, 512)
+
+[node name="Front Fin Front Gradient" type="Sprite2D" parent="KoiCarp Paperdoll/Front Fin Front"]
+self_modulate = Color(0.9, 0.95, 1, 1)
+texture = ExtResource("2_t03gc")
+centered = false
+offset = Vector2(-168.085, -91.225)
+region_enabled = true
+region_rect = Rect2(9122, 852, 640, 512)
+
+[node name="Eye" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(1, 0.43333334, 0.14999998, 1)
+position = Vector2(-713.3333, 46.666664)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(2879, 34, 182, 226)
+
+[node name="Mouth" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(0.95, 0.6, 0.55, 1)
+position = Vector2(-882.6666, 282.6667)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(2931, 422, 333, 201)
+
+[node name="Whisker Front" type="Sprite2D" parent="KoiCarp Paperdoll"]
+self_modulate = Color(0.95, 0.6, 0.55, 1)
+position = Vector2(-775.99994, 296)
+texture = ExtResource("2_t03gc")
+region_enabled = true
+region_rect = Rect2(3194, 50, 168, 312)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="KoiCarp Paperdoll"]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = 3
+position = Vector2(-953.33325, 253.33333)
+amount = 5
+texture = ExtResource("3_sdwo5")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_dtb3w")

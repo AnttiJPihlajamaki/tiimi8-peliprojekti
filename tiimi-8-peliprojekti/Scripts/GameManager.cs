@@ -64,7 +64,7 @@ public partial class GameManager : Node // Store player inventory
 	{
 		if (_moneyPerSecond > 0)
 		{
-			AddMoney(_moneyPerSecond * (float) delta);
+			AddMoneyPerSecondToMoney(_moneyPerSecond * (float) delta);
 		}
 		if(ActiveAquarium != null)
 		{
@@ -206,6 +206,11 @@ public partial class GameManager : Node // Store player inventory
 		_money += value;
 		_totalMoney += value;
 		EmitSignal(SignalName.MoneyChanged);
+	}
+	public void AddMoneyPerSecondToMoney(float value)
+	{
+		_money += value;
+		_totalMoney += value;
 	}
 	public void RemoveMoney(float value)
 	{

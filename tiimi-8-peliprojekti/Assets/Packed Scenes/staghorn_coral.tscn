@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccw04l37dq6lm"]
+
+[ext_resource type="Script" uid="uid://bng32jtuh0gci" path="res://Scripts/Grid/GridObject.cs" id="1_neg88"]
+[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="2_ss2bw"]
+[ext_resource type="Texture2D" uid="uid://bq2xweqtip4pj" path="res://Assets/Sprites/Affinity/Plants/Coral/Coral Monochrome.png" id="3_xk3f1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0guk0"]
+size = Vector2(64, 64)
+
+[node name="Staghorn Coral" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_neg88")
+offset = Vector2(1, 1)
+sprite = NodePath("Staghorn Coral Sprite/Staghorn Colar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_0guk0")
+
+[node name="Staghorn Coral Sprite" type="Node2D" parent="."]
+script = ExtResource("2_ss2bw")
+_name = "Pillar Coral"
+_oxygenUsage = -4.0
+_oxygenDamage = 3.0
+
+[node name="Staghorn Colar" type="Sprite2D" parent="Staghorn Coral Sprite"]
+self_modulate = Color(1, 0.81666666, 0.8, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xk3f1")
+offset = Vector2(0, -64)

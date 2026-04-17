@@ -1,0 +1,292 @@
+[gd_scene load_steps=16 format=3 uid="uid://bk32wfb01rcut"]
+
+[ext_resource type="Script" uid="uid://bym4oibllpcad" path="res://Scripts/AI/Fish/Piranha.cs" id="1_tvsyw"]
+[ext_resource type="Texture2D" uid="uid://c1k3tcvw5k85s" path="res://Assets/Sprites/Affinity/NPCs/Piranha/Piranha Monochrome.png" id="2_bxm2n"]
+[ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_ak1iy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88swr"]
+radius = 35.0
+
+[sub_resource type="Animation" id="Animation_kibxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pyranha Paperdoll/Tail Fin:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.04363323]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pyranha Paperdoll/Front Fin Front:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pyranha Paperdoll/Front Fin Back:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dvt62"]
+resource_name = "swim"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pyranha Paperdoll/Tail Fin:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.04363323, 0.04363323]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pyranha Paperdoll/Front Fin Front:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5668943]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pyranha Paperdoll/Front Fin Back:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7537986]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n5sg"]
+_data = {
+&"RESET": SubResource("Animation_kibxn"),
+&"swim": SubResource("Animation_dvt62")
+}
+
+[sub_resource type="Gradient" id="Gradient_dgjro"]
+colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tvsyw"]
+gradient = SubResource("Gradient_dgjro")
+
+[sub_resource type="Curve" id="Curve_mjlbr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bxm2n"]
+curve = SubResource("Curve_mjlbr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rm4s6"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_bxm2n")
+color_initial_ramp = SubResource("GradientTexture1D_tvsyw")
+
+[sub_resource type="Curve" id="Curve_tvsyw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7178423, 0.516854), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ak1iy"]
+curve = SubResource("Curve_tvsyw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tvsyw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.4, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 55.0
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.0
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ak1iy")
+color_initial_ramp = SubResource("GradientTexture1D_tvsyw")
+
+[node name="Pyranha" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_color3Part", "_base", "_navigationAgent", "_paperdoll")]
+rotation = 0.001901308
+scale = Vector2(0.75, 0.75)
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_tvsyw")
+Color1 = Color(0.15, 0.13000001, 0.120000005, 1)
+Color2 = Color(1, 0.25, 0, 1)
+Color3 = Color(1, 0, 0, 1)
+_hungryColor1 = Color(0.25, 0.20833334, 0.1875, 1)
+_hungryColor2 = Color(0.6, 0.3, 0, 1)
+_hungryColor3 = Color(1, 0.6666667, 0, 1)
+_color1Parts = [NodePath("Pyranha Paperdoll/Front Fin Back"), NodePath("Pyranha Paperdoll/Tail Fin"), NodePath("Pyranha Paperdoll/Body"), NodePath("Pyranha Paperdoll/Front Fin Front")]
+_color2Parts = [NodePath("Pyranha Paperdoll/Front Fin Back/Front Fin Back Gradient"), NodePath("Pyranha Paperdoll/Tail Fin/Tail Fin Gradient"), NodePath("Pyranha Paperdoll/Body/Body Gradient"), NodePath("Pyranha Paperdoll/Front Fin Front/Front Fin Front Gradient")]
+_color3Part = NodePath("Pyranha Paperdoll/Eye")
+_base = NodePath("Pyranha Paperdoll/Body")
+_attackSound = "Sizzle"
+_attackDamage = 5.0
+_attackSpeed = 0.1
+_name = "Pyranha"
+_minSpeed = 50.0
+_maxSpeed = 100.0
+_navigationAgent = NodePath("NavigationAgent2D")
+_paperdoll = NodePath("Pyranha Paperdoll")
+_maxHealth = 250.0
+_health = 250.0
+_oxygenUsage = 5.0
+_maxHunger = 120.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -1)
+rotation = -1.5438019
+shape = SubResource("CircleShape2D_88swr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 50.0
+max_speed = 5000.0
+avoidance_layers = 5
+
+[node name="Pyranha Paperdoll" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pyranha Paperdoll"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_0n5sg")
+}
+autoplay = "swim"
+
+[node name="Front Fin Back" type="Sprite2D" parent="Pyranha Paperdoll"]
+self_modulate = Color(0.15, 0.13000001, 0.120000005, 1)
+position = Vector2(-32, 30.666668)
+scale = Vector2(0.09246861, 0.099537045)
+texture = ExtResource("2_bxm2n")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(2881, 576, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Front Fin Back Gradient" type="Sprite2D" parent="Pyranha Paperdoll/Front Fin Back"]
+self_modulate = Color(1, 0.25, 0, 1)
+texture = ExtResource("2_bxm2n")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(6596, 620, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Tail Fin" type="Sprite2D" parent="Pyranha Paperdoll"]
+self_modulate = Color(0.15, 0.13000001, 0.120000005, 1)
+position = Vector2(84.00002, -11.000008)
+scale = Vector2(0.092468604, 0.099537045)
+skew = -0.04363323
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(1985, 128, 768, 1088)
+region_filter_clip_enabled = true
+
+[node name="Tail Fin Gradient" type="Sprite2D" parent="Pyranha Paperdoll/Tail Fin"]
+self_modulate = Color(1, 0.25, 0, 1)
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(5701, 173, 768, 1088)
+region_filter_clip_enabled = true
+
+[node name="Body" type="Sprite2D" parent="Pyranha Paperdoll"]
+self_modulate = Color(0.15, 0.13000001, 0.120000005, 1)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.09246861, 0.09953706)
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(129, 128, 1856, 1216)
+region_filter_clip_enabled = true
+
+[node name="Body Gradient" type="Sprite2D" parent="Pyranha Paperdoll/Body"]
+self_modulate = Color(1, 0.25, 0, 1)
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(3845, 173, 1856, 1216)
+region_filter_clip_enabled = true
+
+[node name="Front Fin Front" type="Sprite2D" parent="Pyranha Paperdoll"]
+self_modulate = Color(0.15, 0.13000001, 0.120000005, 1)
+position = Vector2(-10.666666, 29.333334)
+scale = Vector2(0.09246861, 0.09953705)
+texture = ExtResource("2_bxm2n")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(2881, 576, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Front Fin Front Gradient" type="Sprite2D" parent="Pyranha Paperdoll/Front Fin Front"]
+self_modulate = Color(1, 0.25, 0, 1)
+texture = ExtResource("2_bxm2n")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(6596, 620, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Eye" type="Sprite2D" parent="Pyranha Paperdoll"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-28.012623, -6.6134176)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(2984, 1197, 266, 266)
+
+[node name="Mouth" type="Sprite2D" parent="Pyranha Paperdoll"]
+position = Vector2(-50.64122, 13.429641)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_bxm2n")
+region_enabled = true
+region_rect = Rect2(2901, 125, 225, 151)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Pyranha Paperdoll"]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = 3
+position = Vector2(-65.333336, 17.333334)
+amount = 5
+texture = ExtResource("3_ak1iy")
+process_material = SubResource("ParticleProcessMaterial_rm4s6")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Pyranha Paperdoll"]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = 3
+position = Vector2(-2.674267, -3.9949224)
+amount = 5
+texture = ExtResource("3_ak1iy")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_tvsyw")

@@ -1,44 +1,55 @@
 keys,en,fi,se
-PLAY,Play,Pelaa,
-TUTORIAL,Tutorial,Opastus,
-SETTINGS,Settings,Asetukset,
-QUIT_GAME,Quit Game,Lopeta Peli,
-PAUSED,Paused,Keskeytetty,
-RESUME,Resume Game,Jatka Peliä,
-RESTART,Restart,Aloita peli uudelleen,
-MAIN_MENU,Main Menu,Päävalikko,
-SHOP,Shop,Kauppa,
-OXYGENATOR,Oxygenator,Hapetin,
-FISH_FOOD,Fish Food,Kalanruoka,
-LASER_BLASTER,Laser Blaster,Laser Blasteri,
-FISH_PLURAL,Fish,Kalat,
-FISH_SINGULAR,Fish,Kala,
-PLANTS,Plants,Kasvit,
-PLANT,Plant,Kasvi,
-MONEY_PER_S,Money/S,Rahaa/S,
-OXYGEN_PER_S,Oxygen/S,Happi/S,
-MONEY_PER_TAP,Money/Tap,Rahaa/Kosketus,
-COST,Cost,Hinta,
-BUY,Buy,Osta,
-CANCEL,Cancel,Peruuta,
-GOLDFISH,Goldfish,Kultakala,
-PIRANHA,Piranha,Piraija,
-CARP,Carp,Karppi,
-SEAWEED,Seaweed,Merilevä,
-PLACER_PROMPT,Press and/or drag on the sand to place and move your plant.\nPress Buy to confirm the purchase or Cancel to cancel.,Paina ja/tai vedä sormea hiekalla asettaaksesi ja liikuttaaksesi kasviasi.\nPaina Osta vartmistaaksesi ostoksen tai Peru peruuttaaksesi.,
-TINTRODUCTION,Welcome to your new aquarium shop!\nStep in it's going to be a busy day.,Tervetuloa uuteen akvaariokauppaasi!\nAstu sisään tästä tulee kiireinen päivä.,
-TCALL1,Congratulations on the shop champ I am the landlord and former\nowner of this joint. Theres a few things I'll need to walk you through\nbefore I leave you alone with the fish...,Onnittelut uudesta kaupastasi tulokas. Olen vuokranantajasi\nja paikan entinen omistaja. On muutama asia jota minun tulee käydä läpi\nennen kuin pääset töihin...,
-TCALL2,Besides the obvious like: fish need oxygen to breathe\nthere are a few tools you'll need to\nfamiliarise yourself with....,Perusjuttujen lisäksi kuten: kalat tarvitsevat happea on muutama\ntyökalu johon sinun tulee tutustua...,
-TCALL3,For starters you can order new fish and plants for your aquarium from\nthe shop. don't ask me how the stuff gets here so fast...,Aluksi voit tilata uusia kaloja ja kasveja akvaarioosi\nkaupasta. Älä kysy miten tavara saapuu niin nopeasti...,
-TCALL4,Fish food is fairly obvious as you need to feed your fish to keep them\nalive except for the carnivores they eat other fish...,Kalanruoka on melko itsestään selvä sinun täytyy\nruokkia kalasi pitääksesi ne elossa paitsi lihansyöjät\njotka syövät muita kaloja...,
-TCALL5,The oxygenator can be used to quickly change the oxygen levels in your\naquarium. You need to keep an eye on the oxygen levels from the meter\nand you can buy plants from the shop to help keep the oxygen stable...,Hapettimella voit nopeasti muuttaa happitasoja\npidä silmällä happitasoja ja osta kasveja pitämään ne vakaana...,
-TCALL6,Now there is one tiny detail about this location that I may have\nneglected to mention. You must have been wondering why the property\nwas so cheap...,On vielä yksi pieni yksityiskohta jonka olen unohtanut mainita\noletkin varmaan miettinyt miksi paikka oli niin halpa...,
-TCALL7,The issue is we do get nightly visitors of the extraterrestrial sort...\nThey tend to treat the place as a buffet rather than a shop but\nwe have a solution for this.,Ongelmana on että samme öisin vieraita avaduudesta...\nja vieraat pitävät paikkaa enemmän buffettina kuin kauppana\nmutta meillä on ratkaisu tähän ongelmaan.,
-TCALL8,The solution is perhaps your most important tool the laser blaster.\nYou can use it to get rid of the nightly visitors. That is all the advice\nI have for you now... I wish you luck with your endevours.,Ehkä tärkein työkalusi on laserase. Sillä voit\npäästä eroon öisistä vieraista.\nSiinä on kaikki neuvoni sinulle nyt... Toivotan sinulle onnea matkaan.,
-TICON1,Shop,Kauppa,
-TICON2,Feeder,Ruoka,
-TICON3,Oxygenator,Hapetin,
-GAME_OVER,Game Over,Peli Päättyi,
-GAME_OVER_PROMPT,All your fish have died,Kaikki kalasi kuolivat,
-TOTAL_MONEY,Total Money,Rahojen Loppusumma,
-DAYS_PASSED,Days Passed,Päiviä kului,
+PLAY,Play,Pelaa,Spela
+TUTORIAL,Tutorial,Opastus,Handledningen
+SETTINGS,Settings,Asetukset,Inställningar
+QUIT_GAME,Quit Game,Lopeta Peli,Avsluta spelet
+PAUSED,Paused,Keskeytetty,Pausad
+RESUME,Resume Game,Jatka Peliä,Återuppta spelet
+RESTART,Restart,Aloita peli uudelleen,Starta om spelet
+MAIN_MENU,Main Menu,Päävalikko,Huvudmeny
+SHOP,Shop,Kauppa,Butik
+OXYGENATOR,Oxygenator,Hapetin,Syresättare
+FISH_FOOD,Fish Food,Kalanruoka,Fiskmat
+LASER_BLASTER,Laser Blaster,Laser Blasteri,Laserskjutare
+FISH_PLURAL,Fish,Kalat,Fiskar
+FISH_SINGULAR,Fish,Kala,Fisk
+PLANTS,Plants,Kasvit,Växter
+PLANT,Plant,Kasvi,Växt
+MONEY_PER_S,Money/S,Rahaa/S,Pengar/s
+OXYGEN_PER_S,Oxygen/S,Happi/S,Syre/s
+MONEY_PER_TAP,Money/Tap,Rahaa/Kosketus,Pengar/tryck
+COST,Cost,Hinta,Kostnad
+BUY,Buy,Osta,Köp
+CANCEL,Cancel,Peruuta,Avbryt
+GOLDFISH,Goldfish,Kultakala,Guldfisk
+SILVERFISH,Silverfish,Hopeakala,Silverfisk
+BRONZEFISH,Bronzefish,Pronssikala,Bronsfisk
+PIRANHA,Piranha,Piraija,Piraya
+PYRANHA,Pyranha,Tuliraija,Eldiraya
+COBRANHA,Cobranha,Kobraija,Kobraya
+CARP,Carp,Karppi,Karp
+RED_CARP,Red Carp,Punainen Karppi,Röd karp
+KOI_CARP,Koi Carp,Koikarppi,Koi-karp
+SEAWEED,Seaweed,Merilevä,Sjögräs
+RED_KELP,Red Kelp,Punainen Kelppi,Röd kelp
+SEA_WHIP,Sea Whip,Meripiiska,Sjöpiskkorall
+PILLAR_CORAL,Pillar Coral,Pilarikoralli,Pelarkorall
+STAGHORN_CORAL,Staghorn Coral,Peuransarvikoralli,Hjorthornskorall
+BLACK_CORAL,Black Coral,Mustakoralli,Svart korall
+PLACER_PROMPT,Press and/or drag on the sand to place and move your plant.\nPress Buy to confirm the purchase or Cancel to cancel.,Paina ja/tai vedä sormea hiekalla asettaaksesi ja liikuttaaksesi kasviasi.\nPaina Osta vartmistaaksesi ostoksen tai Peru peruuttaaksesi.,Tryck och/eller dra på sanden för att placera och flytta din växt.\nTryck på Köp för att bekräfta köpet eller Avbryt för att avbryta.
+TINTRODUCTION,Welcome to your new aquarium shop!\nStep in it's going to be a busy day.,Tervetuloa uuteen akvaariokauppaasi!\nAstu sisään tästä tulee kiireinen päivä.,"Välkommen till din nya akvariebutik!\nKliv in, det kommer att bli en hektisk dag."
+TCALL1,Congratulations on the shop champ I am the landlord and former\nowner of this joint. Theres a few things I'll need to walk you through\nbefore I leave you alone with the fish...,Onnittelut uudesta kaupastasi tulokas. Olen vuokranantajasi\nja paikan entinen omistaja. On muutama asia jota minun tulee käydä läpi\nennen kuin pääset töihin...,"Grattis till butiken, mästare! Jag är hyresvärden och den tidigare\nägaren av stället. Det finns några saker jag behöver gå igenom\ninnan jag lämnar dig ensam med fiskarna..."
+TCALL2,Besides the obvious like: fish need oxygen to breathe\nthere are a few tools you'll need to\nfamiliarise yourself with....,Perusjuttujen lisäksi kuten: kalat tarvitsevat happea on muutama\ntyökalu johon sinun tulee tutustua...,Förutom det uppenbara som att fiskar behöver syre för att andas\nfinns det några verktyg du behöver\nbekanta dig med...
+TCALL3,For starters you can order new fish and plants for your aquarium from\nthe shop. don't ask me how the stuff gets here so fast...,Aluksi voit tilata uusia kaloja ja kasveja akvaarioosi\nkaupasta. Älä kysy miten tavara saapuu niin nopeasti...,Till att börja med kan du beställa nya fiskar och växter till ditt akvarium från\nbutiken. Fråga mig inte hur sakerna kommer hit så snabbt...
+TCALL4,Fish food is fairly obvious as you need to feed your fish to keep them\nalive except for the carnivores they eat other fish...,Kalanruoka on melko itsestään selvä sinun täytyy\nruokkia kalasi pitääksesi ne elossa paitsi lihansyöjät\njotka syövät muita kaloja...,"Fiskmat är ganska självklart eftersom du behöver mata dina fiskar för att hålla dem\nvid liv, förutom köttätarna som äter andra fiskar..."
+TCALL5,The oxygenator can be used to quickly change the oxygen levels in your\naquarium. You need to keep an eye on the oxygen levels from the meter\nand you can buy plants from the shop to help keep the oxygen stable...,Hapettimella voit nopeasti muuttaa happitasoja\npidä silmällä happitasoja ja osta kasveja pitämään ne vakaana...,Syresättaren kan användas för att snabbt ändra syrenivåerna i ditt\nakvarium. Du måste hålla koll på syrenivåerna på mätaren\noch du kan köpa växter i butiken för att hålla syret stabilt...
+TCALL6,Now there is one tiny detail about this location that I may have\nneglected to mention. You must have been wondering why the property\nwas so cheap...,On vielä yksi pieni yksityiskohta jonka olen unohtanut mainita\noletkin varmaan miettinyt miksi paikka oli niin halpa...,Nu finns det en liten detalj om den här platsen som jag kanske\nhar glömt att nämna. Du har säkert undrat varför fastigheten\nvar så billig...
+TCALL7,The issue is we do get nightly visitors of the extraterrestrial sort...\nThey tend to treat the place as a buffet rather than a shop but\nwe have a solution for this.,Ongelmana on että samme öisin vieraita avaduudesta...\nja vieraat pitävät paikkaa enemmän buffettina kuin kauppana\nmutta meillä on ratkaisu tähän ongelmaan.,Problemet är att vi får nattliga besök av utomjordiskt slag...\nDe tenderar att behandla stället som en buffé snarare än en butik men\nvi har en lösning på detta.
+TCALL8,The solution is perhaps your most important tool the laser blaster.\nYou can use it to get rid of the nightly visitors. That is all the advice\nI have for you now... I wish you luck with your endevours.,Ehkä tärkein työkalusi on laserase. Sillä voit\npäästä eroon öisistä vieraista.\nSiinä on kaikki neuvoni sinulle nyt... Toivotan sinulle onnea matkaan.,"Lösningen är kanske ditt viktigaste verktyg, laserskjutaren.\nDu kan använda den för att bli av med de nattliga besökarna. Det är alla råd\njag har för dig nu... Jag önskar dig lycka till."
+TICON1,Shop,Kauppa,Butik
+TICON2,Feeder,Ruoka,Matare
+TICON3,Oxygenator,Hapetin,Syresättare
+GAME_OVER,Game Over,Peli Päättyi,Spelet är slut
+GAME_OVER_PROMPT,All your fish have died,Kaikki kalasi kuolivat,Alla dina fiskar har dött
+TOTAL_MONEY,Total Money,Rahojen Loppusumma,Totala pengar
+DAYS_PASSED,Days Passed,Päiviä kului,Dagar som gått

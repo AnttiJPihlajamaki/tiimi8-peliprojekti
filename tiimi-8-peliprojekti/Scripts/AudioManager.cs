@@ -26,11 +26,6 @@ public partial class AudioManager : Node
 		}
 	}
 
-    public override void _Ready()
-    {
-
-    }
-
 
     public void PlaySound(string soundName)
     {
@@ -44,8 +39,31 @@ public partial class AudioManager : Node
 				AddChild(newSound);
 				newSound.Bus = "Sound Effects";
 				newSound.Stream = sounds[i];
-				newSound.Play();
 				newSound.Finished += newSound.QueueFree;
+				newSound.Play();
+
+                return;
+            }
+        }
+        GD.Print("Sound named " + soundName + " not found!");
+    }
+
+
+    public void PlaySound(string soundName, float volumeAdjust)
+    {
+        for (int i = 0; i < soundNames.Length; i++)
+        {
+            if (soundNames[i] == soundName)
+            {
+                AudioStreamPlayer newSound = audioPlayer.Instantiate<AudioStreamPlayer>();
+
+				newSound.Name = soundName + "#" + newSound.GetInstanceId(); // Gives object unique name
+				AddChild(newSound);
+				newSound.Bus = "Sound Effects";
+				newSound.Stream = sounds[i];
+				newSound.Finished += newSound.QueueFree;
+                newSound.VolumeLinear += volumeAdjust;
+				newSound.Play();
 
                 return;
             }
@@ -54,6 +72,7 @@ public partial class AudioManager : Node
     }
     public void PlayMusic(string musicName)
     {
+        if (IsMusicPlaying(musicName)) return;
         for (int i = 0; i < musicNames.Length; i++)
         {
             if (musicNames[i] == musicName)

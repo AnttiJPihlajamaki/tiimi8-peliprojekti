@@ -1,17 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd2o8cddplhoc"]
+[gd_scene load_steps=5 format=3 uid="uid://cd2o8cddplhoc"]
 
 [ext_resource type="Script" uid="uid://dcf1mlljtaw4d" path="res://Scripts/Food.cs" id="1_uau66"]
 [ext_resource type="Texture2D" uid="uid://bqiy6xv18117b" path="res://Assets/Sprites/FISHFOOD.png" id="2_0oddj"]
-[ext_resource type="Texture2D" uid="uid://ce2etcsp1ocdj" path="res://icon.svg" id="2_uau66"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0oddj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_0oddj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_uau66")
 }],
 "loop": true,
 "name": &"default",
@@ -24,6 +20,7 @@ radius = 8.0
 [node name="Food" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_uau66")
+_nourishment = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1

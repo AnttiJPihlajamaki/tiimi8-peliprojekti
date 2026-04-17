@@ -72,8 +72,6 @@ public partial class Aquarium : Node2D
 
 		_objects.Add(newObject); // Adds fish to list of fish
 
-		newObject._aquarium = this; // Adds reference of aquarium to the fish
-
 		UpdateOxygenDelta(); // Update change in current oxygen
 	}
 

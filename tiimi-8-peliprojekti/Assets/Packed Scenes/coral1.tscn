@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://6jmksa710tii"]
-
-[ext_resource type="Texture2D" uid="uid://daap7mlb30u54" path="res://Assets/Sprites/COLUMNARCORAL.png" id="1_dnmxc"]
-
-[node name="Coral1" type="Node2D"]
-
-[node name="Columnarcoral" type="Sprite2D" parent="."]
-texture = ExtResource("1_dnmxc")
-offset = Vector2(0, -30)

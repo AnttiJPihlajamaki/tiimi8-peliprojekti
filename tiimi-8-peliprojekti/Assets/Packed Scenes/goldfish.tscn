@@ -111,13 +111,14 @@ scale_curve = SubResource("CurveTexture_fivcr")
 color_initial_ramp = SubResource("GradientTexture1D_apf2t")
 
 [node name="Goldfish" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_base", "_navigationAgent", "_paperdoll")]
+input_pickable = true
 motion_mode = 1
 script = ExtResource("1_rhqo1")
 Color1 = Color(1, 0.8, 0.2, 1)
 Color2 = Color(1, 0.4, 0.09803922, 1)
 _hungryColor1 = Color(0.65999997, 0.9, 0.17999998, 1)
 _hungryColor2 = Color(0.9, 0.17999998, 0.24000008, 1)
-_color1Parts = [NodePath("Goldfish Paperdoll/Body Sprite")]
+_color1Parts = [NodePath("Goldfish Paperdoll/Body Sprite"), NodePath("Goldfish Paperdoll/Mouth")]
 _color2Parts = [NodePath("Goldfish Paperdoll/Back Fin Sprite"), NodePath("Goldfish Paperdoll/Top Fin Sprite"), NodePath("Goldfish Paperdoll/Front Fin Back Sprite"), NodePath("Goldfish Paperdoll/Front Fin Front Sprite")]
 _base = NodePath("Goldfish Paperdoll/Body Sprite")
 _name = "Guppy"
@@ -169,6 +170,13 @@ self_modulate = Color(1, 0.8, 0.2, 1)
 texture = ExtResource("2_0mypf")
 region_enabled = true
 region_rect = Rect2(238, 44, 95, 47)
+
+[node name="Mouth" type="Sprite2D" parent="Goldfish Paperdoll"]
+self_modulate = Color(1, 0.8, 0.2, 1)
+position = Vector2(-29, 13)
+texture = ExtResource("2_0mypf")
+region_enabled = true
+region_rect = Rect2(120, 20, 12, 7)
 
 [node name="Front Fin Front Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
 self_modulate = Color(1, 0.4, 0.09803922, 1)

@@ -5,6 +5,9 @@ public partial class MoneyUI : Node
 {
 	[Export] private Label moneyLabel;
 	[Export] private Label moneyPerSecLabel;
+
+	private double _timer = 0f;
+	private double _timerMax = 1f;
 	public override void _Ready()
 	{
 		OnMoneyChanged();
@@ -19,6 +22,20 @@ public partial class MoneyUI : Node
 		}
 		*/
 	}
+
+    public override void _Process(double delta)
+    {
+        if(_timer < 1)
+		{
+			_timer += delta;
+		}
+		else
+		{
+			_timer = 0;
+			OnMoneyChanged();
+		}
+    }
+
 
 	private void OnMoneyChanged()
 	{

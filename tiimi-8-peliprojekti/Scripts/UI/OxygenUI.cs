@@ -11,7 +11,14 @@ public partial class OxygenUI : Control
 
 	public override void _Process(double delta)
 	{
-		oxygenDeltaLabel.Text = ""+GameManager.Instance.ActiveAquarium.OxygenDelta;
+		if(GameManager.Instance.ActiveAquarium.OxygenDelta > 0)
+		{
+			oxygenDeltaLabel.Text = "+"+GameManager.Instance.ActiveAquarium.OxygenDelta;
+		}
+		else
+		{
+			oxygenDeltaLabel.Text = ""+GameManager.Instance.ActiveAquarium.OxygenDelta;
+		}
 		oxygenSlider.Value = GameManager.Instance.ActiveAquarium._currentOxygen;
 		if (!GameManager.Instance.ActiveAquarium.MinMaxIdealOxygen())
 		{

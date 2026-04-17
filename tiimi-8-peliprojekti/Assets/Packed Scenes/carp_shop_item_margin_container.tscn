@@ -387,7 +387,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 1
-text = "200"
+text = "300"
 label_settings = SubResource("LabelSettings_vh6ro")
 vertical_alignment = 1
 

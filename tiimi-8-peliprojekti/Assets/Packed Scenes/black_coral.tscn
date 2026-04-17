@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcanu72xj80ax"]
+
+[ext_resource type="Script" uid="uid://bng32jtuh0gci" path="res://Scripts/Grid/GridObject.cs" id="1_iywxe"]
+[ext_resource type="Script" uid="uid://doo6pvjnwwr8f" path="res://Scripts/AI/AquariumObject.cs" id="2_1r84n"]
+[ext_resource type="Texture2D" uid="uid://bq2xweqtip4pj" path="res://Assets/Sprites/Affinity/Plants/Coral/Coral Monochrome.png" id="3_acarh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0guk0"]
+size = Vector2(64, 64)
+
+[node name="Black Coral" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_iywxe")
+offset = Vector2(1, 1)
+sprite = NodePath("Black Coral Sprite/Black Colar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_0guk0")
+
+[node name="Black Coral Sprite" type="Node2D" parent="."]
+script = ExtResource("2_1r84n")
+_name = "Pillar Coral"
+_maxHealth = 300.0
+_health = 300.0
+_oxygenUsage = -6.0
+
+[node name="Black Colar" type="Sprite2D" parent="Black Coral Sprite"]
+self_modulate = Color(0.12, 0.19999993, 0.6, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_acarh")
+offset = Vector2(0, -64)

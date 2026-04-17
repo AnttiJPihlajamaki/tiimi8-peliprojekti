@@ -15,6 +15,8 @@ public partial class GameOverMenu : Node
     }
 	public void OnGameOver()
 	{
+		AudioManager.Instance.PlaySound("Fail");
+		AudioManager.Instance.PlayMusic("Menu");
 		_totalMoneyAmount.Text = MoneyConfig.MoneyConversion(GameManager.Instance.TotalMoney);
 		_dayPassedAmount.Text = ""+GameManager.Instance.DaysPassed;
 		if(_itemsToHide.Count > 0)

@@ -116,27 +116,28 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_dgjro")
 color_initial_ramp = SubResource("GradientTexture1D_88swr")
 
-[node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_base", "_navigationAgent", "_paperdoll")]
+[node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_color3Part", "_base", "_navigationAgent", "_paperdoll")]
 rotation = 0.001901308
 scale = Vector2(0.75, 0.75)
-collision_mask = 0
+input_pickable = true
 motion_mode = 1
 script = ExtResource("1_prqmn")
 Color1 = Color(0.32, 0.4, 0.16, 1)
-Color2 = Color(1, 0.16862746, 0, 1)
+Color2 = Color(0.8, 0.26666665, 0.16, 1)
+Color3 = Color(1, 0.5833334, 0, 1)
 _hungryColor1 = Color(0.35999998, 0.4, 0.28, 1)
-_hungryColor2 = Color(0.7333336, 0.19999999, 1, 1)
+_hungryColor2 = Color(0.8, 0.24000001, 0.8, 1)
+_hungryColor3 = Color(1, 0.16666669, 0, 1)
 _color1Parts = [NodePath("PiranhaPaperdoll/Front Fin Back"), NodePath("PiranhaPaperdoll/Tail Fin"), NodePath("PiranhaPaperdoll/Body"), NodePath("PiranhaPaperdoll/Front Fin Front")]
 _color2Parts = [NodePath("PiranhaPaperdoll/Front Fin Back/Front Fin Back Gradient"), NodePath("PiranhaPaperdoll/Tail Fin/Tail Fin Gradient"), NodePath("PiranhaPaperdoll/Body/Body Gradient"), NodePath("PiranhaPaperdoll/Front Fin Front/Front Fin Front Gradient")]
+_color3Part = NodePath("PiranhaPaperdoll/Eye")
 _base = NodePath("PiranhaPaperdoll/Body")
-moneyPerSecond = 75.0
 _minSpeed = 120.0
 _maxSpeed = 130.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("PiranhaPaperdoll")
 _oxygenUsage = 2.0
 _maxHunger = 120.0
-_hunger = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -1)
@@ -170,7 +171,7 @@ region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
 [node name="Front Fin Back Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Front Fin Back"]
-self_modulate = Color(0.8, 0.13333334, 0, 1)
+self_modulate = Color(0.8, 0.26666665, 0.16, 1)
 texture = ExtResource("2_88swr")
 centered = false
 offset = Vector2(-140, -50)
@@ -189,7 +190,7 @@ region_rect = Rect2(1985, 128, 768, 1088)
 region_filter_clip_enabled = true
 
 [node name="Tail Fin Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Tail Fin"]
-self_modulate = Color(0.8, 0.13333334, 0, 1)
+self_modulate = Color(0.8, 0.26666665, 0.16, 1)
 texture = ExtResource("2_88swr")
 region_enabled = true
 region_rect = Rect2(5701, 173, 768, 1088)
@@ -205,7 +206,7 @@ region_rect = Rect2(129, 128, 1856, 1216)
 region_filter_clip_enabled = true
 
 [node name="Body Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Body"]
-self_modulate = Color(0.8, 0.13333334, 0, 1)
+self_modulate = Color(0.8, 0.26666665, 0.16, 1)
 texture = ExtResource("2_88swr")
 region_enabled = true
 region_rect = Rect2(3845, 173, 1856, 1216)
@@ -223,7 +224,7 @@ region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
 [node name="Front Fin Front Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Front Fin Front"]
-self_modulate = Color(0.8, 0.13333334, 0, 1)
+self_modulate = Color(0.8, 0.26666665, 0.16, 1)
 texture = ExtResource("2_88swr")
 centered = false
 offset = Vector2(-140, -50)
@@ -232,7 +233,7 @@ region_rect = Rect2(6596, 620, 512, 448)
 region_filter_clip_enabled = true
 
 [node name="Eye" type="Sprite2D" parent="PiranhaPaperdoll"]
-modulate = Color(1, 0.7266667, 0.18, 1)
+self_modulate = Color(1, 0.5833334, 0, 1)
 position = Vector2(-28.012623, -6.6134176)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_88swr")

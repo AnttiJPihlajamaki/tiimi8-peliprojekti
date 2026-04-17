@@ -30,15 +30,6 @@ using System;
 	[Export] private Array<Node2D> _color2Parts;
 	[Export] private Array<Node2D> _inBetweenParts;
 	[Export] private Node2D _base;
-    public override void _Ready()
-    {
-
-		if(GameManager.Instance != null)
-        {
-			ChangeColor(_color1,_color2);
-			base._Ready();
-        }
-    }
 	protected override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		base.ChangeHunger(change);

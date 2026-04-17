@@ -136,61 +136,6 @@ editable = false
 scrollable = false
 ticks_position = 1
 
-[node name="Money MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("moneyLabel", "moneyPerSecLabel")]
-custom_minimum_size = Vector2(450, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-script = ExtResource("2_rdn46")
-moneyLabel = NodePath("MarginContainer/HBoxContainer/Money Label")
-moneyPerSecLabel = NodePath("MarginContainer/HBoxContainer/Moneypersec Label")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Money MarginContainer"]
-modulate = Color(1, 0.8666667, 0.19999999, 1)
-layout_mode = 2
-texture = ExtResource("3_rdn46")
-region_rect = Rect2(0, 128, 64, 64)
-patch_margin_left = 27
-patch_margin_top = 27
-patch_margin_right = 27
-patch_margin_bottom = 27
-
-[node name="MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Money MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Money MarginContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Money Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "Money"
-
-[node name="Dollar Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = " $"
-
-[node name="Seperator Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = " | "
-
-[node name="Moneypersec Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "Money/S"
-
-[node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = " $/S"
-
 [node name="Oxygen Change MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -236,28 +181,36 @@ text = ":"
 layout_mode = 2
 text = "???"
 
-[node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("_timeSlider", "_timeLabel")]
-custom_minimum_size = Vector2(340, 50)
+[node name="Symbol Label" type="Label" parent="Screen MarginContainer/Oxygen Change MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "%"
+
+[node name="Top HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer" node_paths=PackedStringArray("_timeSlider", "_timeLabel")]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
 script = ExtResource("6_kfa6w")
 _timeSlider = NodePath("Time MarginContainer/HBoxContainer/Slider MarginContainer/HSlider")
 _timeLabel = NodePath("Time MarginContainer/HBoxContainer/Label MarginContainer/Time Label")
 
-[node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Time MarginContainer"]
-custom_minimum_size = Vector2(325, 50)
+[node name="Time MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer"]
 modulate = Color(0, 0.5, 1, 1)
-custom_minimum_size = Vector2(126, 0)
 layout_mode = 2
 texture = ExtResource("3_rdn46")
 region_rect = Rect2(0, 128, 64, 64)
@@ -266,15 +219,15 @@ patch_margin_top = 27
 patch_margin_right = 27
 patch_margin_bottom = 27
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer"]
 layout_mode = 2
 
-[node name="Slider MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer/HBoxContainer"]
+[node name="Slider MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 0
 
-[node name="HSlider" type="HSlider" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer/HBoxContainer/Slider MarginContainer"]
+[node name="HSlider" type="HSlider" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer/HBoxContainer/Slider MarginContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -289,17 +242,74 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_xbrj
 max_value = 1.0
 step = 0.01
 
-[node name="Label MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer/HBoxContainer"]
+[node name="Label MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_right = 15
 
-[node name="Time Label" type="Label" parent="Screen MarginContainer/Time MarginContainer/Time MarginContainer/HBoxContainer/Label MarginContainer"]
+[node name="Time Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Time MarginContainer/Time MarginContainer/HBoxContainer/Label MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = SubResource("FontVariation_s37ty")
 text = "00:00"
 horizontal_alignment = 1
+
+[node name="Money MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer" node_paths=PackedStringArray("moneyLabel", "moneyPerSecLabel")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+script = ExtResource("2_rdn46")
+moneyLabel = NodePath("MarginContainer/HBoxContainer/Money Label")
+moneyPerSecLabel = NodePath("MarginContainer/HBoxContainer/Moneypersec Label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer"]
+modulate = Color(1, 0.8666667, 0.19999999, 1)
+layout_mode = 2
+texture = ExtResource("3_rdn46")
+region_rect = Rect2(0, 128, 64, 64)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+
+[node name="MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="Moneypersec Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money/S"
+
+[node name="Dollarpersec Sign Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " $/S"
+
+[node name="Seperator Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " | "
+
+[node name="Money Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money"
+
+[node name="Dollar Sign Label" type="Label" parent="Screen MarginContainer/Top HBoxContainer/Money MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = " $"

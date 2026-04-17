@@ -118,6 +118,7 @@ color_initial_ramp = SubResource("GradientTexture1D_dtb3w")
 
 [node name="Carp" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_inBetweenParts", "_base", "_navigationAgent", "_paperdoll")]
 scale = Vector2(0.15, 0.15)
+input_pickable = true
 motion_mode = 1
 script = ExtResource("1_llyx2")
 Color1 = Color(0.2, 0.18496667, 0.11800001, 1)
@@ -126,17 +127,15 @@ _hungryColor1 = Color(0.16000001, 0.2, 0.16666667, 1)
 _hungryColor2 = Color(0.14999999, 0.75, 0.45000002, 1)
 _color1Parts = [NodePath("CarpPaperdoll/Front Fin Back"), NodePath("CarpPaperdoll/Back Fin 2"), NodePath("CarpPaperdoll/Back Fin 1"), NodePath("CarpPaperdoll/Top Fin"), NodePath("CarpPaperdoll/Body"), NodePath("CarpPaperdoll/Tail Fin"), NodePath("CarpPaperdoll/Front Fin Front")]
 _color2Parts = []
-_inBetweenParts = [NodePath("CarpPaperdoll/Whisker Front"), null, NodePath("CarpPaperdoll/Mouth")]
+_inBetweenParts = [NodePath("CarpPaperdoll/Whisker Front"), NodePath("CarpPaperdoll/Whisker Back"), NodePath("CarpPaperdoll/Mouth")]
 _base = NodePath("CarpPaperdoll/Body")
-moneyPerSecond = 300.0
+_moneyPerSecond = 300.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("CarpPaperdoll")
 _maxHealth = 200.0
 _health = 200.0
 _oxygenUsage = 3.0
 _maxHunger = 150.0
-_hunger = 150.0
-_hungryLimit = 70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(100.000015, 50.000004)

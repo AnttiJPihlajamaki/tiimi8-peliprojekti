@@ -193,6 +193,13 @@ texture = ExtResource("3_486da")
 region_enabled = true
 region_rect = Rect2(238, 44, 95, 47)
 
+[node name="Mouth" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+self_modulate = Color(1, 0.8, 0.2, 1)
+position = Vector2(-29, 13)
+texture = ExtResource("3_486da")
+region_enabled = true
+region_rect = Rect2(120, 20, 12, 7)
+
 [node name="Front Fin Front Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
 self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(0, 12)

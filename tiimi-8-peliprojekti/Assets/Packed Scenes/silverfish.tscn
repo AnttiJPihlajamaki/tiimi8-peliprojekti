@@ -13,7 +13,7 @@ loop_mode = 2
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
+tracks/0/path = NodePath("Silverfish Paperdoll/Back Fin Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
+tracks/1/path = NodePath("Silverfish Paperdoll/Front Fin Back Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
+tracks/2/path = NodePath("Silverfish Paperdoll/Front Fin Front Sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -49,7 +49,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Goldfish Paperdoll/Back Fin Sprite:rotation")
+tracks/0/path = NodePath("Silverfish Paperdoll/Back Fin Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Goldfish Paperdoll/Front Fin Back Sprite:rotation")
+tracks/1/path = NodePath("Silverfish Paperdoll/Front Fin Back Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,7 +71,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Goldfish Paperdoll/Front Fin Front Sprite:rotation")
+tracks/2/path = NodePath("Silverfish Paperdoll/Front Fin Front Sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -111,52 +111,55 @@ scale_curve = SubResource("CurveTexture_fivcr")
 color_initial_ramp = SubResource("GradientTexture1D_apf2t")
 
 [node name="Silverfish" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_base", "_navigationAgent", "_paperdoll")]
+input_pickable = true
 motion_mode = 1
 script = ExtResource("1_ppbqd")
-Color1 = Color(1, 0.8, 0.2, 1)
-Color2 = Color(1, 0.4, 0.09803922, 1)
-_hungryColor1 = Color(0.65999997, 0.9, 0.17999998, 1)
-_hungryColor2 = Color(0.9, 0.17999998, 0.24000008, 1)
-_color1Parts = [NodePath("Goldfish Paperdoll/Body Sprite")]
-_color2Parts = [NodePath("Goldfish Paperdoll/Back Fin Sprite"), NodePath("Goldfish Paperdoll/Top Fin Sprite"), NodePath("Goldfish Paperdoll/Front Fin Back Sprite"), NodePath("Goldfish Paperdoll/Front Fin Front Sprite")]
-_base = NodePath("Goldfish Paperdoll/Body Sprite")
-_name = "Guppy"
-_minSpeed = 50.0
-_maxSpeed = 250.0
+Color1 = Color(0.9019608, 0.91764706, 1, 1)
+Color2 = Color(0.6, 0.6, 1, 1)
+_hungryColor1 = Color(0.45, 0.8249999, 0.9, 1)
+_hungryColor2 = Color(0.8, 0.32156864, 0.6392157, 1)
+_color1Parts = [NodePath("Silverfish Paperdoll/Body Sprite"), NodePath("Silverfish Paperdoll/Mouth")]
+_color2Parts = [NodePath("Silverfish Paperdoll/Back Fin Sprite"), NodePath("Silverfish Paperdoll/Top Fin Sprite"), NodePath("Silverfish Paperdoll/Front Fin Back Sprite"), NodePath("Silverfish Paperdoll/Front Fin Front Sprite")]
+_base = NodePath("Silverfish Paperdoll/Body Sprite")
+_name = "Silverfish"
+_minSpeed = 75.0
+_maxSpeed = 300.0
 _navigationAgent = NodePath("NavigationAgent2D")
-_paperdoll = NodePath("Goldfish Paperdoll")
+_paperdoll = NodePath("Silverfish Paperdoll")
+_maxHealth = 150.0
+_health = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_apf2t")
 
-[node name="Goldfish Paperdoll" type="Node2D" parent="."]
+[node name="Silverfish Paperdoll" type="Node2D" parent="."]
 
-[node name="Goldfish Paperdoll" type="AnimationPlayer" parent="Goldfish Paperdoll"]
+[node name="Silverfish Paperdoll" type="AnimationPlayer" parent="Silverfish Paperdoll"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_qt6ly")
 }
 autoplay = "Goldfish Swim"
 
-[node name="Back Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-self_modulate = Color(1, 0.4, 0.09803922, 1)
+[node name="Back Fin Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.6, 0.6, 1, 1)
 position = Vector2(44, 0)
 texture = ExtResource("2_16vd1")
 offset = Vector2(8, 0)
 region_enabled = true
 region_rect = Rect2(161, 38, 66, 67)
 
-[node name="Top Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-self_modulate = Color(1, 0.4, 0.09803922, 1)
+[node name="Top Fin Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.6, 0.6, 1, 1)
 position = Vector2(6, -12)
 texture = ExtResource("2_16vd1")
 offset = Vector2(0, -22)
 region_enabled = true
 region_rect = Rect2(33, 51, 61, 41)
 
-[node name="Front Fin Back Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-self_modulate = Color(1, 0.4, 0.09803922, 1)
+[node name="Front Fin Back Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.6, 0.6, 1, 1)
 position = Vector2(0, 12)
 rotation = 0.5235988
 texture = ExtResource("2_16vd1")
@@ -164,14 +167,21 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
-[node name="Body Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-self_modulate = Color(1, 0.8, 0.2, 1)
+[node name="Body Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.9019608, 0.91764706, 1, 1)
 texture = ExtResource("2_16vd1")
 region_enabled = true
 region_rect = Rect2(238, 44, 95, 47)
 
-[node name="Front Fin Front Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-self_modulate = Color(1, 0.4, 0.09803922, 1)
+[node name="Mouth" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.9019608, 0.91764706, 1, 1)
+position = Vector2(-29, 13)
+texture = ExtResource("2_16vd1")
+region_enabled = true
+region_rect = Rect2(120, 20, 12, 7)
+
+[node name="Front Fin Front Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(0.6, 0.6, 1, 1)
 position = Vector2(0, 12)
 rotation = -0.5235988
 texture = ExtResource("2_16vd1")
@@ -179,13 +189,14 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
-[node name="Eye Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
+[node name="Eye Sprite" type="Sprite2D" parent="Silverfish Paperdoll"]
+self_modulate = Color(1, 0.5, 0.75, 1)
 position = Vector2(-20, 0)
 texture = ExtResource("2_16vd1")
 region_enabled = true
 region_rect = Rect2(53, 14, 20, 20)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Goldfish Paperdoll"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Silverfish Paperdoll"]
 modulate = Color(1, 1, 1, 0.39215687)
 z_index = 3
 position = Vector2(-44, 0)

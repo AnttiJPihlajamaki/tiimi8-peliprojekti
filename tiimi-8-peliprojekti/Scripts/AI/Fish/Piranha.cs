@@ -25,11 +25,27 @@ using System.Linq;
 			ChangeColor(_color1,_color2);
 		}
 	}
+	private Color _color3;
+	[Export] private Color Color3
+	{
+		get{ return _color3; }
+		set
+		{
+			_color3 = value;
+			ChangeColor(_color1,_color2);
+			if(_color3Part != null) _color3Part.SelfModulate = _color3;
+		}
+	}
 	[Export] Color _hungryColor1;
 	[Export] Color _hungryColor2;
+	[Export] Color _hungryColor3;
 	[Export] private Array<Node2D> _color1Parts;
 	[Export] private Array<Node2D> _color2Parts;
+	[Export] private Node2D _color3Part;
+
 	[Export] private Node2D _base;
+
+	[Export] private string _attackSound = "Bite";
 	protected override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		base.ChangeHunger(change);
@@ -40,6 +56,15 @@ using System.Linq;
 		else if(_hunger > 0 && _base.SelfModulate != _color1)
 		{
 			ChangeColor(_color1, _color2);
+		}
+
+		if(_hunger <= _hungryLimit && _color3Part.SelfModulate == _color3)
+		{
+			if(_color3Part != null) _color3Part.SelfModulate = _hungryColor3;
+		}
+		else if(_hunger > _hungryLimit && _color3Part.SelfModulate != _color3)
+		{
+			if(_color3Part != null) _color3Part.SelfModulate = _color3;
 		}
 	}
 	public void ChangeColor(Color color1, Color color2)
@@ -70,18 +95,9 @@ using System.Linq;
 	[Export] private float _attackSpeed = 1f;
 	private float attackCooldown = 0f;
 	private Marker2D _movementTarget;
-    public override void _Ready()
-    {
-
-		if(GameManager.Instance != null)
-        {
-			ChangeColor(_color1,_color2);
-			base._Ready();
-        }
-    }
-
 	private void AttackTarget(AquariumNPC npc)
 	{
+		AudioManager.Instance.PlaySound(_attackSound, -.5f);
 		npc.TakeDamage(_attackDamage);
 	}
 

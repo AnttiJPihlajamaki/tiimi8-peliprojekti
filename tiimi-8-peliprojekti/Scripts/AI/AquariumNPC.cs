@@ -43,7 +43,10 @@ public partial class AquariumNPC : CharacterBody2D
 
 	public override void _Ready()
 	{
-		_navigationAgent.VelocityComputed += OnVelocityComputed;
+		if(GameManager.Instance != null)
+		{
+			_navigationAgent.VelocityComputed += OnVelocityComputed;
+		}
 	}
 	public void SetMovementTarget() // Set navigation target for agent and calculate path
 	{
@@ -65,11 +68,14 @@ public partial class AquariumNPC : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		ProcessOxygen(delta); // for processing health
-		ProcessHunger(delta); // for processing hunger
-		ProcessRegen(delta); // for regenning health
+		if(GameManager.Instance != null)
+		{
+			ProcessOxygen(delta); // for processing health
+			ProcessHunger(delta); // for processing hunger
+			ProcessRegen(delta); // for regenning health
 
-		Navigation(delta);
+			Navigation(delta);
+		}
 	}
 	private void OnVelocityComputed(Vector2 safeVelocity)
     {

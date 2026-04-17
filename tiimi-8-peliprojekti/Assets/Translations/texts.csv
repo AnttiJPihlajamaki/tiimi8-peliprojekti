@@ -38,3 +38,7 @@ TCALL8,The solution is perhaps your most important tool the laser blaster.\nYou 
 TICON1,Shop,Kauppa,
 TICON2,Feeder,Ruoka,
 TICON3,Oxygenator,Hapetin,
+GAME_OVER,Game Over,Peli Päättyi,
+GAME_OVER_PROMPT,All your fish have died,Kaikki kalasi kuolivat,
+TOTAL_MONEY,Total Money,Rahojen Loppusumma,
+DAYS_PASSED,Days Passed,Päiviä kului,

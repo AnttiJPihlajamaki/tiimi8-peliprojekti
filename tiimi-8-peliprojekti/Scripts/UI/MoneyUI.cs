@@ -29,4 +29,10 @@ public partial class MoneyUI : Node
 	{
 		moneyPerSecLabel.Text = MoneyConfig.MoneyConversion(GameManager.Instance.MoneyPerSecond);
 	}
+
+    public override void _ExitTree()
+	{
+		GameManager.Instance.MoneyChanged -= OnMoneyChanged;
+		GameManager.Instance.MoneyPerSecondChanged -= OnMoneyPerSecondChanged;
+	}
 }

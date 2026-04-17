@@ -1,14 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks.Dataflow;
+
 
 public partial class GameManager : Node // Store player inventory
 {
+	[Signal] public delegate void GameOverEventHandler();
 	private Aquarium _activeAquarium;
 	public Aquarium ActiveAquarium
 	{
@@ -26,12 +24,17 @@ public partial class GameManager : Node // Store player inventory
 		get { return _currentTime; }
 	}
 	private bool _isNight = false; //
-	public List<AquariumNPC> _nightAliens = new List<AquariumNPC>(); // measure how many aliens are currently in aquarium
+	private List<AquariumNPC> _nightAliens = new List<AquariumNPC>(); // measure how many aliens are currently in aquarium
 	private PackedScene _alienScene;
 	private PackedScene _snailScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
-	
+
+	public int DaysPassed
+	{
+		get{return _difficultyLevel - 3; }
+	}
+
 
 	public static GameManager Instance
 	{
@@ -57,7 +60,6 @@ public partial class GameManager : Node // Store player inventory
 		_portalScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/portal.tscn");
 		_snailScene = GD.Load<PackedScene>("res://Assets/Packed Scenes/Aliensnail.tscn");
     }
-
 	public override void _Process(double delta)
 	{
 		if (_moneyPerSecond > 0)
@@ -76,7 +78,8 @@ public partial class GameManager : Node // Store player inventory
 			}
 			else if(_isNight && ActiveAquarium._npcs.Count(npc => npc is Fish) == 0)  // GAME OVER CONDITION CHECKIGN FISH
 			{
-				GameOver();
+				PauseGame(true);
+				EmitSignal(SignalName.GameOver);
 			}
 			if(_isNight && _nightAliens.Count == 0 )
 			{
@@ -98,18 +101,12 @@ public partial class GameManager : Node // Store player inventory
 	{
 		GetTree().Paused = pause;
 	}
-
-	private void GameOver()
-	{
-		var nextScene = (PackedScene)ResourceLoader.Load(GameScene.MainMenuScene.ToPathString());
-    	GetTree().ChangeSceneToPacked(nextScene);
-		Reset();
-	}
-
 	public void Reset()
 	{
+		_isNight = false;
 		_currentTime = 0;
 		_money = 0;
+		_moneyPerSecond = 0;
 		_nightAliens.Clear();
 		_difficultyLevel = 3;
 	}
@@ -176,6 +173,10 @@ public partial class GameManager : Node // Store player inventory
 	#region GameData
 	private float _money = 0f; // The amount of money the player has
 	private float _totalMoney = 0f;
+	public float TotalMoney
+	{
+		get{ return _totalMoney; }
+	}
 	private float _moneyPerSecond = 0f;
 
 	[Signal] public delegate void MoneyPerSecondChangedEventHandler();

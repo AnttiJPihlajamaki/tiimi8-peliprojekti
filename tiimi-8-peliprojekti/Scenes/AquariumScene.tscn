@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://byli4wbr74wr0"]
+[gd_scene load_steps=52 format=3 uid="uid://byli4wbr74wr0"]
 
 [ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_aw301"]
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_conu5"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="31_etofs"]
 [ext_resource type="Script" uid="uid://bl6r35ewdeppa" path="res://Scripts/UI/PauseButton.cs" id="31_mcuhi"]
 [ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="32_qs632"]
+[ext_resource type="Script" uid="uid://brmukuc4mn0xn" path="res://Scripts/UI/GameOverMenu.cs" id="33_mcuhi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_conu5"]
 size = Vector2(1920, 980)
@@ -1424,6 +1425,216 @@ grow_vertical = 2
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 30
 text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GameOver Menu MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer" node_paths=PackedStringArray("_totalMoneyAmount", "_dayPassedAmount", "_itemsToHide", "_itemsToShow")]
+layout_mode = 2
+script = ExtResource("33_mcuhi")
+_totalMoneyAmount = NodePath("GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney Amount MarginContainer/HBoxContainer/Amount Label")
+_dayPassedAmount = NodePath("GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed Amount MarginContainer/Amount Label")
+_itemsToHide = [NodePath("../../Game UI")]
+_itemsToShow = [NodePath("..")]
+
+[node name="Background MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="ColorRect" type="ColorRect" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/Background MarginContainer"]
+layout_mode = 2
+color = Color(0, 0.13333331, 0.2, 0.54901963)
+
+[node name="GameOver Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer"]
+self_modulate = Color(0, 0.4745098, 0.9490196, 1)
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GameOver Content MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GameOver MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/GameOver MarginContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 50
+text = "GAME_OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Stats Panel MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer"]
+self_modulate = Color(0, 0.35, 0.7, 1)
+layout_mode = 2
+texture = ExtResource("7_m03r2")
+region_rect = Rect2(64, 128, 64, 64)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Stats MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Stats" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer"]
+layout_mode = 2
+
+[node name="GameOverPrompt MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/GameOverPrompt MarginContainer"]
+layout_mode = 2
+text = "GAME_OVER_PROMPT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Total Money VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TotalMoney MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TotalMoney Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "TOTAL_MONEY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalMoney Amount MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney Amount MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Amount Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney Amount MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Symbol Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/Total Money VBoxContainer/TotalMoney Amount MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DaysPassed VBoxContainer" type="VBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DaysPassed MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NightsSurvived Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "DAYS_PASSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DaysPassed Amount MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer"]
+layout_mode = 2
+
+[node name="Amount Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Stats Panel MarginContainer/Stats MarginContainer/Stats/DaysPassed VBoxContainer/DaysPassed Amount MarginContainer"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+script = ExtResource("15_p6q20")
+_blackFadeRect = NodePath("../../../../../../../../../CanvasLayer/ColorRect")
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/Restart Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"
+script = ExtResource("16_etofs")
+_blackFadeRect = NodePath("../../../../../../../../../CanvasLayer/ColorRect")
+
+[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/GameOver MarginContainer/GameOver Menu MarginContainer/GameOver Panel/GameOver Content MarginContainer/VBoxContainer/MainMenu Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "MAIN_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 

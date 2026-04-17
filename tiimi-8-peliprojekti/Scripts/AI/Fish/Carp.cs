@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-[Tool] public partial class Carp : Fish
+public partial class Carp : Fish
 {
     private Color _color1;
 	[Export] private Color Color1
@@ -30,6 +30,11 @@ using System;
 	[Export] private Array<Node2D> _color2Parts;
 	[Export] private Array<Node2D> _inBetweenParts;
 	[Export] private Node2D _base;
+    public override void _Ready()
+    {
+		ChangeColor(_color1,_color2);
+        base._Ready();
+    }
 	protected override void ChangeHunger(float change) // Helper method to change hunger while keeping it within min/max
 	{
 		base.ChangeHunger(change);

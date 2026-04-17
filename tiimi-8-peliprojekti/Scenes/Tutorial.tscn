@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://xktnsueo5nih"]
+[gd_scene load_steps=10 format=3 uid="uid://xktnsueo5nih"]
 
 [ext_resource type="Script" uid="uid://bvclx2xlme3gq" path="res://Scripts/Tutorial.cs" id="1_uo1fs"]
 [ext_resource type="Texture2D" uid="uid://bca1x2lydh140" path="res://Assets/Tutorial/storefrontshaded.png" id="2_7bloo"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_rlm2d"]
 [ext_resource type="AudioStream" uid="uid://dpv3ca842j01c" path="res://Assets/Sound/Ambience/piersounds.wav" id="3_x7a1n"]
 [ext_resource type="Texture2D" uid="uid://bpb2hg3phyxe5" path="res://Assets/Sprites/phone.png" id="4_7bloo"]
-[ext_resource type="Texture2D" uid="uid://r43js6ap6lkb" path="res://Assets/Sprites/tooltutorial.png" id="5_rlm2d"]
 [ext_resource type="Texture2D" uid="uid://cdms2kgsaxb04" path="res://Assets/Sprites/lasertoolicon.png" id="6_3j26a"]
+[ext_resource type="Texture2D" uid="uid://ectke5dgsmhv" path="res://Assets/Sprites/tutorialshopicon.png" id="6_hxa32"]
+[ext_resource type="Texture2D" uid="uid://bj8jp35iln3lj" path="res://Assets/Sprites/tutorialfoodicon.png" id="7_dlght"]
+[ext_resource type="Texture2D" uid="uid://dvndfxw20knpu" path="res://Assets/Sprites/tutorialoxygenicon.png" id="8_8i65c"]
 
 [node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_introFadeRect", "_TutorialBox", "_TutorialBox2", "_TutorialBox3", "_tutorialText", "_introImage", "_introPhone", "_introSound")]
 position = Vector2(-3, 0)
@@ -87,26 +89,78 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TutorialBox2/Panel"]
+custom_minimum_size = Vector2(1000, 96.785)
 layout_mode = 0
-offset_left = 57.66805
-offset_top = 13.333324
-offset_right = 1065.6681
-offset_bottom = 149.33333
-scale = Vector2(1, 0.96)
+offset_left = 15.908427
+offset_top = 4.166677
+offset_right = 1083.4656
+offset_bottom = 132.6151
+scale = Vector2(0.9602289, 0.8666652)
 mouse_filter = 2
 
-[node name="Tooltutorial" type="Sprite2D" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer"]
-position = Vector2(475.26428, 146.70137)
-scale = Vector2(0.1491415, 0.06510414)
-texture = ExtResource("5_rlm2d")
-region_rect = Rect2(65, 640, 5376, 1536)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer"]
+custom_minimum_size = Vector2(22.8, 117.83)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 2.57)
+layout_mode = 2
+texture = ExtResource("6_hxa32")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 2.57)
+layout_mode = 2
+texture = ExtResource("7_dlght")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 2.57)
+layout_mode = 2
+texture = ExtResource("8_8i65c")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/TutorialBox2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
+layout_mode = 0
+offset_left = 146.15866
+offset_top = 107.916626
+offset_right = 222.15866
+offset_bottom = 144.91663
+scale = Vector2(1.6996262, 0.6976011)
+text = "TICON1"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
+layout_mode = 0
+offset_left = 466.31573
+offset_top = 109.58328
+offset_right = 542.31573
+offset_bottom = 146.58328
+scale = Vector2(1.6996262, 0.6976011)
+text = "TICON2"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
+layout_mode = 0
+offset_left = 775.53577
+offset_top = 110.41662
+offset_right = 851.53577
+offset_bottom = 147.41663
+scale = Vector2(1.6996262, 0.6976011)
+text = "TICON3"
 
 [node name="TutorialBox3" type="MarginContainer" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(1080, 180)
 layout_mode = 0
 offset_left = 364.0
 offset_top = -814.00006
-offset_right = 1428.0
-offset_bottom = -645.00006
+offset_right = 364.0
+offset_bottom = -814.00006
 scale = Vector2(0.3710597, 1.6618719)
 mouse_filter = 2
 
@@ -117,17 +171,16 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TutorialBox3/Panel"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 1033.0
-offset_bottom = 152.0
-scale = Vector2(1, 0.96)
-mouse_filter = 2
+offset_left = 118.579315
+offset_top = 3.671646e-05
+offset_right = 1198.5793
+offset_bottom = 180.00003
+scale = Vector2(0.78439796, 1)
 
-[node name="Lasertoolicon" type="Sprite2D" parent="CanvasLayer/Control/TutorialBox3/Panel/MarginContainer"]
-position = Vector2(500.52185, 67.95175)
-scale = Vector2(0.51578736, 0.11949426)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBox3/Panel/MarginContainer"]
+layout_mode = 2
 texture = ExtResource("6_3j26a")
+expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

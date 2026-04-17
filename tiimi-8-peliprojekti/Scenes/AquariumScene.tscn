@@ -428,7 +428,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/FoodInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Food"
+text = "FISH_FOOD"
 
 [node name="LaserInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 visible = false
@@ -469,48 +469,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/LaserInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Laser Blaster"
-
-[node name="PlanterInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 75
-
-[node name="Name MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
-modulate = Color(0.2, 0.73333335, 1, 1)
-layout_mode = 2
-texture = ExtResource("7_m03r2")
-region_rect = Rect2(0, 128, 64, 64)
-patch_margin_left = 27
-patch_margin_top = 27
-patch_margin_right = 27
-patch_margin_bottom = 27
-
-[node name="MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/PlanterInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "Planter"
+text = "LASER_BLASTER"
 
 [node name="OxygenatorInfo MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer"]
 layout_mode = 2
@@ -550,7 +509,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer/Name MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Oxygenator"
+text = "OXYGENATOR"
 
 [node name="Power Slider MarginContainer" type="MarginContainer" parent="UI CanvasLayer/UI/Screen MarginContainer/Game UI/Toolbar MarginContainer/OxygenatorInfo MarginContainer"]
 custom_minimum_size = Vector2(0, 300)
@@ -1219,7 +1178,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Restart Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_blackFadeRect")]
-self_modulate = Color(1, 0.5, 0, 1)
+self_modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 text = "
@@ -1241,7 +1200,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings Button" type="Button" parent="UI CanvasLayer/UI/Screen MarginContainer/PauseMenu MarginContainer/Pause Panel/PauseMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
-self_modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 0.5, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 text = "

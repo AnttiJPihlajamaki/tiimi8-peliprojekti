@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://7kmokpgtfdhh"]
+[gd_scene load_steps=9 format=3 uid="uid://7kmokpgtfdhh"]
 
 [ext_resource type="Script" uid="uid://7pf45qk8ndar" path="res://Scripts/UI/LanguageButtons.cs" id="1_8eqon"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="2_dbkw7"]
 [ext_resource type="ButtonGroup" uid="uid://b0gv4go585knw" path="res://UI/LanguageButtonGroup.tres" id="2_ojfk3"]
 [ext_resource type="Texture2D" uid="uid://chkr8ogxsn7y5" path="res://Assets/Sprites/Flags/en.png" id="3_dbkw7"]
 [ext_resource type="Texture2D" uid="uid://dkg3w0n1hjanp" path="res://Assets/Sprites/Flags/fi.png" id="4_ddryu"]
 [ext_resource type="Texture2D" uid="uid://bioun04yds8xv" path="res://Assets/Sprites/Flags/se.png" id="5_iq566"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddryu"]
+texture = ExtResource("2_dbkw7")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(192, 128, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iq566"]
+texture = ExtResource("2_dbkw7")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(192, 64, 64, 64)
 
 [node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("_enButton", "_fiButton", "_seButton")]
 size_flags_vertical = 4
@@ -16,11 +33,19 @@ _fiButton = NodePath("fi Button")
 _seButton = NodePath("sv Button")
 
 [node name="en Button" type="Button" parent="."]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
+self_modulate = Color(1, 0.5019608, 0, 1)
+custom_minimum_size = Vector2(104, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_iq566")
 toggle_mode = true
 button_group = ExtResource("2_ojfk3")
 icon_alignment = 1
@@ -42,11 +67,19 @@ texture = ExtResource("3_dbkw7")
 expand_mode = 5
 
 [node name="fi Button" type="Button" parent="."]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
+self_modulate = Color(1, 0.5019608, 0, 1)
+custom_minimum_size = Vector2(104, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_iq566")
 toggle_mode = true
 button_group = ExtResource("2_ojfk3")
 text = "
@@ -70,11 +103,19 @@ texture = ExtResource("4_ddryu")
 expand_mode = 5
 
 [node name="sv Button" type="Button" parent="."]
-self_modulate = Color(0.3, 0.3, 0.3, 1)
-custom_minimum_size = Vector2(0, 87)
+self_modulate = Color(1, 0.5019608, 0, 1)
+custom_minimum_size = Vector2(104, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ddryu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iq566")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_iq566")
 toggle_mode = true
 button_group = ExtResource("2_ojfk3")
 text = "

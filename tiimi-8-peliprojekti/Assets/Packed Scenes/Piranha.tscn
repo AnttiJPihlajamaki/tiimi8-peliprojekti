@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://crgwcy8j732qw"]
 
 [ext_resource type="Script" uid="uid://bym4oibllpcad" path="res://Scripts/AI/Fish/Piranha.cs" id="1_prqmn"]
-[ext_resource type="Texture2D" uid="uid://dyqf8j3pmo2v3" path="res://Assets/Sprites/Affinity/NPCs/Piranha/piranha.png" id="1_r3o17"]
+[ext_resource type="Texture2D" uid="uid://c1k3tcvw5k85s" path="res://Assets/Sprites/Affinity/NPCs/Piranha/Piranha Monochrome.png" id="2_88swr"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_88swr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88swr"]
@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/path = NodePath("PiranhaPaperdoll/Tail Fin:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/path = NodePath("PiranhaPaperdoll/Front Fin Front:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/path = NodePath("PiranhaPaperdoll/Front Fin Back:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +52,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/path = NodePath("PiranhaPaperdoll/Tail Fin:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +64,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/path = NodePath("PiranhaPaperdoll/Front Fin Front:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -76,7 +76,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/path = NodePath("PiranhaPaperdoll/Front Fin Back:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -95,14 +95,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_dgjro"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_c0udp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_88swr"]
 gradient = SubResource("Gradient_dgjro")
 
 [sub_resource type="Curve" id="Curve_mjlbr"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_2a7tn"]
+[sub_resource type="CurveTexture" id="CurveTexture_dgjro"]
 curve = SubResource("Curve_mjlbr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rm4s6"]
@@ -113,15 +113,22 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, -98, 0)
 scale_min = 0.0
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_2a7tn")
-color_initial_ramp = SubResource("GradientTexture1D_c0udp")
+scale_curve = SubResource("CurveTexture_dgjro")
+color_initial_ramp = SubResource("GradientTexture1D_88swr")
 
-[node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_navigationAgent", "_paperdoll")]
+[node name="Piranha" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_base", "_navigationAgent", "_paperdoll")]
 rotation = 0.001901308
 scale = Vector2(0.75, 0.75)
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_prqmn")
+Color1 = Color(0.32, 0.4, 0.16, 1)
+Color2 = Color(1, 0.16862746, 0, 1)
+_hungryColor1 = Color(0.35999998, 0.4, 0.28, 1)
+_hungryColor2 = Color(0.7333336, 0.19999999, 1, 1)
+_color1Parts = [NodePath("PiranhaPaperdoll/Front Fin Back"), NodePath("PiranhaPaperdoll/Tail Fin"), NodePath("PiranhaPaperdoll/Body"), NodePath("PiranhaPaperdoll/Front Fin Front")]
+_color2Parts = [NodePath("PiranhaPaperdoll/Front Fin Back/Front Fin Back Gradient"), NodePath("PiranhaPaperdoll/Tail Fin/Tail Fin Gradient"), NodePath("PiranhaPaperdoll/Body/Body Gradient"), NodePath("PiranhaPaperdoll/Front Fin Front/Front Fin Front Gradient")]
+_base = NodePath("PiranhaPaperdoll/Body")
 moneyPerSecond = 75.0
 _minSpeed = 120.0
 _maxSpeed = 130.0
@@ -151,50 +158,93 @@ libraries = {
 }
 autoplay = "swim"
 
-[node name="Piranha4" type="Sprite2D" parent="PiranhaPaperdoll"]
+[node name="Front Fin Back" type="Sprite2D" parent="PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(-32, 30.666668)
 scale = Vector2(0.09246861, 0.099537045)
-texture = ExtResource("1_r3o17")
+texture = ExtResource("2_88swr")
 centered = false
 offset = Vector2(-140, -50)
 region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha2" type="Sprite2D" parent="PiranhaPaperdoll"]
+[node name="Front Fin Back Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Front Fin Back"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("2_88swr")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(6596, 620, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Tail Fin" type="Sprite2D" parent="PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(84.00002, -11.000008)
 scale = Vector2(0.092468604, 0.099537045)
 skew = -0.04363323
-texture = ExtResource("1_r3o17")
+texture = ExtResource("2_88swr")
 region_enabled = true
 region_rect = Rect2(1985, 128, 768, 1088)
 region_filter_clip_enabled = true
 
-[node name="Piranha" type="Sprite2D" parent="PiranhaPaperdoll"]
+[node name="Tail Fin Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Tail Fin"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("2_88swr")
+region_enabled = true
+region_rect = Rect2(5701, 173, 768, 1088)
+region_filter_clip_enabled = true
+
+[node name="Body" type="Sprite2D" parent="PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(0, -5.9604645e-08)
 scale = Vector2(0.09246861, 0.09953706)
-texture = ExtResource("1_r3o17")
+texture = ExtResource("2_88swr")
 region_enabled = true
 region_rect = Rect2(129, 128, 1856, 1216)
 region_filter_clip_enabled = true
 
-[node name="Piranha3" type="Sprite2D" parent="PiranhaPaperdoll"]
+[node name="Body Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Body"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("2_88swr")
+region_enabled = true
+region_rect = Rect2(3845, 173, 1856, 1216)
+region_filter_clip_enabled = true
+
+[node name="Front Fin Front" type="Sprite2D" parent="PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(-10.666666, 29.333334)
 scale = Vector2(0.09246861, 0.09953705)
-texture = ExtResource("1_r3o17")
+texture = ExtResource("2_88swr")
 centered = false
 offset = Vector2(-140, -50)
 region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha5" type="Sprite2D" parent="PiranhaPaperdoll"]
-position = Vector2(-41, -18)
-scale = Vector2(0.09246861, 0.09953706)
-texture = ExtResource("1_r3o17")
+[node name="Front Fin Front Gradient" type="Sprite2D" parent="PiranhaPaperdoll/Front Fin Front"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("2_88swr")
+centered = false
+offset = Vector2(-140, -50)
 region_enabled = true
-region_rect = Rect2(3521, 576, 192, 128)
+region_rect = Rect2(6596, 620, 512, 448)
 region_filter_clip_enabled = true
+
+[node name="Eye" type="Sprite2D" parent="PiranhaPaperdoll"]
+modulate = Color(1, 0.7266667, 0.18, 1)
+position = Vector2(-28.012623, -6.6134176)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_88swr")
+region_enabled = true
+region_rect = Rect2(2984, 1197, 266, 266)
+
+[node name="Mouth" type="Sprite2D" parent="PiranhaPaperdoll"]
+position = Vector2(-50.64122, 13.429641)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_88swr")
+region_enabled = true
+region_rect = Rect2(2901, 125, 225, 151)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="PiranhaPaperdoll"]
 modulate = Color(1, 1, 1, 0.39215687)

@@ -5,15 +5,17 @@ using Godot.Collections;
 public partial class Fish : AquariumNPC
 {
 	[Export] private float moneyPerSecond = 50f; // The amount of money the fish generates per second
-	public override void _PhysicsProcess(double delta)
-	{
-		GameManager.Instance.AddMoney(moneyPerSecond * (float)delta); // Adds money per second
 
-		base._PhysicsProcess(delta);
-	}
+    public override void _Ready()
+    {
+		GameManager.Instance.AddMoneyPerSecond(moneyPerSecond); // Adds money per second
+        base._Ready();
+    }
+
 
     protected override void Die()
     {
+		GameManager.Instance.RemoveMoneyPerSecond(moneyPerSecond);
         base.Die();
 		GameManager.Instance.ActiveAquarium.UpdateShopPrices();
     }

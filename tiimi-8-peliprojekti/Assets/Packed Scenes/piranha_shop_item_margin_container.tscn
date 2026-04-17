@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_32lfy"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="2_nlt36"]
 [ext_resource type="PackedScene" uid="uid://crgwcy8j732qw" path="res://Assets/Packed Scenes/Piranha.tscn" id="3_32lfy"]
-[ext_resource type="Texture2D" uid="uid://dyqf8j3pmo2v3" path="res://Assets/Sprites/Affinity/NPCs/Piranha/piranha.png" id="4_nlt36"]
+[ext_resource type="Texture2D" uid="uid://c1k3tcvw5k85s" path="res://Assets/Sprites/Affinity/NPCs/Piranha/Piranha Monochrome.png" id="4_32lfy"]
 [ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="5_tc7lk"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="6_7vkm0"]
 
@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/path = NodePath("PiranhaPaperdoll/Tail Fin:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/path = NodePath("PiranhaPaperdoll/Front Fin Front:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/path = NodePath("PiranhaPaperdoll/Front Fin Back:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +52,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PiranhaPaperdoll/Piranha2:skew")
+tracks/0/path = NodePath("PiranhaPaperdoll/Tail Fin:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +64,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PiranhaPaperdoll/Piranha3:rotation")
+tracks/1/path = NodePath("PiranhaPaperdoll/Front Fin Front:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -76,7 +76,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PiranhaPaperdoll/Piranha4:rotation")
+tracks/2/path = NodePath("PiranhaPaperdoll/Front Fin Back:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -158,7 +158,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="PiranhaPaperdoll" type="Node2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel"]
-position = Vector2(45, 52)
+position = Vector2(44, 50)
 scale = Vector2(0.4, 0.4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
@@ -168,50 +168,93 @@ libraries = {
 }
 autoplay = "swim"
 
-[node name="Piranha4" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Front Fin Back" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(-32, 30.666668)
 scale = Vector2(0.09246861, 0.099537045)
-texture = ExtResource("4_nlt36")
+texture = ExtResource("4_32lfy")
 centered = false
 offset = Vector2(-140, -50)
 region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha2" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Front Fin Back Gradient" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll/Front Fin Back"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("4_32lfy")
+centered = false
+offset = Vector2(-140, -50)
+region_enabled = true
+region_rect = Rect2(6596, 620, 512, 448)
+region_filter_clip_enabled = true
+
+[node name="Tail Fin" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(84.00002, -11.000008)
 scale = Vector2(0.092468604, 0.099537045)
 skew = -0.04363323
-texture = ExtResource("4_nlt36")
+texture = ExtResource("4_32lfy")
 region_enabled = true
 region_rect = Rect2(1985, 128, 768, 1088)
 region_filter_clip_enabled = true
 
-[node name="Piranha" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Tail Fin Gradient" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll/Tail Fin"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("4_32lfy")
+region_enabled = true
+region_rect = Rect2(5701, 173, 768, 1088)
+region_filter_clip_enabled = true
+
+[node name="Body" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(0, -5.9604645e-08)
 scale = Vector2(0.09246861, 0.09953706)
-texture = ExtResource("4_nlt36")
+texture = ExtResource("4_32lfy")
 region_enabled = true
 region_rect = Rect2(129, 128, 1856, 1216)
 region_filter_clip_enabled = true
 
-[node name="Piranha3" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+[node name="Body Gradient" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll/Body"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("4_32lfy")
+region_enabled = true
+region_rect = Rect2(3845, 173, 1856, 1216)
+region_filter_clip_enabled = true
+
+[node name="Front Fin Front" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+self_modulate = Color(0.32, 0.4, 0.16, 1)
 position = Vector2(-10.666666, 29.333334)
 scale = Vector2(0.09246861, 0.09953705)
-texture = ExtResource("4_nlt36")
+texture = ExtResource("4_32lfy")
 centered = false
 offset = Vector2(-140, -50)
 region_enabled = true
 region_rect = Rect2(2881, 576, 512, 448)
 region_filter_clip_enabled = true
 
-[node name="Piranha5" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
-position = Vector2(-41, -18)
-scale = Vector2(0.09246861, 0.09953706)
-texture = ExtResource("4_nlt36")
+[node name="Front Fin Front Gradient" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll/Front Fin Front"]
+self_modulate = Color(0.8, 0.13333334, 0, 1)
+texture = ExtResource("4_32lfy")
+centered = false
+offset = Vector2(-140, -50)
 region_enabled = true
-region_rect = Rect2(3521, 576, 192, 128)
+region_rect = Rect2(6596, 620, 512, 448)
 region_filter_clip_enabled = true
+
+[node name="Eye" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+modulate = Color(1, 0.7266667, 0.18, 1)
+position = Vector2(-28.012623, -6.6134176)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_32lfy")
+region_enabled = true
+region_rect = Rect2(2984, 1197, 266, 266)
+
+[node name="Mouth" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/PiranhaPaperdoll"]
+position = Vector2(-50.64122, 13.429641)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_32lfy")
+region_enabled = true
+region_rect = Rect2(2901, 125, 225, 151)
 
 [node name="Fish Name Label" type="Label" parent="Info MarginContainer/VBoxContainer"]
 layout_mode = 2

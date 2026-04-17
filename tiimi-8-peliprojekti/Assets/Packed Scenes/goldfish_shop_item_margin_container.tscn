@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bp3q4216vj2yo"]
+[gd_scene load_steps=13 format=3 uid="uid://bp3q4216vj2yo"]
 
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="1_hsgfj"]
 [ext_resource type="Script" uid="uid://clbhpoigcajwv" path="res://Scripts/Tools/ShopItem.cs" id="1_xcfa8"]
@@ -86,8 +86,6 @@ _data = {
 &"RESET": SubResource("Animation_jlui4")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_owhyu"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_vh6ro"]
 font = ExtResource("4_jymha")
 outline_size = 8
@@ -154,8 +152,8 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="Goldfish Paperdoll" type="Node2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel"]
-position = Vector2(40, 50)
-scale = Vector2(0.5, 0.5)
+position = Vector2(40, 52)
+scale = Vector2(0.55, 0.55)
 
 [node name="Goldfish Paperdoll" type="AnimationPlayer" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
 root_node = NodePath("../..")
@@ -165,8 +163,7 @@ libraries = {
 autoplay = "Goldfish Swim"
 
 [node name="Back Fin Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(44, 0)
 texture = ExtResource("3_486da")
 offset = Vector2(8, 0)
@@ -174,24 +171,15 @@ region_enabled = true
 region_rect = Rect2(161, 38, 66, 67)
 
 [node name="Top Fin Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(6, -12)
 texture = ExtResource("3_486da")
 offset = Vector2(0, -22)
 region_enabled = true
 region_rect = Rect2(33, 51, 61, 41)
 
-[node name="Body Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0.6666667, 0, 1)
-z_index = 2
-texture = ExtResource("3_486da")
-region_enabled = true
-region_rect = Rect2(238, 44, 95, 47)
-
 [node name="Front Fin Back Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 1
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(0, 12)
 rotation = 0.5235988
 texture = ExtResource("3_486da")
@@ -199,9 +187,14 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
+[node name="Body Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+self_modulate = Color(1, 0.8, 0.2, 1)
+texture = ExtResource("3_486da")
+region_enabled = true
+region_rect = Rect2(238, 44, 95, 47)
+
 [node name="Front Fin Front Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
-z_index = 2
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(0, 12)
 rotation = -0.5235988
 texture = ExtResource("3_486da")
@@ -209,15 +202,8 @@ offset = Vector2(0, 12)
 region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
-[node name="Eye Rigidbody2D" type="RigidBody2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
+[node name="Eye Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll"]
 position = Vector2(-20, 0)
-freeze = true
-
-[node name="Eye CollisionShape2D" type="CollisionShape2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
-shape = SubResource("CircleShape2D_owhyu")
-
-[node name="Eye Sprite" type="Sprite2D" parent="Info MarginContainer/VBoxContainer/Preview MarginContainerer/Panel/Goldfish Paperdoll/Eye Rigidbody2D"]
-z_index = 2
 texture = ExtResource("3_486da")
 region_enabled = true
 region_rect = Rect2(53, 14, 20, 20)

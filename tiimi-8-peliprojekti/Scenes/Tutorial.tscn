@@ -8,17 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://r43js6ap6lkb" path="res://Assets/Sprites/tooltutorial.png" id="5_rlm2d"]
 [ext_resource type="Texture2D" uid="uid://cdms2kgsaxb04" path="res://Assets/Sprites/lasertoolicon.png" id="6_3j26a"]
 
-[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_introFadeRect", "_TutorialBox", "_TutorialBox2", "_TutorialBox3", "_tutorialText", "_introImage", "_introPhone", "_introSound")]
+[node name="Tutorial" type="Node2D" node_paths=PackedStringArray("_introFadeRect", "_TutorialBox", "_tutorialText", "_introImage", "_introPhone")]
 position = Vector2(-3, 0)
 script = ExtResource("1_uo1fs")
 _introFadeRect = NodePath("CanvasLayer/ColorRect")
 _TutorialBox = NodePath("Control/TutorialBox")
-_TutorialBox2 = NodePath("Control/TutorialBox2")
-_TutorialBox3 = NodePath("Control/TutorialBox3")
 _tutorialText = NodePath("Control/TutorialBox/Panel/MarginContainer/Label")
 _introImage = NodePath("Storefrontshaded")
 _introPhone = NodePath("Phone")
-_introSound = NodePath("Storefrontshaded/AudioStreamPlayer2D")
 
 [node name="Storefrontshaded" type="Sprite2D" parent="."]
 position = Vector2(579, 340)

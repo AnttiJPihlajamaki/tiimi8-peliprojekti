@@ -46,7 +46,7 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 		}
 
 		_currentPrice = (float)Math.Round(_currentPrice); // Rounds price to whole number
-		_costLabel.Text = ""+_currentPrice;
+		_costLabel.Text = MoneyConfig.MoneyConversion(_currentPrice);
 	}
 
 	public void Purchase() // Handles purchasing new fish

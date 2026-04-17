@@ -89,14 +89,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_8tf37"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_c0udp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_apf2t"]
 gradient = SubResource("Gradient_8tf37")
 
 [sub_resource type="Curve" id="Curve_1gv6c"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_2a7tn"]
+[sub_resource type="CurveTexture" id="CurveTexture_fivcr"]
 curve = SubResource("Curve_1gv6c")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0udp"]
@@ -107,18 +107,19 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, -98, 0)
 scale_min = 0.0
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_2a7tn")
-color_initial_ramp = SubResource("GradientTexture1D_c0udp")
+scale_curve = SubResource("CurveTexture_fivcr")
+color_initial_ramp = SubResource("GradientTexture1D_apf2t")
 
-[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_fins", "_body", "_navigationAgent", "_paperdoll")]
+[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_base", "_navigationAgent", "_paperdoll")]
 motion_mode = 1
 script = ExtResource("1_5bvtc")
-_bodyColor = Color(1, 0.6666667, 0, 1)
-_finColor = Color(1, 0, 0, 1)
-_hungryBodyColor = Color(0.16, 0.8, 0.26666656, 1)
-_hungryFinColor = Color(0.5866669, 0.16, 0.8, 1)
-_fins = [NodePath("Goldfish Paperdoll/Back Fin Sprite"), NodePath("Goldfish Paperdoll/Top Fin Sprite"), NodePath("Goldfish Paperdoll/Front Fin Back Sprite"), NodePath("Goldfish Paperdoll/Front Fin Front Sprite")]
-_body = NodePath("Goldfish Paperdoll/Body Sprite")
+Color1 = Color(1, 0.8, 0.2, 1)
+Color2 = Color(1, 0.4, 0.09803922, 1)
+_hungryColor1 = Color(0.65999997, 0.9, 0.17999998, 1)
+_hungryColor2 = Color(0.9, 0.17999998, 0.24000008, 1)
+_color1Parts = [NodePath("Goldfish Paperdoll/Body Sprite")]
+_color2Parts = [NodePath("Goldfish Paperdoll/Back Fin Sprite"), NodePath("Goldfish Paperdoll/Top Fin Sprite"), NodePath("Goldfish Paperdoll/Front Fin Back Sprite"), NodePath("Goldfish Paperdoll/Front Fin Front Sprite")]
+_base = NodePath("Goldfish Paperdoll/Body Sprite")
 _name = "Guppy"
 _minSpeed = 50.0
 _maxSpeed = 250.0
@@ -139,7 +140,7 @@ libraries = {
 autoplay = "Goldfish Swim"
 
 [node name="Back Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(44, 0)
 texture = ExtResource("2_5bvtc")
 offset = Vector2(8, 0)
@@ -147,7 +148,7 @@ region_enabled = true
 region_rect = Rect2(161, 38, 66, 67)
 
 [node name="Top Fin Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(6, -12)
 texture = ExtResource("2_5bvtc")
 offset = Vector2(0, -22)
@@ -155,7 +156,7 @@ region_enabled = true
 region_rect = Rect2(33, 51, 61, 41)
 
 [node name="Front Fin Back Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(0, 12)
 rotation = 0.5235988
 texture = ExtResource("2_5bvtc")
@@ -164,13 +165,13 @@ region_enabled = true
 region_rect = Rect2(113, 52, 26, 34)
 
 [node name="Body Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0.6666667, 0, 1)
+self_modulate = Color(1, 0.8, 0.2, 1)
 texture = ExtResource("2_5bvtc")
 region_enabled = true
 region_rect = Rect2(238, 44, 95, 47)
 
 [node name="Front Fin Front Sprite" type="Sprite2D" parent="Goldfish Paperdoll"]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0.4, 0.09803922, 1)
 position = Vector2(0, 12)
 rotation = -0.5235988
 texture = ExtResource("2_5bvtc")

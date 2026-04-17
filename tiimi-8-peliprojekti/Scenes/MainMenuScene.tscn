@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bltll0kga7niv"]
+[gd_scene load_steps=10 format=3 uid="uid://bltll0kga7niv"]
 
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="1_gmxq7"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="2_mxhvt"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="2_x260n"]
+[ext_resource type="Script" uid="uid://f67ervkl86ex" path="res://Scenes/MainMenu.cs" id="3_12npo"]
 [ext_resource type="Texture2D" uid="uid://dmkps70qjq6db" path="res://Assets/Sprites/Affinity/Logo.png" id="3_c7qge"]
 [ext_resource type="Script" uid="uid://bcp7eshe251xi" path="res://Scripts/UI/QuitGameButton.cs" id="4_gmxq7"]
 [ext_resource type="Script" uid="uid://btaefoxbrncrd" path="res://Scripts/UI/HidePress.cs" id="5_06svm"]
@@ -29,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_x260n")
+script = ExtResource("3_12npo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI"]
 layout_mode = 1
@@ -98,7 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
-self_modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 0.5, 0, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4

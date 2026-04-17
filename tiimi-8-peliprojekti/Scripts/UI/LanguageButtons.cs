@@ -9,6 +9,8 @@ public partial class LanguageButtons : Node
 
     public override void _Ready()
 	{
+		LoadSettings();
+
 		_enButton.Pressed += OnEnPressed;
 		_fiButton.Pressed += OnFiPressed;
 		_seButton.Pressed += OnSePressed;
@@ -18,13 +20,57 @@ public partial class LanguageButtons : Node
 	private void OnEnPressed()
 	{
 		TranslationServer.SetLocale("en");
+		SaveSettings();
 	}
 	private void OnFiPressed()
 	{
 		TranslationServer.SetLocale("fi");
+		SaveSettings();
 	}
 	private void OnSePressed()
 	{
-		TranslationServer.SetLocale("sv");
+		TranslationServer.SetLocale("se");
+		SaveSettings();
+	}
+	
+
+	private void SaveSettings()
+	{
+		ConfigFile settingsFile = new();
+		Error loadError = settingsFile.Load(SettingsConfig.SETTING_PATH);
+		if(loadError != Error.Ok)
+		{
+			settingsFile = new();
+		}
+		settingsFile.SetValue(SettingsConfig.LANGUAGE_SETTINGS, SettingsConfig.LANGUAGE_SETTINGS, TranslationServer.GetLocale());
+
+		settingsFile.Save(SettingsConfig.SETTING_PATH);
+	}
+
+	private void LoadSettings()
+	{
+		ConfigFile settingsFile = new();
+		Error loadError = settingsFile.Load(SettingsConfig.SETTING_PATH);
+
+		string locale = "en";
+
+		if(loadError == Error.Ok)
+		{
+			locale = (string)settingsFile.GetValue(SettingsConfig.LANGUAGE_SETTINGS, SettingsConfig.LANGUAGE_SETTINGS, "en");
+		}
+		TranslationServer.SetLocale(locale);
+
+		if(locale == "en")
+		{
+			_enButton.ButtonPressed = true;
+		}
+		else if(locale == "fi")
+		{
+			_fiButton.ButtonPressed = true;
+		}
+		else if(locale == "se")
+		{
+			_seButton.ButtonPressed = true;
+		}
 	}
 }

@@ -1,4 +1,4 @@
-keys,en,fi,sv
+keys,en,fi,se
 PLAY,Play,Pelaa,
 SETTINGS,Settings,Asetukset,
 QUIT_GAME,Quit Game,Lopeta Peli,
@@ -7,6 +7,9 @@ RESUME,Resume Game,Jatka Peliä,
 RESTART,Restart,Aloita peli uudelleen,
 MAIN_MENU,Main Menu,Päävalikko,
 SHOP,Shop,Kauppa,
+OXYGENATOR,Oxygenator,Hapetin,
+FISH_FOOD,Fish Food,Kalanruoka,
+LASER_BLASTER,Laser Blaster,Laser Blasteri,
 FISH_PLURAL,Fish,Kalat,
 FISH_SINGULAR,Fish,Kala,
 PLANTS,Plants,Kasvit,

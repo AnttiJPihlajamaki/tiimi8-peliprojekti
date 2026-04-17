@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks.Dataflow;
 
 public partial class GameManager : Node // Store player inventory
@@ -30,6 +31,7 @@ public partial class GameManager : Node // Store player inventory
 	private PackedScene _snailScene;
 	private PackedScene _portalScene;
 	private int _difficultyLevel = 3;
+	
 
 	public static GameManager Instance
 	{
@@ -58,6 +60,10 @@ public partial class GameManager : Node // Store player inventory
 
 	public override void _Process(double delta)
 	{
+		if (_moneyPerSecond > 0)
+		{
+			AddMoney(_moneyPerSecond * (float) delta);
+		}
 		if(ActiveAquarium != null)
 		{
 			if (!_isNight)
@@ -170,8 +176,25 @@ public partial class GameManager : Node // Store player inventory
 	#region GameData
 	private float _money = 0f; // The amount of money the player has
 	private float _totalMoney = 0f;
+	private float _moneyPerSecond = 0f;
 
+	[Signal] public delegate void MoneyPerSecondChangedEventHandler();
+	public float MoneyPerSecond
+	{
+		get{ return _moneyPerSecond; }
+	}
+	public void AddMoneyPerSecond(float value)
+	{
+		_moneyPerSecond += value;
+		EmitSignal(SignalName.MoneyPerSecondChanged);
+	}
+	public void RemoveMoneyPerSecond(float value)
+	{
+		_moneyPerSecond -= value;
+		EmitSignal(SignalName.MoneyPerSecondChanged);
+	}
 
+	[Signal] public delegate void MoneyChangedEventHandler();
 	public float Money
 	{
 		get { return _money; }
@@ -180,10 +203,12 @@ public partial class GameManager : Node // Store player inventory
 	{
 		_money += value;
 		_totalMoney += value;
+		EmitSignal(SignalName.MoneyChanged);
 	}
 	public void RemoveMoney(float value)
 	{
 		_money -= value;
+		EmitSignal(SignalName.MoneyChanged);
 	}
 	#endregion
 }

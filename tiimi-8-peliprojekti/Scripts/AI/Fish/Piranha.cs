@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Linq;
 
-[Tool] public partial class Piranha : Fish
+public partial class Piranha : Fish
 {
 	private Color _color1;
 	[Export] private Color Color1
@@ -73,6 +73,7 @@ using System.Linq;
 
     public override void _Ready()
 	{
+		ChangeColor(_color1,_color2);
 		base._Ready();
 	}
 

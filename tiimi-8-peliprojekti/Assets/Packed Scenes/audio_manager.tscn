@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d25otwurf2w14"]
+[gd_scene load_steps=13 format=4 uid="uid://d25otwurf2w14"]
 
 [ext_resource type="Script" uid="uid://dr3i8v1muckwt" path="res://Scripts/AudioManager.cs" id="1_un04m"]
 [ext_resource type="AudioStream" uid="uid://w318g63ukjl4" path="res://Assets/Sound/Effects/mixkit-chewing-something-crunchy-2244.wav" id="2_0j104"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://y7m2us6rlnxg" path="res://Assets/Sound/Effects/phonepickup.mp3" id="5_gpv20"]
 [ext_resource type="AudioStream" uid="uid://c3hq3ms15k47m" path="res://Assets/Sound/Music/juliush-the-magic-pearl-chill-out-music-11917.mp3" id="5_tgu3b"]
 [ext_resource type="AudioStream" uid="uid://co5cg51hnybk8" path="res://Assets/Sound/Music/stemmusic-disaster-awakeningsequal-324109.mp3" id="6_gpv20"]
+[ext_resource type="AudioStream" uid="uid://djpvph7btgv1k" path="res://Assets/Sound/Effects/freesound_community-beep-warning-6387.mp3" id="6_ktduk"]
 [ext_resource type="AudioStream" uid="uid://bqf5j40y6unqh" path="res://Assets/Sound/Music/Cool_20Vibes.mp3" id="9_gpv20"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_gpv20"]
@@ -18,8 +19,8 @@ data = PackedByteArray("SUQzBAAAAAACEVRYWFgAAAASAAADbWFqb3JfYnJhbmQAaXNvbQBUWFhY
 process_mode = 3
 script = ExtResource("1_un04m")
 musicPlayer = NodePath("Music AudioStreamPlayer")
-sounds = Array[AudioStream]([ExtResource("2_0j104"), ExtResource("3_3r8oh"), SubResource("AudioStreamMP3_gpv20"), ExtResource("5_gpv20"), ExtResource("5_5umu5")])
-soundNames = PackedStringArray("Eat", "Laser", "PHONERING", "PHONEPICKUP", "PHONEBABBLE")
+sounds = Array[AudioStream]([ExtResource("2_0j104"), ExtResource("3_3r8oh"), SubResource("AudioStreamMP3_gpv20"), ExtResource("5_gpv20"), ExtResource("5_5umu5"), ExtResource("6_ktduk")])
+soundNames = PackedStringArray("Eat", "Laser", "PHONERING", "PHONEPICKUP", "PHONEBABBLE", "NIGHTALARM")
 musicTracks = Array[AudioStream]([ExtResource("4_qphlk"), ExtResource("5_tgu3b"), ExtResource("6_gpv20"), ExtResource("9_gpv20")])
 musicNames = PackedStringArray("Menu", "Aquarium", "Night", "Introcall")
 audioPlayer = ExtResource("4_tgu3b")

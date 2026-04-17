@@ -5,6 +5,7 @@ public partial class Oxygenator : Tool
 {
 	private bool _isActive = false; // Whether the tool is being used
 	[Export] private float _maxPower = 10.0f; // Minimum/maximum oxygen that can be removed/added per second
+	[Export] private AudioStreamPlayer2D _bubbleSound;
 	private float _basePower = 0f; // The default power of the tool, also used as the amount of change when changing power
 	private float _power = 0f; // Current power of the tool
 
@@ -51,12 +52,14 @@ public partial class Oxygenator : Tool
 	{
 		if (screenTouch.IsPressed())
 			{
+				_bubbleSound.Play();
 				_isActive = true;
 				_particles.Emitting = true;
 				_particles.GlobalPosition = (GetViewport().GetCamera2D().GlobalPosition - GetViewport().GetVisibleRect().Size/2 + screenTouch.Position)/GetViewport().GetCamera2D().Zoom;
 			}
 			else if(screenTouch.IsReleased())
 			{
+				_bubbleSound.Stop();
 				_isActive = false;
 				_particles.Emitting = false;
 			}

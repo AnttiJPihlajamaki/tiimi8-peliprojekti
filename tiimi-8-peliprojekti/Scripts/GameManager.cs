@@ -115,6 +115,7 @@ public partial class GameManager : Node // Store player inventory
 	{
 		_isNight = true;
 		SpawnAliens(_difficultyLevel);
+		AudioManager.Instance.PlaySound("NIGHTALARM");
 
 		AudioManager.Instance.PlayMusic("Night");
 	}

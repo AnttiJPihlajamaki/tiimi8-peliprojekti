@@ -168,6 +168,7 @@ scale = Vector2(1.841, 2.043)
 motion_mode = 1
 safe_margin = 0.2
 script = ExtResource("1_aqv4r")
+_attackRange = 120.0
 _attackDamage = 30.0
 _name = "Alien"
 _minSpeed = 2000.0
@@ -197,7 +198,7 @@ libraries = {
 autoplay = "Alien Move"
 
 [node name="Sprite2D5" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(5.43183, 27.410673)
+position = Vector2(4.8886476, 28.389624)
 rotation = -0.54218864
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
@@ -208,24 +209,24 @@ region_enabled = true
 region_rect = Rect2(160.37956, 200.98134, 71.84213, 91.43547)
 
 [node name="Sprite2D8" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(16.295496, 22.026432)
+position = Vector2(16.838676, 23.984339)
 rotation = -0.62008065
 scale = Vector2(0.30000004, 0.30000004)
 texture = ExtResource("3_5spra")
 offset = Vector2(-8, 30)
 flip_h = true
 region_enabled = true
-region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
+region_rect = Rect2(96, 201.53955, 66.82907, 91.34216)
 
 [node name="Sprite2D10" type="Sprite2D" parent="Alien Paperdoll"]
-position = Vector2(18.468224, 18.110622)
+position = Vector2(19.554592, 21.047478)
 rotation = -0.886941
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5spra")
 offset = Vector2(-8, 30)
 flip_h = true
 region_enabled = true
-region_rect = Rect2(87.39482, 201.53955, 75.43425, 91.34216)
+region_rect = Rect2(96, 201.53955, 66.82907, 91.34216)
 
 [node name="Sprite2D7" type="Sprite2D" parent="Alien Paperdoll"]
 position = Vector2(19.011406, 20.068527)

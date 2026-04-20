@@ -101,6 +101,13 @@ using System.Linq;
 		npc.TakeDamage(_attackDamage);
 	}
 
+    public override void _Ready()
+    {
+        base._Ready();
+		_hungryLimit = _maxHunger - 100;
+    }
+
+
 	protected override void Navigation(double delta)
 	{
 		if (GameManager.Instance.ActiveAquarium._npcs.Count(npc => npc is Alien || npc is Aliensnail) > 0)  // PRIORITISE HUNTING ALIENS

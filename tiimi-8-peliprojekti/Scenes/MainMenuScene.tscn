@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bltll0kga7niv"]
+[gd_scene load_steps=12 format=3 uid="uid://bltll0kga7niv"]
 
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="1_gmxq7"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="2_mxhvt"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://btaefoxbrncrd" path="res://Scripts/UI/HidePress.cs" id="5_06svm"]
 [ext_resource type="PackedScene" uid="uid://7kmokpgtfdhh" path="res://Assets/Packed Scenes/language_buttons.tscn" id="5_x260n"]
 [ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="8_12npo"]
+[ext_resource type="Texture2D" uid="uid://4k5b1rak8v1t" path="res://Assets/Sprites/Affinity/Cover/WellTech Lab_logo.png" id="10_m73vm"]
+[ext_resource type="Texture2D" uid="uid://bct8fo7sw477g" path="res://Assets/Sprites/Affinity/Cover/tiko-logo-en.png" id="11_i4kjn"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -42,11 +44,19 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("3_c7qge")
 expand_mode = 2
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="MainMenu MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer"]
 custom_minimum_size = Vector2(400, 450)
@@ -354,6 +364,32 @@ theme_override_font_sizes/font_size = 30
 text = "BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WellTechLab Logo" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -208.0
+offset_right = 965.0
+offset_bottom = 737.00244
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_m73vm")
+
+[node name="TIKO Logo" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = -158.0
+offset_right = 934.0
+offset_bottom = 119.00116
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_i4kjn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

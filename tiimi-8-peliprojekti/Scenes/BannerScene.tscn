@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://gibnrawud7nm"]
+
+[ext_resource type="Script" uid="uid://deljlbqml832" path="res://Scripts/Aquarium.cs" id="1_xy7v6"]
+[ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="2_8nlky"]
+[ext_resource type="Texture2D" uid="uid://dmkps70qjq6db" path="res://Assets/Sprites/Affinity/Logo.png" id="3_b04dj"]
+[ext_resource type="PackedScene" uid="uid://ut6gmfyw078n" path="res://Assets/Packed Scenes/Alien.tscn" id="4_j8tg5"]
+[ext_resource type="PackedScene" uid="uid://bcgfmk676w408" path="res://Assets/Packed Scenes/Aliensnail.tscn" id="5_edpy5"]
+[ext_resource type="PackedScene" uid="uid://3x4qnwq0q56u" path="res://Assets/Packed Scenes/red_kelp.tscn" id="6_halsl"]
+[ext_resource type="PackedScene" uid="uid://rbjnuvpnrpq0" path="res://Assets/Packed Scenes/seaweed.tscn" id="7_w08sp"]
+[ext_resource type="PackedScene" uid="uid://duf2kajmv7wpx" path="res://Assets/Packed Scenes/sea_whip.tscn" id="8_h0lod"]
+[ext_resource type="PackedScene" uid="uid://ccw04l37dq6lm" path="res://Assets/Packed Scenes/staghorn_coral.tscn" id="9_uflfv"]
+[ext_resource type="PackedScene" uid="uid://bcanu72xj80ax" path="res://Assets/Packed Scenes/black_coral.tscn" id="10_e7vld"]
+[ext_resource type="PackedScene" uid="uid://b0v3510h5m0wl" path="res://Assets/Packed Scenes/pillar_coral.tscn" id="11_55kyg"]
+[ext_resource type="PackedScene" uid="uid://b0b4ap5ubeh77" path="res://Assets/Packed Scenes/Carp.tscn" id="12_fpgt6"]
+[ext_resource type="PackedScene" uid="uid://bbi302icf606" path="res://Assets/Packed Scenes/goldfish.tscn" id="13_ipgon"]
+[ext_resource type="PackedScene" uid="uid://crgwcy8j732qw" path="res://Assets/Packed Scenes/Piranha.tscn" id="14_sfj0x"]
+[ext_resource type="PackedScene" uid="uid://bk1j3cv5gomif" path="res://Assets/Packed Scenes/silverfish.tscn" id="15_dxsoe"]
+[ext_resource type="PackedScene" uid="uid://bibhfafd76tbu" path="res://Assets/Packed Scenes/Cobranha.tscn" id="16_ixmtx"]
+[ext_resource type="PackedScene" uid="uid://bk32wfb01rcut" path="res://Assets/Packed Scenes/Pyranha.tscn" id="17_e121c"]
+[ext_resource type="PackedScene" uid="uid://bko7dt6chgxsi" path="res://Assets/Packed Scenes/bronzefish.tscn" id="18_8bfwr"]
+
+[node name="BannerScene" type="Node2D"]
+
+[node name="Aquarium" type="Node2D" parent="."]
+process_mode = 1
+script = ExtResource("1_xy7v6")
+_currentOxygen = 50.0
+
+[node name="Camera2D" type="Camera2D" parent="Aquarium"]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Background" type="Sprite2D" parent="Aquarium"]
+z_index = -10
+texture = ExtResource("2_8nlky")
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(-332, -212.00002)
+scale = Vector2(0.445, 0.445)
+texture = ExtResource("3_b04dj")
+
+[node name="Alien" parent="." instance=ExtResource("4_j8tg5")]
+position = Vector2(533, -214)
+
+[node name="Aliensnail" parent="." instance=ExtResource("5_edpy5")]
+position = Vector2(-769, 406)
+scale = Vector2(-0.425, 0.425)
+
+[node name="Red Kelp" parent="." instance=ExtResource("6_halsl")]
+position = Vector2(-528, 359)
+
+[node name="Red Kelp2" parent="." instance=ExtResource("6_halsl")]
+position = Vector2(-160, 416)
+
+[node name="Red Kelp3" parent="." instance=ExtResource("6_halsl")]
+position = Vector2(446, 373)
+
+[node name="Seaweed" parent="." instance=ExtResource("7_w08sp")]
+position = Vector2(203, 505)
+
+[node name="Seaweed2" parent="." instance=ExtResource("7_w08sp")]
+position = Vector2(863, 343)
+
+[node name="Sea Whip" parent="." instance=ExtResource("8_h0lod")]
+position = Vector2(-363, 491)
+
+[node name="Sea Whip2" parent="." instance=ExtResource("8_h0lod")]
+position = Vector2(-858, 352)
+
+[node name="Staghorn Coral" parent="." instance=ExtResource("9_uflfv")]
+position = Vector2(-653, 395)
+
+[node name="Staghorn Coral2" parent="." instance=ExtResource("9_uflfv")]
+position = Vector2(7, 456)
+
+[node name="Black Coral" parent="." instance=ExtResource("10_e7vld")]
+position = Vector2(592, 307)
+
+[node name="Black Coral2" parent="." instance=ExtResource("10_e7vld")]
+position = Vector2(-320, 314)
+
+[node name="Black Coral3" parent="." instance=ExtResource("10_e7vld")]
+position = Vector2(361, 520)
+
+[node name="Pillar Coral" parent="." instance=ExtResource("11_55kyg")]
+position = Vector2(634, 468)
+
+[node name="Pillar Coral2" parent="." instance=ExtResource("11_55kyg")]
+position = Vector2(-516, 491)
+
+[node name="Carp" parent="." instance=ExtResource("12_fpgt6")]
+position = Vector2(595, 81)
+scale = Vector2(-0.15, 0.15)
+
+[node name="Goldfish" parent="." instance=ExtResource("13_ipgon")]
+position = Vector2(-728, 218)
+
+[node name="Piranha" parent="." instance=ExtResource("14_sfj0x")]
+position = Vector2(-431, 156)
+
+[node name="Silverfish" parent="." instance=ExtResource("15_dxsoe")]
+position = Vector2(705, -318)
+scale = Vector2(-1, 1)
+
+[node name="Cobranha" parent="." instance=ExtResource("16_ixmtx")]
+position = Vector2(849, -77)
+
+[node name="Aliensnail2" parent="." instance=ExtResource("5_edpy5")]
+position = Vector2(491, 442)
+
+[node name="Pyranha" parent="." instance=ExtResource("17_e121c")]
+position = Vector2(307, -171)
+scale = Vector2(-0.75, 0.75)
+
+[node name="Alien2" parent="." instance=ExtResource("4_j8tg5")]
+position = Vector2(-792, 27)
+scale = Vector2(-1.841, 2.043)
+
+[node name="Bronzefish" parent="." instance=ExtResource("18_8bfwr")]
+position = Vector2(19, 189)

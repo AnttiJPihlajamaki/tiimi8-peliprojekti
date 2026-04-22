@@ -19,6 +19,7 @@ public partial class ShopMenu : Control
 
 	private void OpenMenu()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		if(_itemsToHide.Count > 0)
 		{
 			foreach(CanvasItem item in _itemsToHide)
@@ -37,6 +38,7 @@ public partial class ShopMenu : Control
 	}
 	private void CloseMenu()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		if(_itemsToHide.Count > 0)
 		{
 			foreach(CanvasItem item in _itemsToHide)

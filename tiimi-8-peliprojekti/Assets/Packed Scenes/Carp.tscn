@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0b4ap5ubeh77"]
+[gd_scene load_steps=14 format=3 uid="uid://b0b4ap5ubeh77"]
 
 [ext_resource type="Script" uid="uid://dyv67wx6j73os" path="res://Scripts/AI/Fish/Carp.cs" id="1_llyx2"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_15d7i"]
 [ext_resource type="Texture2D" uid="uid://dsbk6vqe5ekqj" path="res://Assets/Sprites/Affinity/NPCs/Carp/Carp Monochrome.png" id="2_dtb3w"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_dtb3w"]
 
@@ -136,6 +137,8 @@ _maxHealth = 200.0
 _health = 200.0
 _oxygenUsage = 3.0
 _maxHunger = 150.0
+
+[node name="SwimSound" parent="." instance=ExtResource("2_15d7i")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(100.000015, 50.000004)

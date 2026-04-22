@@ -9,6 +9,14 @@ public partial class OxygenUI : Control
 	private float flashTimer = 0;
 	private float flashDuration = 0.1f;
 
+	[Export] private AudioStreamPlayer _warningSound;
+
+    public override void _Ready()
+	{
+		_warningSound.Finished += _warningSound.Stop;
+	}
+
+
 	public override void _Process(double delta)
 	{
 		if(GameManager.Instance.ActiveAquarium.OxygenDelta > 0)
@@ -22,6 +30,10 @@ public partial class OxygenUI : Control
 		oxygenSlider.Value = GameManager.Instance.ActiveAquarium._currentOxygen;
 		if (!GameManager.Instance.ActiveAquarium.MinMaxIdealOxygen())
 		{
+			if (!_warningSound.Playing && !GetTree().Paused)
+			{
+				_warningSound.Play();
+			}
 			flashTimer += (float)delta;
 
 			if(flashTimer < flashDuration) return;
@@ -40,6 +52,10 @@ public partial class OxygenUI : Control
 		else if(oxygenSlider.SelfModulate != new Color(1, 1, 1))
 		{
 			oxygenSlider.SelfModulate = new Color(1, 1, 1);
+		}
+		else if (_warningSound.Playing)
+		{
+			_warningSound.Stop();
 		}
 	}
 }

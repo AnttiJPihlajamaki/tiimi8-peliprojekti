@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://loy77orom7e8"]
+[gd_scene load_steps=22 format=3 uid="uid://loy77orom7e8"]
 
 [ext_resource type="Script" uid="uid://c1hqwrb8tcflt" path="res://Scripts/UI/OxygenUI.cs" id="2_ogene"]
 [ext_resource type="Script" uid="uid://ern5kics2ac6" path="res://Scripts/UI/MoneyUI.cs" id="2_rdn46"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="3_ksqpd"]
 [ext_resource type="Texture2D" uid="uid://cwdoicykvu7an" path="res://Assets/Sprites/Affinity/UI/Oxygen Slider Grabber.png" id="3_ogene"]
 [ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="3_rdn46"]
+[ext_resource type="AudioStream" uid="uid://cpvlh7biml66k" path="res://Assets/Sound/Audacity/soundshelfstudio-ui-warning-buzz-515667.mp3" id="5_xbrjc"]
 [ext_resource type="Script" uid="uid://dbnrbfi21luhq" path="res://Scripts/UI/TimeUI.cs" id="6_kfa6w"]
 [ext_resource type="FontFile" uid="uid://8owkbnup3vfl" path="res://Assets/Fonts/Modak/Modak-Regular.ttf" id="7_s37ty"]
 
@@ -76,13 +77,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider", "oxygenDeltaLabel")]
+[node name="Oxygen MarginContainer" type="MarginContainer" parent="Screen MarginContainer" node_paths=PackedStringArray("oxygenSlider", "oxygenDeltaLabel", "_warningSound")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 script = ExtResource("2_ogene")
 oxygenSlider = NodePath("Oxygen Pointer MarginContainer/VSlider")
 oxygenDeltaLabel = NodePath("../Oxygen Change MarginContainer/MarginContainer/HBoxContainer/Amount Label")
+_warningSound = NodePath("AudioStreamPlayer2D")
 
 [node name="Oxygen Meter MarginContainer" type="MarginContainer" parent="Screen MarginContainer/Oxygen MarginContainer"]
 custom_minimum_size = Vector2(0, 415)
@@ -135,6 +137,12 @@ value = 25.0
 editable = false
 scrollable = false
 ticks_position = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Screen MarginContainer/Oxygen MarginContainer"]
+stream = ExtResource("5_xbrjc")
+volume_db = -1.5
+pitch_scale = 1.5
+bus = &"Sound Effects"
 
 [node name="Oxygen Change MarginContainer" type="MarginContainer" parent="Screen MarginContainer"]
 layout_mode = 2

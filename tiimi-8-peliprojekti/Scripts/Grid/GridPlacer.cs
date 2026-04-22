@@ -90,6 +90,7 @@ public partial class GridPlacer : Control
 
 	private void BuyPlacement()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		PlacePlacement(_objectCells);
 	}
 
@@ -132,10 +133,12 @@ public partial class GridPlacer : Control
 			}
 
 			ResetHighlight();
+			AudioManager.Instance.PlaySound("Buy");
 		}
 		else
 		{
 			ResetPlacement();
+			AudioManager.Instance.PlaySound("Error");
 		}
 	}
 

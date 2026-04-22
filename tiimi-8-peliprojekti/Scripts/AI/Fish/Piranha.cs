@@ -206,12 +206,6 @@ using System.Linq;
         }
 	}
 
-	private void OnVelocityComputed(Vector2 safeVelocity)
-    {
-        Velocity = safeVelocity;
-        MoveAndSlide();
-    }
-
 	public override void _Process(double delta)
 	{
 		if(GameManager.Instance != null)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bibhfafd76tbu"]
+[gd_scene load_steps=14 format=3 uid="uid://bibhfafd76tbu"]
 
 [ext_resource type="Script" uid="uid://bym4oibllpcad" path="res://Scripts/AI/Fish/Piranha.cs" id="1_sth4n"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_be3gs"]
 [ext_resource type="Texture2D" uid="uid://b6rpervcydkvi" path="res://Assets/Sprites/Affinity/NPCs/Piranha/Scale Piranha Monochrome.png" id="2_sth4n"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_qlw8f"]
 
@@ -142,6 +143,8 @@ _maxHealth = 75.0
 _health = 75.0
 _oxygenUsage = 3.0
 _maxHunger = 150.0
+
+[node name="SwimSound" parent="." instance=ExtResource("2_be3gs")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -1)

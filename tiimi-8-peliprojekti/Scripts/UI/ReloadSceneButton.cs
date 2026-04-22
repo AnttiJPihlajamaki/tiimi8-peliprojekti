@@ -10,6 +10,7 @@ public partial class ReloadSceneButton : Button
 	}
 	private async void ReloadScene()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		_blackFadeRect.Visible = true;
 		_blackFadeRect.MouseFilter = MouseFilterEnum.Stop;
 

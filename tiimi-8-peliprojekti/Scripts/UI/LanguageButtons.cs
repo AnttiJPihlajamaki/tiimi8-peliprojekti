@@ -19,16 +19,19 @@ public partial class LanguageButtons : Node
 
 	private void OnEnPressed()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		TranslationServer.SetLocale("en");
 		SaveSettings();
 	}
 	private void OnFiPressed()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		TranslationServer.SetLocale("fi");
 		SaveSettings();
 	}
 	private void OnSePressed()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		TranslationServer.SetLocale("se");
 		SaveSettings();
 	}

@@ -51,10 +51,16 @@ public partial class ShopItem : Control // ! Is a Tool temporarily while UI gets
 
 	public void Purchase() // Handles purchasing new fish
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		if(GameManager.Instance.Money >= _currentPrice)
 		{
 			GameManager.Instance.RemoveMoney(_currentPrice); // Checks if player has enough money and removes it
 			AddFish(); // Adds fish to aquarium
+			AudioManager.Instance.PlaySound("Buy");
+		}
+		else
+		{
+			AudioManager.Instance.PlaySound("Error");
 		}
 	}
 

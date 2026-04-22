@@ -11,11 +11,11 @@
 [ext_resource type="Script" uid="uid://cbwrp3ulfc0qc" path="res://Scripts/UI/ShowCreditsButton.cs" id="7_opcln"]
 [ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="8_12npo"]
 [ext_resource type="Texture2D" uid="uid://4k5b1rak8v1t" path="res://Assets/Sprites/Affinity/Cover/WellTech Lab_logo.png" id="10_m73vm"]
-[ext_resource type="Texture2D" uid="uid://bct8fo7sw477g" path="res://Assets/Sprites/Affinity/Cover/tiko-logo-en.png" id="11_i4kjn"]
+[ext_resource type="Texture2D" uid="uid://s8iwookyj3xs" path="res://Assets/Sprites/Affinity/Cover/tiko_logo_valkomusta_fin.png" id="11_i4kjn"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D2" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

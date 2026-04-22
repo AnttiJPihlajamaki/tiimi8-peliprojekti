@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bshvvb0n74w36"]
+
+[ext_resource type="AudioStream" uid="uid://dmcgkr4bmr6vf" path="res://Assets/Sound/Effects/freesound_community-duoi-mat-bien-43603.mp3" id="1_hl63y"]
+
+[node name="SwimSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_hl63y")
+volume_db = -6.0
+autoplay = true
+bus = &"Sound Effects"
+parameters/looping = true

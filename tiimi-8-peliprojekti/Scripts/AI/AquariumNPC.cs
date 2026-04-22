@@ -79,7 +79,7 @@ public partial class AquariumNPC : CharacterBody2D
 			Navigation(delta);
 		}
 	}
-	private void OnVelocityComputed(Vector2 safeVelocity)
+	protected void OnVelocityComputed(Vector2 safeVelocity)
     {
         Velocity = safeVelocity;
         MoveAndSlide();

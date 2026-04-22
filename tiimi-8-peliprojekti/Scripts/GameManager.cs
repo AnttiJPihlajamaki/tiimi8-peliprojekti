@@ -23,6 +23,10 @@ public partial class GameManager : Node // Store player inventory
 		get { return _currentTime; }
 	}
 	private bool _isNight = false; //
+	public bool IsNight
+	{
+		get { return _isNight; }
+	}
 	private List<AquariumNPC> _nightAliens = new List<AquariumNPC>(); // measure how many aliens are currently in aquarium
 	private PackedScene _alienScene;
 	private PackedScene _snailScene;

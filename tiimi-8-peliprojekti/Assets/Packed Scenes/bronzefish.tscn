@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bko7dt6chgxsi"]
+[gd_scene load_steps=14 format=3 uid="uid://bko7dt6chgxsi"]
 
 [ext_resource type="Script" uid="uid://8txnatselnmu" path="res://Scripts/AI/Fish/Goldfish.cs" id="1_lmdgi"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_63csc"]
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_mlw6w"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_63csc"]
 
@@ -130,6 +131,8 @@ _paperdoll = NodePath("Bronzefish Paperdoll")
 _maxHealth = 50.0
 _health = 50.0
 _oxygenUsage = 0.5
+
+[node name="SwimSound" parent="." instance=ExtResource("2_63csc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964

@@ -9,7 +9,6 @@ public partial class PauseButton : HidePress
 	protected override void Press()
 	{
 		base.Press();
-
 		GameManager.Instance.PauseGame(_pause);
 	}
 }

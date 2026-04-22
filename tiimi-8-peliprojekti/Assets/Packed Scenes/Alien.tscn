@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ut6gmfyw078n"]
+[gd_scene load_steps=8 format=3 uid="uid://ut6gmfyw078n"]
 
 [ext_resource type="Script" uid="uid://16yub6rlobs8" path="res://Scripts/AI/Alien.cs" id="1_aqv4r"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_nf4y1"]
 [ext_resource type="Texture2D" uid="uid://cem5jfl6f8yuy" path="res://Assets/Sprites/Aliens/aliencartoon.png" id="3_5spra"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xel27"]
@@ -178,6 +179,8 @@ _paperdoll = NodePath("Alien Paperdoll")
 _oxygenUsage = 0.0
 _oxygenDamage = 0.0
 _hungerDamage = 0.0
+
+[node name="SwimSound" parent="." instance=ExtResource("2_nf4y1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2

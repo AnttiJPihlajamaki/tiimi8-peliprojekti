@@ -29,6 +29,7 @@ public partial class ChangeSceneButton : Button
 
 	private async void ChangeToScene()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		GameManager.Instance.PauseGame(true);
 
 		_blackFadeRect.Visible = true;

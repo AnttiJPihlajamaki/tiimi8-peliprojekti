@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bk1j3cv5gomif"]
+[gd_scene load_steps=14 format=3 uid="uid://bk1j3cv5gomif"]
 
 [ext_resource type="Script" uid="uid://8txnatselnmu" path="res://Scripts/AI/Fish/Goldfish.cs" id="1_ppbqd"]
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_16vd1"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_kh5n0"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_kh5n0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apf2t"]
@@ -128,6 +129,8 @@ _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Silverfish Paperdoll")
 _maxHealth = 150.0
 _health = 150.0
+
+[node name="SwimSound" parent="." instance=ExtResource("2_kh5n0")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964

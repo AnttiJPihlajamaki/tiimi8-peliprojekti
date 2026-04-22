@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://crgwcy8j732qw"]
+[gd_scene load_steps=14 format=3 uid="uid://crgwcy8j732qw"]
 
 [ext_resource type="Script" uid="uid://bym4oibllpcad" path="res://Scripts/AI/Fish/Piranha.cs" id="1_prqmn"]
 [ext_resource type="Texture2D" uid="uid://c1k3tcvw5k85s" path="res://Assets/Sprites/Affinity/NPCs/Piranha/Piranha Monochrome.png" id="2_88swr"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_dgjro"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_88swr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_88swr"]
@@ -138,6 +139,8 @@ _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("PiranhaPaperdoll")
 _oxygenUsage = 2.0
 _maxHunger = 120.0
+
+[node name="SwimSound" parent="." instance=ExtResource("2_dgjro")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, -1)

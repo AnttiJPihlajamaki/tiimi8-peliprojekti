@@ -54,11 +54,13 @@ public partial class Alien : AquariumNPC
 
 	private void AttackTarget(AquariumNPC npc)
 	{
+		AudioManager.Instance.PlaySound("Claw");
 		npc.TakeDamage(_attackDamage);
 	}
 
     protected override void Die()
     {
+		AudioManager.Instance.PlaySound("Alien Splat");
 		GameManager.Instance.RemoveNightAlien(this);
         base.Die();
 	}

@@ -11,6 +11,7 @@ public partial class QuitGameButton : Button
 
 	private void QuitGame()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		GetTree().Quit();
 	}
 }

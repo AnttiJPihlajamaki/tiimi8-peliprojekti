@@ -7,7 +7,12 @@ public partial class HideToggle : Button
 	public override void _Ready()
 	{
 		Toggle(false);
-		Toggled += Toggle;
+		Toggled += ToggleWithSound;
+	}
+	protected virtual void ToggleWithSound(bool set)
+	{
+		if (set) AudioManager.Instance.PlaySound("Pop");
+		ToggleItem(set);
 	}
 
 	protected virtual void Toggle(bool set)

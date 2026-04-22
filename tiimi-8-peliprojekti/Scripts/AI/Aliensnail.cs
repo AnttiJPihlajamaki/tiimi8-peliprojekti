@@ -51,6 +51,7 @@ if (_aquarium._objects.Count > 0)
 
 	protected override void Die()
     {
+		AudioManager.Instance.PlaySound("Fish Splat");
 		GameManager.Instance.RemoveNightAlien(this);
         base.Die();
 	}

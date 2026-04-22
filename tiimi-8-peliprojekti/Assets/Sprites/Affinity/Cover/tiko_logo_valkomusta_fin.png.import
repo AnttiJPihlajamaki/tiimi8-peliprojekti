@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://56va44f6rfeo"
-path="res://.godot/imported/tiko_logo_musta_fin.png-5c50f0a8df8e21d175686c48a3288c82.ctex"
+uid="uid://s8iwookyj3xs"
+path="res://.godot/imported/tiko_logo_valkomusta_fin.png-efd27700ecedb91d94ca9da72170c196.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sound/Effects/tiko_logo_musta_fin.png"
-dest_files=["res://.godot/imported/tiko_logo_musta_fin.png-5c50f0a8df8e21d175686c48a3288c82.ctex"]
+source_file="res://Assets/Sprites/Affinity/Cover/tiko_logo_valkomusta_fin.png"
+dest_files=["res://.godot/imported/tiko_logo_valkomusta_fin.png-efd27700ecedb91d94ca9da72170c196.ctex"]
 
 [params]
 

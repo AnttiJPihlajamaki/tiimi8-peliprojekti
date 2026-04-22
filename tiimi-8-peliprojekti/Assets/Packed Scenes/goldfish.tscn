@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbi302icf606"]
+[gd_scene load_steps=14 format=3 uid="uid://bbi302icf606"]
 
 [ext_resource type="Script" uid="uid://8txnatselnmu" path="res://Scripts/AI/Fish/Goldfish.cs" id="1_rhqo1"]
 [ext_resource type="Texture2D" uid="uid://bo7yekc4vfm80" path="res://Assets/Sprites/Affinity/NPCs/Goldfish/Goldfish Sprite Sheet.png" id="2_0mypf"]
+[ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_mhsln"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_mhsln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apf2t"]
@@ -126,6 +127,8 @@ _minSpeed = 50.0
 _maxSpeed = 250.0
 _navigationAgent = NodePath("NavigationAgent2D")
 _paperdoll = NodePath("Goldfish Paperdoll")
+
+[node name="SwimSound" parent="." instance=ExtResource("2_mhsln")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964

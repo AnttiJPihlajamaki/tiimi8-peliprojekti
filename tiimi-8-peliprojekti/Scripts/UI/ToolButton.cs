@@ -11,6 +11,13 @@ public partial class ToolButton : HideToggle
 		SetTool(set);
 	}
 
+    protected override void ToggleWithSound(bool set)
+    {
+        base.ToggleWithSound(set);
+		SetTool(set);
+    }
+
+
 	private void SetTool(bool set)
 	{
 		if (set)

@@ -14,6 +14,7 @@ public partial class ShowCreditsButton : Button
 
 	protected virtual void Press()
 	{
+		AudioManager.Instance.PlaySound("Pop");
 		if(_itemsToHide.Count > 0)
 		{
 			foreach(CanvasItem item in _itemsToHide)

@@ -91,7 +91,7 @@ public partial class GameManager : Node // Store player inventory
 
 				_isNight = false;
 				_currentTime = 0f;
-				_difficultyLevel++;
+				_difficultyLevel = _difficultyLevel + 2;
 			}
 		}
 	}

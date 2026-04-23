@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://uoh264f8yilk"]
+[gd_scene load_steps=15 format=3 uid="uid://uoh264f8yilk"]
 
 [ext_resource type="Script" uid="uid://dyv67wx6j73os" path="res://Scripts/AI/Fish/Carp.cs" id="1_nm3li"]
 [ext_resource type="PackedScene" uid="uid://bshvvb0n74w36" path="res://Assets/Packed Scenes/swim_sound.tscn" id="2_koayy"]
-[ext_resource type="Texture2D" uid="uid://bwvt8ag4v5mjx" path="res://Assets/Sprites/Affinity/NPCs/Carp/Red Carp Monochrome.png" id="2_nm3li"]
 [ext_resource type="Texture2D" uid="uid://b2bwna4oxeovl" path="res://Assets/Sprites/Affinity/Particles/Bubble.png" id="3_0ri2g"]
+[ext_resource type="Texture2D" uid="uid://du064w6cjliha" path="res://Assets/Sprites/Affinity/NPCs/Carp/Carp Monochrome Fix.png" id="3_qa2pf"]
+[ext_resource type="Texture2D" uid="uid://tmijfjx3sb3b" path="res://Assets/Sprites/Affinity/NPCs/Carp/Carp Monochrome Gradient Fix.png" id="4_os8ob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtb3w"]
 radius = 250.0
@@ -93,20 +94,20 @@ _data = {
 &"siwm": SubResource("Animation_gigbg")
 }
 
-[sub_resource type="Gradient" id="Gradient_15d7i"]
+[sub_resource type="Gradient" id="Gradient_0ri2g"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nm3li"]
-gradient = SubResource("Gradient_15d7i")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ri2g"]
+gradient = SubResource("Gradient_0ri2g")
 
-[sub_resource type="Curve" id="Curve_mogq5"]
+[sub_resource type="Curve" id="Curve_os8ob"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_koayy"]
-curve = SubResource("Curve_mogq5")
+[sub_resource type="CurveTexture" id="CurveTexture_qa2pf"]
+curve = SubResource("Curve_os8ob")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dtb3w"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_krywi"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 15.0
@@ -114,28 +115,28 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, -98, 0)
 scale_min = 0.0
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_koayy")
-color_initial_ramp = SubResource("GradientTexture1D_nm3li")
+scale_curve = SubResource("CurveTexture_qa2pf")
+color_initial_ramp = SubResource("GradientTexture1D_0ri2g")
 
 [node name="RedCarp" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_inBetweenParts", "_base", "_navigationAgent", "_paperdoll")]
 scale = Vector2(0.15, 0.15)
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_nm3li")
-Color1 = Color(0.7, 0.12250001, 0.070000015, 1)
+Color1 = Color(0.7019608, 0.12156863, 0.07058824, 1)
 Color2 = Color(1, 0.6, 0.2, 1)
 _hungryColor1 = Color(0.5, 0.050000012, 0.20000008, 1)
 _hungryColor2 = Color(1, 0.6, 0.8666666, 1)
 _color1Parts = [NodePath("RedCarp Paperdoll/Front Fin Back"), NodePath("RedCarp Paperdoll/Back Fin 2"), NodePath("RedCarp Paperdoll/Back Fin 1"), NodePath("RedCarp Paperdoll/Top Fin"), NodePath("RedCarp Paperdoll/Body"), NodePath("RedCarp Paperdoll/Tail Fin"), NodePath("RedCarp Paperdoll/Front Fin Front")]
-_color2Parts = []
-_inBetweenParts = [NodePath("RedCarp Paperdoll/Whisker Front"), NodePath("RedCarp Paperdoll/Whisker Back"), NodePath("RedCarp Paperdoll/Mouth")]
+_color2Parts = [NodePath("RedCarp Paperdoll/Front Fin Back/Front Fin Back Gradient"), NodePath("RedCarp Paperdoll/Back Fin 2/Back Fin 2 Gradient"), NodePath("RedCarp Paperdoll/Back Fin 1/Back Fin 1 Gradient"), NodePath("RedCarp Paperdoll/Top Fin/Top Fin Gradient"), NodePath("RedCarp Paperdoll/Body/Body Gradient"), NodePath("RedCarp Paperdoll/Tail Fin/Tail Fin Gradient"), NodePath("RedCarp Paperdoll/Front Fin Front/Front Fin Front Gradient")]
+_inBetweenParts = [NodePath("RedCarp Paperdoll/Whisker Back"), NodePath("RedCarp Paperdoll/Whisker Front"), NodePath("RedCarp Paperdoll/Mouth")]
 _base = NodePath("RedCarp Paperdoll/Body")
 _moneyPerSecond = 1000.0
 _name = "Red Carp"
 _minSpeed = 125.0
 _maxSpeed = 175.0
 _navigationAgent = NodePath("NavigationAgent2D")
-_paperdoll = NodePath("RedCarp Paperdoll")
+_paperdoll = NodePath("")
 _maxHealth = 300.0
 _health = 300.0
 _oxygenUsage = 4.0
@@ -163,10 +164,10 @@ libraries = {
 autoplay = "siwm"
 
 [node name="Front Fin Back" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(-566.6667, 213.33331)
 rotation = 0.40895855
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 centered = false
 offset = Vector2(-168.085, -91.225)
 region_enabled = true
@@ -174,90 +175,90 @@ region_rect = Rect2(3073, 896, 640, 512)
 
 [node name="Front Fin Back Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Front Fin Back"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 centered = false
 offset = Vector2(-168.085, -91.225)
 region_enabled = true
-region_rect = Rect2(9122, 852, 640, 512)
+region_rect = Rect2(3073, 896, 640, 512)
 
 [node name="Back Fin 2" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(864, 250)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(3905, 1024, 512, 384)
 
 [node name="Back Fin 2 Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Back Fin 2"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 region_enabled = true
-region_rect = Rect2(9954, 980, 512, 384)
+region_rect = Rect2(3905, 1024, 512, 384)
 
 [node name="Back Fin 1" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(551, 427)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(4545, 960, 640, 448)
 
 [node name="Back Fin 1 Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Back Fin 1"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 region_enabled = true
-region_rect = Rect2(10594, 916, 640, 448)
+region_rect = Rect2(4545, 960, 640, 448)
 
 [node name="Top Fin" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(523, -284)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(3521, 128, 1216, 704)
 
 [node name="Top Fin Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Top Fin"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 region_enabled = true
-region_rect = Rect2(9570, 84, 1216, 704)
+region_rect = Rect2(3521, 128, 1216, 704)
 
 [node name="Whisker Back" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.85, 0.36125, 0.13500002, 1)
+self_modulate = Color(0.8509804, 0.36078432, 0.13529411, 1)
 position = Vector2(-1049.3333, 289.33334)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(3194, 50, 168, 312)
 
 [node name="Body" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
-texture = ExtResource("2_nm3li")
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(65, 256, 2816, 960)
 
 [node name="Body Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Body"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 region_enabled = true
-region_rect = Rect2(6114, 212, 2816, 960)
+region_rect = Rect2(65, 256, 2816, 960)
 
 [node name="Tail Fin" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(1402.4, 61.6)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(5185, 192, 768, 1088)
 
 [node name="Tail Fin Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Tail Fin"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 region_enabled = true
-region_rect = Rect2(11234, 148, 768, 1088)
+region_rect = Rect2(5185, 192, 768, 1088)
 
 [node name="Front Fin Front" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.7, 0.12250001, 0.070000015, 1)
+self_modulate = Color(0.7019608, 0.12156863, 0.07058824, 1)
 position = Vector2(-486.66656, 293.3333)
 rotation = 0.17646667
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 centered = false
 offset = Vector2(-168.085, -91.225)
 region_enabled = true
@@ -265,29 +266,30 @@ region_rect = Rect2(3073, 896, 640, 512)
 
 [node name="Front Fin Front Gradient" type="Sprite2D" parent="RedCarp Paperdoll/Front Fin Front"]
 self_modulate = Color(1, 0.6, 0.2, 1)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("4_os8ob")
 centered = false
 offset = Vector2(-168.085, -91.225)
 region_enabled = true
-region_rect = Rect2(9122, 852, 640, 512)
+region_rect = Rect2(3073, 896, 640, 512)
 
 [node name="Eye" type="Sprite2D" parent="RedCarp Paperdoll"]
+self_modulate = Color(1, 0.43529412, 0.14901961, 1)
 position = Vector2(-713.3333, 46.666664)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(2879, 34, 182, 226)
 
 [node name="Mouth" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.85, 0.36125, 0.13500002, 1)
+self_modulate = Color(0.8509804, 0.36078432, 0.13529411, 1)
 position = Vector2(-882.6666, 282.6667)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(2931, 422, 333, 201)
 
 [node name="Whisker Front" type="Sprite2D" parent="RedCarp Paperdoll"]
-self_modulate = Color(0.85, 0.36125, 0.13500002, 1)
+self_modulate = Color(0.8509804, 0.36078432, 0.13529411, 1)
 position = Vector2(-775.99994, 296)
-texture = ExtResource("2_nm3li")
+texture = ExtResource("3_qa2pf")
 region_enabled = true
 region_rect = Rect2(3194, 50, 168, 312)
 
@@ -298,4 +300,4 @@ position = Vector2(-953.33325, 253.33333)
 amount = 5
 texture = ExtResource("3_0ri2g")
 lifetime = 2.0
-process_material = SubResource("ParticleProcessMaterial_dtb3w")
+process_material = SubResource("ParticleProcessMaterial_krywi")

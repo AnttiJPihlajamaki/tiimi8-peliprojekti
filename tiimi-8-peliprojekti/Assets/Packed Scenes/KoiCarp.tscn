@@ -96,14 +96,14 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_bmx6l"]
 colors = PackedColorArray(0.19999999, 0.73333323, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_don2v"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p2phj"]
 gradient = SubResource("Gradient_bmx6l")
 
 [sub_resource type="Curve" id="Curve_ha1bh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.70454544, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_hqtn3"]
+[sub_resource type="CurveTexture" id="CurveTexture_sdwo5"]
 curve = SubResource("Curve_ha1bh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1817q"]
@@ -114,8 +114,8 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, -98, 0)
 scale_min = 0.0
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_hqtn3")
-color_initial_ramp = SubResource("GradientTexture1D_don2v")
+scale_curve = SubResource("CurveTexture_sdwo5")
+color_initial_ramp = SubResource("GradientTexture1D_p2phj")
 
 [node name="KoiCarp" type="CharacterBody2D" node_paths=PackedStringArray("_color1Parts", "_color2Parts", "_inBetweenParts", "_base", "_navigationAgent", "_paperdoll")]
 scale = Vector2(0.15, 0.15)
@@ -135,7 +135,7 @@ _name = "Koi Carp"
 _minSpeed = 125.0
 _maxSpeed = 175.0
 _navigationAgent = NodePath("NavigationAgent2D")
-_paperdoll = NodePath("")
+_paperdoll = NodePath("RedCarp Paperdoll")
 _maxHealth = 300.0
 _health = 300.0
 _oxygenUsage = 4.0

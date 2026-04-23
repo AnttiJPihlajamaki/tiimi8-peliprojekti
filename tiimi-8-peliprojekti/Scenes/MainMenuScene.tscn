@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bltll0kga7niv"]
+[gd_scene load_steps=14 format=3 uid="uid://bltll0kga7niv"]
 
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="1_gmxq7"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="2_mxhvt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cbwrp3ulfc0qc" path="res://Scripts/UI/ShowCreditsButton.cs" id="7_opcln"]
 [ext_resource type="Script" uid="uid://dsso1prveoqbl" path="res://Scripts/UI/VolumeSettings.cs" id="8_12npo"]
 [ext_resource type="Texture2D" uid="uid://4k5b1rak8v1t" path="res://Assets/Sprites/Affinity/Cover/WellTech Lab_logo.png" id="10_m73vm"]
+[ext_resource type="Texture2D" uid="uid://dja5tvt6h8tt5" path="res://Assets/Sprites/Affinity/UI/UI Button.png" id="11_7ylgr"]
 [ext_resource type="Texture2D" uid="uid://s8iwookyj3xs" path="res://Assets/Sprites/Affinity/Cover/tiko_logo_valkomusta_fin.png" id="11_i4kjn"]
 
 [node name="Node2D" type="Node2D"]
@@ -159,7 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Credits Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
-self_modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.19999999, 0.3333332, 1, 1)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -168,7 +169,7 @@ text = "
 "
 script = ExtResource("7_opcln")
 _itemsToHide = [NodePath("../..")]
-_itemsToShow = [NodePath("../../../CreditsMarginContainer")]
+_itemsToShow = [NodePath("../../../Credits MarginContainer")]
 
 [node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Credits Button"]
 layout_mode = 1
@@ -391,88 +392,152 @@ text = "BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CreditsMarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel"]
+[node name="Credits MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel"]
 visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 378.0
-offset_bottom = 658.0
-scale = Vector2(0.96, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Credits1 MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits1 MarginContainer"]
+self_modulate = Color(0.19999999, 0.3333332, 1, 1)
+layout_mode = 2
+texture = ExtResource("11_7ylgr")
+region_rect = Rect2(0, 64, 64, 64)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits1 MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits1 MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer"]
-self_modulate = Color(0.69245994, 1.8410012e-06, 7.70092e-07, 1)
-custom_minimum_size = Vector2(0, 166.55)
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits1 MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer/Panel"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 4.0
-offset_right = 385.0
-offset_bottom = 65.0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 29
 text = "ARTCODE"
 
-[node name="Label2" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer/Panel"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 51.0
-offset_right = 387.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 35
+[node name="Label2" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits1 MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
 text = "Antti Pihlajamäki
 Atte Ukonaho"
 
-[node name="Panel3" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer"]
-self_modulate = Color(1, 0.69803923, 0.1254902, 1)
-custom_minimum_size = Vector2(0, 64.435)
+[node name="Credits2 MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits2 MarginContainer"]
+self_modulate = Color(0.19999999, 0.3333332, 1, 1)
+layout_mode = 2
+texture = ExtResource("11_7ylgr")
+region_rect = Rect2(0, 64, 64, 64)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits2 MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits2 MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer/Panel3"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 5.0
-offset_right = 383.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 35
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits2 MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "WWW"
+
+[node name="Label2" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits2 MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "Alex Salminen"
+
+[node name="Credits3 MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits3 MarginContainer"]
+self_modulate = Color(0.19999999, 0.3333332, 1, 1)
+layout_mode = 2
+texture = ExtResource("11_7ylgr")
+region_rect = Rect2(0, 64, 64, 64)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits3 MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits3 MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits3 MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
 text = "CREDMUSIC"
 
-[node name="Panel2" type="Panel" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer"]
-self_modulate = Color(0.34509805, 1, 1, 1)
-custom_minimum_size = Vector2(0, 190.89)
+[node name="Label2" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Credits3 MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label3" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer/Panel2"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 9.0
-offset_right = 654.0
-offset_bottom = 62.0
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 29
 text = "Cool Vibes 
 Kevin MacLeod
  (incompetech.com)"
 
-[node name="Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
+[node name="Back Button" type="Button" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer" node_paths=PackedStringArray("_itemsToHide", "_itemsToShow")]
 self_modulate = Color(1, 0, 0, 1)
-custom_minimum_size = Vector2(0, 73.27)
+custom_minimum_size = Vector2(160, 70)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "
+"
 script = ExtResource("5_06svm")
 _itemsToHide = [NodePath("../..")]
 _itemsToShow = [NodePath("../../../MainMenu Content MarginContainer")]
 
-[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/CreditsMarginContainer/VBoxContainer/Button"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 8.0
-offset_right = 210.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 39
-text = "CREDBACK"
+[node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/Credits MarginContainer/VBoxContainer/Back Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WellTechLab Logo" type="TextureRect" parent="MainMenu CanvasLayer/MainMenu UI"]
 layout_mode = 1

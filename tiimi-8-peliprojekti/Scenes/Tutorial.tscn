@@ -74,13 +74,12 @@ theme_override_font_sizes/font_size = 30
 justification_flags = 171
 
 [node name="TutorialBox2" type="MarginContainer" parent="CanvasLayer/Control"]
-custom_minimum_size = Vector2(1064, 143.75)
+custom_minimum_size = Vector2(1064, 359.375)
 layout_mode = 0
 offset_left = 51.0
 offset_top = -447.00003
 offset_right = 1115.0
 offset_bottom = -303.25003
-scale = Vector2(1.0057563, 2.400001)
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/TutorialBox2"]
@@ -91,14 +90,15 @@ mouse_filter = 2
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TutorialBox2/Panel"]
 custom_minimum_size = Vector2(1000, 96.785)
 layout_mode = 0
-offset_left = 15.908427
-offset_top = 4.166677
-offset_right = 1083.4656
-offset_bottom = 132.6151
-scale = Vector2(0.9602289, 0.8666652)
+offset_right = 1067.5571
+offset_bottom = 261.0
 mouse_filter = 2
+theme_override_constants/margin_top = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(22.8, 117.83)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -106,62 +106,107 @@ size_flags_vertical = 4
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(266.6, 2.57)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 0)
 layout_mode = 2
 texture = ExtResource("6_hxa32")
-expand_mode = 1
+expand_mode = 4
+stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(266.6, 2.57)
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 0)
 layout_mode = 2
 texture = ExtResource("7_dlght")
-expand_mode = 1
+expand_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(266.6, 2.57)
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(266.6, 0)
 layout_mode = 2
 texture = ExtResource("8_8i65c")
-expand_mode = 1
+expand_mode = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "TICON1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "TICON2"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/TutorialBox2/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "TICON3"
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/TutorialBox2"]
+visible = false
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
-layout_mode = 0
-offset_left = 146.15866
-offset_top = 107.916626
-offset_right = 222.15866
-offset_bottom = 144.91663
-scale = Vector2(1.6996262, 0.6976011)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -37.0
+offset_right = 38.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "TICON1"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
-layout_mode = 0
-offset_left = 466.31573
-offset_top = 109.58328
-offset_right = 542.31573
-offset_bottom = 146.58328
-scale = Vector2(1.6996262, 0.6976011)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "TICON2"
 
 [node name="Label3" type="Label" parent="CanvasLayer/Control/TutorialBox2/Control"]
-layout_mode = 0
-offset_left = 775.53577
-offset_top = 110.41662
-offset_right = 851.53577
-offset_bottom = 147.41663
-scale = Vector2(1.6996262, 0.6976011)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "TICON3"
 
 [node name="TutorialBox3" type="MarginContainer" parent="CanvasLayer/Control"]
-custom_minimum_size = Vector2(1080, 180)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 0
 offset_left = 364.0
 offset_top = -814.00006
-offset_right = 364.0
-offset_bottom = -814.00006
-scale = Vector2(0.3710597, 1.6618719)
+offset_right = 764.0
+offset_bottom = -514.00006
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/TutorialBox3"]
@@ -170,17 +215,22 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TutorialBox3/Panel"]
-layout_mode = 0
-offset_left = 118.579315
-offset_top = 3.671646e-05
-offset_right = 1198.5793
-offset_bottom = 180.00003
-scale = Vector2(0.78439796, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBox3/Panel/MarginContainer"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("6_3j26a")
-expand_mode = 1
+expand_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

@@ -170,7 +170,7 @@ size_flags_vertical = 3
 text = "
 "
 script = ExtResource("7_opcln")
-_itemsToHide = [NodePath("../../../..")]
+_itemsToHide = [NodePath("../..")]
 _itemsToShow = [NodePath("../../../Credits MarginContainer")]
 
 [node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Credits Button"]

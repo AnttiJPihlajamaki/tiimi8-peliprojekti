@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bltll0kga7niv"]
+[gd_scene load_steps=15 format=3 uid="uid://bltll0kga7niv"]
 
 [ext_resource type="Texture2D" uid="uid://cxrhqe7gfx7nb" path="res://Assets/Sprites/Affinity/Background/Aquarium Background.png" id="1_gmxq7"]
+[ext_resource type="Script" uid="uid://baacbjcqc3nbv" path="res://Scenes/Fullscreen.cs" id="1_ken5u"]
 [ext_resource type="Script" uid="uid://bgf41y5wjr466" path="res://Scripts/UI/ChangeSceneButton.cs" id="2_mxhvt"]
 [ext_resource type="Theme" uid="uid://c04qy2q8jvm7" path="res://Scenes/AquariumUI.tres" id="2_x260n"]
 [ext_resource type="Script" uid="uid://f67ervkl86ex" path="res://Scenes/MainMenu.cs" id="3_12npo"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://s8iwookyj3xs" path="res://Assets/Sprites/Affinity/Cover/tiko_logo_valkomusta_fin.png" id="11_i4kjn"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ken5u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
@@ -168,7 +170,7 @@ size_flags_vertical = 3
 text = "
 "
 script = ExtResource("7_opcln")
-_itemsToHide = [NodePath("../..")]
+_itemsToHide = [NodePath("../../../..")]
 _itemsToShow = [NodePath("../../../Credits MarginContainer")]
 
 [node name="Label" type="Label" parent="MainMenu CanvasLayer/MainMenu UI/HBoxContainer/MainMenu MarginContainer/Panel/MainMenu Content MarginContainer/VBoxContainer/Credits Button"]

@@ -111,6 +111,7 @@ public partial class GameManager : Node // Store player inventory
 		_currentTime = 0;
 		_money = 0;
 		_moneyPerSecond = 0;
+		_totalMoney = 0;
 		_nightAliens.Clear();
 		_difficultyLevel = 3;
 	}
